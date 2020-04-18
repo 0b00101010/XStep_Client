@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class MainSceneManager : MonoBehaviour, ITouchObserver
 {
+    public static MainSceneManager instance;
+    
+    [HideInInspector]
+    public UIController uiController;
+    
     private Ray touchRay = new Ray();
+
+    private void Awake(){
+        if(instance is null){
+            instance = this;
+        }
+
+        uiController = gameObject.GetComponent<UIController>();
+    }
 
     private void Start(){
         GameManager.instance.touchManager.AddTouchObserver(this);
