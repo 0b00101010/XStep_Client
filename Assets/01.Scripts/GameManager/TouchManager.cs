@@ -17,6 +17,8 @@ public class TouchManager : MonoBehaviour
 
     private Vector2 swipeDirection;
 
+    private List<ITouchObserver> touchObservers = new List<ITouchObserver>();
+
     public Vector2 TouchDownPosition => touchDownPosition;
     public Vector2 TouchUpPosition => touchUpPosition;
     public Vector2 TouchHoldingPosition => touchHoldingPosition;
@@ -42,6 +44,7 @@ public class TouchManager : MonoBehaviour
                 isTouch = true;
                 touchDownNotScreenPosition = tempTouch.position;
                 touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                TouchDownNotify();
             }
             else if(tempTouch.phase.Equals(TouchPhase.Moved)){
                 Vector2 currentPosition = tempTouch.position;
@@ -60,8 +63,29 @@ public class TouchManager : MonoBehaviour
                 isSwipe = false;
                 isHolding = false;
                 touchUpPosition = Camera.main.ScreenToWorldPoint(tempTouch.position);
+                TouchUpNotify();
             }
         }
+    }
+
+    public void AddTouchObserver(ITouchObserver observer){
+        touchObservers.Add(observer);
+    }
+
+    public void RemoveTouchObserver(ITouchObserver observer){
+        touchObservers.Remove(observer);
+    }
+
+    private void TouchDownNotify(){
+        touchObservers.ForEach((observer) => {
+            observer.TouchDownNotify();
+        });
+    }
+
+    private void TouchUpNotify(){
+        touchObservers.ForEach((observer) => {
+            observer.TouchUpNotify();
+        });
     }
 
 }
