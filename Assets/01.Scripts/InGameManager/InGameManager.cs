@@ -10,8 +10,11 @@ public class InGameManager : MonoBehaviour
     List<GameObject> nodes;
     List<GameObject> safes;
     List<GameObject> directions;
+    List<GameObject> swipes;
     public GameObject bigDirection;
+    public GameObject bigSwipe;
     public float time = 0, cool = 2;
+    public float time2 = 0, cool2 = 3;
     public int safeNum = 0;
     public int dangerNum = 0;
     private void Awake()
@@ -45,10 +48,16 @@ public class InGameManager : MonoBehaviour
     private void FixedUpdate()
     {
         time += Time.deltaTime;
+        time2 += Time.deltaTime;
         if (time > cool)
         {
             spawnNode();
             time = 0;
+        }
+        if (time2 > cool2)
+        {
+            spawnSwipe();
+            time2 = 0;
         }
 
 
@@ -69,16 +78,34 @@ public class InGameManager : MonoBehaviour
                 var c = 0;
                 switch (a)
                 {
-                    case 0:c = 1;break;
-                    case 1:c = -1;break;
-                    case 2:c = -1;break;
-                    case 3:c = 1;break;
+                    case 0:c = 45;break;
+                    case 1:c = -45;break;
+                    case 2:c = 135;break;
+                    case 3:c = 225;break;
                 }
-                one.transform.rotation = Quaternion.AngleAxis(angle+45*c, Vector3.forward);
+                one.transform.rotation = Quaternion.AngleAxis(angle+c, Vector3.forward);
                 one.GetComponent<Node>().spawn(directions[a].transform.position);
                 break;
             }
         }
         
+    }
+    public void spawnSwipe()
+    {
+        GameObject one = null;
+        for (int i = 0; i <swipes.Count; i++)
+        {
+            if (!swipes[i].activeSelf)
+            {
+                one = swipes[i];
+                one.SetActive(true);
+                var a = Random.Range(0, 2);
+
+                Dir dir = a == 0 ? Dir.left : Dir.right;
+                one.GetComponent<Swipe>().spawn(dir);
+                break;
+            }
+        }
+
     }
 }
