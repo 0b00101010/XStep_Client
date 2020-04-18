@@ -5,17 +5,20 @@ using UnityEngine;
 public class InGameManager : MonoBehaviour
 {
 
-
     public GameObject bigNode;
+    public GameObject bigSafe;
     List<GameObject> nodes;
+    List<GameObject> safes;
     List<GameObject> directions;
     public GameObject bigDirection;
     public float time = 0, cool = 2;
-
+    public int safeNum = 0;
+    public int dangerNum = 0;
     private void Awake()
     {
         nodes = new List<GameObject>();
         directions= new List<GameObject>();
+        safes = new List<GameObject>();
         for (int i = 0; i < bigNode.transform.childCount; i++)
         {
             nodes.Add(bigNode.transform.GetChild(i).gameObject);
@@ -24,8 +27,21 @@ public class InGameManager : MonoBehaviour
         {
             directions.Add(bigDirection.transform.GetChild(i).gameObject);
         }
+        for(int i = 0; i < bigSafe.transform.childCount; i++)
+        {
+            safes.Add((bigSafe.transform.GetChild(i).gameObject));
+        }
 
     }
+    public void activeSafe(int n)
+    {
+        
+        safes[n].SetActive(true);
+        var a = safes[n].GetComponent<Ani>();
+        a.play(Ani.Name.QuaterTouch, 1);
+    }
+ 
+
     private void FixedUpdate()
     {
         time += Time.deltaTime;

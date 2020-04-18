@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Direction : MonoBehaviour
+public class Safe : MonoBehaviour
 {
-    public InGameManager InGameManager;
+    public InGameManager inGameManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("node"))
         {
+            inGameManager.safeNum++;
             collision.gameObject.SetActive(false);
-            InGameManager.dangerNum++;
-        }
+        };
     }
 }
