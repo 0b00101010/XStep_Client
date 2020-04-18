@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class NavigatorButton : MainUIObject
 {
+    [SerializeField]
+    private string tapName;
+
     private INavigatorButtonObserver observer;
+
+    public string TapName => tapName;
 
     public override void Execute(){
         SelectNotify();

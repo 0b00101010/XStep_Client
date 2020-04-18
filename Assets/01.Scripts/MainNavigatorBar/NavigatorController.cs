@@ -22,14 +22,15 @@ public class NavigatorController : MonoBehaviour, INavigatorButtonObserver
             navigatorButtonImages.Add(navigatorButtons[i].GetComponent<Image>());
             navigatorButtons[i].SettingObserver(this);
         }
-
+        
         selectNavigatorButton = navigatorButtons[0];
-
+        MainSceneManager.instance.uiController.SetInformationBoxText(selectNavigatorButton.TapName);
         ButtonColorSetting();
     }
 
     public void SelectNotify(NavigatorButton navigatorButton){
         selectNavigatorButton = navigatorButton;
+        MainSceneManager.instance.uiController.SetInformationBoxText(selectNavigatorButton.TapName);
         ButtonColorSetting();
     }    
 
