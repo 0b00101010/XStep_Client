@@ -8,13 +8,18 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public TouchManager touchManager;
-
+    
+    [HideInInspector]
+    public FadeManager fadeManager;
+    
     private void Awake(){ 
         if(instance is null){
             instance = this;
         }
         
         touchManager = gameObject.GetComponent<TouchManager>();
+        fadeManager = gameObject.GetComponent<FadeManager>();
+        
         DontDestroyOnLoad(this);
     }
 }
