@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public FadeManager fadeManager;
     
+    [HideInInspector]
+    public WidgetViewer widgetViewer;
+
     private void Awake(){ 
         if(instance is null){
             instance = this;
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
         
         touchManager = gameObject.GetComponent<TouchManager>();
         fadeManager = gameObject.GetComponent<FadeManager>();
+        widgetViewer = gameObject.GetComponent<WidgetViewer>();
         
         DontDestroyOnLoad(this);
     }
