@@ -29,7 +29,7 @@ public class WidgetViewer : MonoBehaviour
 
     private void FadeInChildWidgets(params Image[] childWidgets){
         for(int i = 0; i < childWidgets.Length; i++){
-            GameManager.instance.fadeManager.ImageFadeIn(childWidgets[i], 0.5f);
+            StartCoroutine(GameManager.instance.fadeManager.ImageFadeIn(childWidgets[i], 0.5f));
         }
     }
 
