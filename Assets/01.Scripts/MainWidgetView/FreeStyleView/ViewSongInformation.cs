@@ -44,12 +44,13 @@ public class ViewSongInformation : MonoBehaviour
         childWidgets.AddRange(childWidgetsText);
     }
 
-    public void SettingInformations(string songName, string composerName, int[] stepTags){
-        this.songName.text = songName;
-        this.composerName.text = composerName;
+    public void SettingInformations(SongItemInformation information){
 
-        for(int i = 0; i < stepTags.Length; i++){
-            this.stepTags[stepTags[i]].SetActive(true);
+        this.songName.text = information.SongName;
+        this.composerName.text = information.ComposerName;
+
+        for(int i = 0; i < information.Difficultys.Length; i++){
+            this.stepTags[information.Difficultys[i]].SetActive(true);
         }
     }
     
