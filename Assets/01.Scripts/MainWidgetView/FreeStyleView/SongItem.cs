@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI; 
 
 [ExecuteInEditMode]
-public class SongItem : MonoBehaviour
+public class SongItem : MainUIObject
 {
 
     [SerializeField]
@@ -42,5 +42,9 @@ public class SongItem : MonoBehaviour
             difficultyTexts[i].text = songItemInformation.Difficultys[i].ToString();
         }
 
+    }
+
+    public override void Execute(){
+        MainSceneManager.instance.uiController.OpenSongInformationPanner(songItemInformation);
     }
 }
