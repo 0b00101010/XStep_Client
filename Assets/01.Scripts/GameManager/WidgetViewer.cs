@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,8 @@ public class WidgetViewer : MonoBehaviour
         StartCoroutine(WidgetsOpenCoroutine(parentWidget, childWidgets));
     } 
 
-    public void WidgetsClose(Image parentWidget, params object[] childWidgets){
-        StartCoroutine(WidgetsCloseCoroutine(parentWidget, childWidgets));
+    public void WidgetsClose(Image parentWidget, Action closeAction, params object[] childWidgets){
+        StartCoroutine(WidgetsCloseCoroutine(parentWidget, closeAction, childWidgets));
     }
 
     private IEnumerator WidgetsOpenCoroutine(Image parentWidget, params object[] childWidgets){
@@ -18,9 +19,10 @@ public class WidgetViewer : MonoBehaviour
         FadeInChildWidgets(childWidgets);
     }
 
-    private IEnumerator WidgetsCloseCoroutine(Image parentWidget, params object[] childWidgets){
+    private IEnumerator WidgetsCloseCoroutine(Image parentWidget, Action closeAction, params object[] childWidgets){
         yield return StartCoroutine(FadeOutChildWidgets(childWidgets));
-        StartCoroutine(ScaleDownParenWidget(parentWidget));
+        yield return StartCoroutine(ScaleDownParenWidget(parentWidget));
+        closeAction();
     }
 
     private IEnumerator ScaleUpParentWidget(Image parentWidget){
