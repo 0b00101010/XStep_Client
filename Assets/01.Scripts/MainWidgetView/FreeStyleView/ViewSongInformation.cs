@@ -45,7 +45,7 @@ public class ViewSongInformation : MonoBehaviour
     }
 
     public void SettingInformations(SongItemInformation information){
-
+        this.eyeCatchImage.sprite = information.EyeCatch;
         this.songName.text = information.SongName;
         this.composerName.text = information.ComposerName;
 
