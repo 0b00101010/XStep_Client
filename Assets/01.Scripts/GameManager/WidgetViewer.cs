@@ -26,15 +26,17 @@ public class WidgetViewer : MonoBehaviour
     }
 
     private IEnumerator ScaleUpParentWidget(Image parentWidget){
+        Vector3 upperVector = Vector3.up / 60;
         for(int i = 0; i < 60; i++){
-            parentWidget.gameObject.transform.localScale += Vector3.one / 60;
+            parentWidget.gameObject.transform.localScale += upperVector;
             yield return YieldInstructionCache.WaitFrame;
         }
     }
 
     private IEnumerator ScaleDownParenWidget(Image parentWidget){
+        Vector3 lowerVector = Vector3.up / 60;
         for(int i = 0; i < 60; i++){
-            parentWidget.gameObject.transform.localScale -= Vector3.one / 60;
+            parentWidget.gameObject.transform.localScale -= lowerVector;
             yield return YieldInstructionCache.WaitFrame;
         }
     }
