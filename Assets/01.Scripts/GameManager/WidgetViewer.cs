@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class WidgetViewer : MonoBehaviour
 {
-    // FIXME : 배열 형식으로 만들어서 값 복사가 계속 일어남
-
     public void WidgetsOpen(Image parentWidget, params object[] childWidgets){
         StartCoroutine(WidgetsOpenCoroutine(parentWidget, childWidgets));
     } 
