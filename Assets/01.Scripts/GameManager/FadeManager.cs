@@ -50,4 +50,28 @@ public class FadeManager : MonoBehaviour
             yield return YieldInstructionCache.WaitingSeconds(spendTime / repeatFrame);
         }
     }
+
+    public IEnumerator TextFadeIn(Text text, float spendTime){
+        Color newColor = text.color;
+        newColor.a = 0;
+
+        for(int i = 0; i < repeatFrame; i++){
+            newColor.a = ((float)i/repeatFrame);
+            text.color = newColor;
+            yield return YieldInstructionCache.WaitingSeconds(spendTime / repeatFrame);
+        }
+    }
+
+    public IEnumerator TextFadeOut(Text text, float spendTime){
+        Color newColor = text.color;
+        newColor.a = 1;
+
+        for(int i = 0; i < repeatFrame; i++){
+            newColor.a = 1.0f - ((float)i/repeatFrame);
+            text.color = newColor;
+            yield return YieldInstructionCache.WaitingSeconds(spendTime / repeatFrame);
+        }
+    }
+
+    
 }
