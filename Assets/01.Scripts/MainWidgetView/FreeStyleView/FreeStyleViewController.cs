@@ -37,4 +37,13 @@ public class FreeStyleViewController : MonoBehaviour
             item.transform.Translate(direction * 0.5f);
         }
     }
+
+    public void OpenPanner(SongItemInformation information){
+        songInformationViewer.SettingInformations(information);
+        songInformationViewer.OpenSongInformation();
+    }
+
+    public void ClosePanner(){
+        songInformationViewer.CloseSongInformation();
+    }
 }
