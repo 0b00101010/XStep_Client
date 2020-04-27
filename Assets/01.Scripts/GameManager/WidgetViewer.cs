@@ -1,56 +1,75 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WidgetViewer : MonoBehaviour
 {
-    // FIXME : 배열 형식으로 만들어서 값 복사가 계속 일어남
-
-    public void WidgetsOpen(Image parentWidget, params Image[] childWidgets){
+    public void WidgetsOpen(Image parentWidget, params object[] childWidgets){
         StartCoroutine(WidgetsOpenCoroutine(parentWidget, childWidgets));
     } 
 
-    public void WidgetsClose(Image parentWidget, params Image[] childWidgets){
-        StartCoroutine(WidgetsCloseCoroutine(parentWidget, childWidgets));
+    public void WidgetsClose(Image parentWidget, Action closeAction, params object[] childWidgets){
+        StartCoroutine(WidgetsCloseCoroutine(parentWidget, closeAction, childWidgets));
     }
 
-    private IEnumerator WidgetsOpenCoroutine(Image parentWidget, params Image[] childWidgets){
+    private IEnumerator WidgetsOpenCoroutine(Image parentWidget, params object[] childWidgets){
         yield return StartCoroutine(ScaleUpParentWidget(parentWidget));
         FadeInChildWidgets(childWidgets);
     }
 
-    private IEnumerator WidgetsCloseCoroutine(Image parentWidget, params Image[] childWidgets){
+    private IEnumerator WidgetsCloseCoroutine(Image parentWidget, Action closeAction, params object[] childWidgets){
         yield return StartCoroutine(FadeOutChildWidgets(childWidgets));
-        StartCoroutine(ScaleDownParenWidget(parentWidget));
+        yield return StartCoroutine(ScaleDownParenWidget(parentWidget));
+        closeAction();
     }
 
     private IEnumerator ScaleUpParentWidget(Image parentWidget){
+        Vector3 upperVector = Vector3.up / 60;
         for(int i = 0; i < 60; i++){
-            parentWidget.gameObject.transform.localScale += Vector3.one / 60;
+            parentWidget.gameObject.transform.localScale += upperVector;
             yield return YieldInstructionCache.WaitFrame;
         }
     }
 
     private IEnumerator ScaleDownParenWidget(Image parentWidget){
+        Vector3 lowerVector = Vector3.up / 60;
         for(int i = 0; i < 60; i++){
-            parentWidget.gameObject.transform.localScale -= Vector3.one / 60;
+            parentWidget.gameObject.transform.localScale -= lowerVector;
             yield return YieldInstructionCache.WaitFrame;
         }
     }
 
-    private void FadeInChildWidgets(params Image[] childWidgets){
+    private void FadeInChildWidgets(params object[] childWidgets){
         for(int i = 0; i < childWidgets.Length; i++){
-            StartCoroutine(GameManager.instance.fadeManager.ImageFadeIn(childWidgets[i], 0.5f));
+            if(childWidgets[i] is Image image){
+                StartCoroutine(GameManager.instance.fadeManager.ImageFadeIn(image, 0.5f));
+            }
+            else if(childWidgets[i] is Text text){
+                StartCoroutine(GameManager.instance.fadeManager.TextFadeIn(text, 0.5f));
+            }
         }
     }
 
 
     // FIXME : 영 코드가 안 이쁨
-    private IEnumerator FadeOutChildWidgets(params Image[] childWidgets){
+    private IEnumerator FadeOutChildWidgets(params object[] childWidgets){
         for(int i = 0; i < childWidgets.Length - 1; i++){
-            StartCoroutine(GameManager.instance.fadeManager.ImageFadeOut(childWidgets[i], 0.5f));
+            if(childWidgets[i] is Image image){
+                StartCoroutine(GameManager.instance.fadeManager.ImageFadeOut(image, 0.5f));
+            }
+            else if(childWidgets[i] is Text text){
+                StartCoroutine(GameManager.instance.fadeManager.TextFadeOut(text, 0.5f));
+            }
         }
-        yield return StartCoroutine(GameManager.instance.fadeManager.ImageFadeOut(childWidgets[childWidgets.Length - 1], 0.5f));
+
+        if(childWidgets[childWidgets.Length - 1] is Image image_){
+            yield return StartCoroutine(GameManager.instance.fadeManager.ImageFadeOut(image_, 0.5f));
+        }
+        else if(childWidgets[childWidgets.Length - 1] is Text text_){
+            yield return StartCoroutine(GameManager.instance.fadeManager.TextFadeOut(text_, 0.5f));
+        }
+
     }
 }
