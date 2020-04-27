@@ -10,8 +10,10 @@ public class FreeStyleViewController : MonoBehaviour
     [SerializeField]
     private Transform sortPivotObject;
 
-    private void Start(){
+    private ViewSongInformation songInformationViewer;
 
+    private void Awake(){
+        songInformationViewer = gameObject.GetComponent<ViewSongInformation>();
     }
 
     private void Update(){
