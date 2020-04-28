@@ -12,6 +12,9 @@ public class FreeStyleViewController : MonoBehaviour
 
     private ViewSongInformation songInformationViewer;
 
+    private bool isPannerOpen = false;
+
+
     private void Awake(){
         songInformationViewer = gameObject.GetComponent<ViewSongInformation>();
     }
@@ -39,11 +42,18 @@ public class FreeStyleViewController : MonoBehaviour
     }
 
     public void OpenPanner(SongItemInformation information){
+        if(isPannerOpen){
+            return;
+        }
+
         songInformationViewer.SettingInformations(information);
         songInformationViewer.OpenSongInformation();
+
+        isPannerOpen = true;
     }
 
     public void ClosePanner(){
         songInformationViewer.CloseSongInformation();
+        isPannerOpen = false;
     }
 }
