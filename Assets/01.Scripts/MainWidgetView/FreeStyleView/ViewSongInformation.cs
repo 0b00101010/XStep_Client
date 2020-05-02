@@ -36,6 +36,9 @@ public class ViewSongInformation : MonoBehaviour
     [SerializeField]
     private GameObject[] stepTags;
 
+    [SerializeField]
+    private Text[] difficultyTexts;
+
     private Action<bool> pannerActiveCheckFunction;
 
     private List<object> childWidgets = new List<object>();
@@ -56,8 +59,12 @@ public class ViewSongInformation : MonoBehaviour
         this.songName.text = information.SongName;
         this.composerName.text = information.ComposerName;
 
+        for(int i = 0; i < information.StepTags.Length; i++){
+            this.stepTags[information.StepTags[i]].SetActive(true);
+        }
+
         for(int i = 0; i < information.Difficultys.Length; i++){
-            this.stepTags[information.Difficultys[i]].SetActive(true);
+            this.difficultyTexts[i].text = information.Difficultys[i].ToString();
         }
     }
     

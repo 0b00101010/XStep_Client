@@ -22,7 +22,7 @@ public class BackgroundPanner : MonoBehaviour
         limitPosition.x = 9.5f * direction.x;
         initialPosition.x = -9.5f * direction.x;
 
-        initialPosition.y = gameObject.transform.position.y;
+        initialPosition.y = panner[0].gameObject.transform.position.y;
 
         moveVector = direction / 20;
         StartCoroutine(MovePanner());
