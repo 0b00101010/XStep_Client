@@ -8,6 +8,9 @@ public class TouchManager : MonoBehaviour
     private bool isSwipe;
     private bool isHolding;
 
+    private int keepTouchFrame = 0;
+    private float keepTouchTimer = 0.0f;
+
     private float minSwipeDistance;
 
     private Vector2 touchDownNotScreenPosition;
@@ -41,10 +44,7 @@ public class TouchManager : MonoBehaviour
             Touch tempTouch = Input.touches[0];
 
             if(tempTouch.phase.Equals(TouchPhase.Began)){
-                isTouch = true;
                 touchDownNotScreenPosition = tempTouch.position;
-                touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
-                TouchDownNotify();
             }
             else if(tempTouch.phase.Equals(TouchPhase.Moved)){
                 Vector2 currentPosition = tempTouch.position;
@@ -54,14 +54,23 @@ public class TouchManager : MonoBehaviour
                 }
             }
             else if (tempTouch.phase.Equals(TouchPhase.Stationary)){
-                isHolding = true;
-                isSwipe = false;
-                touchHoldingPosition = Camera.main.ScreenToWorldPoint(tempTouch.position);
+                keepTouchTimer += Time.deltaTime;
+                if(!isTouch && !isSwipe){
+                    isTouch = true;
+                    touchDownNotScreenPosition = tempTouch.position;
+                    touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                    TouchDownNotify();
+                }
+                if(keepTouchTimer > 1.5f){
+                    isHolding = true;
+                    touchHoldingPosition = Camera.main.ScreenToWorldPoint(tempTouch.position);
+                }
             }
             else if(tempTouch.phase.Equals(TouchPhase.Ended)){
                 isTouch = false;
                 isSwipe = false;
                 isHolding = false;
+                keepTouchTimer = 0.0f;
                 touchUpPosition = Camera.main.ScreenToWorldPoint(tempTouch.position);
                 TouchUpNotify();
             }

@@ -12,12 +12,20 @@ public class FreeStyleViewController : MonoBehaviour
 
     private ViewSongInformation songInformationViewer;
 
+    private bool isPannerOpen = false;
+
+
     private void Awake(){
         songInformationViewer = gameObject.GetComponent<ViewSongInformation>();
+        songInformationViewer.SettingPannerActiveCheckFunction(PanenrActiveUpdate);
+    }
+
+    public void PanenrActiveUpdate(bool value){
+        isPannerOpen = value;
     }
 
     private void Update(){
-        if(GameManager.instance.touchManager.IsSwipe){
+        if(GameManager.instance.touchManager.IsSwipe && !isPannerOpen){
             if(GameManager.instance.touchManager.SwipeDirection.y > 0.8f){
                 if(songItems[songItems.Length - 1].gameObject.transform.position.y < sortPivotObject.position.y){
                     MoveObjects(Vector2.up);
@@ -39,6 +47,10 @@ public class FreeStyleViewController : MonoBehaviour
     }
 
     public void OpenPanner(SongItemInformation information){
+        if(isPannerOpen){
+            return;
+        }
+
         songInformationViewer.SettingInformations(information);
         songInformationViewer.OpenSongInformation();
     }
