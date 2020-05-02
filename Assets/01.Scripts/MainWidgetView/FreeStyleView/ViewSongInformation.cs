@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 public class ViewSongInformation : MonoBehaviour
 {
 
@@ -36,12 +36,17 @@ public class ViewSongInformation : MonoBehaviour
     [SerializeField]
     private GameObject[] stepTags;
 
+    private Action<bool> pannerActiveCheckFunction;
 
     private List<object> childWidgets = new List<object>();
 
     private void Awake(){
         childWidgets.AddRange(childWidgetsImage);
         childWidgets.AddRange(childWidgetsText);
+    }
+
+    public void SettingPannerActiveCheckFunction(Action<bool> pannerActiveCheckFunction){
+        this.pannerActiveCheckFunction = pannerActiveCheckFunction;
     }
 
     public void SettingInformations(SongItemInformation information){
@@ -57,6 +62,7 @@ public class ViewSongInformation : MonoBehaviour
     public void OpenSongInformation(){
         songInformationView.SetActive(true);
         GameManager.instance.widgetViewer.WidgetsOpen(backgroundImage, childWidgets.ToArray());
+        pannerActiveCheckFunction(true);
     }
 
     public void CloseSongInformation(){
@@ -68,6 +74,8 @@ public class ViewSongInformation : MonoBehaviour
         for(int i = 0; i < stepTags.Length; i++){
             stepTags[i].SetActive(false);
         }
+        
+        pannerActiveCheckFunction(false);
     }
 
 }
