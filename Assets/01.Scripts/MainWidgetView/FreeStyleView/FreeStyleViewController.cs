@@ -25,7 +25,7 @@ public class FreeStyleViewController : MonoBehaviour
     }
 
     private void Update(){
-        if(GameManager.instance.touchManager.IsSwipe){
+        if(GameManager.instance.touchManager.IsSwipe && !isPannerOpen){
             if(GameManager.instance.touchManager.SwipeDirection.y > 0.8f){
                 if(songItems[songItems.Length - 1].gameObject.transform.position.y < sortPivotObject.position.y){
                     MoveObjects(Vector2.up);

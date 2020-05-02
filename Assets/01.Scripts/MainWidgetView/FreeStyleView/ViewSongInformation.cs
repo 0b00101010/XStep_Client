@@ -40,6 +40,8 @@ public class ViewSongInformation : MonoBehaviour
 
     private List<object> childWidgets = new List<object>();
 
+    private bool isClosing = false;
+
     private void Awake(){
         childWidgets.AddRange(childWidgetsImage);
         childWidgets.AddRange(childWidgetsText);
@@ -66,7 +68,10 @@ public class ViewSongInformation : MonoBehaviour
     }
 
     public void CloseSongInformation(){
-        GameManager.instance.widgetViewer.WidgetsClose(backgroundImage, ResetPanner, childWidgets.ToArray());
+        if(!isClosing){
+            isClosing = true;
+            GameManager.instance.widgetViewer.WidgetsClose(backgroundImage, ResetPanner, childWidgets.ToArray());
+        }
     }
 
     private void ResetPanner(){
@@ -75,6 +80,7 @@ public class ViewSongInformation : MonoBehaviour
             stepTags[i].SetActive(false);
         }
         
+        isClosing = false;
         pannerActiveCheckFunction(false);
     }
 
