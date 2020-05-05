@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalNode : MonoBehaviour
+public class NormalNode : Node
 {
     private Vector2 targetPosition;
     private Vector2 startPosition;
@@ -12,7 +12,7 @@ public class NormalNode : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField]
-    private float moveFrame;
+    private float arriveTime;
 
     private void Awake(){
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -22,22 +22,25 @@ public class NormalNode : MonoBehaviour
 
     }
 
-    public void Execute(Vector2 targetPosition){
+    public override void Execute(Vector2 targetPosition){
         this.targetPosition = targetPosition;
         moveDirection = (targetPosition - startPosition).normalized;
+        gameObject.SetActive(true);
         SetSpriteDirection();
         StartCoroutine(ExecuteCoroutine());
     }
 
     private IEnumerator ExecuteCoroutine(){
-        for(int repeatFrame = 1; repeatFrame <= moveFrame; repeatFrame++){
-            gameObject.transform.position = Vector2.Lerp(startPosition, targetPosition, repeatFrame / moveFrame);
-            gameObject.transform.localScale = Vector2.Lerp(Vector3.zero, Vector3.one, repeatFrame / moveFrame);
+        for(int i = 0; i <= 60; i++){
+            gameObject.transform.position = Vector2.Lerp(startPosition, targetPosition, i / 60.0f);
+            gameObject.transform.localScale = Vector2.Lerp(Vector3.zero, Vector3.one, i / 60.0f);
             yield return YieldInstructionCache.WaitFrame;
         }
+
+        ObjectReset();
     }
 
-    private void ObjectReset(){
+    public override void ObjectReset(){
         gameObject.SetActive(false);
         gameObject.transform.position = startPosition;
     }
