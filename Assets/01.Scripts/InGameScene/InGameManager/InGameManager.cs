@@ -6,6 +6,9 @@ public class InGameManager : MonoBehaviour
 {
     
     public static InGameManager instance;
+    
+    [HideInInspector]
+    public ScoreManager scoreManager;
 
     [SerializeField]
     private VOIDEvent backgroundColorChangeEvent;
@@ -14,6 +17,8 @@ public class InGameManager : MonoBehaviour
         if(instance is null){
             instance = this;
         }
+
+        scoreManager = gameObject.GetComponent<ScoreManager>();
     }
 
     private void Start(){
@@ -27,6 +32,6 @@ public class InGameManager : MonoBehaviour
         }
     }
 
-    
+
 
 }
