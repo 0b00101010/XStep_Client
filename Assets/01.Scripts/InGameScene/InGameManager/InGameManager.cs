@@ -5,9 +5,17 @@ using UnityEngine;
 public class InGameManager : MonoBehaviour
 {
     
+    public static InGameManager instance;
+
     [SerializeField]
     private VOIDEvent backgroundColorChangeEvent;
     
+    private void Awake(){
+        if(instance is null){
+            instance = this;
+        }
+    }
+
     private void Start(){
         StartCoroutine(BackgroundChangeCoroutine());
     }
@@ -18,5 +26,7 @@ public class InGameManager : MonoBehaviour
             yield return YieldInstructionCache.WaitingSeconds(5.0f);
         }
     }
+
+    
 
 }
