@@ -11,8 +11,11 @@ public class NormalNode : Node
     
     private SpriteRenderer spriteRenderer;
 
+    [Header("Value")]
     [SerializeField]
-    private float arriveTime;
+    private int arriveFrame;
+
+    private float progressLevel;
 
     private void Awake(){
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -31,18 +34,54 @@ public class NormalNode : Node
     }
 
     private IEnumerator ExecuteCoroutine(){
-        for(int i = 0; i <= 60; i++){
-            gameObject.transform.position = Vector2.Lerp(startPosition, targetPosition, i / 60.0f);
-            gameObject.transform.localScale = Vector2.Lerp(Vector3.zero, Vector3.one, i / 60.0f);
+        for(int i = 0; i <= arriveFrame; i++){
+            gameObject.transform.position = Vector2.Lerp(startPosition, targetPosition, i / (float)arriveFrame);
+            gameObject.transform.localScale = Vector2.Lerp(Vector3.zero, Vector3.one, i / (float)arriveFrame);
+            progressLevel = i / (float)arriveFrame;
             yield return YieldInstructionCache.WaitFrame;
         }
 
-        ObjectReset();
+        FailedInteraction();
     }
 
-    public override void ObjectReset(){
-        gameObject.SetActive(false);
-        gameObject.transform.position = startPosition;
+    public override void Interaction(){
+        int addScoreValue;
+        int judgeLevel;
+
+        switch(progressLevel){
+            case var p when progressLevel > 95:
+            addScoreValue = (int)(BasicScore * 2.0f);
+            judgeLevel = 4;
+            break;
+            
+            case var p when progressLevel > 90:
+            addScoreValue = (int)(BasicScore * 1.0f);
+            judgeLevel = 3;
+            break;
+            
+            case var p when progressLevel > 80:
+            addScoreValue = (int)(BasicScore * 0.75f);
+            judgeLevel = 2;            
+            break;
+            
+            case var p when progressLevel > 70:
+            addScoreValue = (int)(BasicScore * 0.5f);
+            judgeLevel = 1;            
+            break;
+
+            default:
+            addScoreValue = (int)(BasicScore * 0.0f);
+            judgeLevel = 0;           
+            break;
+        }
+
+        InGameManager.instance.scoreManager.AddScore(addScoreValue, judgeLevel);
+
+    }
+
+    public override void FailedInteraction(){
+        base.FailedInteraction();
+        ObjectReset();
     }
 
     public void SetSpriteDirection(){
