@@ -24,6 +24,8 @@ public class NormalNode : Node
 
     private float progressLevel;
 
+    private int positionValue;
+
     private void Awake(){
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
@@ -38,7 +40,7 @@ public class NormalNode : Node
         gameObject.SetActive(true);
         SetSpriteDirection();
         StartCoroutine(ExecuteCoroutine());
-        generateEvnet.Invoke(this);
+        generateEvnet.Invoke(this, positionValue);
     }
 
     private IEnumerator ExecuteCoroutine(){
@@ -57,22 +59,22 @@ public class NormalNode : Node
         int judgeLevel;
 
         switch(progressLevel){
-            case var p when progressLevel > 95:
+            case var p when progressLevel > 0.95f:
             addScoreValue = (int)(BasicScore * 2.0f);
             judgeLevel = 4;
             break;
             
-            case var p when progressLevel > 90:
+            case var p when progressLevel > 0.90f:
             addScoreValue = (int)(BasicScore * 1.0f);
             judgeLevel = 3;
             break;
             
-            case var p when progressLevel > 80:
+            case var p when progressLevel > 0.80f:
             addScoreValue = (int)(BasicScore * 0.75f);
             judgeLevel = 2;            
             break;
             
-            case var p when progressLevel > 70:
+            case var p when progressLevel > 0.70f:
             addScoreValue = (int)(BasicScore * 0.5f);
             judgeLevel = 1;            
             break;
@@ -94,11 +96,25 @@ public class NormalNode : Node
 
     public override void ObjectReset(){
         base.ObjectReset();
-        destoryEvent.Invoke(this);
+        destoryEvent.Invoke(this, positionValue);
     }
 
     public void SetSpriteDirection(){
         spriteRenderer.flipX = targetPosition.x < 0 ? false : true;
         spriteRenderer.flipY = targetPosition.y < 0 ? true : false;
+        
+        if(targetPosition.x < 0 && targetPosition.y > 0){
+            positionValue = 0;
+        }   
+        else if(targetPosition.x > 0 && targetPosition.y > 0){
+            positionValue = 1;
+        }      
+        else if(targetPosition.x < 0 && targetPosition.y < 0){
+            positionValue = 2;
+        }      
+        else if(targetPosition.x > 0 && targetPosition.y < 0){
+            positionValue = 3;
+        }   
+
     } 
 }
