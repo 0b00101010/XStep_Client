@@ -1,21 +1,32 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NodeInteractionController : MonoBehaviour
 {
-    private List<NormalNode> activeNormalNode = new List<NormalNode>();
+    private List<List<Node>> activeNode = new List<List<Node>>();
 
 
-    public void AddActiveNormalNode(Node node){
-        activeNormalNode.Add(node as NormalNode);
+    private void Awake(){
+        for(int i = 0; i < 4; i++){
+            activeNode.Add(new List<Node>());
+        }
     }
 
-    public void RemoveActiveNormalNode(Node node){
-        activeNormalNode.Remove(node as NormalNode);
+    public void AddActiveNode(Node node, int position){
+        activeNode[position].Add(node);
+    }
+
+    public void RemoveActiveNormalNode(Node node, int position){
+        activeNode[position].Remove(node);
     }   
 
-    public void NormalNodeInteraction(){
-        activeNormalNode[0].Interaction();
+    public void NormalNodeInteraction(int position){
+        try{
+            activeNode[position][0]?.Interaction();
+        }catch{
+            return;
+        }
     }
 }
