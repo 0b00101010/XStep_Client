@@ -15,6 +15,13 @@ public class NormalNode : Node
     [SerializeField]
     private int arriveFrame;
 
+    [Header("Functions")]
+    [SerializeField]
+    private NODEEvent generateEvnet;
+
+    [SerializeField]
+    private NODEEvent destoryEvent;
+
     private float progressLevel;
 
     private void Awake(){
@@ -31,6 +38,7 @@ public class NormalNode : Node
         gameObject.SetActive(true);
         SetSpriteDirection();
         StartCoroutine(ExecuteCoroutine());
+        generateEvnet.Invoke(this);
     }
 
     private IEnumerator ExecuteCoroutine(){
@@ -76,12 +84,17 @@ public class NormalNode : Node
         }
 
         InGameManager.instance.scoreManager.AddScore(addScoreValue, judgeLevel);
-
+        ObjectReset();
     }
 
     public override void FailedInteraction(){
         base.FailedInteraction();
         ObjectReset();
+    }
+
+    public override void ObjectReset(){
+        base.ObjectReset();
+        destoryEvent.Invoke(this);
     }
 
     public void SetSpriteDirection(){
