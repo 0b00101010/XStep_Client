@@ -780,6 +780,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &245295197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6694,6 +6722,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &503909239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7097,6 +7153,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &625176713
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7180,6 +7264,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &657598189
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7875,6 +7987,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &858166191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8045,6 +8185,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &880496925
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9127,6 +9295,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &1215154934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9473,6 +9669,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &1303045138
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10988,6 +11212,7 @@ GameObject:
   - component: {fileID: 1740762588}
   - component: {fileID: 1740762590}
   - component: {fileID: 1740762591}
+  - component: {fileID: 1740762592}
   - component: {fileID: 1740762586}
   m_Layer: 0
   m_Name: InGameManager
@@ -11301,6 +11526,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1740762592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740762583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f8b16ca83ba4529a0102a28da709d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1749496488
 GameObject:
   m_ObjectHideFlags: 0
@@ -11538,6 +11775,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &1816824261
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11927,6 +12192,34 @@ MonoBehaviour:
   redutionHp: 5
   basicScore: 10
   arriveFrame: 50
+  generateEvnet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: AddActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  destoryEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740762592}
+        m_MethodName: RemoveActiveNormalNode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &1987061462
 SpriteRenderer:
   m_ObjectHideFlags: 0
