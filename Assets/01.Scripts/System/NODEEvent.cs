@@ -2,4 +2,4 @@
 using UnityEngine.Events;
 
 [Serializable]
-public class NODEEvent : UnityEvent<Node> {}
+public class NODEEvent : UnityEvent<Node, int> {}
