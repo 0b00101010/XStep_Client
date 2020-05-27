@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TouchType {MainScene, InGame}
+
 public class TouchManager : MonoBehaviour
 {
     private bool isTouch;
@@ -31,12 +33,63 @@ public class TouchManager : MonoBehaviour
     public bool IsSwipe => isSwipe;
     public bool IsHolding => isHolding;
 
+    public TouchType touchType {get; set;}
+
     private void Awake(){
         minSwipeDistance = Screen.width / 2;
+        touchType = TouchType.MainScene;
     }
 
     private void Update(){
+        if(!(touchObservers.Count > 0))
+            return;
+
         ProcessTouch();
+            
+        #if UNITY_EDITOR
+        ProcessClick();
+        #endif
+    }
+
+    private void ProcessClick(){
+        if(Input.GetMouseButtonDown(0)){
+            touchDownNotScreenPosition = Input.mousePosition;
+            
+            if(touchType.Equals(TouchType.InGame)){
+                touchDownNotScreenPosition = Input.mousePosition;
+                touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                isTouch = true;
+                TouchDownNotify();
+            }
+        }
+        else if(Input.GetMouseButton(0)){
+            Vector2 currentPosition = Input.mousePosition;
+            keepTouchTimer += Time.deltaTime;
+            if((currentPosition - touchDownNotScreenPosition).magnitude > minSwipeDistance){
+                swipeDirection = (currentPosition - touchDownNotScreenPosition).normalized;
+                isSwipe = true;
+            }
+
+            if(keepTouchTimer > 0.2f && !isTouch && !isSwipe){
+                touchDownNotScreenPosition = Input.mousePosition;
+                touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                isTouch = true;
+                TouchDownNotify();
+            }
+
+            if(keepTouchTimer > 1.5f){
+                isHolding = true;
+                touchHoldingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
+        }
+        else if(Input.GetMouseButtonUp(0)){
+            isHolding = false;
+            isSwipe = false;
+            isTouch = false;
+            keepTouchTimer = 0.0f;
+            touchUpPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            TouchUpNotify();
+        }
     }
 
     private void ProcessTouch(){
@@ -45,6 +98,14 @@ public class TouchManager : MonoBehaviour
 
             if(tempTouch.phase.Equals(TouchPhase.Began)){
                 touchDownNotScreenPosition = tempTouch.position;
+
+                if(touchType.Equals(TouchType.InGame)){
+                    isTouch = true;
+                    touchDownNotScreenPosition = tempTouch.position;
+                    touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                    TouchDownNotify();
+                }
+
             }
             else if(tempTouch.phase.Equals(TouchPhase.Moved)){
                 Vector2 currentPosition = tempTouch.position;

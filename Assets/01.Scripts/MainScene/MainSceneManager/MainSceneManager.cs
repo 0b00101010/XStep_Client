@@ -21,6 +21,7 @@ public class MainSceneManager : MonoBehaviour, ITouchObserver
 
     private void Start(){
         GameManager.instance.touchManager.AddTouchObserver(this);
+        GameManager.instance.touchManager.touchType = TouchType.MainScene;
     }
 
     public void TouchDownNotify(){
