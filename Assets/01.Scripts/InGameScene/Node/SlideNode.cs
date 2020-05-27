@@ -23,15 +23,10 @@ public class SlideNode : Node
         transparent = new Color(1,1,1,0);
         spriteRenderer.color = transparent;
     }
-
-    [ContextMenu("A")]
-    private void A(){
-        Execute(new Vector2(0, 1.6f), new Vector2(0, -2.9f));
-        SetObjectRotate(2);
-        SetSpriteFlip(2);
-    }
-
+    
     public override void Execute(Vector2 startPosition, Vector2 targetPosition){
+        gameObject.SetActive(true);
+
         this.startPosition = startPosition;
         this.targetPosition = targetPosition;
 
@@ -53,7 +48,7 @@ public class SlideNode : Node
     }
 
     public override void FailedInteraction(){
-        
+
     }
 
     public override void ObjectReset(){
