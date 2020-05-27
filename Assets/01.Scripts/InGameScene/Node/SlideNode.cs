@@ -39,8 +39,10 @@ public class SlideNode : Node
         slideTween = spriteRenderer.DOFade(1,1.0f);
         yield return new WaitForTween(slideTween);
 
-        slideTween = gameObject.transform.DOMove(targetPosition,arriveSecond);
-        yield return new WaitForTween(slideTween);
+        slideTween = gameObject.transform.DOMove(targetPosition, arriveSecond);
+        yield return slideTween.WaitForCompletion();
+
+        ObjectReset();
     }
 
     public override void Interaction(){
