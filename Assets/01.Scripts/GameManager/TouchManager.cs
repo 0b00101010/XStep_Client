@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TouchType {MainScene, InGame}
+
 public class TouchManager : MonoBehaviour
 {
     private bool isTouch;
@@ -31,13 +33,19 @@ public class TouchManager : MonoBehaviour
     public bool IsSwipe => isSwipe;
     public bool IsHolding => isHolding;
 
+    public TouchType touchType {get; set;}
+
     private void Awake(){
         minSwipeDistance = Screen.width / 2;
+        touchType = TouchType.MainScene;
     }
 
     private void Update(){
-        ProcessTouch();
+        if(!(touchObservers.Count > 0))
+            return;
 
+        ProcessTouch();
+            
         #if UNITY_EDITOR
         ProcessClick();
         #endif
@@ -46,6 +54,13 @@ public class TouchManager : MonoBehaviour
     private void ProcessClick(){
         if(Input.GetMouseButtonDown(0)){
             touchDownNotScreenPosition = Input.mousePosition;
+            
+            if(touchType.Equals(TouchType.InGame)){
+                touchDownNotScreenPosition = Input.mousePosition;
+                touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                isTouch = true;
+                TouchDownNotify();
+            }
         }
         else if(Input.GetMouseButton(0)){
             Vector2 currentPosition = Input.mousePosition;
@@ -55,7 +70,7 @@ public class TouchManager : MonoBehaviour
                 isSwipe = true;
             }
 
-            if(keepTouchTimer > 0.1f && !isTouch && !isSwipe){
+            if(keepTouchTimer > 0.2f && !isTouch && !isSwipe){
                 touchDownNotScreenPosition = Input.mousePosition;
                 touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
                 isTouch = true;
@@ -83,6 +98,14 @@ public class TouchManager : MonoBehaviour
 
             if(tempTouch.phase.Equals(TouchPhase.Began)){
                 touchDownNotScreenPosition = tempTouch.position;
+
+                if(touchType.Equals(TouchType.InGame)){
+                    isTouch = true;
+                    touchDownNotScreenPosition = tempTouch.position;
+                    touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                    TouchDownNotify();
+                }
+
             }
             else if(tempTouch.phase.Equals(TouchPhase.Moved)){
                 Vector2 currentPosition = tempTouch.position;

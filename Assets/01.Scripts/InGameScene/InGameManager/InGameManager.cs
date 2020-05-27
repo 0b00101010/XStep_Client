@@ -23,6 +23,7 @@ public class InGameManager : MonoBehaviour
 
     private void Start(){
         StartCoroutine(BackgroundChangeCoroutine());
+        GameManager.instance.touchManager.touchType = TouchType.InGame;
     }
 
     private IEnumerator BackgroundChangeCoroutine(){
