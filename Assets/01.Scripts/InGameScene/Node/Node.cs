@@ -12,6 +12,8 @@ public class Node : MonoBehaviour {
     protected int BasicScore => basicScore;
 
     public virtual void Execute(Vector2 targetPosition) {}
+    public virtual void Execute(Vector2 startPosition, Vector2 targetPosition) {}
+    
     public virtual void ObjectReset() {
         gameObject.SetActive(false);
     }
