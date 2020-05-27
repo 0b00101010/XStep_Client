@@ -54,21 +54,25 @@ public class WidgetViewer : MonoBehaviour
 
 
     // FIXME : 영 코드가 안 이쁨
+    // THINK : CustomYieldInstruction 만드는 거 생각해 보기
     private IEnumerator FadeOutChildWidgets(params object[] childWidgets){
+        Image image;
+        Text text;
+
         for(int i = 0; i < childWidgets.Length - 1; i++){
-            if(childWidgets[i] is Image image){
+            if(image = childWidgets[i] as Image){
                 StartCoroutine(GameManager.instance.fadeManager.ImageFadeOut(image, 0.5f));
             }
-            else if(childWidgets[i] is Text text){
+            else if(text = childWidgets[i] as Text){
                 StartCoroutine(GameManager.instance.fadeManager.TextFadeOut(text, 0.5f));
             }
         }
 
-        if(childWidgets[childWidgets.Length - 1] is Image image_){
-            yield return StartCoroutine(GameManager.instance.fadeManager.ImageFadeOut(image_, 0.5f));
+        if(image = childWidgets[childWidgets.Length - 1] as Image){
+            yield return StartCoroutine(GameManager.instance.fadeManager.ImageFadeOut(image, 0.5f));
         }
-        else if(childWidgets[childWidgets.Length - 1] is Text text_){
-            yield return StartCoroutine(GameManager.instance.fadeManager.TextFadeOut(text_, 0.5f));
+        else if(text = childWidgets[childWidgets.Length - 1] as Text){
+            yield return StartCoroutine(GameManager.instance.fadeManager.TextFadeOut(text, 0.5f));
         }
 
     }
