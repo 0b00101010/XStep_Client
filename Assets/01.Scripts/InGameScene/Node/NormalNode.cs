@@ -104,24 +104,15 @@ public class NormalNode : Node
         base.ObjectReset();
         gameObject.transform.position = startPosition;
         gameObject.transform.localScale = defaultScale;
+        positionValue = 0;
     }
 
     public void SetSpriteDirection(){
         spriteRenderer.flipX = targetPosition.x < 0 ? false : true;
         spriteRenderer.flipY = targetPosition.y < 0 ? true : false;
         
-        if(targetPosition.x < 0 && targetPosition.y > 0){
-            positionValue = 0;
-        }   
-        else if(targetPosition.x > 0 && targetPosition.y > 0){
-            positionValue = 1;
-        }      
-        else if(targetPosition.x < 0 && targetPosition.y < 0){
-            positionValue = 2;
-        }      
-        else if(targetPosition.x > 0 && targetPosition.y < 0){
-            positionValue = 3;
-        }   
-
+        positionValue += targetPosition.x < 0 ? 1 : 2; 
+        positionValue += targetPosition.y < 0 ? 1 : -1; 
+        
     } 
 }
