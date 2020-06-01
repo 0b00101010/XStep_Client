@@ -95,13 +95,8 @@ public class NormalNode : Node
     }
 
     private IEnumerator FailedInteractionCoroutine(){
-        executeTween = spriteRenderer.DOFade(0.0f, 0.1f);
-
-        for(int i = 0; i < 20; i++){
-            gameObject.transform.Translate(moveDirection * Time.deltaTime);
-            yield return YieldInstructionCache.WaitFrame;
-        }
-
+        executeTween = spriteRenderer.DOFade(0.0f, 0.3f);
+        yield return executeTween.WaitForCompletion();
         ObjectReset();
     }
 
