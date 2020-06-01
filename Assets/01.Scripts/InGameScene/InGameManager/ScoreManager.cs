@@ -37,7 +37,7 @@ public class ScoreManager : MonoBehaviour
         sizeUpVector /= 30;
     }
 
-    public void AddScore(int score, int judgeLevel){
+    public void AddScore(int judgeLevel){
         this.score += score;
         numberConversionEvent.Invoke(this.score);
         judgeImage.sprite = judgeSprites[judgeSprites.Length - 1 - judgeLevel];

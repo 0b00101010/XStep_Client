@@ -55,37 +55,31 @@ public class NormalNode : Node
     }
 
     public override void Interaction(){
-        int addScoreValue;
         int judgeLevel;
 
         switch(progressLevel){
             case var p when progressLevel > 0.95f:
-            addScoreValue = (int)(BasicScore * 2.0f);
             judgeLevel = 4;
             break;
             
             case var p when progressLevel > 0.90f:
-            addScoreValue = (int)(BasicScore * 1.0f);
             judgeLevel = 3;
             break;
             
             case var p when progressLevel > 0.80f:
-            addScoreValue = (int)(BasicScore * 0.75f);
             judgeLevel = 2;            
             break;
             
             case var p when progressLevel > 0.70f:
-            addScoreValue = (int)(BasicScore * 0.5f);
             judgeLevel = 1;            
             break;
 
             default:
-            addScoreValue = (int)(BasicScore * 0.0f);
             judgeLevel = 0;           
             break;
         }
 
-        InGameManager.instance.scoreManager.AddScore(addScoreValue, judgeLevel);
+        InGameManager.instance.scoreManager.AddScore(judgeLevel);
         ObjectReset();
     }
 

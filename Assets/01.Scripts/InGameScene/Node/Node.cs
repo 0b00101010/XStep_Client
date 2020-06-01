@@ -6,11 +6,6 @@ public class Node : MonoBehaviour {
     [SerializeField]
     private int redutionHp;
 
-    [SerializeField]
-    private int basicScore;
-    
-    protected int BasicScore => basicScore;
-
     public virtual void Execute(Vector2 targetPosition) {}
     public virtual void Execute(Vector2 startPosition, Vector2 targetPosition) {}
     
