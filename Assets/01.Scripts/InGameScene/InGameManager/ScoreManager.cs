@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class ScoreManager : MonoBehaviour
     
     private Coroutine judgeImageSizeUpCoroutine;
 
+    private Tween sizeUpTween;
+
     private void Awake(){
         sizeUpVector = Vector3.one * 0.7f;
         sizeUpVector /= 30;
@@ -65,10 +68,9 @@ public class ScoreManager : MonoBehaviour
     private IEnumerator JudgeImageSizeUpCoroutine(){
         judgeImage.gameObject.SetActive(true);
         judgeImage.gameObject.transform.localScale = Vector3.one;        
-        for(int i = 0; i < 10; i++){
-            judgeImage.gameObject.transform.localScale += sizeUpVector;
-            yield return YieldInstructionCache.WaitFrame;
-        }
+        
+        sizeUpTween = judgeImage.gameObject.transform.DOScale(Vector3.one * 1.7f,0.25f);
+        yield return sizeUpTween.WaitForCompletion();
 
         yield return YieldInstructionCache.WaitingSeconds(1.0f);
         judgeImage.gameObject.SetActive(false);
