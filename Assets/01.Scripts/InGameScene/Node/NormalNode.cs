@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
 public class NormalNode : Node
 {
     private Vector2 targetPosition;
@@ -11,7 +12,7 @@ public class NormalNode : Node
     
     [Header("Value")]
     [SerializeField]
-    private int arriveFrame;
+    private float arriveTime;
 
     [Header("Functions")]
     [SerializeField]
@@ -24,11 +25,13 @@ public class NormalNode : Node
 
     private int positionValue;
 
+    private Tween executeTween;
 
     private new void Awake(){
         base.Awake();
         startPosition.x = 0;
         startPosition.y = -0.645f;
+
     }
 
     public override void Execute(Vector2 targetPosition){
@@ -41,13 +44,12 @@ public class NormalNode : Node
     }
 
     private IEnumerator ExecuteCoroutine(){
-        for(int i = 0; i <= arriveFrame; i++){
-            gameObject.transform.position = Vector2.Lerp(startPosition, targetPosition, i / (float)arriveFrame);
-            gameObject.transform.localScale = Vector2.Lerp(Vector3.zero, Vector3.one, i / (float)arriveFrame);
-            progressLevel = i / (float)arriveFrame;
-            yield return YieldInstructionCache.WaitFrame;
-        }
+        executeTween = spriteRenderer.DOFade(1.0f, 0.2f);
+        yield return executeTween.WaitForCompletion();
 
+        executeTween = gameObject.transform.DOMove(targetPosition, arriveTime);
+        gameObject.transform.DOScale(Vector3.one, arriveTime);
+        yield return executeTween.WaitForCompletion();
         FailedInteraction();
     }
 
