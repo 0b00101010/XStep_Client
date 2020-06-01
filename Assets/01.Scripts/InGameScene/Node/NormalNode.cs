@@ -9,8 +9,6 @@ public class NormalNode : Node
     private Vector2 startPosition;
     private Vector2 moveDirection;
     
-    private SpriteRenderer spriteRenderer;
-
     [Header("Value")]
     [SerializeField]
     private int arriveFrame;
@@ -26,12 +24,11 @@ public class NormalNode : Node
 
     private int positionValue;
 
-    private void Awake(){
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
+    private new void Awake(){
+        base.Awake();
         startPosition.x = 0;
         startPosition.y = -0.645f;
-
     }
 
     public override void Execute(Vector2 targetPosition){
