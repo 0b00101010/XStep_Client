@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using DG.Tweening;
 public class NormalNode : Node
 {
@@ -10,6 +9,8 @@ public class NormalNode : Node
     private Vector2 startPosition;
     private Vector2 moveDirection;
     
+    private Vector3 defaultScale;
+
     [Header("Value")]
     [SerializeField]
     private float arriveTime;
@@ -31,6 +32,11 @@ public class NormalNode : Node
         base.Awake();
         startPosition.x = 0;
         startPosition.y = -0.645f;
+        
+        defaultScale = Vector3.one / 5;
+
+        gameObject.transform.localScale = defaultScale;
+        gameObject.transform.position = startPosition;
 
     }
 
@@ -84,12 +90,25 @@ public class NormalNode : Node
 
     public override void FailedInteraction(){
         base.FailedInteraction();
+        destoryEvent.Invoke(this, positionValue);
+        StartCoroutine(FailedInteractionCoroutine());
+    }
+
+    private IEnumerator FailedInteractionCoroutine(){
+        executeTween = spriteRenderer.DOFade(0.0f, 0.1f);
+
+        for(int i = 0; i < 20; i++){
+            gameObject.transform.Translate(moveDirection * Time.deltaTime);
+            yield return YieldInstructionCache.WaitFrame;
+        }
+
         ObjectReset();
     }
 
     public override void ObjectReset(){
         base.ObjectReset();
-        destoryEvent.Invoke(this, positionValue);
+        gameObject.transform.position = startPosition;
+        gameObject.transform.localScale = defaultScale;
     }
 
     public void SetSpriteDirection(){
