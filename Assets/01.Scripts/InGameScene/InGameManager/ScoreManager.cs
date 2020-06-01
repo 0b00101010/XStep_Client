@@ -10,7 +10,9 @@ public class ScoreManager : MonoBehaviour
     private float defaultHP;
 
     private float hp;
-    private int score;
+    private int comboCount;
+
+    private int[] judgeCountArray = new int[5]{0,0,0,0,0};
 
     [Header("Objects")]
     [SerializeField]
@@ -38,8 +40,13 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void AddScore(int judgeLevel){
-        this.score += score;
-        numberConversionEvent.Invoke(this.score);
+        if(judgeLevel.Equals(0) || judgeLevel.Equals(1)){
+            comboCount = 0;
+        } else {
+            comboCount++;
+        }
+        
+        numberConversionEvent.Invoke(this.comboCount);
         judgeImage.sprite = judgeSprites[judgeSprites.Length - 1 - judgeLevel];
         
         if(judgeImageSizeUpCoroutine != null){
