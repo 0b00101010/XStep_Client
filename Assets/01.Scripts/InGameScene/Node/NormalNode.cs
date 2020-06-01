@@ -2,18 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class NormalNode : Node
 {
     private Vector2 targetPosition;
     private Vector2 startPosition;
     private Vector2 moveDirection;
     
-    private SpriteRenderer spriteRenderer;
+    private Vector3 defaultScale;
 
     [Header("Value")]
     [SerializeField]
-    private int arriveFrame;
+    private float arriveTime;
 
     [Header("Functions")]
     [SerializeField]
@@ -26,11 +26,17 @@ public class NormalNode : Node
 
     private int positionValue;
 
-    private void Awake(){
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    private Tween executeTween;
 
+    private new void Awake(){
+        base.Awake();
         startPosition.x = 0;
         startPosition.y = -0.645f;
+        
+        defaultScale = Vector3.one / 5;
+
+        gameObject.transform.localScale = defaultScale;
+        gameObject.transform.position = startPosition;
 
     }
 
@@ -44,59 +50,60 @@ public class NormalNode : Node
     }
 
     private IEnumerator ExecuteCoroutine(){
-        for(int i = 0; i <= arriveFrame; i++){
-            gameObject.transform.position = Vector2.Lerp(startPosition, targetPosition, i / (float)arriveFrame);
-            gameObject.transform.localScale = Vector2.Lerp(Vector3.zero, Vector3.one, i / (float)arriveFrame);
-            progressLevel = i / (float)arriveFrame;
-            yield return YieldInstructionCache.WaitFrame;
-        }
+        executeTween = spriteRenderer.DOFade(1.0f, 0.2f);
+        yield return executeTween.WaitForCompletion();
 
+        executeTween = gameObject.transform.DOMove(targetPosition, arriveTime);
+        gameObject.transform.DOScale(Vector3.one, arriveTime);
+        yield return executeTween.WaitForCompletion();
         FailedInteraction();
     }
 
     public override void Interaction(){
-        int addScoreValue;
         int judgeLevel;
 
         switch(progressLevel){
             case var p when progressLevel > 0.95f:
-            addScoreValue = (int)(BasicScore * 2.0f);
             judgeLevel = 4;
             break;
             
             case var p when progressLevel > 0.90f:
-            addScoreValue = (int)(BasicScore * 1.0f);
             judgeLevel = 3;
             break;
             
             case var p when progressLevel > 0.80f:
-            addScoreValue = (int)(BasicScore * 0.75f);
             judgeLevel = 2;            
             break;
             
             case var p when progressLevel > 0.70f:
-            addScoreValue = (int)(BasicScore * 0.5f);
             judgeLevel = 1;            
             break;
 
             default:
-            addScoreValue = (int)(BasicScore * 0.0f);
             judgeLevel = 0;           
             break;
         }
 
-        InGameManager.instance.scoreManager.AddScore(addScoreValue, judgeLevel);
+        InGameManager.instance.scoreManager.AddScore(judgeLevel);
         ObjectReset();
     }
 
     public override void FailedInteraction(){
         base.FailedInteraction();
+        destoryEvent.Invoke(this, positionValue);
+        StartCoroutine(FailedInteractionCoroutine());
+    }
+
+    private IEnumerator FailedInteractionCoroutine(){
+        executeTween = spriteRenderer.DOFade(0.0f, 0.3f);
+        yield return executeTween.WaitForCompletion();
         ObjectReset();
     }
 
     public override void ObjectReset(){
         base.ObjectReset();
-        destoryEvent.Invoke(this, positionValue);
+        gameObject.transform.position = startPosition;
+        gameObject.transform.localScale = defaultScale;
     }
 
     public void SetSpriteDirection(){
