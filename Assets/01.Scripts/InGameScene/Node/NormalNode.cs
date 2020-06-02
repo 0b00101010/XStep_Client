@@ -7,7 +7,6 @@ public class NormalNode : Node
 {
     private Vector2 targetPosition;
     private Vector2 startPosition;
-    private Vector2 moveDirection;
     
     private Vector3 defaultScale;
 
@@ -27,9 +26,13 @@ public class NormalNode : Node
     private int positionValue;
 
     private Tween executeTween;
-
-    private new void Awake(){
+    private Tween resetTween;
+    private Tween moveTween;
+    private Tween scaleTween;
+    
+    protected new void Awake(){
         base.Awake();
+
         startPosition.x = 0;
         startPosition.y = -0.645f;
         
@@ -42,10 +45,12 @@ public class NormalNode : Node
 
     public override void Execute(Vector2 targetPosition){
         this.targetPosition = targetPosition;
-        moveDirection = (targetPosition - startPosition).normalized;
+
         gameObject.SetActive(true);
+
         SetSpriteDirection();
         StartCoroutine(ExecuteCoroutine());
+        
         generateEvnet.Invoke(this, positionValue);
     }
 
@@ -53,10 +58,8 @@ public class NormalNode : Node
         executeTween = spriteRenderer.DOFade(1.0f, 0.2f);
         yield return executeTween.WaitForCompletion();
 
-        executeTween = gameObject.transform.DOMove(targetPosition, arriveTime);
-        gameObject.transform.DOScale(Vector3.one, arriveTime);
-        yield return executeTween.WaitForCompletion();
-        FailedInteraction();
+        moveTween = gameObject.transform.DOMove(targetPosition, arriveTime);
+        scaleTween = gameObject.transform.DOScale(Vector3.one, arriveTime);
     }
 
     public override void Interaction(){
@@ -95,33 +98,39 @@ public class NormalNode : Node
     }
 
     private IEnumerator FailedInteractionCoroutine(){
-        executeTween = spriteRenderer.DOFade(0.0f, 0.3f);
-        yield return executeTween.WaitForCompletion();
+        resetTween = spriteRenderer.DOFade(0.0f, 0.3f);
+        yield return resetTween.WaitForCompletion();
         ObjectReset();
     }
 
     public override void ObjectReset(){
-        base.ObjectReset();
+        positionValue = 0;
+
+        moveTween.Kill();
+        scaleTween.Kill();
+
         gameObject.transform.position = startPosition;
-        gameObject.transform.localScale = defaultScale;
+        gameObject.transform.localScale = defaultScale;     
+
+        moveTween = null;
+        scaleTween = null;
+        executeTween = null;
+
+        base.ObjectReset();
     }
 
     public void SetSpriteDirection(){
         spriteRenderer.flipX = targetPosition.x < 0 ? false : true;
         spriteRenderer.flipY = targetPosition.y < 0 ? true : false;
         
-        if(targetPosition.x < 0 && targetPosition.y > 0){
-            positionValue = 0;
-        }   
-        else if(targetPosition.x > 0 && targetPosition.y > 0){
-            positionValue = 1;
-        }      
-        else if(targetPosition.x < 0 && targetPosition.y < 0){
-            positionValue = 2;
-        }      
-        else if(targetPosition.x > 0 && targetPosition.y < 0){
-            positionValue = 3;
-        }   
-
+        positionValue += targetPosition.x < 0 ? 1 : 2; 
+        positionValue += targetPosition.y < 0 ? 1 : -1; 
+        
     } 
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.CompareTag("NodeJudge")){
+            FailedInteraction();
+        }
+    }
 }

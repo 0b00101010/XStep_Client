@@ -13,12 +13,10 @@ public class SlideNode : Node
     private Vector2 startPosition;
     private Vector2 targetPosition;
 
-    private SpriteRenderer spriteRenderer;
-
     private Color transparent;
 
-    private void Awake(){
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    private new void Awake(){
+        base.Awake();
         
         transparent = new Color(1,1,1,0);
         spriteRenderer.color = transparent;
