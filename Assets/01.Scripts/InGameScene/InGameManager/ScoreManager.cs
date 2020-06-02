@@ -22,6 +22,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private Image judgeImage;
 
+    [SerializeField]
+    private NodeHitEffect[] nodeHitEffects;
+
     [Header("Resources")]
     [SerializeField]
     private Sprite[] judgeSprites;
@@ -49,6 +52,10 @@ public class ScoreManager : MonoBehaviour
             comboCount++;
         }
         
+        if(judgeLevel.Equals(4)){
+
+        }
+
         numberConversionEvent.Invoke(this.comboCount);
         judgeImage.sprite = judgeSprites[judgeSprites.Length - 1 - judgeLevel];
         
@@ -75,5 +82,9 @@ public class ScoreManager : MonoBehaviour
 
         yield return YieldInstructionCache.WaitingSeconds(1.0f);
         judgeImage.gameObject.SetActive(false);
+    }
+
+    public void ExecuteEffect(int index){
+        nodeHitEffects[index].Execute();
     }
 }

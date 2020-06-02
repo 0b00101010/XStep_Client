@@ -67,6 +67,7 @@ public class NormalNode : Node
         switch(processLevel){
             case var k when (judgePerfect - processLevel) < 0.01f:
             judgeLevel = 4;
+            InGameManager.instance.scoreManager.ExecuteEffect(positionValue);
             break; 
             case var k when processLevel > judgeGreat:
             judgeLevel = 3;
