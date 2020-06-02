@@ -21,8 +21,6 @@ public class NormalNode : Node
     [SerializeField]
     private NODEEvent destoryEvent;
 
-    private float progressLevel;
-
     private int positionValue;
 
     private Tween executeTween;
@@ -30,7 +28,7 @@ public class NormalNode : Node
     private Tween moveTween;
     private Tween scaleTween;
     
-    protected new void Awake(){
+    private new void Awake(){
         base.Awake();
 
         startPosition.x = 0;
@@ -63,30 +61,25 @@ public class NormalNode : Node
     }
 
     public override void Interaction(){
-        int judgeLevel;
-
-        switch(progressLevel){
-            case var p when progressLevel > 0.95f:
+        int judgeLevel = 0;
+        float processLevel = moveTween.position;
+        
+        switch(processLevel){
+            case var k when (judgePerfect - processLevel) < 0.01f:
             judgeLevel = 4;
-            break;
-            
-            case var p when progressLevel > 0.90f:
+            break; 
+            case var k when processLevel > judgeGreat:
             judgeLevel = 3;
-            break;
-            
-            case var p when progressLevel > 0.80f:
-            judgeLevel = 2;            
-            break;
-            
-            case var p when progressLevel > 0.70f:
-            judgeLevel = 1;            
-            break;
-
-            default:
-            judgeLevel = 0;           
-            break;
+            break; 
+            case var k when processLevel > judgeGood:
+            judgeLevel = 2;
+            break; 
+            case var k when processLevel < judgeGood:
+            judgeLevel = 1;
+            break; 
         }
 
+        destoryEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
         ObjectReset();
     }
@@ -94,6 +87,9 @@ public class NormalNode : Node
     public override void FailedInteraction(){
         base.FailedInteraction();
         destoryEvent.Invoke(this, positionValue);
+        
+        InGameManager.instance.scoreManager.AddScore(0);
+
         StartCoroutine(FailedInteractionCoroutine());
     }
 
