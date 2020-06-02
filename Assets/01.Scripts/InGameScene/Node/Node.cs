@@ -8,6 +8,14 @@ public class Node : MonoBehaviour {
 
     private Color defaultColor;
 
+    private float _judgePerfect;
+    private float _judgeGreat;
+    private float _judgeGood;
+
+    protected float judgePerfect => _judgePerfect;
+    protected float judgeGreat => _judgeGreat;
+    protected float judgeGood => _judgeGood;
+
     private SpriteRenderer _spriteRenderer;
     public SpriteRenderer spriteRenderer => _spriteRenderer;
 
@@ -19,6 +27,12 @@ public class Node : MonoBehaviour {
         
         defaultColor = _spriteRenderer.color;
         defaultColor.a = 0;
+    }
+
+    private void Start(){
+        _judgePerfect = InGameManager.instance.judgePerfect;
+        _judgeGreat = InGameManager.instance.judgeGreat;
+        _judgeGood = InGameManager.instance.judgeGood;
     }
 
     public virtual void ObjectReset() {
