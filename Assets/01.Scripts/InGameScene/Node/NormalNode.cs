@@ -79,6 +79,7 @@ public class NormalNode : Node
             break; 
         }
 
+        destoryEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
         ObjectReset();
     }
