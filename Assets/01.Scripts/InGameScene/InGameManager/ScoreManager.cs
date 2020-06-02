@@ -56,6 +56,7 @@ public class ScoreManager : MonoBehaviour
             StopCoroutine(judgeImageSizeUpCoroutine);
         }
 
+        sizeUpTween?.Kill();
         judgeImageSizeUpCoroutine = StartCoroutine(JudgeImageSizeUpCoroutine());
 
     }
@@ -69,7 +70,7 @@ public class ScoreManager : MonoBehaviour
         judgeImage.gameObject.SetActive(true);
         judgeImage.gameObject.transform.localScale = Vector3.one;        
         
-        sizeUpTween = judgeImage.gameObject.transform.DOScale(Vector3.one * 1.7f,0.25f);
+        sizeUpTween = judgeImage.gameObject.transform.DOScale(Vector3.one * 1.5f,0.1f);
         yield return sizeUpTween.WaitForCompletion();
 
         yield return YieldInstructionCache.WaitingSeconds(1.0f);
