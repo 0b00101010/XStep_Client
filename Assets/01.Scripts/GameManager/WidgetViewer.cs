@@ -30,12 +30,12 @@ public class WidgetViewer : MonoBehaviour
 
     private IEnumerator ScaleUpParentWidget(Image parentWidget){
         myTween = parentWidget.gameObject.transform.DOScaleY(1, 1.0f);
-        yield return new WaitForTween(myTween);
+        yield return myTween.IsComplete();
     }
 
     private IEnumerator ScaleDownParenWidget(Image parentWidget){
         myTween = parentWidget.gameObject.transform.DOScaleY(0, 1.0f);
-        yield return new WaitForTween(myTween);
+        yield return myTween.IsComplete();
     }
 
     private void FadeInChildWidgets(params object[] childWidgets){
@@ -66,11 +66,11 @@ public class WidgetViewer : MonoBehaviour
 
         if(image = childWidgets[childWidgets.Length - 1] as Image){
             myTween = image.DOFade(0,0.5f);
-            yield return new WaitForTween(myTween);
+            yield return myTween.IsComplete();
         }
         else if(text = childWidgets[childWidgets.Length - 1] as Text){
             myTween = text.DOFade(0,0.5f);
-            yield return new WaitForTween(myTween);
+            yield return myTween.IsComplete();
         }
 
     }
