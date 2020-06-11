@@ -87,30 +87,25 @@ public class NodeCreator : MonoBehaviour
     private void SlideNodeGenerate(){
         int index = Random.Range(0, 8);
 
-        SlideNode node = GetAvaliableNode(slideNodes) as SlideNode;
+        Node node = GetAvaliableNode(slideNodes);
 
         Vector2 startPosition = Vector2.zero;
         Vector2 targetPosition = Vector2.zero;
         
         SetSlideNodeVector(ref startPosition, ref targetPosition, index);
         
-        node.Execute(startPosition, targetPosition);
-        node.SetObjectRotate(index);
-        node.SetSpriteFlip(index);
+        node.Execute(startPosition, targetPosition, index);
     }
     
     // FIXME : 솔직히 조금 그렇지 않나
     public void SlideNodeGenerate(int index = 0){
-        SlideNode node = GetAvaliableNode(slideNodes) as SlideNode;
+        Node node = GetAvaliableNode(slideNodes);
 
         Vector2 startPosition = Vector2.zero;
         Vector2 targetPosition = Vector2.zero;
         
         SetSlideNodeVector(ref startPosition, ref targetPosition, index);
-        
-        node.SetObjectRotate(index);
-        node.SetSpriteFlip(index);
-        node.Execute(startPosition, targetPosition);
+        node.Execute(startPosition, targetPosition, index);
     }
 
     private void SetSlideNodeVector(ref Vector2 startPosition, ref Vector2 targetPosition, int index){  
