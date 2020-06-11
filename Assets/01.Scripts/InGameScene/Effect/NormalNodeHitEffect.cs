@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class NodeHitEffect : MonoBehaviour
+public class NormalNodeHitEffect : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField]

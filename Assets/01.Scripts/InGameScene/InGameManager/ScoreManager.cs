@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     private Image judgeImage;
 
     [SerializeField]
-    private NodeHitEffect[] nodeHitEffects;
+    private NormalNodeHitEffect[] normalNodeHitEffects;
 
     [Header("Resources")]
     [SerializeField]
@@ -80,7 +80,7 @@ public class ScoreManager : MonoBehaviour
         judgeImage.gameObject.SetActive(false);
     }
 
-    public void ExecuteEffect(int index){
-        nodeHitEffects[index].Execute();
+    public void NormalNodeExecuteEffect(int index){
+        normalNodeHitEffects[index].Execute();
     }
 }
