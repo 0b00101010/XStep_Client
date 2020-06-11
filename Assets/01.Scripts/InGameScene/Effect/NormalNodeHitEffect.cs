@@ -15,7 +15,7 @@ public class NormalNodeHitEffect : MonoBehaviour
 
     private Color defaultColor;
 
-    private Coroutine executeCoroutine;
+    private IEnumerator executeCoroutine;
 
     private List<Tween> objectTweens = new List<Tween>();
 
@@ -44,12 +44,10 @@ public class NormalNodeHitEffect : MonoBehaviour
 
         if(isTweening){
             ObjectReset();
-            StopCoroutine(executeCoroutine);
-            executeCoroutine = StartCoroutine(ExecuteCoroutine());
-            return;
+            executeCoroutine.Stop(this);
         }
 
-        executeCoroutine = StartCoroutine(ExecuteCoroutine());
+        executeCoroutine = ExecuteCoroutine().Start(this);
     }
 
     private IEnumerator ExecuteCoroutine(){
