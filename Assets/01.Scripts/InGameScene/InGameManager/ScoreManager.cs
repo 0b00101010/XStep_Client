@@ -25,6 +25,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private NormalNodeHitEffect[] normalNodeHitEffects;
 
+    [SerializeField]
+    private SlideNodeHitEffect[] slideNodeHitEffects;
+
     [Header("Resources")]
     [SerializeField]
     private Sprite[] judgeSprites;
@@ -83,4 +86,9 @@ public class ScoreManager : MonoBehaviour
     public void NormalNodeExecuteEffect(int index){
         normalNodeHitEffects[index].Execute();
     }
+
+    public void SlideNodeExecuteEffect(int index, int reversed){
+        slideNodeHitEffects[index].Execute(reversed);
+    }
+
 }
