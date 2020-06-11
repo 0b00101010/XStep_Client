@@ -52,10 +52,6 @@ public class ScoreManager : MonoBehaviour
             comboCount++;
         }
         
-        if(judgeLevel.Equals(4)){
-
-        }
-
         numberConversionEvent.Invoke(this.comboCount);
         judgeImage.sprite = judgeSprites[judgeSprites.Length - 1 - judgeLevel];
         
