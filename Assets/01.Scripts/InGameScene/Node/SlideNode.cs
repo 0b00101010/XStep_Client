@@ -88,12 +88,11 @@ public class SlideNode : Node
     public override void FailedInteraction(){
         resetTween = spriteRenderer.DOFade(0, 0.25f);
         InGameManager.instance.scoreManager.AddScore(0);
-        // FailedInteractionCoroutine().Start(this);
+        FailedInteractionCoroutine().Start(this);
 
-        InGameManager.instance.scoreManager.AddScore(4);
-        InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
-        ObjectReset();
-
+        // InGameManager.instance.scoreManager.AddScore(4);
+        // InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+        // ObjectReset();
     }
 
     public IEnumerator FailedInteractionCoroutine(){
@@ -185,7 +184,7 @@ public class SlideNode : Node
         }
     }
 
-        // Arrive position
+    // Arrive position
     // Top(0) Bottom(1) Left(2) Right(3)
     private int SlideNodeProcess(int index){
         switch(index){
