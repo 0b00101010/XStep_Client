@@ -36,7 +36,7 @@ public class TouchManager : MonoBehaviour
     public TouchType touchType {get; set;}
 
     private void Awake(){
-        minSwipeDistance = Screen.width / 2;
+        minSwipeDistance = Screen.width / 3;
         touchType = TouchType.MainScene;
     }
 
@@ -70,7 +70,7 @@ public class TouchManager : MonoBehaviour
                 isSwipe = true;
             }
 
-            if(keepTouchTimer > 0.2f && !isTouch && !isSwipe){
+            if(keepTouchTimer > 0.15f && !isTouch && !isSwipe){
                 touchDownNotScreenPosition = Input.mousePosition;
                 touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
                 isTouch = true;

@@ -8,8 +8,14 @@ public class Node : MonoBehaviour {
 
     private Color defaultColor;
 
+    [Header("Judge zone")]
+    [SerializeField]
     private float _judgePerfect;
+    
+    [SerializeField]
     private float _judgeGreat;
+    
+    [SerializeField]  
     private float _judgeGood;
 
     protected float judgePerfect => _judgePerfect;
@@ -21,18 +27,13 @@ public class Node : MonoBehaviour {
 
     public virtual void Execute(Vector2 targetPosition) {}
     public virtual void Execute(Vector2 startPosition, Vector2 targetPosition) {}
-    
+    public virtual void Execute(Vector2 startPosition, Vector2 targetPosition, int index) {}
+
     protected void Awake(){
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         
         defaultColor = _spriteRenderer.color;
         defaultColor.a = 0;
-    }
-
-    private void Start(){
-        _judgePerfect = InGameManager.instance.judgePerfect;
-        _judgeGreat = InGameManager.instance.judgeGreat;
-        _judgeGood = InGameManager.instance.judgeGood;
     }
 
     public virtual void ObjectReset() {

@@ -10,11 +10,6 @@ public class InGameManager : MonoBehaviour
     [HideInInspector]
     public ScoreManager scoreManager;
 
-    [Header("Judge Zone")]
-    public float judgePerfect;
-    public float judgeGreat;
-    public float judgeGood;
-     
     [Header("Events")]
     [SerializeField]
     private VOIDEvent backgroundColorChangeEvent;
