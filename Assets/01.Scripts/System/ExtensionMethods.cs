@@ -9,4 +9,12 @@ public static class ExtensionMethods{
     public static void Stop(this IEnumerator coroutine, MonoBehaviour behaviour){
         behaviour.StopCoroutine(coroutine);
     }
+
+    public static void Log(this string value){
+        Debug.Log(value);
+    }
+
+    public static Vector2 Direction(this Vector2 start, Vector2 end){
+        return (end - start).normalized;
+    }
 }
