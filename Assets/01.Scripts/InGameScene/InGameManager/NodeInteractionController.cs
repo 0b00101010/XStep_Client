@@ -59,37 +59,14 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         activeNode[position].Remove(node);
     }   
 
-    // Arrive position
-    // Top(0) Bottom(1) Left(2) Right(3)
-    private int SlideNodeProcess(int index){
-        switch(index){
-            case 0:
-            case 1:
-            return 0;
-            
-            case 2:
-            case 3:
-            return 1;            
-            
-            case 4:
-            case 5:
-            return 2;
-            
-            case 6:
-            case 7:
-            return 3;
-        }
-        return -1;
-    }
-
     public void AddActiveSlideNode(Node node, int index){
         var newNode = node as SlideNode;
-        activeSlideNode[SlideNodeProcess(index)].Add(newNode);
+        activeSlideNode[index].Add(newNode);
     }
 
     public void RemoveActiveSlideNode(Node node, int index){
         var newNode = node as SlideNode;
-        activeSlideNode[SlideNodeProcess(index)].Remove(newNode);
+        activeSlideNode[index].Remove(newNode);
     }
 
     public void NormalNodeInteraction(int position){

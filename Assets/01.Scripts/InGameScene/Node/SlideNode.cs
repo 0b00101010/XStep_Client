@@ -37,14 +37,14 @@ public class SlideNode : Node
         SetObjectRotate(index);
         SetSlideDirection(index);
 
-        positionValue = index;
+        positionValue = SlideNodeProcess(index);
 
         this.startPosition = startPosition;
         this.targetPosition = targetPosition;
 
         gameObject.transform.position = startPosition;
 
-        generateEvent.Invoke(this, index);
+        generateEvent.Invoke(this, positionValue);
         ExecuteCoroutine().Start(this);
     }   
 
