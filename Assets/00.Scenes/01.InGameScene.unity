@@ -261,9 +261,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1401879986}
-  - {fileID: 1749496489}
   - {fileID: 612161710}
+  - {fileID: 1749496489}
+  - {fileID: 1401879986}
   - {fileID: 2042427666}
   - {fileID: 82098507}
   - {fileID: 396509018}
@@ -10093,7 +10093,7 @@ RectTransform:
   - {fileID: 1786640708}
   - {fileID: 123574857}
   m_Father: {fileID: 21138420}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17294,7 +17294,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 21138420}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20265,9 +20265,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  sizeUpValue: 1.8
-  sizeUpDuration: 1.25
-  easeType: 0
+  sizeUpValue: 1.125
+  sizeUpDuration: 1.755
+  easeType: 24
 --- !u!114 &1740762592
 MonoBehaviour:
   m_ObjectHideFlags: 0
