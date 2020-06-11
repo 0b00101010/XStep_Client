@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.ObjectModel;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -9,6 +10,7 @@ public class SlideNode : Node
     private float arriveSecond; 
 
     private int positionValue;
+    private int directionValue;
 
     private Tween slideTween;
     private Tween resetTween;
@@ -37,14 +39,14 @@ public class SlideNode : Node
         SetObjectRotate(index);
         SetSlideDirection(index);
 
-        positionValue = index;
+        positionValue = SlideNodeProcess(index);
 
         this.startPosition = startPosition;
         this.targetPosition = targetPosition;
 
         gameObject.transform.position = startPosition;
 
-        generateEvent.Invoke(this, index);
+        generateEvent.Invoke(this, positionValue);
         ExecuteCoroutine().Start(this);
     }   
 
@@ -65,6 +67,7 @@ public class SlideNode : Node
         switch(processLevel){
             case var k when (judgePerfect - processLevel) < 0.01f:
             judgeLevel = 4;
+            InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
             break; 
             case var k when processLevel > judgeGreat:
             judgeLevel = 3;
@@ -85,7 +88,12 @@ public class SlideNode : Node
     public override void FailedInteraction(){
         resetTween = spriteRenderer.DOFade(0, 0.25f);
         InGameManager.instance.scoreManager.AddScore(0);
-        FailedInteractionCoroutine().Start(this);
+        // FailedInteractionCoroutine().Start(this);
+
+        InGameManager.instance.scoreManager.AddScore(4);
+        InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+        ObjectReset();
+
     }
 
     public IEnumerator FailedInteractionCoroutine(){
@@ -154,22 +162,50 @@ public class SlideNode : Node
             case 0:
             case 2:
             slideDirection = Vector2.left;
+            directionValue = 1;
             break;
 
             case 1:
             case 3:
             slideDirection = Vector2.right;
+            directionValue = 0;
             break;
 
             case 4:
             case 6:
             slideDirection = Vector2.up;
+            directionValue = 1;
             break;
 
             case 5:
             case 7:
             slideDirection = Vector2.down;
+            directionValue = 0;
             break;
         }
     }
+
+        // Arrive position
+    // Top(0) Bottom(1) Left(2) Right(3)
+    private int SlideNodeProcess(int index){
+        switch(index){
+            case 0:
+            case 1:
+            return 0;
+            
+            case 2:
+            case 3:
+            return 1;            
+            
+            case 4:
+            case 5:
+            return 2;
+            
+            case 6:
+            case 7:
+            return 3;
+        }
+        return -1;
+    }
+
 }

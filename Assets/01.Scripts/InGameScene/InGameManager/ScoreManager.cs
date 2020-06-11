@@ -23,7 +23,10 @@ public class ScoreManager : MonoBehaviour
     private Image judgeImage;
 
     [SerializeField]
-    private NodeHitEffect[] nodeHitEffects;
+    private NormalNodeHitEffect[] normalNodeHitEffects;
+
+    [SerializeField]
+    private SlideNodeHitEffect[] slideNodeHitEffects;
 
     [Header("Resources")]
     [SerializeField]
@@ -34,6 +37,17 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private INTEvent numberConversionEvent;
 
+    [Header("Judge Effect")]
+
+    [SerializeField]
+    private float sizeUpValue;
+
+    [SerializeField]
+    private float sizeUpDuration;
+
+    [SerializeField]
+    private Ease easeType;
+
     private Vector3 sizeUpVector;
     
     private Coroutine judgeImageSizeUpCoroutine;
@@ -41,8 +55,7 @@ public class ScoreManager : MonoBehaviour
     private Tween sizeUpTween;
 
     private void Awake(){
-        sizeUpVector = Vector3.one * 0.7f;
-        sizeUpVector /= 30;
+        sizeUpVector = Vector3.one * sizeUpValue;
     }
 
     public void AddScore(int judgeLevel){
@@ -73,14 +86,19 @@ public class ScoreManager : MonoBehaviour
         judgeImage.gameObject.SetActive(true);
         judgeImage.gameObject.transform.localScale = Vector3.one;        
         
-        sizeUpTween = judgeImage.gameObject.transform.DOScale(Vector3.one * 1.5f,0.1f);
+        sizeUpTween = judgeImage.gameObject.transform.DOScale(sizeUpVector * sizeUpValue, sizeUpDuration).SetEase(easeType);
         yield return sizeUpTween.WaitForCompletion();
 
         yield return YieldInstructionCache.WaitingSeconds(1.0f);
         judgeImage.gameObject.SetActive(false);
     }
 
-    public void ExecuteEffect(int index){
-        nodeHitEffects[index].Execute();
+    public void NormalNodeExecuteEffect(int index){
+        normalNodeHitEffects[index].Execute();
     }
+
+    public void SlideNodeExecuteEffect(int index, int reversed){
+        slideNodeHitEffects[index].Execute(reversed);
+    }
+
 }

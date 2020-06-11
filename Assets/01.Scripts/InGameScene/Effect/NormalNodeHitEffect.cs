@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class NodeHitEffect : MonoBehaviour
+public class NormalNodeHitEffect : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField]
@@ -15,7 +15,7 @@ public class NodeHitEffect : MonoBehaviour
 
     private Color defaultColor;
 
-    private Coroutine executeCoroutine;
+    private IEnumerator executeCoroutine;
 
     private List<Tween> objectTweens = new List<Tween>();
 
@@ -44,12 +44,10 @@ public class NodeHitEffect : MonoBehaviour
 
         if(isTweening){
             ObjectReset();
-            StopCoroutine(executeCoroutine);
-            executeCoroutine = StartCoroutine(ExecuteCoroutine());
-            return;
+            executeCoroutine.Stop(this);
         }
 
-        executeCoroutine = StartCoroutine(ExecuteCoroutine());
+        executeCoroutine = ExecuteCoroutine().Start(this);
     }
 
     private IEnumerator ExecuteCoroutine(){

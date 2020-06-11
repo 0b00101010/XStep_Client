@@ -67,7 +67,7 @@ public class NormalNode : Node
         switch(processLevel){
             case var k when (judgePerfect - processLevel) < 0.01f:
             judgeLevel = 4;
-            InGameManager.instance.scoreManager.ExecuteEffect(positionValue);
+            InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
             break; 
             case var k when processLevel > judgeGreat:
             judgeLevel = 3;
@@ -127,7 +127,8 @@ public class NormalNode : Node
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("NodeJudge")){
-            FailedInteraction();
+            // FailedInteraction();
+            Interaction();
         }
     }
 }
