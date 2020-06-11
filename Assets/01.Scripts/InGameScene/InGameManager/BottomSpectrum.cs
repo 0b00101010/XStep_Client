@@ -10,9 +10,11 @@ public class BottomSpectrum : MonoBehaviour
 
     [SerializeField]
     private VOIDEvent effectEvent;
+    
+    private float[] spectrum = new float[2048]; 
 
     private void Update(){
-        float[] spectrum = AudioListener.GetSpectrumData(2048, 0, FFTWindow.Rectangular);
+        AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
         if(spectrum.Max() > 0.35f){
             effectEvent.Invoke();
         }
