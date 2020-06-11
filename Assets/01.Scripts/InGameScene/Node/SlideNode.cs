@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.ObjectModel;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -87,7 +88,12 @@ public class SlideNode : Node
     public override void FailedInteraction(){
         resetTween = spriteRenderer.DOFade(0, 0.25f);
         InGameManager.instance.scoreManager.AddScore(0);
-        FailedInteractionCoroutine().Start(this);
+        // FailedInteractionCoroutine().Start(this);
+
+        InGameManager.instance.scoreManager.AddScore(4);
+        InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+        ObjectReset();
+
     }
 
     public IEnumerator FailedInteractionCoroutine(){

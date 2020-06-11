@@ -20265,7 +20265,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  easeType: 31
+  sizeUpValue: 1.8
+  sizeUpDuration: 1.25
+  easeType: 0
 --- !u!114 &1740762592
 MonoBehaviour:
   m_ObjectHideFlags: 0
