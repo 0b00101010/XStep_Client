@@ -55,19 +55,22 @@ public class NodeCreator : MonoBehaviour
     private IEnumerator UpdateCoroutine(){
         while(true){
             NodeGenerate();
-            yield return YieldInstructionCache.WaitingSeconds(0.5f);
+            yield return YieldInstructionCache.WaitingSeconds(0.2f);
         }
     }
 
     private void NodeGenerate(){
-        switch(Random.Range(0,3)){
-            case 0:
-            case 1:
-            SlideNodeGenerate();
-            break;
-            case 2:
+        int randomValue = Random.Range(0,100);
+
+        switch(randomValue){
+            case var a when randomValue < 80:
             NormalNodeGenerate();
             break;
+            
+            case var a when randomValue > 81:
+            SlideNodeGenerate();
+            break;
+
             default:
             break;
         }
