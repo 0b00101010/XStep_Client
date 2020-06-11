@@ -20234,7 +20234,11 @@ MonoBehaviour:
   defaultHP: 100
   hpImage: {fileID: 9386830}
   judgeImage: {fileID: 1493097386}
-  normalNodeHitEffects: []
+  normalNodeHitEffects:
+  - {fileID: 240105020}
+  - {fileID: 60993180}
+  - {fileID: 725016609}
+  - {fileID: 570352450}
   slideNodeHitEffects:
   - {fileID: 907900411}
   - {fileID: 2020763694}
@@ -20261,6 +20265,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  easeType: 31
 --- !u!114 &1740762592
 MonoBehaviour:
   m_ObjectHideFlags: 0
