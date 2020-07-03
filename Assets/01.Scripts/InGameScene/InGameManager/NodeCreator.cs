@@ -49,30 +49,39 @@ public class NodeCreator : MonoBehaviour
     }
 
     private void Start(){
-        StartCoroutine(UpdateCoroutine());
+        #if UNITY_ANDRIOD
+        NodeGenerateCoroutine().Start(this);
+        #endif
     }
-
-    private IEnumerator UpdateCoroutine(){
-        while(true){
-            NodeGenerate();
-            yield return YieldInstructionCache.WaitingSeconds(0.2f);
-        }
-    }
-
-    private void NodeGenerate(){
-        int randomValue = Random.Range(0,100);
-
-        switch(randomValue){
-            case var a when randomValue < 80:
+    
+    #if UNITY_EDITOR
+    private void Update(){
+        switch(Input.anyKeyDown){
+            case var k when Input.GetKeyDown(KeyCode.I):
             NormalNodeGenerate();
             break;
             
-            case var a when randomValue > 81:
+            case var k when Input.GetKeyDown(KeyCode.O):
             SlideNodeGenerate();
             break;
-
-            default:
+            
+            case var k when Input.GetKeyDown(KeyCode.P):
             break;
+        
+        } 
+    }
+    #endif
+
+
+    private IEnumerator NodeGenerateCoroutine(){
+        while(true){
+            int i = Random.Range(0,100);
+            if(i < 80){
+                NormalNodeGenerate();
+            } else {
+                SlideNodeGenerate();
+            }
+            yield return YieldInstructionCache.WaitingSeconds(1.5f);
         }
     }
 
