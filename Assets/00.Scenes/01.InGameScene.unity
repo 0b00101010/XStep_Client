@@ -322,10 +322,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -452,10 +452,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -942,10 +942,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1148,10 +1148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1723,10 +1723,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -2135,10 +2135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -8446,10 +8446,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -8733,10 +8733,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -9214,10 +9214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -9466,10 +9466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -9720,10 +9720,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -10362,10 +10362,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -10527,10 +10527,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -11967,10 +11967,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -12221,10 +12221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -13315,10 +13315,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -13394,10 +13394,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -13725,10 +13725,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -13855,10 +13855,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -14770,10 +14770,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -15064,10 +15064,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -15256,10 +15256,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -15388,10 +15388,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -15640,10 +15640,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -15819,10 +15819,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -15949,10 +15949,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -16079,10 +16079,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -16209,10 +16209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -16526,10 +16526,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -17777,10 +17777,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -18132,10 +18132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -18625,10 +18625,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -19228,10 +19228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -19832,10 +19832,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -20163,6 +20163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalNodeParentObject: {fileID: 1111334109}
   slideNodeParentObject: {fileID: 1433373353}
+  nodeGeneratePosition: {fileID: 21138420}
   normalNodeTransforms:
   - {fileID: 1308450786}
   - {fileID: 1404286027}
@@ -20930,10 +20931,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -21144,10 +21145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -21629,10 +21630,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -21972,10 +21973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
+  _arriveTime: 1.5
   _judgePerfect: 0.35
   _judgeGreat: 0.3
   _judgeGood: 0.25
-  arriveSecond: 0.5
   generateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -22343,10 +22344,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:
@@ -23430,10 +23431,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
+  _arriveTime: 1.5
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
-  arriveTime: 1
   generateEvnet:
     m_PersistentCalls:
       m_Calls:

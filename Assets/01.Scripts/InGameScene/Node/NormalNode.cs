@@ -26,19 +26,16 @@ public class NormalNode : Node
     
     private new void Awake(){
         base.Awake();
-
-        startPosition.x = 0;
-        startPosition.y = -0.645f;
         
         defaultScale = Vector3.one / 5;
-
         gameObject.transform.localScale = defaultScale;
-        gameObject.transform.position = startPosition;
-
     }
 
-    public override void Execute(Vector2 targetPosition){
+    public override void Execute(Vector2 startPosition,Vector2 targetPosition){
+        this.startPosition = startPosition;
         this.targetPosition = targetPosition;
+
+        gameObject.transform.position = startPosition;
 
         gameObject.SetActive(true);
 

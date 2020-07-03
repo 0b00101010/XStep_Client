@@ -13,6 +13,8 @@ public class NodeCreator : MonoBehaviour
     [SerializeField]
     private GameObject slideNodeParentObject;
 
+    [SerializeField]
+    private Transform nodeGeneratePosition;
 
     [Header("Values")]
     [SerializeField]
@@ -22,6 +24,7 @@ public class NodeCreator : MonoBehaviour
     private Transform[] slideNodeTransforms;
 
     private List<Node> normalNodes = new List<Node>();
+    private List<Node> longNodes = new List<Node>();
     private List<Node> slideNodes = new List<Node>();
 
     private Vector2[] normalNodeTargetPositions;
@@ -87,13 +90,13 @@ public class NodeCreator : MonoBehaviour
 
     private void NormalNodeGenerate(){
         Node node = GetAvaliableNode(normalNodes);
-        node.Execute(normalNodeTargetPositions[Random.Range(0, normalNodeTargetPositions.Length)]);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[Random.Range(0, normalNodeTargetPositions.Length)]);
     }
 
 
     public void NormalNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(normalNodes);
-        node.Execute(normalNodeTargetPositions[index]);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index]);
     }
 
     private void SlideNodeGenerate(){
