@@ -5,10 +5,6 @@ using UnityEngine;
 using DG.Tweening;
 public class SlideNode : Node
 {
-    [Header("Values")]
-    [SerializeField]
-    private float arriveSecond; 
-
     private int positionValue;
     private int directionValue;
 
@@ -54,7 +50,7 @@ public class SlideNode : Node
         slideTween = spriteRenderer.DOFade(1,1.0f);
         yield return slideTween.WaitForCompletion();
 
-        slideTween = gameObject.transform.DOMove(targetPosition, arriveSecond);
+        slideTween = gameObject.transform.DOMove(targetPosition, arriveTime);
         yield return slideTween.WaitForCompletion();
 
         FailedInteraction();

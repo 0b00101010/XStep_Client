@@ -6,6 +6,10 @@ public class Node : MonoBehaviour {
     [SerializeField]
     private int redutionHp;
 
+    [SerializeField]
+    private float _arriveTime;
+    protected float arriveTime => _arriveTime;
+
     private Color defaultColor;
 
     [Header("Judge zone")]

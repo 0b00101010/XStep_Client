@@ -10,11 +10,7 @@ public class NormalNode : Node
     
     private Vector3 defaultScale;
 
-    [Header("Value")]
-    [SerializeField]
-    private float arriveTime;
-
-    [Header("Functions")]
+    [Header("Events")]
     [SerializeField]
     private NODEEvent generateEvnet;
 
