@@ -10,8 +10,8 @@ public static class ExtensionMethods{
         behaviour.StopCoroutine(coroutine);
     }
 
-    public static void Log(this string value){
-        Debug.Log(value);
+    public static void Log(this object value){
+        Debug.Log(value.ToString());
     }
 
     public static Vector2 Direction(this Vector2 start, Vector2 end){
