@@ -8,7 +8,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 {
     private List<List<Node>> activeNode = new List<List<Node>>();
     private List<List<SlideNode>> activeSlideNode = new List<List<SlideNode>>();
-
+    
     private Vector2 slideStartPosition;
     private Vector2 slideEndPosition;
 
@@ -105,8 +105,6 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         } else if(activeSlideNode[index].Count == 0){
             return;
         }
-
-        index.ToString().Log();
 
         if(activeSlideNode[index][0].SlideDirection.Equals(direction)){
             activeSlideNode[index][0]?.Interaction();
