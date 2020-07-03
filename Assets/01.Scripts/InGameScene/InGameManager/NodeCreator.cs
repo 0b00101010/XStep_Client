@@ -49,7 +49,7 @@ public class NodeCreator : MonoBehaviour
     }
 
     private void Start(){
-        #if UNITY_ANDRIOD
+        #if UNITY_ANDROID
         NodeGenerateCoroutine().Start(this);
         #endif
     }
