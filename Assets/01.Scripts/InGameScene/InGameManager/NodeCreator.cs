@@ -13,6 +13,8 @@ public class NodeCreator : MonoBehaviour
     [SerializeField]
     private GameObject slideNodeParentObject;
 
+    [SerializeField]
+    private Transform nodeGeneratePosition;
 
     [Header("Values")]
     [SerializeField]
@@ -22,6 +24,7 @@ public class NodeCreator : MonoBehaviour
     private Transform[] slideNodeTransforms;
 
     private List<Node> normalNodes = new List<Node>();
+    private List<Node> longNodes = new List<Node>();
     private List<Node> slideNodes = new List<Node>();
 
     private Vector2[] normalNodeTargetPositions;
@@ -49,42 +52,51 @@ public class NodeCreator : MonoBehaviour
     }
 
     private void Start(){
-        StartCoroutine(UpdateCoroutine());
+        #if UNITY_ANDROID
+        NodeGenerateCoroutine().Start(this);
+        #endif
     }
-
-    private IEnumerator UpdateCoroutine(){
-        while(true){
-            NodeGenerate();
-            yield return YieldInstructionCache.WaitingSeconds(0.2f);
-        }
-    }
-
-    private void NodeGenerate(){
-        int randomValue = Random.Range(0,100);
-
-        switch(randomValue){
-            case var a when randomValue < 80:
+    
+    #if UNITY_EDITOR
+    private void Update(){
+        switch(Input.anyKeyDown){
+            case var k when Input.GetKeyDown(KeyCode.I):
             NormalNodeGenerate();
             break;
             
-            case var a when randomValue > 81:
+            case var k when Input.GetKeyDown(KeyCode.O):
             SlideNodeGenerate();
             break;
-
-            default:
+            
+            case var k when Input.GetKeyDown(KeyCode.P):
             break;
+        
+        } 
+    }
+    #endif
+
+
+    private IEnumerator NodeGenerateCoroutine(){
+        while(true){
+            int i = Random.Range(0,100);
+            if(i < 80){
+                NormalNodeGenerate();
+            } else {
+                SlideNodeGenerate();
+            }
+            yield return YieldInstructionCache.WaitingSeconds(1.5f);
         }
     }
 
     private void NormalNodeGenerate(){
         Node node = GetAvaliableNode(normalNodes);
-        node.Execute(normalNodeTargetPositions[Random.Range(0, normalNodeTargetPositions.Length)]);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[Random.Range(0, normalNodeTargetPositions.Length)]);
     }
 
 
     public void NormalNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(normalNodes);
-        node.Execute(normalNodeTargetPositions[index]);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index]);
     }
 
     private void SlideNodeGenerate(){

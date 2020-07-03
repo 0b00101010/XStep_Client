@@ -8,6 +8,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 {
     private List<List<Node>> activeNode = new List<List<Node>>();
     private List<List<SlideNode>> activeSlideNode = new List<List<SlideNode>>();
+    private List<List<LongNode>> activeLongNode = new List<List<LongNode>>();
 
     private Vector2 slideStartPosition;
     private Vector2 slideEndPosition;
@@ -106,11 +107,17 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
             return;
         }
 
-        index.ToString().Log();
-
         if(activeSlideNode[index][0].SlideDirection.Equals(direction)){
             activeSlideNode[index][0]?.Interaction();
         }
+    }
+
+    public void LongNodeInteractionStart(Vector2 position){
+
+    }
+
+    public void LongNodeInteractionEnd(Vector2 poisiton){
+        
     }
 
     private int GetHitBoxIndex(){
