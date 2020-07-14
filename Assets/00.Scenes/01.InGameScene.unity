@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 94.70001}
+  m_AnchoredPosition: {x: 0, y: 94.700195}
   m_SizeDelta: {x: 1080, y: 189.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9386828
@@ -193,7 +193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -22.400024}
+  m_AnchoredPosition: {x: 0, y: -22.40039}
   m_SizeDelta: {x: 1080, y: 44.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9386830
@@ -19985,7 +19985,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740762583}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: da41ec8e8c67047cc957f31c8ca597ad, type: 3}
@@ -20086,6 +20086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cfef09cda9e41b59841360c334c815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 1740762586}
   stickImages:
   - {fileID: 894444050}
   - {fileID: 1509986535}
@@ -20144,21 +20145,7 @@ MonoBehaviour:
   - {fileID: 1374633389}
   - {fileID: 2059792940}
   - {fileID: 467613946}
-  effectEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1740762590}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: EffectOneShot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  scaleValue: 30
 --- !u!114 &1740762588
 MonoBehaviour:
   m_ObjectHideFlags: 0
