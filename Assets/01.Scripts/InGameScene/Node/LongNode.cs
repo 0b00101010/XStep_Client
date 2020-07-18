@@ -16,11 +16,13 @@ public class LongNode : Node
     private Vector2 headVector;
     private Vector2 tailVector;
 
+    private bool isInteraction;
+    private bool isFailedInteraction;
+
     private new void Awake(){
         base.Awake();
 
-        startPosition.x = 0;
-        startPosition.y = -0.645f;
+        startPosition = gameObject.transform.localPosition;
 
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         
@@ -32,38 +34,63 @@ public class LongNode : Node
 
     public override void Execute(Vector2 targetPosition){
         this.targetPosition = targetPosition;
+
+        headVector = startPosition;
+        tailVector = startPosition;
+
+        HeadStart();
     }
 
     private void HeadStart(){
         headTween?.Kill();
 
-        headTween = DOTween.To(() => headVector, x => headVector = x, targetPosition, arriveTime);
+        headTween = DOTween.To(() => headVector, x => headVector = x, targetPosition, arriveTime / 2);
 
         headTween.OnUpdate(() => {
             lineRenderer.SetPosition(0, headVector);
         });
 
         headTween.OnComplete(() => {
-            
+            if(!isInteraction){
+                FailedInteraction();
+            }
         });
     }
 
     private void TailStart(){
+        tailTween?.Kill();
 
+        tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime / 2);
+
+        tailTween.OnUpdate(() => {
+            lineRenderer.SetPosition(1, tailVector);
+        });
+
+        tailTween.OnComplete(() => {
+            ObjectReset();
+        });
     }
 
     public override void Interaction(){
+        if(isFailedInteraction){
+            return;
+        }
 
-    }
+        if(isInteraction){
 
-    private void InteractionStart(){
-}
+        } else {
 
-    public void InteractionEnd(){
-
+        }
     }
 
     public override void FailedInteraction(){
+        isFailedInteraction = true;
+    }
 
+    public override void ObjectReset(){
+        lineRenderer.SetPosition(0, startPosition);
+        lineRenderer.SetPosition(1, startPosition);
+
+        gameObject.SetActive(false);
     }
 }
