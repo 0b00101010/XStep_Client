@@ -22,23 +22,33 @@ public class LongNode : Node
     private new void Awake(){
         base.Awake();
 
-        startPosition = gameObject.transform.localPosition;
-
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         
-        lineRenderer.SetPosition(0, startPosition);
-        lineRenderer.SetPosition(1, startPosition);
 
-        gameObject.transform.position = startPosition;
     }
 
-    public override void Execute(Vector2 targetPosition){
-        this.targetPosition = targetPosition;
+    public override void Execute(Vector2 startPosition, Vector2 targetPosition){
+        gameObject.SetActive(true);
+
+        this.startPosition = startPosition;
+        this.targetPosition = Vector2.Lerp(startPosition, targetPosition, 0.9f);
+
+        gameObject.transform.position = startPosition;
+
+        lineRenderer.SetPosition(0, startPosition);
+        lineRenderer.SetPosition(1, startPosition);
 
         headVector = startPosition;
         tailVector = startPosition;
 
         HeadStart();
+
+        IEnumerator tailCoroutine(){
+            yield return YieldInstructionCache.WaitingSeconds(1.0f);
+            TailStart();
+        }
+
+        tailCoroutine().Start(this);
     }
 
     private void HeadStart(){
@@ -88,9 +98,6 @@ public class LongNode : Node
     }
 
     public override void ObjectReset(){
-        lineRenderer.SetPosition(0, startPosition);
-        lineRenderer.SetPosition(1, startPosition);
-
         gameObject.SetActive(false);
     }
 }
