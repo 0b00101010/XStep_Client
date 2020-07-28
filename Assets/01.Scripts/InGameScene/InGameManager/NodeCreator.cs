@@ -14,6 +14,9 @@ public class NodeCreator : MonoBehaviour
     private GameObject slideNodeParentObject;
 
     [SerializeField]
+    private GameObject longNodeParentObject;
+
+    [SerializeField]
     private Transform nodeGeneratePosition;
 
     [Header("Values")]
@@ -49,6 +52,9 @@ public class NodeCreator : MonoBehaviour
         for(int i = 0; i < slideNodeTransforms.Length; i++){
             slideNodeTargetPositions[i] = slideNodeTransforms[i].position;
         }
+
+        tempNodes = longNodeParentObject.GetComponentsInChildren<LongNode>(true);
+        longNodes = tempNodes.ToList();
     }
 
     private void Start(){
@@ -69,6 +75,7 @@ public class NodeCreator : MonoBehaviour
             break;
             
             case var k when Input.GetKeyDown(KeyCode.P):
+            LongNodeGenerate();
             break;
         
         } 
@@ -152,6 +159,15 @@ public class NodeCreator : MonoBehaviour
 
     }
 
+    private void LongNodeGenerate(){
+        Node node = GetAvaliableNode(longNodes);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[Random.Range(0,4)]);
+    }
+
+    public void LongNodeGenerate(int index = 0){
+        Node node = GetAvaliableNode(longNodes);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index]);
+    }
 
     private Node GetAvaliableNode(List<Node> nodes){
         Node returnNode = null;
