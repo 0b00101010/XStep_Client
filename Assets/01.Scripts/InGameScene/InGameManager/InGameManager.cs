@@ -12,7 +12,7 @@ public class InGameManager : MonoBehaviour
 
     [Header("Events")]
     [SerializeField]
-    private VOIDEvent backgroundColorChangeEvent;
+    private Event backgroundColorChangeEvent;
 
     
     private void Awake(){

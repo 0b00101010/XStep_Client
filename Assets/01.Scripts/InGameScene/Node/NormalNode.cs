@@ -12,10 +12,10 @@ public class NormalNode : Node
 
     [Header("Events")]
     [SerializeField]
-    private NODEEvent generateEvnet;
+    private Event<Node, int> generateEvnet;
 
     [SerializeField]
-    private NODEEvent destoryEvent;
+    private Event<Node, int> destoryEvent;
 
     private int positionValue;
 

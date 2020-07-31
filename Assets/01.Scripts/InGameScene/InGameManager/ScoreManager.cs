@@ -35,7 +35,7 @@ public class ScoreManager : MonoBehaviour
 
     [Header("Functions")]
     [SerializeField]
-    private INTEvent numberConversionEvent;
+    private Event<int> numberConversionEvent;
 
     [Header("Judge Effect")]
 

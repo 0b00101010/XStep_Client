@@ -2,10 +2,17 @@
 using System;
 
 [Serializable]
-class VOIDEvent : UnityEvent{}
+public class Event : UnityEvent { }
 
 [Serializable]
-public class NODEEvent : UnityEvent<Node, int> {}
+public class Event<T> : UnityEvent<T> { }
 
 [Serializable]
-public class INTEvent : UnityEvent<int> {}
+public class Event<T, T1> : UnityEvent<T, T1> { }
+
+[Serializable]
+public class Event<T, T1, T2> : UnityEvent<T, T1, T2> { }
+
+[Serializable]
+public class Event<T, T1, T2, T3> : UnityEvent<T, T1, T2, T3> { }
+

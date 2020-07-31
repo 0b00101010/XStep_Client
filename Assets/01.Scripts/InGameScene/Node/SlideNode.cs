@@ -17,10 +17,10 @@ public class SlideNode : Node
 
     [Header("Events")]
     [SerializeField]
-    private NODEEvent generateEvent;
+    private Event<Node, int> generateEvent;
 
     [SerializeField]
-    private NODEEvent destoryEvent;
+    private Event<Node, int> destoryEvent;
 
     public Vector2 SlideDirection => slideDirection;
 

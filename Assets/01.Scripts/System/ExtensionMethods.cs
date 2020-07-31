@@ -11,7 +11,9 @@ public static class ExtensionMethods{
     }
 
     public static void Log(this object value){
+        #if UNITY_EDITOR
         Debug.Log(value.ToString());
+        #endif
     }
 
     public static Vector2 Direction(this Vector2 start, Vector2 end){
