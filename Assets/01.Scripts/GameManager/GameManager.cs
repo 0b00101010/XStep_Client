@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public WidgetViewer widgetViewer;
 
+    [Header("Setting")]
+    [SerializeField]
     private InGameResources _inGameResources;
 
     public InGameResources inGameResources {
