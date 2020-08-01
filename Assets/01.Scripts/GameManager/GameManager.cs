@@ -29,6 +29,18 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public WidgetViewer widgetViewer;
 
+    private InGameResources _inGameResources;
+
+    public InGameResources inGameResources {
+        get {
+            return _inGameResources;
+        }
+
+        set {
+            _inGameResources = value;
+        }
+    }
+
     private void Awake(){ 
         touchManager = gameObject.GetComponent<TouchManager>();
         widgetViewer = gameObject.GetComponent<WidgetViewer>();        
