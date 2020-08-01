@@ -13,9 +13,8 @@ public class NumberConverter : MonoBehaviour
     [SerializeField]
     private Sprite[] spriteImages;
 
-    [ContextMenu("A")]
-    private void Test(){
-        Conversion(10);
+    private void Awake(){
+        GameManager.instance.inGameResources?.Deconstruct(out spriteImages);
     }
 
     public void Conversion(int value){
