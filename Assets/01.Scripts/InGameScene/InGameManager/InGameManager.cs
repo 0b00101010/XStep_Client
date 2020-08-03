@@ -10,6 +10,9 @@ public class InGameManager : MonoBehaviour
     [HideInInspector]
     public ScoreManager scoreManager;
 
+    [HideInInspector]
+    public NodeCreator nodeCreator;
+
     [Header("Events")]
     [SerializeField]
     private Event backgroundColorChangeEvent;
@@ -21,6 +24,7 @@ public class InGameManager : MonoBehaviour
         }
 
         scoreManager = gameObject.GetComponent<ScoreManager>();
+        nodeCreator = gameObject.GetComponent<NodeCreator>();
     }
 
     private void Start(){

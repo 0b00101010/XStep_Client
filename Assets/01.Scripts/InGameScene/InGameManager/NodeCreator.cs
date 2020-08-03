@@ -33,6 +33,10 @@ public class NodeCreator : MonoBehaviour
     private Vector2[] normalNodeTargetPositions;
     private Vector2[] slideNodeTargetPositions;
 
+    [Header("Events")]
+    [SerializeField]
+    private Event<int> longNodeStopEvent;
+
     private void Awake(){
         Node[] tempNodes;
         
@@ -167,6 +171,10 @@ public class NodeCreator : MonoBehaviour
     public void LongNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(longNodes);
         node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index]);
+    }
+
+    public void LongNodeStop(int index){
+        longNodeStopEvent.Invoke(index);
     }
 
     private Node GetAvaliableNode(List<Node> nodes){
