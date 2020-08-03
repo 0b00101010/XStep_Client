@@ -144,10 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
-  _arriveTime: 0.5
+  _arriveTime: 0.75
   _judgePerfect: 0
   _judgeGreat: 0
   _judgeGood: 0
+  generateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  inactiveEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &5956051600853479066
 SpriteRenderer:
   m_ObjectHideFlags: 0

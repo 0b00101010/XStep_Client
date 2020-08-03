@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 5
-  _arriveTime: 1
+  _arriveTime: 0.75
   _judgePerfect: 0.5
   _judgeGreat: 0.45
   _judgeGood: 0.3
