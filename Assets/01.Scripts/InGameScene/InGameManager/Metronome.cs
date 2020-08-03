@@ -52,13 +52,18 @@ public class Metronome : MonoBehaviour
 
     private IEnumerator NodeGenerate(){
         int beforePosition = 0;
-        
-        do{
-            songProcessActions[0].currentProgressAction();
-            beforePosition = songProcessActions[0].positionValue;
-            songProcessActions.RemoveAt(0);
-        }while(beforePosition != 0 && songProcessActions[0].positionValue.Equals(beforePosition));
-
+        if(songProcessActions[0].positionValue != -1){
+            do{
+                songProcessActions[0].currentProgressAction();
+                beforePosition = songProcessActions[0].positionValue;
+                songProcessActions.RemoveAt(0);
+            }while(beforePosition != 0 && songProcessActions[0].positionValue.Equals(beforePosition));
+        } else {
+            do{
+                songProcessActions[0].currentProgressAction();
+                songProcessActions.RemoveAt(0);
+            }while(songProcessActions[0].positionValue == -1);
+        }
         yield return YieldInstructionCache.WaitFrame;
     }
 
