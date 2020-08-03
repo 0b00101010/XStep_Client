@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Song Data", menuName = "Scriptable Object/Song Data", order = int.MinValue)]
+[CreateAssetMenu(fileName = "Song Item Information", menuName = "Scriptable Object/Song Item Information", order = int.MinValue)]
 public class SongItemInformation : ScriptableObject
 {
     [SerializeField]
@@ -21,10 +21,16 @@ public class SongItemInformation : ScriptableObject
     [SerializeField]
     private int[] difficultys = new int[5]; 
 
+    [SerializeField]
+    private MapFile mapFile;
+
+    // 2020 08 03 TODO : Change property to deconstruct  
     public Sprite EyeCatch => eyeCatch; 
     public string SongName => songName; 
     public string ComposerName => composerName; 
     public int[] StepTags => stepTags; 
     public int[] Difficultys => difficultys; 
+
+    public MapFile MapFile => mapFile;
 
 }

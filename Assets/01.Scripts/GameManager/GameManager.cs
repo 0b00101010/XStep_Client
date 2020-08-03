@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private InGameResources _inGameResources;
 
+    [SerializeField]
+    private MapFile _songData;
+
     public InGameResources inGameResources {
         get {
             return _inGameResources;
@@ -41,6 +44,16 @@ public class GameManager : MonoBehaviour
         set {
             _inGameResources = value;
         }
+    }
+
+    public MapFile songData{
+        get {
+            return _songData; 
+        }
+
+        set {
+            _songData = value;
+        }        
     }
 
     private void Awake(){ 
