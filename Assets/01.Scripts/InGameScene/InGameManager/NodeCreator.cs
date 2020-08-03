@@ -60,12 +60,6 @@ public class NodeCreator : MonoBehaviour
         tempNodes = longNodeParentObject.GetComponentsInChildren<LongNode>(true);
         longNodes = tempNodes.ToList();
     }
-
-    private void Start(){
-        #if UNITY_ANDROID
-        NodeGenerateCoroutine().Start(this);
-        #endif
-    }
     
     #if UNITY_EDITOR
     private void Update(){
@@ -85,7 +79,6 @@ public class NodeCreator : MonoBehaviour
         } 
     }
     #endif
-
 
     private IEnumerator NodeGenerateCoroutine(){
         while(true){
@@ -164,13 +157,14 @@ public class NodeCreator : MonoBehaviour
     }
 
     private void LongNodeGenerate(){
+        int index = Random.Range(0,4);
         Node node = GetAvaliableNode(longNodes);
-        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[Random.Range(0,4)]);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], index);
     }
 
     public void LongNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(longNodes);
-        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index]);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], index);
     }
 
     public void LongNodeStop(int index){
