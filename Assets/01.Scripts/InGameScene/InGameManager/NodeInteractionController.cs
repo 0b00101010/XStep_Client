@@ -21,6 +21,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         for(int i = 0; i < 4; i++){
             activeNode.Add(new List<Node>());
             activeSlideNode.Add(new List<SlideNode>());
+            activeLongNode.Add(new List<LongNode>());
         }
     }
 
@@ -112,12 +113,30 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         }
     }
 
+    public void AddActiveLongNode(Node node, int index){
+        var newNode = node as LongNode;
+        activeLongNode[index].Add(newNode);
+    }
+
+    public void RemoveActioveLongNode(Node node, int index){
+        var removeNode = node as LongNode;
+        activeLongNode[index].Remove(removeNode);
+    }
+
     public void LongNodeInteractionStart(Vector2 position){
 
     }
 
     public void LongNodeInteractionEnd(Vector2 poisiton){
         
+    }
+
+    public void LongNodeStop(int position){
+        int index = -1;
+
+        do{
+            index++;
+        }while(activeLongNode[position][index].TailStart());
     }
 
     private int GetHitBoxIndex(){

@@ -67,7 +67,11 @@ public class LongNode : Node
         });
     }
 
-    private void TailStart(){
+    public bool TailStart(){
+        if(tailTween != null){
+            return true;
+        }
+
         tailTween?.Kill();
 
         tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime / 2);
@@ -79,6 +83,8 @@ public class LongNode : Node
         tailTween.OnComplete(() => {
             ObjectReset();
         });
+
+        return false;
     }
 
     public override void Interaction(){
