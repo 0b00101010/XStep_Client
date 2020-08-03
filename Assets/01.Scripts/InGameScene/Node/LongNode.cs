@@ -19,17 +19,25 @@ public class LongNode : Node
     private bool isInteraction;
     private bool isFailedInteraction;
 
+    private int index;
+
+    [Header("Events")]
+    [SerializeField]
+    private Event<Node, int> generateEvent;
+
+    [SerializeField]
+    private Event<Node, int> inactiveEvent;
+
     private new void Awake(){
         base.Awake();
 
         lineRenderer = gameObject.GetComponent<LineRenderer>();
-        
-
     }
 
-    public override void Execute(Vector2 startPosition, Vector2 targetPosition){
+    public override void Execute(Vector2 startPosition, Vector2 targetPosition, int index){
         gameObject.SetActive(true);
-
+        
+        this.index = index;
         this.startPosition = startPosition;
         this.targetPosition = Vector2.Lerp(startPosition, targetPosition, 0.9f);
 
@@ -41,14 +49,9 @@ public class LongNode : Node
         headVector = startPosition;
         tailVector = startPosition;
 
+        generateEvent.Invoke(this, index);
+
         HeadStart();
-
-        IEnumerator tailCoroutine(){
-            yield return YieldInstructionCache.WaitingSeconds(1.0f);
-            TailStart();
-        }
-
-        tailCoroutine().Start(this);
     }
 
     private void HeadStart(){
@@ -68,7 +71,7 @@ public class LongNode : Node
     }
 
     public bool TailStart(){
-        if(tailTween != null){
+        if(tailTween != null && tailTween.IsPlaying()){
             return true;
         }
 
@@ -104,6 +107,7 @@ public class LongNode : Node
     }
 
     public override void ObjectReset(){
+        inactiveEvent.Invoke(this, index);
         gameObject.SetActive(false);
     }
 }
