@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum TouchType {MainScene, InGame}
 
@@ -38,6 +39,15 @@ public class TouchManager : MonoBehaviour
     private void Awake(){
         minSwipeDistance = Screen.width / 3;
         touchType = TouchType.MainScene;
+
+        SceneManager.sceneLoaded +=  (scene, mode) => {
+            touchObservers.ForEach((observer) => {
+                if(observer == null){
+                    RemoveTouchObserver(observer);
+                }
+            });
+        };
+
     }
 
     private void Update(){
@@ -139,7 +149,9 @@ public class TouchManager : MonoBehaviour
     }
 
     public void AddTouchObserver(ITouchObserver observer){
-        touchObservers.Add(observer);
+        if(!touchObservers.Contains(observer)){
+            touchObservers.Add(observer);
+        }
     }
 
     public void RemoveTouchObserver(ITouchObserver observer){
