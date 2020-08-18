@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainSceneManager : MonoBehaviour, ITouchObserver
+public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
 {
-    public static MainSceneManager instance;
     
     [HideInInspector]
     public UIController uiController;
@@ -12,10 +11,6 @@ public class MainSceneManager : MonoBehaviour, ITouchObserver
     private Ray touchRay = new Ray();
 
     private void Awake(){
-        if(instance is null){
-            instance = this;
-        }
-
         uiController = gameObject.GetComponent<UIController>();
     }
 
@@ -41,9 +36,5 @@ public class MainSceneManager : MonoBehaviour, ITouchObserver
         hit2D = Physics2D.Raycast(touchRay.origin, touchRay.direction, Mathf.Infinity, LayerMask.GetMask("MainUIObject"));
 
         return hit2D.collider?.GetComponent<MainUIObject>();
-    }
-
-    private void OnDestroy() {
-        GameManager.instance.touchManager.RemoveTouchObserver(this);
     }
 }

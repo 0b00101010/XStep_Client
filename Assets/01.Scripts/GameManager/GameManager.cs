@@ -2,27 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : DontDestroySingleton<GameManager>
 {
-    private static GameManager _instance;
-    public static GameManager instance {
-        get{
-            if(_instance == null){
-                var obj = GameObject.FindObjectOfType<GameManager>();
-
-                if(obj == null){
-                    var newGameManager = new GameObject(nameof(GameManager));
-                    obj = newGameManager.AddComponent<GameManager>();
-                }
-                
-                _instance = obj;
-                DontDestroyOnLoad(obj.gameObject);
-            }
-
-            return _instance;
-        }
-    }
-
     [HideInInspector]
     public TouchManager touchManager;
     
