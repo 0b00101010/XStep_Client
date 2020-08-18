@@ -41,15 +41,10 @@ public class ViewSongInformation : MonoBehaviour
 
     private Action<bool> pannerActiveCheckFunction;
 
-    private List<object> childWidgets = new List<object>();
+    [SerializeField]
+    private CanvasGroup songInformationCanvas;
 
     private bool isClosing = false;
-
-    private void Awake(){
-        childWidgets.AddRange(childWidgetsImage);
-        childWidgets.AddRange(childWidgetsText);
-    }
-
     public void SettingPannerActiveCheckFunction(Action<bool> pannerActiveCheckFunction){
         this.pannerActiveCheckFunction = pannerActiveCheckFunction;
     }
@@ -70,14 +65,14 @@ public class ViewSongInformation : MonoBehaviour
     
     public void OpenSongInformation(){
         songInformationView.SetActive(true);
-        GameManager.instance.widgetViewer.WidgetsOpen(backgroundImage, childWidgets.ToArray());
+        GameManager.instance.widgetViewer.WidgetsOpen(backgroundImage, songInformationCanvas);
         pannerActiveCheckFunction(true);
     }
 
     public void CloseSongInformation(){
         if(!isClosing){
             isClosing = true;
-            GameManager.instance.widgetViewer.WidgetsClose(backgroundImage, ResetPanner, childWidgets.ToArray());
+            GameManager.instance.widgetViewer.WidgetsClose(backgroundImage, ResetPanner, songInformationCanvas);
         }
     }
 

@@ -17,11 +17,7 @@ public class FreeStyleViewController : MonoBehaviour
 
     private void Awake(){
         songInformationViewer = gameObject.GetComponent<ViewSongInformation>();
-        songInformationViewer.SettingPannerActiveCheckFunction(PanenrActiveUpdate);
-    }
-
-    public void PanenrActiveUpdate(bool value){
-        isPannerOpen = value;
+        songInformationViewer.SettingPannerActiveCheckFunction((value) => isPannerOpen = value);
     }
 
     private void Update(){
