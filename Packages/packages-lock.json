@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.emptycatch.unitylibrary": {
+      "version": "https://github.com/Komorio/Unity-Library.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3de7a25d39bd33237a8fcf9b70c0e9f549e7c7b6"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
