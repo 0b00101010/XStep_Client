@@ -143,7 +143,9 @@ public class TouchManager : MonoBehaviour
     }
 
     public void RemoveTouchObserver(ITouchObserver observer){
-        touchObservers.Remove(observer);
+        if(touchObservers.Contains(observer)){
+            touchObservers.Remove(observer);
+        }
     }
 
     private void TouchDownNotify(){
