@@ -57,7 +57,7 @@ public class LongNode : Node
     private void HeadStart(){
         headTween?.Kill();
 
-        headTween = DOTween.To(() => headVector, x => headVector = x, targetPosition, arriveTime / 2);
+        headTween = DOTween.To(() => headVector, x => headVector = x, targetPosition, arriveTime);
 
         headTween.OnUpdate(() => {
             lineRenderer.SetPosition(0, headVector);
@@ -77,7 +77,7 @@ public class LongNode : Node
 
         tailTween?.Kill();
 
-        tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime / 2);
+        tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime);
 
         tailTween.OnUpdate(() => {
             lineRenderer.SetPosition(1, tailVector);
