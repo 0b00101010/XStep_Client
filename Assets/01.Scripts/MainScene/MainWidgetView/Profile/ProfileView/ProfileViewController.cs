@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class ProfileViewController : MonoBehaviour
-{
+{   
     [Header("Viewer")]
     [SerializeField]
     private GameObject viewerObject;
@@ -16,83 +16,40 @@ public class ProfileViewController : MonoBehaviour
     [SerializeField]
     private CanvasGroup canvasGroup;
 
-    [Header("Setting Object")]
     [SerializeField]
-    private TextMeshProUGUI topBarUserName;
-
-    [SerializeField]
-    private TextMeshProUGUI topBarUserTitle;
-
-    [SerializeField]
-    private Image topBarUserProfileImage;
-
-    [Space(10)]
-    [SerializeField]
-    private Image userProfileImage;
-    
-    [SerializeField]
-    private TextMeshProUGUI userName;
-
-    [SerializeField]
-    private TextMeshProUGUI userTitle;
-
-    [Space(10)]
-    [SerializeField]
-    private TextMeshProUGUI levelText;
-
-    [SerializeField]
-    private Image expBar;
-
-    [SerializeField]
-    private TextMeshProUGUI expText;
-    
-    [Space(10)]
-    [SerializeField]
-    private TextMeshProUGUI totalScore;
-
-    [SerializeField]
-    private TextMeshProUGUI highClearScore;
-
-    [SerializeField]
-    private TextMeshProUGUI perfectPlay;
-
-    [SerializeField]
-    private TextMeshProUGUI challengeClear;
-
-    [SerializeField]
-    private TextMeshProUGUI freeStyleClear;
+    private TextMeshProUGUI titleText;
 
     private bool isOpen;
     private bool isClosing;
 
+    private List<ProfileSettingView> settingViews = new List<ProfileSettingView>();
+    private ProfileSettingView currentOpenView;
+
     private void Start(){
-        var setting = GameManager.instance.PlayerSetting;
-        var title = setting.title.ToString().Replace("_"," ");
+        var settingViews = gameObject.GetComponentsInChildren<ProfileSettingView>(true);
+        foreach(var view in settingViews){
+            view.Execute();
+            view.gameObject.SetActive(false);
 
-        topBarUserProfileImage.sprite = setting.profileSprite ?? topBarUserProfileImage.sprite;
-        topBarUserName.text = setting.userName;
-        topBarUserTitle.text = title;
+            this.settingViews.Add(view);
+        }
 
-        userProfileImage.sprite = setting.profileSprite ?? userProfileImage.sprite;
-        userName.text = setting.userName;
-        userTitle.text = title;
-    
-        levelText.text = $"Lv. {setting.currentLevel.ToString()}";
-        expBar.fillAmount = ((float)setting.currentExp / (float)setting.levelUpExp);
-        expText.text = $"{setting.currentExp} / {setting.levelUpExp}";
-
-        totalScore.text = setting.totalScore.ToString("D12");
-        highClearScore.text = setting.highClearScore.ToString("D2");
-
-        perfectPlay.text = setting.perfectPlay.ToString("D2");
-        challengeClear.text = setting.challengeClear.ToString("D2");
-        freeStyleClear.text = setting.freeStyleClera.ToString("D2");
+        viewerObject.gameObject.SetActive(false);
     }
 
-    [ContextMenu("Open")]
+    public void OpenView(int index){
+        currentOpenView.Exit();
+        currentOpenView = settingViews[index];
+        currentOpenView.Execute();
+        titleText.text = currentOpenView.titleString;
+    }
+
     public void OpenWidget(){
         if(!isOpen && !GameManager.instance.SomeUIInteraction){
             viewerObject.gameObject.SetActive(true);
+            settingViews[0].gameObject.SetActive(true);
+
+            currentOpenView = settingViews[0];
 
             GameManager.instance.widgetViewer.WidgetsOpen(background, canvasGroup);
             GameManager.instance.SomeUIInteraction = true;
@@ -108,6 +65,10 @@ public class ProfileViewController : MonoBehaviour
                 isOpen = false;
 
                 viewerObject.gameObject.SetActive(false);
+
+                settingViews.ForEach((view) => {
+                    view.Exit();
+                });
             }, canvasGroup);
 
             isClosing = true;
