@@ -1272,7 +1272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 322.40002, y: -390.4}
+  m_AnchoredPosition: {x: 322.4004, y: -390.4}
   m_SizeDelta: {x: 380.9, y: 70.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213672302
@@ -2502,7 +2502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 322.40002, y: -189.5}
+  m_AnchoredPosition: {x: 322.4004, y: -189.5}
   m_SizeDelta: {x: 380.9, y: 70.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488197416
@@ -4120,7 +4120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000061035, y: -75.9}
+  m_AnchoredPosition: {x: -0.000061035, y: -75.899994}
   m_SizeDelta: {x: 1080, y: 151.81746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691807424
@@ -4887,7 +4887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 345, y: 333.2}
+  m_AnchoredPosition: {x: 345, y: 333.19922}
   m_SizeDelta: {x: 223.9, y: 91.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730072061
@@ -5037,7 +5037,7 @@ GameObject:
   - component: {fileID: 753161645}
   - component: {fileID: 753161644}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7155,7 +7155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 322.40002, y: -497}
+  m_AnchoredPosition: {x: 322.4004, y: -497}
   m_SizeDelta: {x: 380.9, y: 70.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1021827571
@@ -7870,7 +7870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 322.40002, y: -287.9}
+  m_AnchoredPosition: {x: 322.4004, y: -287.9}
   m_SizeDelta: {x: 380.9, y: 70.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156975191
@@ -8113,7 +8113,7 @@ GameObject:
   - component: {fileID: 1257761712}
   - component: {fileID: 1257761711}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Exp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9024,7 +9024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -296.4, y: 333.2}
+  m_AnchoredPosition: {x: -296.4, y: 333.19922}
   m_SizeDelta: {x: 227.7, y: 91.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410173581
@@ -9117,6 +9117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1420619197}
+  - component: {fileID: 1420619198}
   m_Layer: 5
   m_Name: ProfileView
   m_TagString: Untagged
@@ -9145,6 +9146,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1420619198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420619196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd71c2ec84704c89889ae0e3bc94389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userProfileImage: {fileID: 1069644065}
+  userName: {fileID: 865928914}
+  userTitle: {fileID: 1473115919}
+  levelText: {fileID: 753161644}
+  expBar: {fileID: 1922353593}
+  expText: {fileID: 1257761711}
+  totalScore: {fileID: 107805066}
+  highClearScore: {fileID: 160988147}
+  perfectPlay: {fileID: 819185460}
+  challengeClear: {fileID: 1541796417}
+  freeStyleClear: {fileID: 424529607}
 --- !u!1 &1427260296
 GameObject:
   m_ObjectHideFlags: 0
@@ -9180,7 +9204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 322.40002, y: -81}
+  m_AnchoredPosition: {x: 322.4004, y: -81}
   m_SizeDelta: {x: 380.9, y: 70.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1427260298
@@ -12134,7 +12158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 24.1, y: 327.2}
+  m_AnchoredPosition: {x: 24.1, y: 327.19922}
   m_SizeDelta: {x: 396.7, y: 103.599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1944037393
