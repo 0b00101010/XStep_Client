@@ -8,9 +8,6 @@ public class ProfileIconHandler : MonoBehaviour
     public ProfileIconData iconData => _iconData;
 
     private void Awake(){
-        _iconData = Resources.Load<ProfileIconData>("IconData");
+        _iconData = Resources.Load<ProfileIconData>("Player Setting/IconData");
     }
-
-    
-
 }
