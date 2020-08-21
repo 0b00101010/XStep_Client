@@ -9,9 +9,31 @@ public class ProfileImageSettingView : ProfileSettingView
     [SerializeField]
     private Image profileImage;
 
+    [SerializeField]
+    private List<GameObject> iconRows = new List<GameObject>();
+
+    private List<Image> iconImages = new List<Image>();
+    private ProfileIconHandler iconHandler;
+
+    private void Awake(){
+        iconHandler = gameObject.GetComponent<ProfileIconHandler>();
+
+        iconRows.ForEach((icon) => {
+            var iconArray = icon.GetComponentsInChildren<Image>(true);
+            foreach(var i in iconArray){
+                iconImages.Add(i);
+            }
+        });
+    }
 
     private void Start(){
         ChangeProfileImage(GameManager.instance.PlayerSetting.profileSprite ?? profileImage.sprite);
+
+        var iconData = iconHandler.iconData;
+
+        for(int i = 0; i < iconData.iconCount; i++){
+            iconImages[i].sprite = iconData.GetIcon(i).icon;
+        }
     }
 
     private void ChangeProfileImage(Sprite sprite){

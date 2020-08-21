@@ -10,11 +10,8 @@ public class IconData{
 
     [SerializeField]
     private bool _isUnlock;
-    public bool isUnlock => _isUnlock;
+    public bool isUnlock {get => _isUnlock; set => _isUnlock = value;}
 
-    public void Unlock(){
-        _isUnlock = true;
-    }
 }
 
 [CreateAssetMenu(fileName = "ProfileIconData", menuName = "Scriptable Object/ProfileIconData", order = 0)]
@@ -22,7 +19,7 @@ public class ProfileIconData : ScriptableObject {
     [SerializeField]
     private List<IconData> iconDatas = new List<IconData>();
     public int iconCount => iconDatas.Count;
-    
+
     [SerializeField]
     private IconData lockedIcon;
 
@@ -31,6 +28,6 @@ public class ProfileIconData : ScriptableObject {
     }
 
     public void UnlockIcon(int index){
-        iconDatas[index].Unlock();
+        iconDatas[index].isUnlock = true;
     }
 }
