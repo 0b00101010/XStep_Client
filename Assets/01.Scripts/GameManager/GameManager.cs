@@ -16,6 +16,8 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     [SerializeField]
     private MapFile _songData;
+    private PlayerSetting playerSetting;
+    public PlayerSetting PlayerSetting => playerSetting;
 
     public InGameResources inGameResources {
         get {
@@ -39,6 +41,8 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     private void Awake(){ 
         touchManager = gameObject.GetComponent<TouchManager>();
-        widgetViewer = gameObject.GetComponent<WidgetViewer>();        
+        widgetViewer = gameObject.GetComponent<WidgetViewer>();   
+
+        playerSetting = Resources.Load<PlayerSetting>("Player Setting/PlayerSetting");
     }
 }
