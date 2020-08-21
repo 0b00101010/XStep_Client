@@ -9,11 +9,9 @@ public class ProfileImageSettingView : ProfileSettingView
     [SerializeField]
     private Image profileImage;
 
-    private string _titleString = "Change Player Icon";
 
     private void Start(){
         ChangeProfileImage(GameManager.instance.PlayerSetting.profileSprite ?? profileImage.sprite);
-        titleString = _titleString;
     }
 
     private void ChangeProfileImage(Sprite sprite){

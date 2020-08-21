@@ -52,12 +52,6 @@ public class ProfileInformationView : ProfileSettingView
     [SerializeField]
     private TextMeshProUGUI freeStyleClear;
 
-    private string _titleString = "User Profile";
-    
-    private void Start(){
-        titleString = _titleString;
-    }
-
     public override void Execute(){
         var setting = GameManager.instance.PlayerSetting;
         var title = setting.title.ToString().Replace("_"," ");

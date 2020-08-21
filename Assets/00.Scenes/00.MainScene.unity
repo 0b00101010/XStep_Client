@@ -5247,6 +5247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 699673543}
   - component: {fileID: 699673544}
+  - component: {fileID: 699673545}
   m_Layer: 5
   m_Name: IconSettingView
   m_TagString: Untagged
@@ -5287,8 +5288,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e83ff725722e4e7a9ee68c8884fd009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleString: 
+  titleString: Change Player Icon
   profileImage: {fileID: 373959062}
+  iconImages:
+  - {fileID: 143358999}
+  - {fileID: 1426955881}
+  - {fileID: 2128428631}
+  - {fileID: 234025488}
+  - {fileID: 703925730}
+  - {fileID: 1781218848}
+  - {fileID: 983972119}
+  - {fileID: 1735324642}
+  - {fileID: 1993480}
+  - {fileID: 1490970465}
+  - {fileID: 348018449}
+  - {fileID: 2000194775}
+  - {fileID: 790810292}
+  - {fileID: 1180000422}
+  - {fileID: 1710777031}
+--- !u!114 &699673545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699673542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7529cbb93a7f643bb8e472da3f49016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &701479652
 GameObject:
   m_ObjectHideFlags: 0
@@ -13575,7 +13604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd77723c51bf47d7bfa0b96ab0351a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleString: 
+  titleString: User Profile
   topBarUserName: {fileID: 1481469913}
   topBarUserTitle: {fileID: 525082062}
   topBarUserProfileImage: {fileID: 864797086}
