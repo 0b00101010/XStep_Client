@@ -1,6 +1,6 @@
 ﻿public enum Title{
     Newbee,
-    XstepDeveloper,
+    XStep_Developer,
     HoneyBee,
     Komorio,
     BYJ

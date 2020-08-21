@@ -18,6 +18,16 @@ public class ProfileViewController : MonoBehaviour
 
     [Header("Setting Object")]
     [SerializeField]
+    private TextMeshProUGUI topBarUserName;
+
+    [SerializeField]
+    private TextMeshProUGUI topBarUserTitle;
+
+    [SerializeField]
+    private Image topBarUserProfileImage;
+
+    [Space(10)]
+    [SerializeField]
     private Image userProfileImage;
     
     [SerializeField]
@@ -57,10 +67,15 @@ public class ProfileViewController : MonoBehaviour
 
     private void Start(){
         var setting = GameManager.instance.PlayerSetting;
-    
+        var title = setting.title.ToString().Replace("_"," ");
+
+        topBarUserProfileImage.sprite = setting.profileSprite ?? topBarUserProfileImage.sprite;
+        topBarUserName.text = setting.userName;
+        topBarUserTitle.text = title;
+
         userProfileImage.sprite = setting.profileSprite ?? userProfileImage.sprite;
         userName.text = setting.userName;
-        userTitle.text = setting.title.ToString();
+        userTitle.text = title;
     
         levelText.text = $"Lv. {setting.currentLevel.ToString()}";
         expBar.fillAmount = ((float)setting.currentExp / (float)setting.levelUpExp);
