@@ -17,11 +17,14 @@ public class FreeStyleViewController : MonoBehaviour
 
     private void Awake(){
         songInformationViewer = gameObject.GetComponent<ViewSongInformation>();
-        songInformationViewer.SettingPannerActiveCheckFunction((value) => isPannerOpen = value);
+        songInformationViewer.SettingPannerActiveCheckFunction((value) => {
+            isPannerOpen = value;
+            GameManager.instance.SomeUIInteraction = value;
+        });
     }
 
     private void Update(){
-        if(GameManager.instance.touchManager.IsSwipe && !isPannerOpen){
+        if(GameManager.instance.touchManager.IsSwipe && !isPannerOpen && !GameManager.instance.SomeUIInteraction){
             if(GameManager.instance.touchManager.SwipeDirection.y > 0.8f){
                 if(songItems[songItems.Length - 1].gameObject.transform.position.y < sortPivotObject.position.y){
                     MoveObjects(Vector2.up);
@@ -42,13 +45,12 @@ public class FreeStyleViewController : MonoBehaviour
         }
     }
 
+    // FIXME : 진짜 존나 비효율적
     public void OpenPanner(SongItemInformation information){
-        if(isPannerOpen){
-            return;
+        if(!isPannerOpen && !GameManager.instance.SomeUIInteraction){
+            songInformationViewer.SettingInformations(information);
+            songInformationViewer.OpenSongInformation();
         }
-
-        songInformationViewer.SettingInformations(information);
-        songInformationViewer.OpenSongInformation();
     }
 
     public void ClosePanner(){
