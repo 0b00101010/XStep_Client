@@ -1,7 +1,7 @@
 ﻿public enum Title{
+    Newbee,
     XstepDeveloper,
     HoneyBee,
-    Ddiyongi,
     Komorio,
     BYJ
 }

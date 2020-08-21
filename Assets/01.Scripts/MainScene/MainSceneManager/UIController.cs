@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour
     public void OpenSongInformationPanner(SongItemInformation information){
         freeStyleViewController.OpenPanner(information);
     }
-
+    // FIXME : 진짜 존나 비효율적
     public void CloseSongInformationPaner(){
         freeStyleViewController.ClosePanner();
     }
