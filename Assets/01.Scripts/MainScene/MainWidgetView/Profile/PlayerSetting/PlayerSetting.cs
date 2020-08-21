@@ -17,6 +17,7 @@ public class PlayerSetting : ScriptableObject {
     private Sprite _profileSprite;
     public Sprite profileSprite {get => _profileSprite; set => _profileSprite = value;}
 
+    [Space(10)]
     [SerializeField]
     private int _currentLevel;
     public int currentLevel {get => _currentLevel; set => _currentLevel = value;} 
@@ -29,6 +30,7 @@ public class PlayerSetting : ScriptableObject {
     private int _levelUpExp;
     public int levelUpExp {get => _levelUpExp; set => _levelUpExp = value;}
 
+    [Space(10)]
     [SerializeField]
     private ulong _totalScore;
     public ulong totalScore {get => _totalScore; set => _totalScore = value;}
@@ -38,6 +40,7 @@ public class PlayerSetting : ScriptableObject {
     private int _highClearScore;
     public int highClearScore {get => _highClearScore; set => _highClearScore = value;}
 
+    [Space(10)]
     [SerializeField]
     private int _perfectPlay;
     public int perfectPlay {get => _perfectPlay; set => _perfectPlay = value;}
