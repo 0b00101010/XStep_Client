@@ -6,6 +6,16 @@ using TMPro;
 
 public class ProfileViewController : MonoBehaviour
 {
+    [Header("Viewer")]
+    [SerializeField]
+    private GameObject viewerObject;
+
+    [SerializeField]
+    private Image background;
+
+    [SerializeField]
+    private CanvasGroup canvasGroup;
+
     [Header("Setting Object")]
     [SerializeField]
     private Image userProfileImage;
@@ -42,6 +52,9 @@ public class ProfileViewController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI freeStyleClear;
 
+    private bool isOpen;
+    private bool isClosing;
+
     private void Start(){
         var setting = GameManager.instance.PlayerSetting;
     
@@ -59,6 +72,31 @@ public class ProfileViewController : MonoBehaviour
         perfectPlay.text = setting.perfectPlay.ToString("D2");
         challengeClear.text = setting.challengeClear.ToString("D2");
         freeStyleClear.text = setting.freeStyleClera.ToString("D2");
+    }
+
+    [ContextMenu("Open")]
+    public void OpenWidget(){
+        if(!isOpen && !GameManager.instance.SomeUIInteraction){
+            viewerObject.gameObject.SetActive(true);
+
+            GameManager.instance.widgetViewer.WidgetsOpen(background, canvasGroup);
+            GameManager.instance.SomeUIInteraction = true;
+            isOpen = true;
+        }
+    }
+
+    public void CloseWidget(){
+        if(!isClosing){
+            GameManager.instance.widgetViewer.WidgetsClose(background, () => {
+                GameManager.instance.SomeUIInteraction = false;
+                isClosing = false;
+                isOpen = false;
+
+                viewerObject.gameObject.SetActive(false);
+            }, canvasGroup);
+
+            isClosing = true;
+        }
     }
     
 }

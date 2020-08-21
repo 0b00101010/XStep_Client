@@ -19,6 +19,9 @@ public class GameManager : DontDestroySingleton<GameManager>
     private PlayerSetting playerSetting;
     public PlayerSetting PlayerSetting => playerSetting;
 
+    private bool someUIInteraction;
+    public bool SomeUIInteraction {get => someUIInteraction; set => someUIInteraction = value;}
+
     public InGameResources inGameResources {
         get {
             return _inGameResources;
