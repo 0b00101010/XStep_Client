@@ -8,22 +8,17 @@ public class ProfileImageSettingView : ProfileSettingView
     [Header("Objects")]
     [SerializeField]
     private Image profileImage;
-
-    [SerializeField]
-    private List<GameObject> iconRows = new List<GameObject>();
-
-    private List<Image> iconImages = new List<Image>();
+    private List<ProfileIconButton> iconImages = new List<ProfileIconButton>();
     private ProfileIconHandler iconHandler;
 
     private void Awake(){
         iconHandler = gameObject.GetComponent<ProfileIconHandler>();
 
-        iconRows.ForEach((icon) => {
-            var iconArray = icon.GetComponentsInChildren<Image>(true);
-            foreach(var i in iconArray){
-                iconImages.Add(i);
-            }
-        });
+        var iconArray = gameObject.GetComponentsInChildren<ProfileIconButton>();
+
+        foreach(var icon in iconArray){
+            iconImages.Add(icon);
+        }
     }
 
     private void Start(){
@@ -31,8 +26,9 @@ public class ProfileImageSettingView : ProfileSettingView
 
         var iconData = iconHandler.iconData;
 
+        // FIXME : GetIcon이 bool 이미 확인 하는데 이거 어떻게 못 고치나
         for(int i = 0; i < iconData.iconCount; i++){
-            iconImages[i].sprite = iconData.GetIcon(i).icon;
+            iconImages[i].ImageSetting(iconData.GetIcon(i).icon, iconData.GetIcon(i).isUnlock);
         }
     }
 
