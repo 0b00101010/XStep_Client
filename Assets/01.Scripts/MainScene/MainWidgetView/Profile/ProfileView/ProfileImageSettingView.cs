@@ -8,6 +8,13 @@ public class ProfileImageSettingView : ProfileSettingView
     [Header("Objects")]
     [SerializeField]
     private Image profileImage;
+
+    [SerializeField]
+    private Image headerProfileImage;
+
+    [SerializeField]
+    private Image informationViewImage;
+
     private List<ProfileIconButton> iconImages = new List<ProfileIconButton>();
     private ProfileIconHandler iconHandler;
 
@@ -32,8 +39,11 @@ public class ProfileImageSettingView : ProfileSettingView
         }
     }
 
-    private void ChangeProfileImage(Sprite sprite){
+    // FIXME : 이거 내가 봤을 때 바꿀 필요 있음, 배열로라던지
+    public void ChangeProfileImage(Sprite sprite){
         profileImage.sprite = sprite;
+        headerProfileImage.sprite = sprite;
+        informationViewImage.sprite = sprite;
     }
 
     public override void Execute(){

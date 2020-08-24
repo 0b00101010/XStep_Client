@@ -573,7 +573,8 @@ GameObject:
   - component: {fileID: 143358999}
   - component: {fileID: 143359001}
   - component: {fileID: 143359002}
-  m_Layer: 5
+  - component: {fileID: 143359003}
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,6 +663,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077a15a41880042779e29cb7b4619f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteChangeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 699673544}
+        m_TargetAssemblyTypeName: ProfileImageSettingView, Assembly-CSharp
+        m_MethodName: ChangeProfileImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &143359003
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143358997}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &149141823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2167,8 @@ GameObject:
   - component: {fileID: 424363613}
   - component: {fileID: 424363612}
   - component: {fileID: 424363615}
-  m_Layer: 5
+  - component: {fileID: 424363616}
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2224,6 +2257,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077a15a41880042779e29cb7b4619f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteChangeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 699673544}
+        m_TargetAssemblyTypeName: ProfileImageSettingView, Assembly-CSharp
+        m_MethodName: ChangeProfileImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &424363616
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424363610}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &424529605
 GameObject:
   m_ObjectHideFlags: 0
@@ -5125,6 +5189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleString: Change Player Icon
   profileImage: {fileID: 373959062}
+  headerProfileImage: {fileID: 864797086}
+  informationViewImage: {fileID: 1069644065}
 --- !u!114 &699673545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8598,7 +8664,8 @@ GameObject:
   - component: {fileID: 1187707988}
   - component: {fileID: 1187707987}
   - component: {fileID: 1187707990}
-  m_Layer: 5
+  - component: {fileID: 1187707991}
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8687,6 +8754,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077a15a41880042779e29cb7b4619f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteChangeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 699673544}
+        m_TargetAssemblyTypeName: ProfileImageSettingView, Assembly-CSharp
+        m_MethodName: ChangeProfileImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &1187707991
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187707985}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!114 &1229270980 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8221825815591976597, guid: 65075c5ab6c2243309b69c5d0720b1f7,
@@ -10601,7 +10699,8 @@ GameObject:
   - component: {fileID: 1474143679}
   - component: {fileID: 1474143678}
   - component: {fileID: 1474143681}
-  m_Layer: 5
+  - component: {fileID: 1474143682}
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10690,6 +10789,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077a15a41880042779e29cb7b4619f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteChangeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 699673544}
+        m_TargetAssemblyTypeName: ProfileImageSettingView, Assembly-CSharp
+        m_MethodName: ChangeProfileImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &1474143682
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474143676}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &1481469911
 GameObject:
   m_ObjectHideFlags: 0
@@ -13363,7 +13493,8 @@ GameObject:
   - component: {fileID: 2037376564}
   - component: {fileID: 2037376563}
   - component: {fileID: 2037376566}
-  m_Layer: 5
+  - component: {fileID: 2037376567}
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13452,6 +13583,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077a15a41880042779e29cb7b4619f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteChangeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 699673544}
+        m_TargetAssemblyTypeName: ProfileImageSettingView, Assembly-CSharp
+        m_MethodName: ChangeProfileImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &2037376567
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037376561}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &2049020923
 GameObject:
   m_ObjectHideFlags: 0
@@ -13622,7 +13784,8 @@ GameObject:
   - component: {fileID: 2061193447}
   - component: {fileID: 2061193446}
   - component: {fileID: 2061193449}
-  m_Layer: 5
+  - component: {fileID: 2061193450}
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13711,6 +13874,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077a15a41880042779e29cb7b4619f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteChangeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 699673544}
+        m_TargetAssemblyTypeName: ProfileImageSettingView, Assembly-CSharp
+        m_MethodName: ChangeProfileImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &2061193450
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061193444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &2081812927
 GameObject:
   m_ObjectHideFlags: 0
