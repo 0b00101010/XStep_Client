@@ -22,4 +22,8 @@ public class UIController : MonoBehaviour
     public void CloseSongInformationPaner(){
         freeStyleViewController.ClosePanner();
     }
+
+    // TODO : 프로필 UI 값 변경 관리하기 
+    // 옵저버, Unity Event로 UI 값 변경 되었을 때 
+    // 다 값 한번에 변경 해 주도록 변경하기
 }

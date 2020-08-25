@@ -54,10 +54,9 @@ public class PlayerSetting : ScriptableObject {
     private ulong _totalScore;
     public ulong totalScore {get => _totalScore; set => _totalScore = value;}
     
-    // FIXME : score level로 바꾸기
     [SerializeField]
-    private int _highClearScore;
-    public int highClearScore {get => _highClearScore; set => _highClearScore = value;}
+    private int _highClearLevel;
+    public int highClearLevel {get => _highClearLevel; set => _highClearLevel = value;}
 
     [Space(10)]
     [SerializeField]

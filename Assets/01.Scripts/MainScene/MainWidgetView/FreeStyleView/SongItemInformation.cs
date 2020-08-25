@@ -24,7 +24,6 @@ public class SongItemInformation : ScriptableObject
     [SerializeField]
     private MapFile mapFile;
 
-    // 2020 08 03 TODO : Change property to deconstruct  
     public Sprite EyeCatch => eyeCatch; 
     public string SongName => songName; 
     public string ComposerName => composerName; 
