@@ -54,7 +54,7 @@ public class ProfileInformationView : ProfileSettingView
 
     public override void Execute(){
         var setting = GameManager.instance.PlayerSetting;
-        var title = setting.title.ToString().Replace("_"," ");
+        var title = setting.title.title;
 
         topBarUserProfileImage.sprite = setting.profileSprite ?? topBarUserProfileImage.sprite;
         topBarUserName.text = setting.userName;
