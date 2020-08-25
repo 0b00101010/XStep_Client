@@ -16,16 +16,20 @@ public class WidgetViewer : MonoBehaviour
     }
 
     private IEnumerator WidgetsOpenCoroutine(Image parentWidget, CanvasGroup canvasGroup){
+        // Background 커지는 시간
         var sizeUpTween = parentWidget.gameObject.transform.DOScaleY(1.0f, 1.0f);
         yield return sizeUpTween.WaitForCompletion();
 
+        // Fade in 시간
         canvasGroup.DOFade(1.0f, 1.0f);
     }
 
     private IEnumerator WidgetsCloseCoroutine(Image parentWidget, Action closeAction, CanvasGroup canvasGroup){
+        // Fade out 시간
         var fadeTween = canvasGroup.DOFade(0.0f, 1.0f);
         yield return fadeTween.WaitForCompletion();
         
+        // Background 작아지는 시간
         var sizeDownTwee  = parentWidget.gameObject.transform.DOScaleY(0.0f, 1.0f);
         yield return sizeDownTwee.WaitForCompletion();
             
