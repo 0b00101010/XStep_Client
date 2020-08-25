@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using NaughtyAttributes;
 public class ProfileNickNameView : ProfileSettingView
 {
     [Header("Objects")]
@@ -18,7 +18,9 @@ public class ProfileNickNameView : ProfileSettingView
 
     [SerializeField]
     private Image canChangeImage;
-    
+
+    [SerializeField]    
+    private TextMeshProUGUI topUserName;
 
     [Header("Resources")]
     [SerializeField]
@@ -27,6 +29,13 @@ public class ProfileNickNameView : ProfileSettingView
     private int characterCount = 10;
     private bool canChange;
 
+    [Button("Reset Change chance")]
+    public void RestChangeChance(){
+        PlayerPrefs.SetString("UserNameChange", "true");
+        canChange = true;
+        SettingOption(canChange);
+    }
+    
     public override void Execute(){
         gameObject.SetActive(true);
         bool.TryParse(PlayerPrefs.GetString("UserNameChange", "true"), out canChange);
@@ -52,6 +61,7 @@ public class ProfileNickNameView : ProfileSettingView
         SettingOption(false);
 
         GameManager.instance.PlayerSetting.userName = userNameField.text;
+        topUserName.text = userNameField.text;
     }
 
     public void ChangeValue(){
