@@ -2,12 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 [CreateAssetMenu(fileName = "PlayerSetting", menuName = "Scriptable Object/PlayerSetting", order = 0)]
 public class PlayerSetting : ScriptableObject {
     [SerializeField]
+    private ProfileTitleData titleData;
+
+    [SerializeField]
+    [Dropdown("titles")]
     private Title _title;
     public Title title {get => _title; set => _title = value;}
+
+    private DropdownList<Title> titles(){
+        if(titleData is null){
+            return null;
+        }
+
+        var titleDropdownList = new DropdownList<Title>();
+        
+        foreach(var item in titleData.TitleResources){
+            titleDropdownList.Add(item.title, item);
+        }
+
+        return titleDropdownList;
+    }
 
     [SerializeField]
     private string _userName;
