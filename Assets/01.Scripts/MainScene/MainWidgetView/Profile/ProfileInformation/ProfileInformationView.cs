@@ -69,7 +69,7 @@ public class ProfileInformationView : ProfileSettingView
         expText.text = $"{setting.currentExp} / {setting.levelUpExp}";
 
         totalScore.text = setting.totalScore.ToString("D12");
-        highClearScore.text = setting.hightClearLevel.ToString("D2");
+        highClearScore.text = setting.highClearLevel.ToString("D2");
 
         perfectPlay.text = setting.perfectPlay.ToString("D2");
         challengeClear.text = setting.challengeClear.ToString("D2");
