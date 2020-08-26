@@ -62,6 +62,11 @@ public class TouchManager : MonoBehaviour
     }
 
     private void ProcessClick(){
+        swipeDirection.y = Input.GetAxis("Mouse ScrollWheel") * 10.0f;
+        if(swipeDirection.y > 0){
+            isSwipe = true;
+        }
+
         if(Input.GetMouseButtonDown(0)){
             touchDownNotScreenPosition = Input.mousePosition;
             
