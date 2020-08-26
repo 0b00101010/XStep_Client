@@ -8,16 +8,6 @@ public class ProfileInformationView : ProfileSettingView
 {   
     [Header("Setting Object")]
     [SerializeField]
-    private TextMeshProUGUI topBarUserName;
-
-    [SerializeField]
-    private TextMeshProUGUI topBarUserTitle;
-
-    [SerializeField]
-    private Image topBarUserProfileImage;
-
-    [Space(10)]
-    [SerializeField]
     private Image userProfileImage;
     
     [SerializeField]
@@ -56,9 +46,9 @@ public class ProfileInformationView : ProfileSettingView
         var setting = GameManager.instance.PlayerSetting;
         var title = setting.title.title;
 
-        topBarUserProfileImage.sprite = setting.profileSprite ?? topBarUserProfileImage.sprite;
-        topBarUserName.text = setting.userName;
-        topBarUserTitle.text = title;
+        MainSceneManager.instance.uiController.ProfileSetting(setting.profileSprite);
+        MainSceneManager.instance.uiController.UserNameSetting(setting.userName);
+        MainSceneManager.instance.uiController.TitleSetting(title);
 
         userProfileImage.sprite = setting.profileSprite ?? userProfileImage.sprite;
         userName.text = setting.userName;

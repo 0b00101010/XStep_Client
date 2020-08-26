@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class UIController : MonoBehaviour
     
     [SerializeField]
     private FreeStyleViewController freeStyleViewController;
+
+    [SerializeField]
+    private TextMeshProUGUI titleText;
+
+    [SerializeField]
+    private TextMeshProUGUI userNameText;
+
+    [SerializeField]
+    private Image userProfileImage;
 
     public void SetInformationBoxText(string value){
         informationBoxText.text = value;
@@ -23,7 +33,15 @@ public class UIController : MonoBehaviour
         freeStyleViewController.ClosePanner();
     }
 
-    // TODO : 프로필 UI 값 변경 관리하기 
-    // 옵저버, Unity Event로 UI 값 변경 되었을 때 
-    // 다 값 한번에 변경 해 주도록 변경하기
+    public void TitleSetting(string value){
+        titleText.text = value;
+    }
+
+    public void UserNameSetting(string value){
+        userNameText.text = value;
+    }
+
+    public void ProfileSetting(Sprite sprite){
+        userProfileImage.sprite = sprite;
+    }
 }

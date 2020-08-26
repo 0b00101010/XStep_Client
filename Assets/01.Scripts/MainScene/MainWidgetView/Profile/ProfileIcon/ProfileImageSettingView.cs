@@ -10,9 +10,6 @@ public class ProfileImageSettingView : ProfileSettingView
     private Image profileImage;
 
     [SerializeField]
-    private Image headerProfileImage;
-
-    [SerializeField]
     private Image informationViewImage;
 
     private List<ProfileIconButton> iconImages = new List<ProfileIconButton>();
@@ -42,7 +39,7 @@ public class ProfileImageSettingView : ProfileSettingView
     // FIXME : 이거 내가 봤을 때 바꿀 필요 있음, 배열로라던지
     public void ChangeProfileImage(Sprite sprite){
         profileImage.sprite = sprite;
-        headerProfileImage.sprite = sprite;
+        MainSceneManager.instance.uiController.ProfileSetting(sprite);
         informationViewImage.sprite = sprite;
     }
 

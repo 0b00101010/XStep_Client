@@ -19,9 +19,6 @@ public class ProfileNickNameView : ProfileSettingView
     [SerializeField]
     private Image canChangeImage;
 
-    [SerializeField]    
-    private TextMeshProUGUI topUserName;
-
     [Header("Resources")]
     [SerializeField]
     private Sprite[] canChangeUserNameResource;
@@ -61,7 +58,7 @@ public class ProfileNickNameView : ProfileSettingView
         SettingOption(false);
 
         GameManager.instance.PlayerSetting.userName = userNameField.text;
-        topUserName.text = userNameField.text;
+        MainSceneManager.instance.uiController.UserNameSetting(userNameField.text);
     }
 
     public void ChangeValue(){
