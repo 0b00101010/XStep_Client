@@ -21,7 +21,9 @@ public class TitleItem : MainUIObject
     private UniEvent<Title> executeEvent;
 
     public override void Execute(){
-        executeEvent.Invoke(item);
+        if(item.isUnLock){
+            executeEvent.Invoke(item);
+        }
     }
 
     public void SettingTitle(Title title){

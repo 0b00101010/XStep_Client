@@ -53,7 +53,11 @@ public class ProfileTitleSettingView : ProfileSettingView
     }
 
     public void TitleChange(Title title){
-
+        GameManager.instance.PlayerSetting.title = title;
+        
+        titleText.text = GameManager.instance.PlayerSetting.title.title;
+        descriptionText.text = GameManager.instance.PlayerSetting.title.description;
+        MainSceneManager.instance.uiController.TitleSetting(GameManager.instance.PlayerSetting.title.title);
     }
 
     public override void Execute(){
