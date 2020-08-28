@@ -45,12 +45,12 @@ public class Metronome : MonoBehaviour
 
     private void Update(){
         if(audioSource.timeSamples >= nextStep){
-            NodeGenerate().Start(this);
+            NodeGenerate();
             nextStep += oneBeatTime;
         }
     }
 
-    private IEnumerator NodeGenerate(){
+    private void NodeGenerate(){
         int beforePosition = 0;
         if(songProcessActions[0].positionValue != -1){
             do{
@@ -64,7 +64,6 @@ public class Metronome : MonoBehaviour
                 songProcessActions.RemoveAt(0);
             }while(songProcessActions[0].positionValue == -1);
         }
-        yield return YieldInstructionCache.WaitFrame;
     }
 
     private void ReadFile(){

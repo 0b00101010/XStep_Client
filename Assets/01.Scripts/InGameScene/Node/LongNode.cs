@@ -68,6 +68,10 @@ public class LongNode : Node
                 FailedInteraction();
             }
         });
+
+        headTween.OnKill(() => {
+            tailTween = null;
+        }); 
     }
 
     public bool TailStart(){
@@ -85,6 +89,10 @@ public class LongNode : Node
 
         tailTween.OnComplete(() => {
             ObjectReset();
+        });
+
+        tailTween.OnKill(() => {
+            tailTween = null;
         });
 
         return false;
