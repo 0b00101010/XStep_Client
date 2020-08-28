@@ -83,14 +83,18 @@ public class Metronome : MonoBehaviour
                 // Slide Node
                 var backText = mapTexts[i].Substring(4,4); 
 
-                var normalNodePositions = frontText.IndexOfMany('X');
-                var longStartNodePositions = frontText.IndexOfMany('M');
-                var longEndNodePositions = frontText.IndexOfMany('W');
+                int[] normalNodePositions = frontText.IndexOfMany('X');
+                int[] longStartNodePositions = frontText.IndexOfMany('M');
+                int[] longEndNodePositions = frontText.IndexOfMany('W');
+                
+                int[] leftSlideNodePositions = backText.IndexOfMany('X');
+                int[] rightSlideNodePositions = backText.IndexOfMany('M');
 
                 int nodeGenerateCount = normalNodePositions.Length +
                 longStartNodePositions.Length + 
-                longEndNodePositions.Length;
-
+                longEndNodePositions.Length + 
+                leftSlideNodePositions.Length + 
+                rightSlideNodePositions.Length;
 
                 if(nodeGenerateCount > 0){
                     // Normal Node & Long Node
@@ -107,9 +111,28 @@ public class Metronome : MonoBehaviour
                         }
                     }  
 
+                    void backNodeGenerateFunction(int index, int[] nodePositions){
+                        for(int j = 0; j < nodePositions.Length; j++){
+                            var newProcessAction = new SongProcessAction();
+
+                            int currentItemPosition = nodePositions[j];
+                            currentItemPosition = index.Equals(0) ? currentItemPosition : currentItemPosition + 1;
+
+                            newProcessAction.currentProgressAction 
+                            = SlideNodeGenerateAction(currentItemPosition);
+
+                            newProcessAction.positionValue = position;
+
+                            songProcessActions.Add(newProcessAction);
+                        }
+                    }
+
                     frontNodeGenerateFunction(normalNodePositions, NormalNodeGenerateAction);
                     frontNodeGenerateFunction(longStartNodePositions, LongNodeGenerateAction);
                     frontNodeGenerateFunction(longEndNodePositions, LongNodeEndAction);
+
+                    backNodeGenerateFunction(0, leftSlideNodePositions);
+                    backNodeGenerateFunction(1, rightSlideNodePositions);
                 } else {
                     var voidProcessAction = new SongProcessAction();
                     
@@ -157,6 +180,12 @@ public class Metronome : MonoBehaviour
     private Action LongNodeEndAction(int position){
         return () => {
             InGameManager.instance.nodeCreator.LongNodeStop(position);
+        };
+    }
+
+    private Action SlideNodeGenerateAction(int position){
+        return () => {
+            InGameManager.instance.nodeCreator.SlideNodeGenerate(position);
         };
     }
 }
