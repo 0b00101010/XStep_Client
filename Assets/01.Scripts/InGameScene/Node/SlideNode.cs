@@ -47,7 +47,7 @@ public class SlideNode : Node
     }   
 
     private IEnumerator ExecuteCoroutine(){        
-        slideTween = spriteRenderer.DOFade(1,1.0f);
+        slideTween = spriteRenderer.DOFade(1,0.25f);
         yield return slideTween.WaitForCompletion();
 
         slideTween = gameObject.transform.DOMove(targetPosition, arriveTime);
