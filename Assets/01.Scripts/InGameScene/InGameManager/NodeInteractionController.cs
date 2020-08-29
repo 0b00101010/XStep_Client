@@ -147,7 +147,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         RaycastHit2D hit;
         hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("HitBox"));
 
-        if(!hit.collider.Equals(null)) {
+        if(hit.collider != null) {
             var objectName = hit.collider.gameObject.name;
             
             if (!hitBoxes.ContainsKey(objectName)){
@@ -167,7 +167,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         RaycastHit2D hit;
         hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("HitBox"));
 
-        if(!hit.collider.Equals(null)){
+        if(hit.collider != null){
             return hit.collider.gameObject.transform.position;
         }
         
