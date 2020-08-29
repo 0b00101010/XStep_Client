@@ -13,6 +13,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     private Vector2 slideStartPosition;
     private Vector2 slideEndPosition;
 
+    private Dictionary<string, HitBox> hitBoxes = new Dictionary<string, HitBox>();
+    
     private Ray ray;
 
     private void Awake(){
@@ -141,13 +143,18 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     private int GetHitBoxIndex(){
         ray.origin = GameManager.instance.touchManager.TouchDownPosition;
-        ray.direction = Vector2.zero;
 
         RaycastHit2D hit;
         hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("HitBox"));
 
-        if(hit.collider != null){
-            return hit.collider.gameObject.GetComponent<HitBox>().Index;
+        if(!hit.collider.Equals(null)) {
+            var objectName = hit.collider.gameObject.name;
+            
+            if (!hitBoxes.ContainsKey(objectName)){
+                hitBoxes.Add(objectName, hit.collider.gameObject.GetComponent<HitBox>());
+            }
+
+            return hitBoxes[objectName].Index;
         }
         
         return -1;
@@ -156,7 +163,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     private Vector2 GetHitBoxPosition(Vector2 position){
         ray.origin = position;
         ray.direction = Vector2.zero;
-
+        
         RaycastHit2D hit;
         hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("HitBox"));
 
