@@ -167,7 +167,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         RaycastHit2D hit;
         hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("HitBox"));
 
-        if(hit.collider != null){
+        if(!hit.collider.Equals(null)){
             return hit.collider.gameObject.transform.position;
         }
         
