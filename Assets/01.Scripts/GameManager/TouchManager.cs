@@ -10,12 +10,13 @@ public class TouchManager : MonoBehaviour
     private bool isTouch;
     private bool isSwipe;
     private bool isHolding;
-
-    private int keepTouchFrame = 0;
+    
     private float keepTouchTimer = 0.0f;
 
     private float minSwipeDistance;
 
+    private Camera mainCamera;
+    
     private Vector2 touchDownNotScreenPosition;
     private Vector2 touchDownPosition;
     private Vector2 touchHoldingPosition;
@@ -36,7 +37,9 @@ public class TouchManager : MonoBehaviour
 
     public TouchType touchType {get; set;}
 
-    private void Awake(){
+    private void Awake() {
+        mainCamera = Camera.main;
+        
         minSwipeDistance = Screen.width / 3;
         touchType = TouchType.MainScene;
 
@@ -72,7 +75,7 @@ public class TouchManager : MonoBehaviour
             
             if(touchType.Equals(TouchType.InGame)){
                 touchDownNotScreenPosition = Input.mousePosition;
-                touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
                 isTouch = true;
                 TouchDownNotify();
             }
@@ -87,14 +90,14 @@ public class TouchManager : MonoBehaviour
 
             if(keepTouchTimer > 0.15f && !isTouch && !isSwipe){
                 touchDownNotScreenPosition = Input.mousePosition;
-                touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
                 isTouch = true;
                 TouchDownNotify();
             }
 
             if(keepTouchTimer > 1.5f){
                 isHolding = true;
-                touchHoldingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                touchHoldingPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             }
         }
         else if(Input.GetMouseButtonUp(0)){
@@ -102,7 +105,7 @@ public class TouchManager : MonoBehaviour
             isSwipe = false;
             isTouch = false;
             keepTouchTimer = 0.0f;
-            touchUpPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            touchUpPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             TouchUpNotify();
         }
     }
@@ -117,7 +120,7 @@ public class TouchManager : MonoBehaviour
                 if(touchType.Equals(TouchType.InGame)){
                     isTouch = true;
                     touchDownNotScreenPosition = tempTouch.position;
-                    touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                    touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
                     TouchDownNotify();
                 }
 
@@ -134,12 +137,12 @@ public class TouchManager : MonoBehaviour
                 if(!isTouch && !isSwipe){
                     isTouch = true;
                     touchDownNotScreenPosition = tempTouch.position;
-                    touchDownPosition = Camera.main.ScreenToWorldPoint(touchDownNotScreenPosition);
+                    touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
                     TouchDownNotify();
                 }
                 if(keepTouchTimer > 1.5f){
                     isHolding = true;
-                    touchHoldingPosition = Camera.main.ScreenToWorldPoint(tempTouch.position);
+                    touchHoldingPosition = mainCamera.ScreenToWorldPoint(tempTouch.position);
                 }
             }
             else if(tempTouch.phase.Equals(TouchPhase.Ended)){
@@ -147,7 +150,7 @@ public class TouchManager : MonoBehaviour
                 isSwipe = false;
                 isHolding = false;
                 keepTouchTimer = 0.0f;
-                touchUpPosition = Camera.main.ScreenToWorldPoint(tempTouch.position);
+                touchUpPosition = mainCamera.ScreenToWorldPoint(tempTouch.position);
                 TouchUpNotify();
             }
         }
