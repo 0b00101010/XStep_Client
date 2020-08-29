@@ -55,7 +55,7 @@ public class NormalNode : Node
 
     public override void Interaction(){
         int judgeLevel = 0;
-        float processLevel = moveTween.position;
+        float processLevel = moveTween.ElapsedPercentage();
         
         switch(processLevel){
             case var k when (judgePerfect - processLevel) < 0.01f:

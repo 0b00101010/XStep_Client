@@ -58,7 +58,7 @@ public class SlideNode : Node
 
     public override void Interaction(){
         int judgeLevel = 0;
-        float processLevel = slideTween.position;
+        float processLevel = slideTween.ElapsedPercentage();
         
         switch(processLevel){
             case var k when (judgePerfect - processLevel) < 0.01f:
