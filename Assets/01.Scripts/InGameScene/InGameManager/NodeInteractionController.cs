@@ -104,9 +104,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
             index = 3;
         } 
 
-        if(index == -1){
-            return;
-        } else if(activeSlideNode[index].Count == 0){
+        if(index == -1 || activeSlideNode[index].Count == 0){
             return;
         }
 
