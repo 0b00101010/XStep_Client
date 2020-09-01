@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class InGameBackground : MonoBehaviour
@@ -7,39 +8,25 @@ public class InGameBackground : MonoBehaviour
     private Color topColor;
     private Color bottomColor;
 
-
+    private Tween changeTween;
+    
     [SerializeField]
     private LineRenderer lineRenderer;
-
+    
     private void Awake(){
         topColor = lineRenderer.startColor;
         bottomColor = lineRenderer.endColor;
     }
 
     
-    public void ChangeBackgroundColor(){
-        StartCoroutine(ChnageBackgroundColorCoroutine());
-    }
+    public void ChangeBackgroundColor(Color topColor, Color bottomColor, float duration) {
+        var beforeColor = new Color2(this.topColor, this.bottomColor);
+        var afterColor = new Color2(topColor, bottomColor);
 
-    private IEnumerator ChnageBackgroundColorCoroutine(){
+        this.topColor = topColor;
+        this.bottomColor = bottomColor;
         
-        Color beforeTopColor = topColor;
-        Color beforeBottomColor = bottomColor;
-
-        topColor = GetRandomColor();
-        bottomColor = GetRandomColor();
-
-        for(int i = 0; i < 60; i++){
-
-            lineRenderer.startColor = Color.Lerp(beforeTopColor, topColor, i / 60.0f);
-            lineRenderer.endColor = Color.Lerp(beforeBottomColor, bottomColor, i / 60.0f);
-            
-            yield return YieldInstructionCache.WaitFrame;
-        }
+        changeTween?.Kill();
+        changeTween = lineRenderer.DOColor(beforeColor, afterColor, duration);
     }
-    
-    private Color GetRandomColor(){
-        return Color.HSVToRGB(Random.value, 1, 1);
-    }
-
 }
