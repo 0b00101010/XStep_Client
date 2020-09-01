@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using EventTools.Event;
 using UnityEngine;
 
 public class InGameManager : MonoBehaviour
@@ -15,7 +16,7 @@ public class InGameManager : MonoBehaviour
 
     [Header("Events")]
     [SerializeField]
-    private Event backgroundColorChangeEvent;
+    private UniEvent<Color,Color,float> backgroundColorChangeEvent;
 
     
     private void Awake(){
@@ -28,17 +29,12 @@ public class InGameManager : MonoBehaviour
     }
 
     private void Start(){
-        StartCoroutine(BackgroundChangeCoroutine());
         GameManager.instance.touchManager.touchType = TouchType.InGame;
     }
 
-    private IEnumerator BackgroundChangeCoroutine(){
-        while(true){
-            backgroundColorChangeEvent.Invoke();
-            yield return YieldInstructionCache.WaitingSeconds(5.0f);
-        }
-    }
-
+    public void ChangeBackgroundColor(Color topColor, Color bottomColor, float duration) {
+        backgroundColorChangeEvent.Invoke(topColor,bottomColor,duration);
+    }    
 
 
 }
