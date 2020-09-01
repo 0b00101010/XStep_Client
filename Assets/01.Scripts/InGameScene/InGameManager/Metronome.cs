@@ -46,7 +46,6 @@ public class Metronome : MonoBehaviour
     private void Update(){
         if(audioSource.timeSamples >= nextStep){
             NodeGenerate();
-            nextStep += oneBeatTime;
         }
     }
 
@@ -58,6 +57,8 @@ public class Metronome : MonoBehaviour
                 beforePosition = songProcessActions[0].positionValue;
                 songProcessActions.RemoveAt(0);
             }while(beforePosition != 0 && songProcessActions[0].positionValue.Equals(beforePosition));
+
+            nextStep += oneBeatTime;
         } else {
             do{
                 songProcessActions[0].currentProgressAction();
@@ -76,7 +77,23 @@ public class Metronome : MonoBehaviour
                 var settingValue = double.Parse(mapTexts[i].Split('=')[1]);
                 
                 MapSystemSetting(settingKey, settingValue);
-            }else{
+            }
+            else if (mapTexts[i].StartsWith("@")) {
+                var mapText = mapTexts[i].Split('@')[1];
+                var settingValue = mapText.Split(',');
+
+                var topColorHex = settingValue[0];
+                var bottomColorHex = settingValue[1];
+                float duration = float.Parse(settingValue[2]);
+                
+                var newProcessAction = new SongProcessAction();
+ 
+                newProcessAction.positionValue = -1;
+                newProcessAction.currentProgressAction = BackgroundControlAction(topColorHex, bottomColorHex, duration);
+                
+                songProcessActions.Add(newProcessAction);
+            }
+            else{
                 // Normal Node & Long Node
                 var frontText = mapTexts[i].Substring(0, 4);
                 
@@ -159,6 +176,18 @@ public class Metronome : MonoBehaviour
 
             songProcessActions.Add(newProcessAction);
         }
+    }
+
+    private Action BackgroundControlAction(string topColor, string bottomColor, float duration) {
+        return () => {
+            Color hexToColorTop;
+            Color hexToColorBottom;
+            
+            ColorUtility.TryParseHtmlString(topColor, out hexToColorTop);
+            ColorUtility.TryParseHtmlString(topColor, out hexToColorBottom);
+            
+            InGameManager.instance.ChangeBackgroundColor(hexToColorTop, hexToColorBottom, duration);
+        };
     }
 
     private Action MakeSystemAction(string key, double value){
