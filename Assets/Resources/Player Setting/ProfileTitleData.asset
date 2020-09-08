@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f589d4180b01040538fb008aa7ca1c00, type: 3}
+  m_Name: ProfileTitleData
+  m_EditorClassIdentifier: 
+  titleResources:
+  - _title: Komorio
+    _description: "\uBB34\uB824 \uC804\uC138\uD6C8!"
+    _isUnLock: 1
+  - _title: XStep Developer
+    _description: "XStep \uAC1C\uBC1C\uC790\uC785\uB2C8\uB2E4."
+    _isUnLock: 1
+  - _title: "\uBD80\uACC4\uC591\uD559\uC7A5\uC778"
+    _description: "\uC8FD\uC5C8\uC73C\uBA74 \uC88B\uACA0\uB2E4"
+    _isUnLock: 0
+  - _title: "\uB274\uBE44"
+    _description: "\uB285\uB285\uC774"
+    _isUnLock: 0

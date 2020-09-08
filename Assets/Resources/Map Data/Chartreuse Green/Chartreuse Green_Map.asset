@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2f2ecd0fbed49a9973dfa8b19a0f19, type: 3}
+  m_Name: Chartreuse Green_Map
+  m_EditorClassIdentifier: 
+  _mapFile: {fileID: 4900000, guid: 1a2d663822f4e43cfb18769dfedc7182, type: 3}
+  _clip: {fileID: 8300000, guid: 625b2430f50fb4584b34e9b552d0c452, type: 3}

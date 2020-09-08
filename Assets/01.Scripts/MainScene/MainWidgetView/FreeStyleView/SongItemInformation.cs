@@ -19,18 +19,16 @@ public class SongItemInformation : ScriptableObject
     private int[] stepTags;
 
     [SerializeField]
-    private int[] difficultys = new int[5]; 
-    
-    // 난이도 별로 관리
-    [SerializeField]
-    private MapFile[] mapFile;
+    private int[] difficultys = new int[5];
 
+    [SerializeField]
+    private MapFile mapFile;
+    
     public Sprite EyeCatch => eyeCatch; 
     public string SongName => songName; 
     public string ComposerName => composerName; 
     public int[] StepTags => stepTags; 
-    public int[] Difficultys => difficultys; 
+    public int[] Difficultys => difficultys;
 
-    public MapFile[] MapFile => mapFile;
-
+    public MapFile MapFile => mapFile;
 }
