@@ -1,5 +1,3 @@
-:Format=1
-:Mode=Double
 :BPM=180
 :Delay=0
 :Beat=4
