@@ -68,10 +68,14 @@ public class Metronome : MonoBehaviour
     }
 
     private void ReadFile(){
-        var mapTexts = songData.mapFile.text.Split('\n');
+        var mapTexts = songData.maps[songData.currentSelectDifficulty].map.text.Split('\n');
         var position = 0;
 
         for(int i = 0; i < mapTexts.Length; i++){
+            if (mapTexts[i].Equals("") || mapTexts[i].Equals(" ")) {
+                continue;
+            }
+            
             if(mapTexts[i].StartsWith(":")){
                 var settingKey = mapTexts[i].Split(':')[1].Split('=')[0];
                 var settingValue = double.Parse(mapTexts[i].Split('=')[1]);
