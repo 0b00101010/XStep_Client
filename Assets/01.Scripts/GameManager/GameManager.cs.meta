@@ -3,7 +3,11 @@ guid: dd898d0ff8fa840f68a61f98857b1e54
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - touchManager: {instanceID: 0}
+  - widgetViewer: {instanceID: 0}
+  - _inGameResources: {fileID: 11400000, guid: 8d5ad1a4063274d7399d925a5a7c154e, type: 2}
+  - _songData: {fileID: 11400000, guid: 12652f55ffcf3403ba7f4350484e21ae, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
