@@ -24717,41 +24717,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479140, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -24759,38 +24724,13 @@ PrefabInstance:
       objectReference: {fileID: 1740762592}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
-      propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddActiveLongNode
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1740762592}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
-      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
-      objectReference: {fileID: 0}
-    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
-        type: 3}
-      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: RemoveActionLongNode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854f38d1e32294252a0432038508e73e, type: 3}

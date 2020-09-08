@@ -118,7 +118,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         activeLongNode[index].Add(newNode);
     }
 
-    public void RemoveActioveLongNode(Node node, int index){
+    public void RemoveActionLongNode(Node node, int index){
         var removeNode = node as LongNode;
         activeLongNode[index].Remove(removeNode);
     }
@@ -127,7 +127,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     }
 
-    public void LongNodeInteractionEnd(Vector2 poisiton){
+    public void LongNodeInteractionEnd(Vector2 postion){
         
     }
 
