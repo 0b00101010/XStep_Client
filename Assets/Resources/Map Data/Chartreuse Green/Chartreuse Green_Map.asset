@@ -12,5 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2f2ecd0fbed49a9973dfa8b19a0f19, type: 3}
   m_Name: Chartreuse Green_Map
   m_EditorClassIdentifier: 
-  _mapFile: {fileID: 4900000, guid: 1a2d663822f4e43cfb18769dfedc7182, type: 3}
+  _maps:
+  - _map: {fileID: 4900000, guid: e17d72c324a2c4345ac5bd931a7197f8, type: 3}
+    _difficulty: 1
+  - _map: {fileID: 4900000, guid: bab891329748840a59a700abf59dbc10, type: 3}
+    _difficulty: 3
+  - _map: {fileID: 4900000, guid: 2a62e4d32a2794da88a33012445d729a, type: 3}
+    _difficulty: 5
+  _backgroundFile: {fileID: 4900000, guid: fed674d1b8d774a6f9d59a50f6d3a68c, type: 3}
   _clip: {fileID: 8300000, guid: 625b2430f50fb4584b34e9b552d0c452, type: 3}
+  _currentSelectDifficulty: 1
