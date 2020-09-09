@@ -400,16 +400,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -8598,16 +8598,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -8778,16 +8778,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -9485,16 +9485,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -9630,16 +9630,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -10000,16 +10000,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -10752,16 +10752,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -12076,16 +12076,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -12564,16 +12564,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -13623,16 +13623,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -14336,16 +14336,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -14481,16 +14481,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -15182,16 +15182,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -15548,16 +15548,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -15843,16 +15843,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -16414,16 +16414,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -18030,16 +18030,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -18250,16 +18250,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -19558,16 +19558,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -24309,16 +24309,16 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NodeInteractionController, Assembly-CSharp
+      value: NodeCreator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActioveLongNode
+      value: EnqueueNode
       objectReference: {fileID: 0}
     - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
         type: 3}
@@ -24726,6 +24726,21 @@ PrefabInstance:
         type: 3}
       propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740762592}
+      objectReference: {fileID: 1740762588}
+    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
+        type: 3}
+      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1740762588}
+    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
+        type: 3}
+      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NodeCreator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5956051600853479141, guid: 854f38d1e32294252a0432038508e73e,
+        type: 3}
+      propertyPath: inactiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnqueueNode
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854f38d1e32294252a0432038508e73e, type: 3}
