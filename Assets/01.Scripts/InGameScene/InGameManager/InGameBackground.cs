@@ -16,6 +16,23 @@ public class InGameBackground : MonoBehaviour
     private void Awake(){
         topColor = lineRenderer.startColor;
         bottomColor = lineRenderer.endColor;
+
+        Vector2 convertViewpointToWorldPoint(Vector2 viewPoint) {
+            return Camera.main.ViewportToWorldPoint(viewPoint);
+        }
+
+        var screenWidth 
+            = Vector2.Distance(convertViewpointToWorldPoint(Vector2.zero),
+                convertViewpointToWorldPoint(Vector2.right));
+        
+        lineRenderer.startWidth = screenWidth;
+
+        var screenHeight 
+            = Vector2.Distance(convertViewpointToWorldPoint(Vector2.up),
+                convertViewpointToWorldPoint(Vector2.zero)) * 0.5f;
+        
+        lineRenderer.SetPosition(0, new Vector2(0, screenHeight));
+        lineRenderer.SetPosition(1, new Vector2(0, -screenHeight));
     }
 
     
