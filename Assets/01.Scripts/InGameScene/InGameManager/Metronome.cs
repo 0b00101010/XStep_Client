@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Metronome : MonoBehaviour {
-    private readonly Dictionary<string, double> settingDictionary = new Dictionary<string, double>();
-    private readonly List<SongProcessAction> songProcessActions = new List<SongProcessAction>();
+    private Dictionary<string, double> settingDictionary = new Dictionary<string, double>();
+    private List<SongProcessAction> songProcessActions = new List<SongProcessAction>();
+    
     private AudioSource audioSource;
     private double bpm;
 
@@ -70,7 +71,11 @@ public class Metronome : MonoBehaviour {
         var position = 0;
 
         for (var i = 0; i < mapTexts.Length; i++) {
-            if (mapTexts[i].Equals("") || mapTexts[i].Equals(" ")) continue;
+            bool addedAction = false;
+
+            if (mapTexts[i].Equals("") || mapTexts[i].Equals(" ")) {
+                continue;
+            }
 
             if (mapTexts[i].StartsWith(":")) {
                 var settingKey = mapTexts[i].Split(':')[1].Split('=')[0];
@@ -87,85 +92,52 @@ public class Metronome : MonoBehaviour {
             // Slide Node
             var backText = mapTexts[i].Substring(4, 4);
 
-            var normalNodePositions = frontText.IndexOfMany('X');
-            var longStartNodePositions = frontText.IndexOfMany('M');
-            var longEndNodePositions = frontText.IndexOfMany('W');
+            void addNodeGenerateAction(int[] generatePositions, Func<int, Action> nodeGenerateAction) {
+                foreach (var generatePosition in generatePositions) {
+                    var newProcessAction = new SongProcessAction();
 
-            var leftSlideNodePositions = backText.IndexOfMany('X');
-            var rightSlideNodePositions = backText.IndexOfMany('M');
+                    newProcessAction.currentProgressAction = nodeGenerateAction(generatePosition);
+                    newProcessAction.positionValue = position;
 
-            var nodeGenerateCount = normalNodePositions.Length +
-                                    longStartNodePositions.Length +
-                                    longEndNodePositions.Length +
-                                    leftSlideNodePositions.Length +
-                                    rightSlideNodePositions.Length;
+                    songProcessActions.Add(newProcessAction);
 
-            if (nodeGenerateCount > 0) {
-                // Normal Node & Long Node
-                void frontNodeGenerateFunction(int[] nodePositions, Func<int, Action> nodeGenerateAction) {
-                    for (var j = 0; j < nodePositions.Length; j++) {
-                        var newProcessAction = new SongProcessAction();
-
-                        newProcessAction.currentProgressAction
-                            = nodeGenerateAction(nodePositions[j]);
-
-                        songProcessActions.Add(newProcessAction);
-                    }
+                    addedAction = true;
                 }
-
-                void backNodeGenerateFunction(int index, int[] nodePositions) {
-                    for (var j = 0; j < nodePositions.Length; j++) {
-                        var newProcessAction = new SongProcessAction();
-
-                        var currentItemPosition = nodePositions[j];
-                        currentItemPosition = index.Equals(0) ? currentItemPosition : currentItemPosition + 1;
-
-                        newProcessAction.currentProgressAction
-                            = SlideNodeGenerateAction(currentItemPosition);
-
-                        newProcessAction.positionValue = position;
-
-                        songProcessActions.Add(newProcessAction);
-                    }
-                }
-
-                frontNodeGenerateFunction(normalNodePositions, NormalNodeGenerateAction);
-                frontNodeGenerateFunction(longStartNodePositions, LongNodeGenerateAction);
-                frontNodeGenerateFunction(longEndNodePositions, LongNodeEndAction);
-
-                backNodeGenerateFunction(0, leftSlideNodePositions);
-                backNodeGenerateFunction(1, rightSlideNodePositions);
             }
-            else {
-                var voidProcessAction = new SongProcessAction();
 
-                voidProcessAction.currentProgressAction = () => {
-                };
-                voidProcessAction.positionValue = 0;
+            addNodeGenerateAction(frontText.IndexOfMany('X'), NormalNodeGenerateAction);
+            addNodeGenerateAction(frontText.IndexOfMany('M'), LongNodeGenerateAction);
+            addNodeGenerateAction(frontText.IndexOfMany('W'), LongNodeEndAction);
 
-                songProcessActions.Add(voidProcessAction);
+            void addSlideNodeGenerateAction(int index, int[] generatePositions) {
+                foreach (var generatePosition in generatePositions) {
+                    var newProcessAction = new SongProcessAction();
+
+                    var currentItemPosition = generatePosition;
+                    currentItemPosition = index == 0 ? currentItemPosition : currentItemPosition + 1;
+
+                    newProcessAction.currentProgressAction = SlideNodeGenerateAction(currentItemPosition);
+                    newProcessAction.positionValue = position;
+
+                    songProcessActions.Add(newProcessAction);
+                    
+                    addedAction = true;
+                }
+            }
+            
+            addSlideNodeGenerateAction(0, backText.IndexOfMany('X'));
+            addSlideNodeGenerateAction(1, backText.IndexOfMany('M'));
+            
+            if (addedAction == false) {
+                var newProcessAction = new SongProcessAction();
+
+                newProcessAction.currentProgressAction = () => { };
+                newProcessAction.positionValue = 0;
+
+                songProcessActions.Add(newProcessAction);
             }
 
             position++;
-
-
-            // if (mapTexts[i].Contains("@")) {
-            //     var mapText = mapTexts[i].Split('@')[1];
-            //     var settingValue = mapText.Split(',');
-            //
-            //     var topColorHex = settingValue[0];
-            //     var bottomColorHex = settingValue[1];
-            //     float duration = float.Parse(settingValue[2]);
-            //     
-            //     var newProcessAction = new SongProcessAction();
-            //
-            //     newProcessAction.positionValue = -1;
-            //     newProcessAction.currentProgressAction = BackgroundControlAction(topColorHex, bottomColorHex, duration);
-            //     
-            //     songProcessActions.Add(newProcessAction);
-            //
-            //     position++;
-            // }
         }
     }
 
