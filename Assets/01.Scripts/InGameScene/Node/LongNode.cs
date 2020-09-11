@@ -21,7 +21,9 @@ public class LongNode : Node
     private bool isInteraction;
     private bool isFailedInteraction;
 
-    private int index;
+    private int interactionFrame;
+    
+    private int position;
 
     [Header("Events")]
     [SerializeField]
@@ -36,10 +38,10 @@ public class LongNode : Node
         lineRenderer = gameObject.GetComponent<LineRenderer>();
     }
 
-    public override void Execute(Vector2 startPosition, Vector2 targetPosition, int index){
+    public override void Execute(Vector2 startPosition, Vector2 targetPosition, int position){
         gameObject.SetActive(true);
         
-        this.index = index;
+        this.position = position;
         this.startPosition = startPosition;
         this.targetPosition = Vector2.Lerp(startPosition, targetPosition, 0.9f);
 
@@ -57,7 +59,7 @@ public class LongNode : Node
     }
 
     private void HeadStart(){
-        generateEvent.Invoke(this, index);
+        generateEvent.Invoke(this, position);
 
         headTween?.Kill();
         
@@ -104,14 +106,37 @@ public class LongNode : Node
 
 
     public override void Interaction(){
-        if(isFailedInteraction){
+        if(isFailedInteraction) {
             return;
         }
 
-        if(isInteraction){
+        if(isInteraction) {
+            interactionFrame++;
 
+            if (interactionFrame % 10 == 0) {
+                isInteraction = false;
+            }
         } else {
-
+            int judgeLevel = 0;
+            float processLevel = headTween.ElapsedPercentage();
+        
+            switch(processLevel){
+                case var k when (judgePerfect - processLevel) < 0.01f:
+                    judgeLevel = 4;
+                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(position);
+                    break; 
+                case var k when processLevel > judgeGreat:
+                    judgeLevel = 3;
+                    break; 
+                case var k when processLevel > judgeGood:
+                    judgeLevel = 2;
+                    break; 
+                case var k when processLevel < judgeGood:
+                    judgeLevel = 1;
+                    break; 
+            }
+            
+            InGameManager.instance.scoreManager.AddScore(judgeLevel);
         }
     }
 
@@ -119,8 +144,9 @@ public class LongNode : Node
         isFailedInteraction = true;
     }
 
-    public override void ObjectReset(){
+    public override void ObjectReset() {
+        interactionFrame = 0;
         gameObject.SetActive(false);
-        inactiveEvent.Invoke(this, index);
+        inactiveEvent.Invoke(this, position);
     }
 }

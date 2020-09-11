@@ -31,15 +31,32 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     private void Update(){
         if(Input.GetKeyDown(KeyCode.A)){
             NormalNodeInteraction(0);
+            LongNodeInteractionStart(0);
         }
         else if(Input.GetKeyDown(KeyCode.S)){
             NormalNodeInteraction(1);
+            LongNodeInteractionStart(1);
         }
         else if(Input.GetKeyDown(KeyCode.Z)){
             NormalNodeInteraction(2);
+            LongNodeInteractionStart(2);
         }
         else if(Input.GetKeyDown(KeyCode.X)){
             NormalNodeInteraction(3);
+            LongNodeInteractionStart(3);
+        }
+
+        if (Input.GetKey(KeyCode.A)) {
+            LongNodeInteractionStart(0);
+        }
+        else if (Input.GetKey(KeyCode.S)) {
+            LongNodeInteractionStart(1);
+        }
+        else if (Input.GetKey(KeyCode.Z)) {
+            LongNodeInteractionStart(2);
+        }
+        else if (Input.GetKey(KeyCode.X)) {
+            LongNodeInteractionStart(3);
         }
         
     }
@@ -112,7 +129,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
             activeSlideNode[index][0]?.Interaction();
         }
     }
-
+    
     public void AddActiveLongNode(Node node, int index){
         var newNode = node as LongNode;
         activeLongNode[index].Add(newNode);
@@ -123,12 +140,22 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         activeLongNode[index].Remove(removeNode);
     }
 
-    public void LongNodeInteractionStart(Vector2 position){
-
+    public void LongNodeInteractionStart(int position){
+        try {
+            activeLongNode[position][0].Interaction();
+        }
+        catch {
+            
+        }
     }
 
-    public void LongNodeInteractionEnd(Vector2 postion){
-        
+    public void LongNodeInteractionEnd(int postion){
+        try {
+            // activeLongNode[postion][0]
+        }
+        catch {
+            
+        }
     }
 
     public void LongNodeStop(int position){
