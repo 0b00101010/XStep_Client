@@ -29,7 +29,7 @@ public class NodeCreator : MonoBehaviour
     private Transform[] slideNodeTransforms;
 
     private List<Node> normalNodes = new List<Node>();
-    private Queue<Node> longNodes;
+    private List<Node> longNodes = new List<Node>();
     private List<Node> slideNodes = new List<Node>();
 
     private Vector2[] normalNodeTargetPositions;
@@ -60,7 +60,7 @@ public class NodeCreator : MonoBehaviour
         }
 
         tempNodes = longNodeParentObject.GetComponentsInChildren<LongNode>(true);
-        longNodes = new Queue<Node>(tempNodes.ToList());
+        longNodes = tempNodes.ToList();
     }
     
     #if UNITY_EDITOR
@@ -160,27 +160,19 @@ public class NodeCreator : MonoBehaviour
 
     private void LongNodeGenerate(){
         int index = Random.Range(0,4);
-        Node node = longNodes.Dequeue();
+        Node node = GetAvaliableNode(longNodes);
         node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], index);
     }
 
     public void LongNodeGenerate(int index = 0){
-        Node node = longNodes.Dequeue();
+        Node node = GetAvaliableNode(longNodes);
         node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], index);
     }
 
     public void LongNodeStop(int index){
         longNodeStopEvent.Invoke(index);
     }
-
-    public void EnqueueNode(Node node, int none) {
-        if (node is LongNode == false) {
-            throw new ArgumentException();
-        }
-
-        longNodes.Enqueue(node);
-    }
-
+    
     private Node GetAvaliableNode(List<Node> nodes){
         Node returnNode = null;
         

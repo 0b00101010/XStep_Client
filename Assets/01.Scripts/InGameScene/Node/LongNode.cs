@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Vector2 = UnityEngine.Vector2;
 
 public class LongNode : Node
 {  
@@ -10,7 +11,8 @@ public class LongNode : Node
 
     private Tween headTween;
     private Tween tailTween;
-
+    private IEnumerator tailCoroutine;
+    
     private LineRenderer lineRenderer;
 
     private Vector2 headVector;
@@ -49,14 +51,16 @@ public class LongNode : Node
         headVector = startPosition;
         tailVector = startPosition;
 
-        generateEvent.Invoke(this, index);
-
+        tailCoroutine = null;
+        
         HeadStart();
     }
 
     private void HeadStart(){
-        headTween?.Kill();
+        generateEvent.Invoke(this, index);
 
+        headTween?.Kill();
+        
         headTween = DOTween.To(() => headVector, x => headVector = x, targetPosition, arriveTime);
 
         headTween.OnUpdate(() => {
@@ -75,27 +79,27 @@ public class LongNode : Node
     }
 
     public bool TailStart(){
-        if(tailTween != null && tailTween.IsPlaying()){
+        if (tailCoroutine != null) {
             return true;
         }
 
-        tailTween?.Kill();
-
-        tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime);
-
-        tailTween.OnUpdate(() => {
-            lineRenderer.SetPosition(1, tailVector);
-        });
-
-        tailTween.OnComplete(() => {
-            ObjectReset();
-        });
-
-        tailTween.OnKill(() => {
-            tailTween = null;
-        });
+        tailCoroutine = TailStartCoroutine().Start(this);
 
         return false;
+    }
+
+    private IEnumerator TailStartCoroutine() {
+        var firstTailVector = tailVector;
+        var waitingTime = new WaitForSeconds(arriveTime / 60.0f);
+
+        for (int i = 0; i < 60; i++) {
+            tailVector = Vector2.Lerp(firstTailVector, targetPosition, (i / 60.0f));
+            lineRenderer.SetPosition(1, tailVector);
+            yield return waitingTime;
+        }
+        
+        ObjectReset();
+        tailCoroutine = null;
     }
 
     public override void Interaction(){
@@ -115,7 +119,7 @@ public class LongNode : Node
     }
 
     public override void ObjectReset(){
-        inactiveEvent.Invoke(this, index);
         gameObject.SetActive(false);
+        inactiveEvent.Invoke(this, index);
     }
 }
