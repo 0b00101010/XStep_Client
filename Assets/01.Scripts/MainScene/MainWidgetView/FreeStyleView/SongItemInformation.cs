@@ -23,6 +23,9 @@ public class SongItemInformation : ScriptableObject
 
     [SerializeField]
     private MapFile mapFile;
+
+    [SerializeField]
+    private float highScore;
     
     public Sprite EyeCatch => eyeCatch; 
     public string SongName => songName; 
@@ -31,4 +34,7 @@ public class SongItemInformation : ScriptableObject
     public int[] Difficultys => difficultys;
 
     public MapFile MapFile => mapFile;
+    
+    public float HighScore => highScore;
+
 }

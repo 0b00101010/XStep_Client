@@ -34,6 +34,10 @@ public class SongItem : MainUIObject
         songName.text = songItemInformation.SongName;
         composerName.text = songItemInformation.ComposerName;
 
+        for (int i = 0; i < stepTags.Length; i++) {
+            stepTags[i].SetActive(false);
+        }
+        
         for(int i = 0; i < songItemInformation.StepTags.Length; i++){
             stepTags[i].SetActive(true);
         }
