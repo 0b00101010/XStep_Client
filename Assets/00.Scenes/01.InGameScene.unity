@@ -20758,7 +20758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
   nodeCreator: {fileID: 0}
-  nodeInteractionController: {fileID: 0}
   backgroundColorChangeEvent:
     m_PersistentCalls:
       m_Calls:
@@ -20853,7 +20852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f8b16ca83ba4529a0102a28da709d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeNames: []
 --- !u!114 &1740762593
 MonoBehaviour:
   m_ObjectHideFlags: 0

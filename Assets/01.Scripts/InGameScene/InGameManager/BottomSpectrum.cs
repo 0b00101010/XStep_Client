@@ -23,7 +23,7 @@ public class BottomSpectrum : MonoBehaviour
         
         for(int i = 0; i < stickImages.Length; i++){
             Vector2 firstSclae = stickImages[i].gameObject.transform.localScale;
-            firstSclae.y = (spectrum[i] * scaleValue * (audioSource.volume/1.0f)) + 1;
+            firstSclae.y = (spectrum[i] * scaleValue * (1.0f / audioSource.volume)) + 1;
             stickImages[i].gameObject.transform.localScale = Vector2.MoveTowards(stickImages[i].gameObject.transform.localScale, firstSclae, 0.1f);
         }
     }
