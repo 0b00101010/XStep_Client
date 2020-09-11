@@ -62,18 +62,6 @@ public class NodeCreator : MonoBehaviour
         tempNodes = longNodeParentObject.GetComponentsInChildren<LongNode>(true);
         longNodes = tempNodes.ToList();
     }
-
-    private IEnumerator NodeGenerateCoroutine(){
-        while(true){
-            int i = Random.Range(0,100);
-            if(i < 80){
-                NormalNodeGenerate();
-            } else {
-                SlideNodeGenerate();
-            }
-            yield return YieldInstructionCache.WaitingSeconds(1.5f);
-        }
-    }
     
     public void NormalNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(normalNodes);
