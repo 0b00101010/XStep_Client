@@ -83,6 +83,7 @@ public class ResultViewController : MonoBehaviour {
 
     public void Open() {    
         gameObject.SetActive(true);
+        Setting();
         GameManager.instance.widgetViewer.WidgetsOpen(background, canvasGroup);
     }
 

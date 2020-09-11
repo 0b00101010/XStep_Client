@@ -15462,19 +15462,9 @@ PrefabInstance:
       objectReference: {fileID: 1740762592}
     - target: {fileID: 8628389701181590499, guid: 9f296c7cfa9a744d4b3d23cad542b421,
         type: 3}
-      propertyPath: generateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddActiveSlideNode
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628389701181590499, guid: 9f296c7cfa9a744d4b3d23cad542b421,
-        type: 3}
       propertyPath: destoryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1740762592}
-    - target: {fileID: 8628389701181590499, guid: 9f296c7cfa9a744d4b3d23cad542b421,
-        type: 3}
-      propertyPath: destoryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoveActiveSlideNode
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f296c7cfa9a744d4b3d23cad542b421, type: 3}
 --- !u!4 &1067950911 stripped
