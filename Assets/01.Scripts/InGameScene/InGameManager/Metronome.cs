@@ -53,15 +53,22 @@ public class Metronome : MonoBehaviour {
 
     private void NodeGenerate() {
         var beforePosition = 0;
+        
+        if (songProcessActions.Count <= 0 ) {
+            return;
+        }
+        
         if (songProcessActions[0].positionValue != -1) {
             do {
                 songProcessActions[0].currentProgressAction();
-                backgroundActions[0].currentProgressAction();
-                
-                beforePosition = songProcessActions[0].positionValue;
 
+                if (backgroundActions.Count > 0) {
+                    backgroundActions[0]?.currentProgressAction();
+                    backgroundActions.RemoveAt(0);
+                }
+                
                 songProcessActions.RemoveAt(0);
-                backgroundActions.RemoveAt(0);
+                beforePosition = songProcessActions[0].positionValue;
             } while (beforePosition != 0 && songProcessActions[0].positionValue.Equals(beforePosition));
 
             nextStep += oneBeatTime;
@@ -212,9 +219,6 @@ public class Metronome : MonoBehaviour {
 
             ColorUtility.TryParseHtmlString(topColor, out hexToColorTop);
             ColorUtility.TryParseHtmlString(bottomColor, out hexToColorBottom);
-            
-            hexToColorTop.Log();
-            hexToColorBottom.Log();
 
             InGameManager.instance.ChangeBackgroundColor(hexToColorTop, hexToColorBottom, duration);
         };

@@ -21,4 +21,4 @@ MonoBehaviour:
     _difficulty: 5
   _backgroundFile: {fileID: 4900000, guid: fed674d1b8d774a6f9d59a50f6d3a68c, type: 3}
   _clip: {fileID: 8300000, guid: 625b2430f50fb4584b34e9b552d0c452, type: 3}
-  _currentSelectDifficulty: 1
+  _currentSelectDifficulty: 2

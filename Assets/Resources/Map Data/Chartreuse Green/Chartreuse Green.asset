@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Chartreuse Green
   m_EditorClassIdentifier: 
   eyeCatch: {fileID: 21300000, guid: 4afc2d9f232404a97a68b68fcf084d3b, type: 3}
-  songName: Default Song_00
-  composerName: Default Composer
+  songName: Chartreuse Green
+  composerName: t+pazolite
   stepTags: 0000000001000000
   difficultys: 010000000300000005000000
   mapFile: {fileID: 11400000, guid: 12652f55ffcf3403ba7f4350484e21ae, type: 2}
