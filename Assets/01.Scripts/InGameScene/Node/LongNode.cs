@@ -140,7 +140,8 @@ public class LongNode : Node
                     judgeLevel = 1;
                     break; 
             }
-            
+
+            isInteraction = true;
             InGameManager.instance.scoreManager.AddScore(judgeLevel);
         }
     }

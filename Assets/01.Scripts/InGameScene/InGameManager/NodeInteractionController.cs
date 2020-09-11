@@ -202,8 +202,4 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         
         return Vector2.zero;
     }
-
-    private void OnDestroy() {
-        GameManager.instance.touchManager.RemoveTouchObserver(this);
-    }
 }
