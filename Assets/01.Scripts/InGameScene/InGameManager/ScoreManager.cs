@@ -6,18 +6,13 @@ using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
-    [Header("Values")]
-    [SerializeField]
-    private float defaultHP;
-
-    private float hp;
     private int comboCount;
 
     private int[] judgeCountArray = new int[5]{0,0,0,0,0};
 
     [Header("Objects")]
     [SerializeField]
-    private Image hpImage;
+    private Image progressImage;
     
     [SerializeField]
     private Image judgeImage;
@@ -76,12 +71,7 @@ public class ScoreManager : MonoBehaviour
         judgeImageSizeUpCoroutine = StartCoroutine(JudgeImageSizeUpCoroutine());
 
     }
-
-    public void RedutionHP(float value){
-        hp -= value;
-        hpImage.fillAmount = hp / defaultHP;
-    }
-
+    
     private IEnumerator JudgeImageSizeUpCoroutine(){
         judgeImage.gameObject.SetActive(true);
         judgeImage.gameObject.transform.localScale = Vector3.one;        
@@ -91,6 +81,10 @@ public class ScoreManager : MonoBehaviour
 
         yield return YieldInstructionCache.WaitingSeconds(1.0f);
         judgeImage.gameObject.SetActive(false);
+    }
+
+    public void SongProgressChange(double progress) {
+        progressImage.fillAmount = (float)progress;
     }
 
     public void NormalNodeExecuteEffect(int index){

@@ -47,7 +47,5 @@ public class Node : MonoBehaviour {
 
     public virtual void Interaction() {}
 
-    public virtual void FailedInteraction() {
-        InGameManager.instance.scoreManager.RedutionHP(redutionHp);
-    }
+    public virtual void FailedInteraction() { }
 }
