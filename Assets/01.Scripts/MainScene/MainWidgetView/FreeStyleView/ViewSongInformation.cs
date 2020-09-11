@@ -40,6 +40,9 @@ public class ViewSongInformation : MonoBehaviour
     [SerializeField]
     private Text[] difficultyTexts;
 
+    [SerializeField]
+    private Text highScoreText;
+
     private Action<bool> pannerActiveCheckFunction;
 
     [SerializeField]
@@ -66,6 +69,8 @@ public class ViewSongInformation : MonoBehaviour
         for (int i = 0; i < information.MapFile.maps.Length; i++) {
             this.difficultyTexts[i].transform.parent.gameObject.SetActive( information.MapFile.maps[i].map == null ? false : true );
         }
+
+        highScoreText.text = ((int)information.HighScore).ToString("D11");
     }
     
     public void OpenSongInformation(){
