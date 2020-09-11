@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using UnityEditor.U2D;
 using UnityEngine;
 
 public class Metronome : MonoBehaviour {
