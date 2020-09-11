@@ -70,15 +70,12 @@ public class TouchManager : MonoBehaviour
             isSwipe = true;
         }
 
-        if(Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0)) {
             touchDownNotScreenPosition = Input.mousePosition;
-            
-            if(touchType.Equals(TouchType.InGame)){
-                touchDownNotScreenPosition = Input.mousePosition;
-                touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
-                isTouch = true;
-                TouchDownNotify();
-            }
+            touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
+            isTouch = true;
+            TouchDownNotify();
+
         }
         else if(Input.GetMouseButton(0)){
             Vector2 currentPosition = Input.mousePosition;
