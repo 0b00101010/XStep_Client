@@ -2,7 +2,7 @@ using System;
 
 [Serializable]
 public class GameResult{
-    private int[] judgeCounts;
+    private int[] judgeCounts = new int[5];
     public int[] JudgeCounts {
         get => judgeCounts;
         set => judgeCounts = value;

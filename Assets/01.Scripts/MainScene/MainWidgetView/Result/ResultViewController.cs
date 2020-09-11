@@ -88,6 +88,7 @@ public class ResultViewController : MonoBehaviour {
 
     public void Close() {
         GameManager.instance.widgetViewer.WidgetsClose(background, () => {
+            GameManager.instance.gameResult = null;
             gameObject.SetActive(false);
             freeStyleView.gameObject.SetActive(true);
         }, canvasGroup);

@@ -67,6 +67,9 @@ public class ScoreManager : MonoBehaviour
             StopCoroutine(judgeImageSizeUpCoroutine);
         }
 
+        GameManager.instance.gameResult.JudgeCounts[judgeLevel]++;
+        GameManager.instance.gameResult.NodeTotalCount++;
+        
         sizeUpTween?.Kill();
         judgeImageSizeUpCoroutine = StartCoroutine(JudgeImageSizeUpCoroutine());
 

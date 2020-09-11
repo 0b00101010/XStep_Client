@@ -61,7 +61,8 @@ public class Metronome : MonoBehaviour {
     private void NodeGenerate() {
         var beforePosition = 0;
         
-        if (songProcessActions.Count <= 0 ) {
+        if (songProcessActions.Count <= 1 ) {
+            InGameManager.instance.GameEnd();
             return;
         }
         
