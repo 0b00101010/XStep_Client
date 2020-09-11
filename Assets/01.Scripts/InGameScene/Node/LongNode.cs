@@ -141,6 +141,7 @@ public class LongNode : Node
     }
 
     public override void FailedInteraction(){
+        InGameManager.instance.scoreManager.AddScore(0);
         isFailedInteraction = true;
     }
 
