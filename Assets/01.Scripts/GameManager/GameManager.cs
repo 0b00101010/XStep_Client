@@ -19,10 +19,17 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     [SerializeField]
     private SongItemInformation _selectSongItem;
+
+    private GameResult _gameResult;
+
+    public GameResult gameResult {
+        get => _gameResult;
+        set => _gameResult = value;
+    }
     
     private PlayerSetting playerSetting;
     public PlayerSetting PlayerSetting => playerSetting;
-
+    
     private bool someUIInteraction;
     public bool SomeUIInteraction {get => someUIInteraction; set => someUIInteraction = value;}
     
