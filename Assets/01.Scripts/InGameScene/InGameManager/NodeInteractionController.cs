@@ -190,7 +190,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
             if (!hitBoxes.ContainsKey(objectName)){
                 hitBoxes.Add(objectName, hit.collider.gameObject.GetComponent<HitBox>());
             }
-
+            
+            hitBoxes[objectName].Execute();
             return hitBoxes[objectName].Index;
         }
         
