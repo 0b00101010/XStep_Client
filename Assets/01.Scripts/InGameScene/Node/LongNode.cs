@@ -153,6 +153,8 @@ public class LongNode : Node
 
     public override void ObjectReset() {
         interactionFrame = 0;
+        isInteraction = false;
+        isFailedInteraction = false;
         gameObject.SetActive(false);
         inactiveEvent.Invoke(this, position);
     }

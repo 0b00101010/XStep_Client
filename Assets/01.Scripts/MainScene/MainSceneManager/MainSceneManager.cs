@@ -52,6 +52,9 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     public void GameStart() {
         blackBackground.gameObject.SetActive(true);
         var fadeTween = blackBackground.DOFade(1.0f, 0.5f);
-        fadeTween.OnComplete(() => SceneManager.LoadScene("01.InGameScene"));
+        fadeTween.OnComplete(() => {
+            SceneManager.LoadScene("01.InGameScene");
+            GameManager.instance.SomeUIInteraction = false;
+        });
     }
 }

@@ -54,6 +54,10 @@ public class NormalNode : Node
     }
 
     public override void Interaction(){
+        if (moveTween != null == false) {
+            return;
+        }
+        
         int judgeLevel = 0;
         float processLevel = moveTween.ElapsedPercentage();
         

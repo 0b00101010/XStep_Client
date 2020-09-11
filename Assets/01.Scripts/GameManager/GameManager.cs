@@ -49,7 +49,11 @@ public class GameManager : DontDestroySingleton<GameManager>
     }
     
 
-    private void Awake(){ 
+    private void Awake(){
+        if (instance != this && instance != null) {
+            Destroy(gameObject);
+        }
+        
         touchManager = gameObject.GetComponent<TouchManager>();
         widgetViewer = gameObject.GetComponent<WidgetViewer>();   
 

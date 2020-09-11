@@ -44,12 +44,7 @@ public class TouchManager : MonoBehaviour
         touchType = TouchType.MainScene;
 
         SceneManager.sceneLoaded +=  (scene, mode) => {
-            touchObservers.ForEach((observer) => {
-                if (observer == null) {
-                    RemoveTouchObserver(observer);
-                }
-            });
-
+            touchObservers.Clear();
             mainCamera = Camera.main;
         };
 

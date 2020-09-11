@@ -20,13 +20,15 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     private IEnumerator touchHoldCoroutine;
 
     private void Awake(){
-        GameManager.instance.touchManager.AddTouchObserver(this);
-        
         for(int i = 0; i < 4; i++){
             activeNode.Add(new List<Node>());
             activeSlideNode.Add(new List<SlideNode>());
             activeLongNode.Add(new List<LongNode>());
         }
+    }
+    
+    private void Start(){
+        GameManager.instance.touchManager.AddTouchObserver(this);
     }
 
     #if UNITY_EDITOR
@@ -103,10 +105,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     }
 
     public void NormalNodeInteraction(int position){
-        try{
-            activeNode[position][0]?.Interaction();
-        }catch{
-            return;
+        if (activeNode[position].Count > 0) {
+            activeNode[position][0].Interaction();
         }
     }
 
@@ -153,11 +153,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     }
 
     public void LongNodeInteractionStart(int position){
-        try {
+        if (activeLongNode[position].Count > 0) {
             activeLongNode[position][0].Interaction();
-        }
-        catch {
-            
         }
     }
     
