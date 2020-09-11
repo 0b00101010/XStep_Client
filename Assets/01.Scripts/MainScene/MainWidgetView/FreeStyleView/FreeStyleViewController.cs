@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreeStyleViewController : MonoBehaviour
-{
+public class FreeStyleViewController : MonoBehaviour {
     [SerializeField]
+    private GameObject songItemsParent;
+    
     private SongItem[] songItems;
 
     [SerializeField]
@@ -21,6 +22,8 @@ public class FreeStyleViewController : MonoBehaviour
             isPannerOpen = value;
             GameManager.instance.SomeUIInteraction = value;
         });
+
+        songItems = songItemsParent.GetComponentsInChildren<SongItem>(true);
     }
 
     private void Update(){

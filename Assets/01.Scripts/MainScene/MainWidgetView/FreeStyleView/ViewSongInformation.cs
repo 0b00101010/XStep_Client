@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+
 public class ViewSongInformation : MonoBehaviour
 {
 
@@ -60,6 +61,10 @@ public class ViewSongInformation : MonoBehaviour
 
         for(int i = 0; i < information.Difficultys.Length; i++){
             this.difficultyTexts[i].text = information.Difficultys[i].ToString();
+        }
+
+        for (int i = 0; i < information.MapFile.maps.Length; i++) {
+            this.difficultyTexts[i].transform.parent.gameObject.SetActive( information.MapFile.maps[i].map == null ? false : true );
         }
     }
     

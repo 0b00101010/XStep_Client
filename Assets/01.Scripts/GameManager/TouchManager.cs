@@ -45,10 +45,12 @@ public class TouchManager : MonoBehaviour
 
         SceneManager.sceneLoaded +=  (scene, mode) => {
             touchObservers.ForEach((observer) => {
-                if(observer == null){
+                if (observer == null) {
                     RemoveTouchObserver(observer);
                 }
             });
+
+            mainCamera = Camera.main;
         };
 
     }
