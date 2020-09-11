@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Metronome : MonoBehaviour {
     private Dictionary<string, double> settingDictionary = new Dictionary<string, double>();
     private List<SongProcessAction> songProcessActions = new List<SongProcessAction>();
+    private List<SongProcessAction> backgroundActions = new List<SongProcessAction>();
     
     private AudioSource audioSource;
     private double bpm;
@@ -26,7 +29,8 @@ public class Metronome : MonoBehaviour {
         audioSource.clip = songData.clip;
 
         ReadFile();
-
+        ReadBackgorundAction();
+        
         bpm = settingDictionary["BPM"];
         split = (int) settingDictionary["Split"];
         offset = settingDictionary["Delay"] / 1000;
@@ -52,8 +56,12 @@ public class Metronome : MonoBehaviour {
         if (songProcessActions[0].positionValue != -1) {
             do {
                 songProcessActions[0].currentProgressAction();
+                backgroundActions[0].currentProgressAction();
+                
                 beforePosition = songProcessActions[0].positionValue;
+
                 songProcessActions.RemoveAt(0);
+                backgroundActions.RemoveAt(0);
             } while (beforePosition != 0 && songProcessActions[0].positionValue.Equals(beforePosition));
 
             nextStep += oneBeatTime;
@@ -65,7 +73,7 @@ public class Metronome : MonoBehaviour {
             } while (songProcessActions[0].positionValue == -1);
         }
     }
-
+    
     private void ReadFile() {
         var mapTexts = songData.maps[songData.currentSelectDifficulty].map.text.Split('\n');
         var position = 0;
@@ -113,7 +121,7 @@ public class Metronome : MonoBehaviour {
                 foreach (var generatePosition in generatePositions) {
                     var newProcessAction = new SongProcessAction();
 
-                    var currentItemPosition = generatePosition;
+                    var currentItemPosition = generatePosition * 2;
                     currentItemPosition = index == 0 ? currentItemPosition : currentItemPosition + 1;
 
                     newProcessAction.currentProgressAction = SlideNodeGenerateAction(currentItemPosition);
@@ -141,6 +149,48 @@ public class Metronome : MonoBehaviour {
         }
     }
 
+    private void ReadBackgorundAction() {
+        var mapFile = songData.backgroundFile.text.Split('\n');
+        int position = 0;
+        
+        for (int i = 0; i < mapFile.Length; i++) {
+            if (mapFile[i].StartsWith(":")) {
+                continue;
+            }
+            
+            try {
+                if (mapFile[i].StartsWith("@")) {
+                    var newProcessAction = new SongProcessAction();
+
+                    var data = mapFile[i].Split('@')[1].Split(',');
+
+                    var topColor = data[0];
+                    var bottomColor = data[1];
+                    float duration = float.Parse(data[2]);
+
+                    newProcessAction.currentProgressAction = BackgroundControlAction(topColor, bottomColor, duration);
+                    newProcessAction.positionValue = position;
+
+                    backgroundActions.Add(newProcessAction);
+                }
+                else if (mapFile[i].StartsWith(".")) {
+                    var newProcessAction = new SongProcessAction();
+
+                    newProcessAction.currentProgressAction = () => {
+                    };
+                    newProcessAction.positionValue = 0;
+
+                    backgroundActions.Add(newProcessAction);
+                }
+            }
+            catch (Exception e) {
+                (e.ToString() + i).Log();
+            }
+
+            position++;
+        }
+    }
+
     private void MapSystemSetting(string key, double value) {
         if (!settingDictionary.ContainsKey(key)) {
             settingDictionary.Add(key, value);
@@ -161,7 +211,10 @@ public class Metronome : MonoBehaviour {
             Color hexToColorBottom;
 
             ColorUtility.TryParseHtmlString(topColor, out hexToColorTop);
-            ColorUtility.TryParseHtmlString(topColor, out hexToColorBottom);
+            ColorUtility.TryParseHtmlString(bottomColor, out hexToColorBottom);
+            
+            hexToColorTop.Log();
+            hexToColorBottom.Log();
 
             InGameManager.instance.ChangeBackgroundColor(hexToColorTop, hexToColorBottom, duration);
         };
