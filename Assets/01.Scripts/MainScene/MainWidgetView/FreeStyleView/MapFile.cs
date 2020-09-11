@@ -31,5 +31,9 @@ public class MapFile : ScriptableObject {
 
     [SerializeField]
     private int _currentSelectDifficulty;
-    public int currentSelectDifficulty => _currentSelectDifficulty;
+
+    public int currentSelectDifficulty {
+        get => _currentSelectDifficulty;
+        set => _currentSelectDifficulty = value;
+    }
 }
