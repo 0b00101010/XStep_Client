@@ -35,7 +35,7 @@ public class Metronome : MonoBehaviour {
         bpm = settingDictionary["BPM"];
         split = (int) settingDictionary["Split"];
         offset = settingDictionary["Delay"] / 1000;
-        effectSplit = split * 2;
+        effectSplit = (split * 2) - 1;
 
         var offsetForSample = offset * audioSource.clip.frequency;
 
@@ -82,7 +82,7 @@ public class Metronome : MonoBehaviour {
             nextStep += oneBeatTime;
             beatCount++;
             
-            if (beatCount % (effectSplit) == 0) {
+            if ((beatCount & effectSplit) == 0) {
                 InGameManager.instance.centerEffectorController.EffectOneShot();
             }
         }

@@ -160,16 +160,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
             
         }
     }
-
-    public void LongNodeInteractionEnd(int postion){
-        try {
-            // activeLongNode[postion][0]
-        }
-        catch {
-            
-        }
-    }
-
+    
     public void LongNodeStop(int position){
         int index = -1;
 
@@ -210,5 +201,9 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         }
         
         return Vector2.zero;
+    }
+
+    private void OnDestroy() {
+        GameManager.instance.touchManager.RemoveTouchObserver(this);
     }
 }

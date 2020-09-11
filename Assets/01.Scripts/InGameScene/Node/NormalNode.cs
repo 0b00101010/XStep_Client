@@ -58,7 +58,7 @@ public class NormalNode : Node
         float processLevel = moveTween.ElapsedPercentage();
         
         switch(processLevel){
-            case var k when (judgePerfect - processLevel) < 0.01f:
+            case var k when (judgePerfect - processLevel) < 0.07f:
             judgeLevel = 4;
             InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
             break; 
@@ -81,9 +81,7 @@ public class NormalNode : Node
     public override void FailedInteraction(){
         base.FailedInteraction();
         destoryEvent.Invoke(this, positionValue);
-        
         InGameManager.instance.scoreManager.AddScore(0);
-
         StartCoroutine(FailedInteractionCoroutine());
     }
 

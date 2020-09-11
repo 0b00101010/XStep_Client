@@ -22,6 +22,7 @@ public class LongNode : Node
     private bool isFailedInteraction;
 
     private int interactionFrame;
+    private int judgeLevel;
     
     private int position;
 
@@ -113,11 +114,15 @@ public class LongNode : Node
         if(isInteraction) {
             interactionFrame++;
 
-            if (interactionFrame % 10 == 0) {
-                isInteraction = false;
+            if ((interactionFrame & 9) == 0) {
+                if (judgeLevel == 4) {
+                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(position);
+                }
+                InGameManager.instance.scoreManager.AddScore(judgeLevel);
+
             }
         } else {
-            int judgeLevel = 0;
+            judgeLevel = 0;
             float processLevel = headTween.ElapsedPercentage();
         
             switch(processLevel){

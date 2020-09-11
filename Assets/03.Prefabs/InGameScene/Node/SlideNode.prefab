@@ -97,9 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redutionHp: 0
   _arriveTime: 0.5
-  _judgePerfect: 0.5
-  _judgeGreat: 0.3
-  _judgeGood: 0.2
+  _judgePerfect: 0.95
+  _judgeGreat: 0.8
+  _judgeGood: 0.7
   generateEvent:
     m_PersistentCalls:
       m_Calls:
