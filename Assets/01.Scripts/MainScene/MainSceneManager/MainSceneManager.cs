@@ -24,6 +24,10 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     private void Start(){
         GameManager.instance.touchManager.AddTouchObserver(this);
         GameManager.instance.touchManager.touchType = TouchType.MainScene;
+
+        if (GameManager.instance.gameResult != null) {
+            uiController.ResultOpen();
+        }
     }
 
     public void TouchDownNotify(){

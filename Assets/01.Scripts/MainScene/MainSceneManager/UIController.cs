@@ -13,6 +13,9 @@ public class UIController : MonoBehaviour
     private FreeStyleViewController freeStyleViewController;
 
     [SerializeField]
+    private ResultViewController resultViewController;
+    
+    [SerializeField]
     private TextMeshProUGUI titleText;
 
     [SerializeField]
@@ -21,6 +24,11 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image userProfileImage;
 
+    public void ResultOpen() {
+        freeStyleViewController.gameObject.SetActive(false);
+        resultViewController.Open();
+    }
+    
     public void SetInformationBoxText(string value){
         informationBoxText.text = value;
     }
