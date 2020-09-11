@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using Packages.Rider.Editor.UnitTesting;
 
 [Serializable]
 public class Map {
