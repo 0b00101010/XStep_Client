@@ -74,33 +74,34 @@ public class LongNode : Node
         });
 
         headTween.OnKill(() => {
-            tailTween = null;
+            headTween = null;
         }); 
     }
 
     public bool TailStart(){
-        if (tailCoroutine != null) {
+        if(tailTween != null && tailTween.IsPlaying()){
             return true;
         }
 
-        tailCoroutine = TailStartCoroutine().Start(this);
+        tailTween?.Kill();
+
+        tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime);
+
+        tailTween.OnUpdate(() => {
+            lineRenderer.SetPosition(1, tailVector);
+        });
+
+        tailTween.OnComplete(() => {
+            ObjectReset();
+        });
+
+        tailTween.OnKill(() => {
+            tailTween = null;
+        });
 
         return false;
     }
 
-    private IEnumerator TailStartCoroutine() {
-        var firstTailVector = tailVector;
-        var waitingTime = new WaitForSeconds(arriveTime / 60.0f);
-
-        for (int i = 0; i < 60; i++) {
-            tailVector = Vector2.Lerp(firstTailVector, targetPosition, (i / 60.0f));
-            lineRenderer.SetPosition(1, tailVector);
-            yield return waitingTime;
-        }
-        
-        ObjectReset();
-        tailCoroutine = null;
-    }
 
     public override void Interaction(){
         if(isFailedInteraction){
