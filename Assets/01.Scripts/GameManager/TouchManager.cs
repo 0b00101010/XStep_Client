@@ -111,46 +111,44 @@ public class TouchManager : MonoBehaviour
 
     private void ProcessTouch(){
         if(Input.touchCount > 0){
-            Touch tempTouch = Input.touches[0];
+            var tempTouch = Input.touches;
 
-            if(tempTouch.phase.Equals(TouchPhase.Began)){
-                touchDownNotScreenPosition = tempTouch.position;
-
-                if(touchType.Equals(TouchType.InGame)){
+            for (int i = 0; i < tempTouch.Length; i++) {
+                if (tempTouch[i].phase.Equals(TouchPhase.Began)) {
                     isTouch = true;
-                    touchDownNotScreenPosition = tempTouch.position;
+                    touchDownNotScreenPosition = tempTouch[i].position;
                     touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
                     TouchDownNotify();
                 }
+                else if (tempTouch[i].phase.Equals(TouchPhase.Moved)) {
+                    Vector2 currentPosition = tempTouch[i].position;
+                    if ((currentPosition - touchDownNotScreenPosition).magnitude > minSwipeDistance) {
+                        swipeDirection = (currentPosition - touchDownNotScreenPosition).normalized;
+                        isSwipe = true;
+                    }
+                }
+                else if (tempTouch[i].phase.Equals(TouchPhase.Stationary)) {
+                    keepTouchTimer += Time.deltaTime;
+                    if (!isTouch && !isSwipe) {
+                        isTouch = true;
+                        touchDownNotScreenPosition = tempTouch[i].position;
+                        touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
+                        TouchDownNotify();
+                    }
 
-            }
-            else if(tempTouch.phase.Equals(TouchPhase.Moved)){
-                Vector2 currentPosition = tempTouch.position;
-                if((currentPosition - touchDownNotScreenPosition).magnitude > minSwipeDistance){
-                    swipeDirection = (currentPosition - touchDownNotScreenPosition).normalized;
-                    isSwipe = true;
+                    if (keepTouchTimer > 1.5f) {
+                        isHolding = true;
+                        touchHoldingPosition = mainCamera.ScreenToWorldPoint(tempTouch[i].position);
+                    }
                 }
-            }
-            else if (tempTouch.phase.Equals(TouchPhase.Stationary)){
-                keepTouchTimer += Time.deltaTime;
-                if(!isTouch && !isSwipe){
-                    isTouch = true;
-                    touchDownNotScreenPosition = tempTouch.position;
-                    touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
-                    TouchDownNotify();
+                else if (tempTouch[i].phase.Equals(TouchPhase.Ended)) {
+                    isTouch = false;
+                    isSwipe = false;
+                    isHolding = false;
+                    keepTouchTimer = 0.0f;
+                    touchUpPosition = mainCamera.ScreenToWorldPoint(tempTouch[i].position);
+                    TouchUpNotify();
                 }
-                if(keepTouchTimer > 1.5f){
-                    isHolding = true;
-                    touchHoldingPosition = mainCamera.ScreenToWorldPoint(tempTouch.position);
-                }
-            }
-            else if(tempTouch.phase.Equals(TouchPhase.Ended)){
-                isTouch = false;
-                isSwipe = false;
-                isHolding = false;
-                keepTouchTimer = 0.0f;
-                touchUpPosition = mainCamera.ScreenToWorldPoint(tempTouch.position);
-                TouchUpNotify();
             }
         }
     }
