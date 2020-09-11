@@ -62,25 +62,6 @@ public class NodeCreator : MonoBehaviour
         tempNodes = longNodeParentObject.GetComponentsInChildren<LongNode>(true);
         longNodes = tempNodes.ToList();
     }
-    
-    #if UNITY_EDITOR
-    private void Update(){
-        switch(Input.anyKeyDown){
-            case var k when Input.GetKeyDown(KeyCode.I):
-            NormalNodeGenerate();
-            break;
-            
-            case var k when Input.GetKeyDown(KeyCode.O):
-            SlideNodeGenerate();
-            break;
-            
-            case var k when Input.GetKeyDown(KeyCode.P):
-            LongNodeGenerate();
-            break;
-        
-        } 
-    }
-    #endif
 
     private IEnumerator NodeGenerateCoroutine(){
         while(true){
@@ -93,31 +74,12 @@ public class NodeCreator : MonoBehaviour
             yield return YieldInstructionCache.WaitingSeconds(1.5f);
         }
     }
-
-    private void NormalNodeGenerate(){
-        Node node = GetAvaliableNode(normalNodes);
-        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[Random.Range(0, normalNodeTargetPositions.Length)]);
-    }
-
-
+    
     public void NormalNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(normalNodes);
         node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index]);
     }
 
-    private void SlideNodeGenerate(){
-        int index = Random.Range(0, 8);
-
-        Node node = GetAvaliableNode(slideNodes);
-
-        Vector2 startPosition = Vector2.zero;
-        Vector2 targetPosition = Vector2.zero;
-        
-        SetSlideNodeVector(ref startPosition, ref targetPosition, index);
-        
-        node.Execute(startPosition, targetPosition, index);
-    }
-    
     // FIXME : 솔직히 조금 그렇지 않나
     public void SlideNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(slideNodes);
@@ -157,13 +119,7 @@ public class NodeCreator : MonoBehaviour
         }
 
     }
-
-    private void LongNodeGenerate(){
-        int index = Random.Range(0,4);
-        Node node = GetAvaliableNode(longNodes);
-        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], index);
-    }
-
+    
     public void LongNodeGenerate(int index = 0){
         Node node = GetAvaliableNode(longNodes);
         node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], index);
