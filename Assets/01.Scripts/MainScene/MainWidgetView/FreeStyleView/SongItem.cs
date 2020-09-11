@@ -52,8 +52,10 @@ public class SongItem : MainUIObject
         if (GameManager.instance.SomeUIInteraction) {
             return;
         }
-        
+
+        GameManager.instance.selectSongItem = songItemInformation;
         GameManager.instance.songData = songItemInformation.MapFile;
+        
         MainSceneManager.instance.uiController.OpenSongInformationPanner(songItemInformation);
     }
 }

@@ -16,31 +16,31 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     [SerializeField]
     private MapFile _songData;
+
+    [SerializeField]
+    private SongItemInformation _selectSongItem;
+    
     private PlayerSetting playerSetting;
     public PlayerSetting PlayerSetting => playerSetting;
 
     private bool someUIInteraction;
     public bool SomeUIInteraction {get => someUIInteraction; set => someUIInteraction = value;}
-
+    
     public InGameResources inGameResources {
-        get {
-            return _inGameResources;
-        }
-
-        set {
-            _inGameResources = value;
-        }
+        get => _inGameResources;
+        set => _inGameResources = value;
     }
 
-    public MapFile songData{
-        get {
-            return _songData; 
-        }
-
-        set {
-            _songData = value;
-        }        
+    public MapFile songData {
+        get => _songData;
+        set => _songData = value;
     }
+    
+    public SongItemInformation selectSongItem {
+        get => _selectSongItem;
+        set => _selectSongItem = value;
+    }
+    
 
     private void Awake(){ 
         touchManager = gameObject.GetComponent<TouchManager>();
