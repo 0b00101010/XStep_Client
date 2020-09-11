@@ -17,6 +17,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     
     private Ray ray;
 
+    private IEnumerator touchHoldCoroutine;
+
     private void Awake(){
         GameManager.instance.touchManager.AddTouchObserver(this);
         
@@ -63,15 +65,25 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     #endif
 
 
-    public void TouchDownNotify(){
-        NormalNodeInteraction(GetHitBoxIndex());
+    public void TouchDownNotify() {
+        var touchIndex = GetHitBoxIndex();
+        NormalNodeInteraction(touchIndex);
+        touchHoldCoroutine = TouchHold(touchIndex).Start(this);
         SlideNodeInteractionStart(GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
     }
 
     public void TouchUpNotify(){
+        touchHoldCoroutine?.Stop(this);
         SlideNodeInteractionEnd(GetHitBoxPosition(GameManager.instance.touchManager.TouchUpPosition));
     }
 
+    private IEnumerator TouchHold(int position) {
+        while (true) {
+            LongNodeInteractionStart(position);
+            yield return YieldInstructionCache.WaitFrame;
+        }
+    }
+    
     public void AddActiveNode(Node node, int position){
         activeNode[position].Add(node);
     }
