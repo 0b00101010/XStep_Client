@@ -61,7 +61,8 @@ public class ResultViewController : MonoBehaviour {
     public void Setting() {
         var songInformation = GameManager.instance.selectSongItem;
         var songData = songInformation.MapFile;
-
+        var result = GameManager.instance.gameResult;
+        
         eyecatchImage.sprite = songInformation.EyeCatch;
         
         songName.text = songInformation.SongName;
@@ -74,7 +75,9 @@ public class ResultViewController : MonoBehaviour {
         difficultyImage.sprite = difficultySprites[songData.currentSelectDifficulty];
         difficultyText.text = $"Lv. {songInformation.Difficultys[songData.currentSelectDifficulty].ToString("D2")}";
 
-        
+        for (int i = 0; i < result.JudgeCounts.Length; i++) {
+            judgeCountTexts[i].text = result.JudgeCounts[i].ToString("D4");
+        }
         
         rankText.text = "SSS";
         accuracyText.text = $"{100.ToString("F2")}%";
