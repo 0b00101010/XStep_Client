@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using UnityEditor.U2D;
 using UnityEngine;
 
 public class Metronome : MonoBehaviour {
@@ -21,7 +22,10 @@ public class Metronome : MonoBehaviour {
     private MapFile songData;
 
     private int split;
+    private int beatCount;
 
+    private int effectSplit;
+    
     private void Start() {
         audioSource = gameObject.GetComponent<AudioSource>();
         songData = GameManager.instance.songData;
@@ -34,6 +38,7 @@ public class Metronome : MonoBehaviour {
         bpm = settingDictionary["BPM"];
         split = (int) settingDictionary["Split"];
         offset = settingDictionary["Delay"] / 1000;
+        effectSplit = split * 2;
 
         var offsetForSample = offset * audioSource.clip.frequency;
 
@@ -74,6 +79,11 @@ public class Metronome : MonoBehaviour {
             } while (beforePosition != 0 && songProcessActions[0].positionValue.Equals(beforePosition));
 
             nextStep += oneBeatTime;
+            beatCount++;
+            
+            if (beatCount % (effectSplit) == 0) {
+                InGameManager.instance.centerEffectorController.EffectOneShot();
+            }
         }
         else {
             do {

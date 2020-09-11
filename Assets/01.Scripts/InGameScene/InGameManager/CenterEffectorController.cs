@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class CenterEffecterController : MonoBehaviour
+public class CenterEffectorController : MonoBehaviour
 {
 
     [SerializeField]
-    private Image[] effecterImages;
+    private Image[] effectorImages;
 
     [SerializeField]
     private float changeScaleValue;
@@ -30,10 +30,6 @@ public class CenterEffecterController : MonoBehaviour
 
     }
 
-    private void Start(){
-        StartCoroutine(EffectCoroutine());
-    }
-
     public void EffectOneShot(){
         if(isEffect){
             return;
@@ -44,26 +40,26 @@ public class CenterEffecterController : MonoBehaviour
 
     private IEnumerator EffectCoroutine(){
         for(int i = 0; i < realRepeatFrame; i++){
-            effecterImages[1].gameObject.transform.localScale += changeScale;
+            effectorImages[1].gameObject.transform.localScale += changeScale;
             yield return YieldInstructionCache.WaitFrame;
         }
 
         for(int i = 0; i < realRepeatFrame; i++){
-            effecterImages[1].gameObject.transform.localScale -= changeScale;
+            effectorImages[1].gameObject.transform.localScale -= changeScale;
             yield return YieldInstructionCache.WaitFrame;
         }
 
 
         for(int i = 0; i < realRepeatFrame; i++){
-            for(int j = 0; j < effecterImages.Length; j++){
-                effecterImages[j].gameObject.transform.localScale += changeScale;
+            for(int j = 0; j < effectorImages.Length; j++){
+                effectorImages[j].gameObject.transform.localScale += changeScale;
             }
             yield return YieldInstructionCache.WaitFrame;
         }
 
         for(int i = 0; i < realRepeatFrame; i++){
-            for(int j = 0; j < effecterImages.Length; j++){
-                effecterImages[j].gameObject.transform.localScale -= changeScale;
+            for(int j = 0; j < effectorImages.Length; j++){
+                effectorImages[j].gameObject.transform.localScale -= changeScale;
             }
             yield return YieldInstructionCache.WaitFrame;
         }
