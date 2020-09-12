@@ -43,6 +43,7 @@ public class InGameManager : MonoBehaviour
     }    
 
     public void GameEnd() {
+        instance = null;
         SceneManager.LoadScene("00.MainScene");
     }
 

@@ -48,6 +48,8 @@ public class Metronome : MonoBehaviour {
     }
 
     private void Update() {
+        InGameManager.instance.scoreManager.SongProgressChange(nextStep / audioSource.clip.samples);
+
         if (audioSource.timeSamples >= nextStep) {
             NodeGenerate();
         }
@@ -55,8 +57,6 @@ public class Metronome : MonoBehaviour {
         if (audioSource.time.Equals(audioSource.clip.length)) {
             InGameManager.instance.GameEnd();
         }
-        
-        InGameManager.instance.scoreManager.SongProgressChange(nextStep / audioSource.clip.samples);
     }
 
     private void NodeGenerate() {
