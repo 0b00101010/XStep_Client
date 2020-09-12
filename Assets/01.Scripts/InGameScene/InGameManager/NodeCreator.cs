@@ -63,20 +63,20 @@ public class NodeCreator : MonoBehaviour
         longNodes = tempNodes.ToList();
     }
     
-    public void NormalNodeGenerate(int index = 0){
-        Node node = GetAvaliableNode(normalNodes);
-        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index]);
+    public void NormalNodeGenerate(int index, double generateTime){
+        Node node = GetAvailableNode(normalNodes);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], generateTime);
     }
 
     // FIXME : 솔직히 조금 그렇지 않나
-    public void SlideNodeGenerate(int index = 0){
-        Node node = GetAvaliableNode(slideNodes);
+    public void SlideNodeGenerate(int index, double generateTime){
+        Node node = GetAvailableNode(slideNodes);
 
         Vector2 startPosition = Vector2.zero;
         Vector2 targetPosition = Vector2.zero;
         
         SetSlideNodeVector(ref startPosition, ref targetPosition, index);
-        node.Execute(startPosition, targetPosition, index);
+        node.Execute(startPosition, targetPosition, generateTime, index);
     }
 
     private void SetSlideNodeVector(ref Vector2 startPosition, ref Vector2 targetPosition, int index){  
@@ -108,16 +108,16 @@ public class NodeCreator : MonoBehaviour
 
     }
     
-    public void LongNodeGenerate(int index = 0){
-        Node node = GetAvaliableNode(longNodes);
-        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], index);
+    public void LongNodeGenerate(int index, double generateTime){
+        Node node = GetAvailableNode(longNodes);
+        node.Execute(nodeGeneratePosition.position, normalNodeTargetPositions[index], generateTime, index);
     }
 
     public void LongNodeStop(int index){
         longNodeStopEvent.Invoke(index);
     }
     
-    private Node GetAvaliableNode(List<Node> nodes){
+    private Node GetAvailableNode(List<Node> nodes){
         Node returnNode = null;
         
         nodes.ForEach((node) => {

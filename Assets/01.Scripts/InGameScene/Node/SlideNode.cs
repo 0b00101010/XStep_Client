@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,15 +20,11 @@ public class SlideNode : Node
     private Event<Node, int> generateEvent;
 
     [SerializeField]
-    private Event<Node, int> destoryEvent;
+    private Event<Node, int> destroyEvent;
 
     public Vector2 SlideDirection => slideDirection;
-
-    private new void Awake(){
-        base.Awake();
-    }
     
-    public override void Execute(Vector2 startPosition, Vector2 targetPosition, int index){
+    public override void Execute(Vector2 startPosition, Vector2 targetPosition, double generateTime, int index){
         gameObject.SetActive(true);
 
         SetSpriteFlip(index);
@@ -37,6 +33,9 @@ public class SlideNode : Node
 
         positionValue = SlideNodeProcess(index);
 
+        this.generateTime = generateTime;
+        this.perfectSample = generateTime + arriveTimeToSample;
+        
         this.startPosition = startPosition;
         this.targetPosition = targetPosition;
 
@@ -53,32 +52,36 @@ public class SlideNode : Node
         slideTween = gameObject.transform.DOMove(targetPosition, arriveTime);
         yield return slideTween.WaitForCompletion();
 
-        FailedInteraction();
+        JudgeCoroutine().Start(this);
     }
 
-    public override void Interaction(){
+    public override void Interaction(double interactionTime){
         int judgeLevel = 0;
-        float processLevel = slideTween.ElapsedPercentage();
+        double processLevel = Math.Abs(perfectSample - interactionTime);
         
         switch(processLevel){
-            case var k when (judgePerfect - processLevel) < 0.01f:
-            judgeLevel = 4;
-            InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
-            break; 
+            case var k when processLevel < judgePerfect:
+                judgeLevel = 4;
+                InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+                break; 
+            case var k when processLevel > judgePerfect:
+                judgeLevel = 3;
+                break; 
             case var k when processLevel > judgeGreat:
-            judgeLevel = 3;
-            break; 
-            case var k when processLevel > judgeGood:
-            judgeLevel = 2;
-            break; 
+                judgeLevel = 2;
+                break; 
             case var k when processLevel < judgeGood:
-            judgeLevel = 1;
-            break; 
+                judgeLevel = 1;
+                break; 
         }
-        
-        destoryEvent.Invoke(this, positionValue);
+        destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
         ObjectReset();
+    }
+    
+    private IEnumerator JudgeCoroutine() {
+        yield return new WaitWhile( () => perfectSample + judgeGreat > GetCurrentTimeSample());
+        FailedInteraction();
     }
 
     public override void FailedInteraction(){
@@ -92,7 +95,7 @@ public class SlideNode : Node
     }
 
     public IEnumerator FailedInteractionCoroutine(){
-        destoryEvent.Invoke(this, positionValue);
+        destroyEvent.Invoke(this, positionValue);
         yield return resetTween.WaitForCompletion();
         ObjectReset();
     }

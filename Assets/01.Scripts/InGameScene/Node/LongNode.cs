@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -24,7 +25,7 @@ public class LongNode : Node
     private int interactionFrame;
     private int judgeLevel;
     
-    private int position;
+    private int positionValue;
 
     [Header("Events")]
     [SerializeField]
@@ -38,11 +39,16 @@ public class LongNode : Node
 
         lineRenderer = gameObject.GetComponent<LineRenderer>();
     }
+    
+    
 
-    public override void Execute(Vector2 startPosition, Vector2 targetPosition, int position){
+    public override void Execute(Vector2 startPosition, Vector2 targetPosition, double generateTime, int position){
         gameObject.SetActive(true);
+
+        this.generateTime = generateTime;
+        this.perfectSample = generateTime + arriveTimeToSample;
         
-        this.position = position;
+        this.positionValue = position;
         this.startPosition = startPosition;
         this.targetPosition = Vector2.Lerp(startPosition, targetPosition, 0.9f);
 
@@ -60,7 +66,7 @@ public class LongNode : Node
     }
 
     private void HeadStart(){
-        generateEvent.Invoke(this, position);
+        generateEvent.Invoke(this, positionValue);
 
         headTween?.Kill();
         
@@ -71,14 +77,19 @@ public class LongNode : Node
         });
 
         headTween.OnComplete(() => {
-            if(!isInteraction){
-                FailedInteraction();
+            if (isInteraction == false) {
+                JudgeCoroutine().Start(this);
             }
         });
-
+        
         headTween.OnKill(() => {
             headTween = null;
         }); 
+    }
+
+    private IEnumerator JudgeCoroutine() {
+        yield return new WaitWhile( () => perfectSample + judgeGreat > GetCurrentTimeSample());
+        FailedInteraction();
     }
 
     public bool TailStart(){
@@ -105,38 +116,36 @@ public class LongNode : Node
         return false;
     }
 
-
-    public override void Interaction(){
+    public override void Interaction(double interactionTime){
         if(isFailedInteraction) {
             return;
         }
-
+        
         if(isInteraction) {
             interactionFrame++;
 
             if ((interactionFrame & 9) == 0) {
                 if (judgeLevel == 4) {
-                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(position);
+                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
                 }
                 InGameManager.instance.scoreManager.AddScore(judgeLevel);
 
             }
         } else {
-            judgeLevel = 0;
-            float processLevel = headTween.ElapsedPercentage();
-        
+            double processLevel = Math.Abs(perfectSample - interactionTime);
+            
             switch(processLevel){
-                case var k when (judgePerfect - processLevel) < 0.01f:
+                case var k when processLevel < judgePerfect:
                     judgeLevel = 4;
-                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(position);
+                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
                     break; 
-                case var k when processLevel > judgeGreat:
+                case var k when processLevel < judgeGreat:
                     judgeLevel = 3;
                     break; 
-                case var k when processLevel > judgeGood:
+                case var k when processLevel < judgeGood:
                     judgeLevel = 2;
                     break; 
-                case var k when processLevel < judgeGood:
+                default:
                     judgeLevel = 1;
                     break; 
             }
@@ -156,6 +165,7 @@ public class LongNode : Node
         isInteraction = false;
         isFailedInteraction = false;
         gameObject.SetActive(false);
-        inactiveEvent.Invoke(this, position);
+        judgeLevel = 0;
+        inactiveEvent.Invoke(this, positionValue);
     }
 }

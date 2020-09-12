@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,13 +12,14 @@ public class NormalNode : Node
 
     [Header("Events")]
     [SerializeField]
-    private Event<Node, int> generateEvnet;
+    private Event<Node, int> generateEvent;
 
     [SerializeField]
-    private Event<Node, int> destoryEvent;
+    private Event<Node, int> destroyEvent;
 
     private int positionValue;
-
+    private bool isExecuting;
+    
     private Tween executeTween;
     private Tween resetTween;
     private Tween moveTween;
@@ -30,68 +31,76 @@ public class NormalNode : Node
         defaultScale = Vector3.one / 5;
         gameObject.transform.localScale = defaultScale;
     }
+    
+    public override void Execute(Vector2 startPosition,Vector2 targetPosition,double generateTime){
+        gameObject.SetActive(true);
 
-    public override void Execute(Vector2 startPosition,Vector2 targetPosition){
         this.startPosition = startPosition;
         this.targetPosition = targetPosition;
+        this.generateTime = generateTime;
+        this.perfectSample = generateTime + arriveTimeToSample;
 
         gameObject.transform.position = startPosition;
 
-        gameObject.SetActive(true);
-
         SetSpriteDirection();
-        StartCoroutine(ExecuteCoroutine());
+        ExecuteCoroutine().Start(this);
         
-        generateEvnet.Invoke(this, positionValue);
+        isExecuting = true;
+        generateEvent.Invoke(this, positionValue);
     }
 
     private IEnumerator ExecuteCoroutine(){
         executeTween = spriteRenderer.DOFade(1.0f, 0.2f);
         yield return executeTween.WaitForCompletion();
 
-        moveTween = gameObject.transform.DOMove(targetPosition, arriveTime);
+        moveTween = gameObject.transform.DOMove(Vector2.Lerp(startPosition,targetPosition, 0.8f), arriveTime);
         scaleTween = gameObject.transform.DOScale(Vector3.one, arriveTime);
+
+        yield return moveTween.WaitForCompletion();
+        yield return new WaitWhile( () => perfectSample + judgeGreat > GetCurrentTimeSample());
+        
+        FailedInteraction();
     }
 
-    public override void Interaction(){
-        if (moveTween != null == false) {
+    public override void Interaction(double interactionTime){
+        if (moveTween == null) {
             return;
-        }
+        }        
         
         int judgeLevel = 0;
-        float processLevel = moveTween.ElapsedPercentage();
+        double processLevel = Math.Abs(perfectSample - interactionTime);
         
         switch(processLevel){
-            case var k when (judgePerfect - processLevel) < 0.07f:
-            judgeLevel = 4;
-            InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
-            break; 
-            case var k when processLevel > judgeGreat:
-            judgeLevel = 3;
-            break; 
-            case var k when processLevel > judgeGood:
-            judgeLevel = 2;
-            break; 
+            case var k when processLevel < judgePerfect:
+                judgeLevel = 4;
+                InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+                break; 
+            case var k when processLevel < judgeGreat:
+                judgeLevel = 3;
+                break; 
             case var k when processLevel < judgeGood:
-            judgeLevel = 1;
-            break; 
+                judgeLevel = 2;
+                break; 
+            default:
+                judgeLevel = 1;
+                break; 
         }
 
-        destoryEvent.Invoke(this, positionValue);
+        destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
         ObjectReset();
     }
 
     public override void FailedInteraction(){
-        base.FailedInteraction();
-        destoryEvent.Invoke(this, positionValue);
+        destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(0);
         StartCoroutine(FailedInteractionCoroutine());
     }
 
     private IEnumerator FailedInteractionCoroutine(){
-        resetTween = spriteRenderer.DOFade(0.0f, 0.3f);
+        resetTween = spriteRenderer.DOFade(0.0f, 0.5f);
         yield return resetTween.WaitForCompletion();
+        
         ObjectReset();
     }
 
@@ -100,13 +109,16 @@ public class NormalNode : Node
 
         moveTween.Kill();
         scaleTween.Kill();
-
+        resetTween.Kill();
+        
         gameObject.transform.position = startPosition;
         gameObject.transform.localScale = defaultScale;     
 
         moveTween = null;
         scaleTween = null;
         executeTween = null;
+
+        isExecuting = false;
 
         base.ObjectReset();
     }
@@ -118,11 +130,5 @@ public class NormalNode : Node
         positionValue += targetPosition.x < 0 ? 1 : 2; 
         positionValue += targetPosition.y < 0 ? 1 : -1; 
         
-    } 
-
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("NodeJudge")){
-            FailedInteraction();
-        }
     }
 }

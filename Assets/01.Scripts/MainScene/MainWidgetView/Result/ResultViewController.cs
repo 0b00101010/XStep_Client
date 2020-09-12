@@ -81,7 +81,7 @@ public class ResultViewController : MonoBehaviour {
         
         rankText.text = "SSS";
         accuracyText.text = $"{100.ToString("F2")}%";
-        scoreText.text = 10.ToString("D11");
+        scoreText.text = 2341234200.ToString("D11");
     }
 
     public void Open() {    

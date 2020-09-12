@@ -17,11 +17,18 @@ public class InGameManager : MonoBehaviour
 
     [HideInInspector]
     public CenterEffectorController centerEffectorController;
+
+    [HideInInspector]
+    public NodeInteractionController nodeInteractionController;
+
+    [HideInInspector]
+    public Metronome metronome;
+    
     
     [Header("Events")]
     [SerializeField]
     private UniEvent<Color,Color,float> backgroundColorChangeEvent;
-
+    
     
     private void Awake(){
         if(instance is null){
@@ -30,7 +37,9 @@ public class InGameManager : MonoBehaviour
 
         scoreManager = gameObject.GetComponent<ScoreManager>();
         nodeCreator = gameObject.GetComponent<NodeCreator>();
+        metronome = gameObject.GetComponent<Metronome>();
         centerEffectorController = gameObject.GetComponent<CenterEffectorController>();
+        nodeInteractionController = gameObject.GetComponent<NodeInteractionController>();
     }
 
     private void Start(){

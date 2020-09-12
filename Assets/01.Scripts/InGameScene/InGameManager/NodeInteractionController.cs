@@ -19,6 +19,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     private IEnumerator touchHoldCoroutine;
 
+    private Func<double> getCurrentSample;
+    
     private void Awake(){
         for(int i = 0; i < 4; i++){
             activeNode.Add(new List<Node>());
@@ -27,40 +29,41 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         }
     }
     
-    private void Start(){
+    private void Start() {
+        getCurrentSample = InGameManager.instance.metronome.GetCurrentSample;
         GameManager.instance.touchManager.AddTouchObserver(this);
     }
 
     #if UNITY_EDITOR
     private void Update(){
         if(Input.GetKeyDown(KeyCode.A)){
-            NormalNodeInteraction(0);
-            LongNodeInteractionStart(0);
+            NormalNodeInteraction(0, getCurrentSample());
+            LongNodeInteractionStart(0, getCurrentSample());
         }
         else if(Input.GetKeyDown(KeyCode.S)){
-            NormalNodeInteraction(1);
-            LongNodeInteractionStart(1);
+            NormalNodeInteraction(1, getCurrentSample());
+            LongNodeInteractionStart(1, getCurrentSample());
         }
         else if(Input.GetKeyDown(KeyCode.Z)){
-            NormalNodeInteraction(2);
-            LongNodeInteractionStart(2);
+            NormalNodeInteraction(2, getCurrentSample());
+            LongNodeInteractionStart(2, getCurrentSample());
         }
         else if(Input.GetKeyDown(KeyCode.X)){
-            NormalNodeInteraction(3);
-            LongNodeInteractionStart(3);
+            NormalNodeInteraction(3, getCurrentSample());
+            LongNodeInteractionStart(3, getCurrentSample());
         }
 
         if (Input.GetKey(KeyCode.A)) {
-            LongNodeInteractionStart(0);
+            LongNodeInteractionStart(0, getCurrentSample());
         }
         else if (Input.GetKey(KeyCode.S)) {
-            LongNodeInteractionStart(1);
+            LongNodeInteractionStart(1, getCurrentSample());
         }
         else if (Input.GetKey(KeyCode.Z)) {
-            LongNodeInteractionStart(2);
+            LongNodeInteractionStart(2, getCurrentSample());
         }
         else if (Input.GetKey(KeyCode.X)) {
-            LongNodeInteractionStart(3);
+            LongNodeInteractionStart(3, getCurrentSample());
         }
         
     }
@@ -69,7 +72,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     public void TouchDownNotify() {
         var touchIndex = GetHitBoxIndex();
-        NormalNodeInteraction(touchIndex);
+        NormalNodeInteraction(touchIndex, getCurrentSample());
         touchHoldCoroutine = TouchHold(touchIndex).Start(this);
         SlideNodeInteractionStart(GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
     }
@@ -81,7 +84,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     private IEnumerator TouchHold(int position) {
         while (true) {
-            LongNodeInteractionStart(position);
+            LongNodeInteractionStart(position, getCurrentSample());
             yield return YieldInstructionCache.WaitFrame;
         }
     }
@@ -104,9 +107,9 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         activeSlideNode[index].Remove(newNode);
     }
 
-    public void NormalNodeInteraction(int position){
+    public void NormalNodeInteraction(int position, double interactionTime){
         if (activeNode[position].Count > 0) {
-            activeNode[position][0].Interaction();
+            activeNode[position][0].Interaction(interactionTime);
         }
     }
 
@@ -116,10 +119,10 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     public void SlideNodeInteractionEnd(Vector2 position){
         slideEndPosition = position;
-        SlideNodeInteraction();
+        SlideNodeInteraction(getCurrentSample());
     }
 
-    private void SlideNodeInteraction(){
+    private void SlideNodeInteraction(double interactionTime){
         Vector2 direction = slideStartPosition.Direction(slideEndPosition);
         int index = -1;
         
@@ -138,7 +141,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         }
 
         if(activeSlideNode[index][0].SlideDirection.Equals(direction)){
-            activeSlideNode[index][0]?.Interaction();
+            activeSlideNode[index][0]?.Interaction(interactionTime);
         }
     }
     
@@ -152,9 +155,9 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         activeLongNode[index].Remove(removeNode);
     }
 
-    public void LongNodeInteractionStart(int position){
+    public void LongNodeInteractionStart(int position, double interactionTime){
         if (activeLongNode[position].Count > 0) {
-            activeLongNode[position][0].Interaction();
+            activeLongNode[position][0].Interaction(interactionTime);
         }
     }
     

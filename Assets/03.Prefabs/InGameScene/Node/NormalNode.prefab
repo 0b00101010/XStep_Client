@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520678093048748881}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redutionHp: 5
   _arriveTime: 0.75
-  _judgePerfect: 0.5
-  _judgeGreat: 0.45
-  _judgeGood: 0.3
+  _judgePerfect: 33
+  _judgeGreat: 66
+  _judgeGood: 99
   generateEvnet:
     m_PersistentCalls:
       m_Calls:

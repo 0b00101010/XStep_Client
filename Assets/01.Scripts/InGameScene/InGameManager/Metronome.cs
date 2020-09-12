@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Metronome : MonoBehaviour {
@@ -57,6 +58,18 @@ public class Metronome : MonoBehaviour {
         if (audioSource.time.Equals(audioSource.clip.length)) {
             InGameManager.instance.GameEnd();
         }
+    }
+
+    public double GetFrequency() {
+        return audioSource.clip.frequency;
+    }
+
+    public double GetCurrentSample() {
+        return audioSource.timeSamples;
+    }
+
+    public double GetCurrentTimeSample() {
+        return audioSource.timeSamples;
     }
 
     private void NodeGenerate() {
@@ -248,13 +261,13 @@ public class Metronome : MonoBehaviour {
 
     private Action NormalNodeGenerateAction(int position) {
         return () => {
-            InGameManager.instance.nodeCreator.NormalNodeGenerate(position);
+            InGameManager.instance.nodeCreator.NormalNodeGenerate(position, audioSource.timeSamples);
         };
     }
 
     private Action LongNodeGenerateAction(int position) {
         return () => {
-            InGameManager.instance.nodeCreator.LongNodeGenerate(position);
+            InGameManager.instance.nodeCreator.LongNodeGenerate(position, audioSource.timeSamples);
         };
     }
 
@@ -266,7 +279,7 @@ public class Metronome : MonoBehaviour {
 
     private Action SlideNodeGenerateAction(int position) {
         return () => {
-            InGameManager.instance.nodeCreator.SlideNodeGenerate(position);
-        };
+            InGameManager.instance.nodeCreator.SlideNodeGenerate(position, audioSource.timeSamples);
+        }; 
     }
 }

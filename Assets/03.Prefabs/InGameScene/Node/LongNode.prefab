@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redutionHp: 0
-  _arriveTime: 0.5
-  _judgePerfect: 0.95
-  _judgeGreat: 0.9
-  _judgeGood: 0.8
+  _arriveTime: 0.75
+  _judgePerfect: 33
+  _judgeGreat: 66
+  _judgeGood: 99
   generateEvent:
     m_PersistentCalls:
       m_Calls:
