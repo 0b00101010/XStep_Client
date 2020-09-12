@@ -18,6 +18,8 @@ public class DifficultSelectButton : MainUIObject {
 
     private void Awake() {
         backgroundImage = gameObject.transform.GetChild(1).GetComponent<Image>();
+        DifficultSelectButton.SelectDifficultyButton = null;
+
     }
     
     public override void Execute() {
