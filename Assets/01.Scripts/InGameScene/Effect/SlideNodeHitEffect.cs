@@ -4,8 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class SlideNodeHitEffect : MonoBehaviour
-{
+public class SlideNodeHitEffect : MonoBehaviour {
+    [Header("Values")]
+    [SerializeField]
+    private float sizeUpDuration;
+
+    [SerializeField]
+    private float fadeInDuration;
+
+    [SerializeField]
+    private float fadeOutDuration;
+
+    [SerializeField]
+    private float fadeAfterWaitingTime;
+    
     [Header("Objects")]
     [SerializeField]
     private SpriteRenderer[] rhombusObjects;
@@ -49,22 +61,22 @@ public class SlideNodeHitEffect : MonoBehaviour
         isTweening = true;
         for(int i = 0; i < rhombusLists.Count; i++){
             TweenCoroutine(rhombusLists[i]).Start(this);
-            objectTweens.Add(rhombusLists[i].gameObject.transform.DOScale(1,0.75f));
+            objectTweens.Add(rhombusLists[i].gameObject.transform.DOScale(1,sizeUpDuration));
 
             yield return YieldInstructionCache.WaitingSeconds(0.03f);
         }
 
         yield return objectTweens[objectTweens.Count-1].WaitForCompletion();
-        yield return YieldInstructionCache.WaitingSeconds(0.25f);
+        yield return YieldInstructionCache.WaitingSeconds(fadeAfterWaitingTime);
         
         ObjectReset();
         ObjectOff();
     }
 
     private IEnumerator TweenCoroutine(SpriteRenderer spriteRenderer){
-        objectTweens.Add(spriteRenderer.DOFade(1,0.5f));
+        objectTweens.Add(spriteRenderer.DOFade(1,fadeInDuration));
         yield return objectTweens[objectTweens.Count-1].WaitForCompletion();
-        objectTweens.Add(spriteRenderer.DOFade(0,0.25f));
+        objectTweens.Add(spriteRenderer.DOFade(0,fadeOutDuration));
     }
 
     private void ObjectReset(){

@@ -13131,6 +13131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445509109eadb49e78ba2ce7bab69e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeUpDuration: 0.75
+  fadeInDuration: 0.5
+  fadeOutDuration: 0.25
+  fadeAfterWaitingTime: 0.25
   rhombusObjects:
   - {fileID: 581311788}
   - {fileID: 1096300478}
@@ -13678,6 +13682,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445509109eadb49e78ba2ce7bab69e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeUpDuration: 0.75
+  fadeInDuration: 0.5
+  fadeOutDuration: 0.25
+  fadeAfterWaitingTime: 0.25
   rhombusObjects:
   - {fileID: 1006516499}
   - {fileID: 714342714}
@@ -15378,6 +15386,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445509109eadb49e78ba2ce7bab69e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeUpDuration: 0.75
+  fadeInDuration: 0.5
+  fadeOutDuration: 0.25
+  fadeAfterWaitingTime: 0.25
   rhombusObjects:
   - {fileID: 2131010262}
   - {fileID: 188882964}
@@ -25025,6 +25037,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445509109eadb49e78ba2ce7bab69e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeUpDuration: 0.75
+  fadeInDuration: 0.5
+  fadeOutDuration: 0.25
+  fadeAfterWaitingTime: 0.25
   rhombusObjects:
   - {fileID: 1070935640}
   - {fileID: 620461921}
