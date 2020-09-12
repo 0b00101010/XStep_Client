@@ -90,6 +90,9 @@ public class Metronome : MonoBehaviour {
             do {
                 songProcessActions[0].currentProgressAction();
                 songProcessActions.RemoveAt(0);
+                
+                backgroundActions[0]?.currentProgressAction();
+                backgroundActions.RemoveAt(0);
             } while (songProcessActions[0].positionValue == -1);
         }
     }
