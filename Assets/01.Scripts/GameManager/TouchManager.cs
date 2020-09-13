@@ -68,31 +68,11 @@ public class TouchManager : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0)) {
+            isTouch = true;
             touchDownNotScreenPosition = Input.mousePosition;
             touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
-            isTouch = true;
             TouchDownNotify();
 
-        }
-        else if(Input.GetMouseButton(0)){
-            Vector2 currentPosition = Input.mousePosition;
-            keepTouchTimer += Time.deltaTime;
-            if((currentPosition - touchDownNotScreenPosition).magnitude > minSwipeDistance){
-                swipeDirection = (currentPosition - touchDownNotScreenPosition).normalized;
-                isSwipe = true;
-            }
-
-            if(keepTouchTimer > 0.15f && !isTouch && !isSwipe){
-                touchDownNotScreenPosition = Input.mousePosition;
-                touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
-                isTouch = true;
-                TouchDownNotify();
-            }
-
-            if(keepTouchTimer > 1.5f){
-                isHolding = true;
-                touchHoldingPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            }
         }
         else if(Input.GetMouseButtonUp(0)){
             isHolding = false;
@@ -120,20 +100,6 @@ public class TouchManager : MonoBehaviour
                     if ((currentPosition - touchDownNotScreenPosition).magnitude > minSwipeDistance) {
                         swipeDirection = (currentPosition - touchDownNotScreenPosition).normalized;
                         isSwipe = true;
-                    }
-                }
-                else if (tempTouch[i].phase.Equals(TouchPhase.Stationary)) {
-                    keepTouchTimer += Time.deltaTime;
-                    if (!isTouch && !isSwipe) {
-                        isTouch = true;
-                        touchDownNotScreenPosition = tempTouch[i].position;
-                        touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
-                        TouchDownNotify();
-                    }
-
-                    if (keepTouchTimer > 1.5f) {
-                        isHolding = true;
-                        touchHoldingPosition = mainCamera.ScreenToWorldPoint(tempTouch[i].position);
                     }
                 }
                 else if (tempTouch[i].phase.Equals(TouchPhase.Ended)) {

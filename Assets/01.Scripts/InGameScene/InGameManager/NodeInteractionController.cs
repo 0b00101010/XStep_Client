@@ -17,7 +17,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     
     private Ray ray;
 
-    private IEnumerator touchHoldCoroutine;
+    private Dictionary<LongNode, IEnumerator> touchHoldCoroutines = new Dictionary<LongNode, IEnumerator>();
 
     private Func<double> getCurrentSample;
     
@@ -77,17 +77,27 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         SlideNodeInteractionStart(GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
     }
 
-    public void TouchUpNotify(){
-        touchHoldCoroutine?.Stop(this);
+    public void TouchUpNotify() {
+        var touchUpIndex = GetHitBoxIndex();
+        if (activeNode[touchUpIndex].Count > 0 && activeNode[touchUpIndex][0] is LongNode) {
+            StopLongCoroutine(activeNode[touchUpIndex][0] as LongNode);
+        }
         SlideNodeInteractionEnd(GetHitBoxPosition(GameManager.instance.touchManager.TouchUpPosition));
     }
-
+    
     private IEnumerator TouchHold(int position) {
         while (true) {
             LongNodeInteractionStart(position, getCurrentSample());
             yield return YieldInstructionCache.WaitFrame;
         }
     }
+
+    private void StopLongCoroutine(LongNode longNode) {
+        if (touchHoldCoroutines.ContainsKey(longNode)) {
+            touchHoldCoroutines[longNode].Stop(this);
+            touchHoldCoroutines.Remove(longNode);
+        }
+    }    
     
     public void AddActiveNode(Node node, int position){
         activeNode[position].Add(node);
@@ -117,9 +127,15 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         }
         else if (activeNode[position][0] is LongNode) {
             LongNodeInteractionStart(position, interactionTime);
-            touchHoldCoroutine = TouchHold(position).Start(this);
+
+            var longNode = activeNode[position][0] as LongNode;
+            if (touchHoldCoroutines.ContainsKey(longNode)) {
+                touchHoldCoroutines[longNode]?.Stop(this);
+                touchHoldCoroutines.Remove(longNode);
+            }
+            touchHoldCoroutines.Add(longNode, TouchHold(position).Start(this));
         }
-    }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     
     public void NormalNodeInteraction(int position, double interactionTime){
         if (activeNode[position].Count > 0) {
@@ -168,6 +184,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     public void RemoveActionLongNode(Node node, int index){
         var removeNode = node as LongNode;
+        StopLongCoroutine(removeNode);
         activeNode[index].Remove(removeNode);
     }
 

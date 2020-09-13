@@ -130,7 +130,6 @@ public class LongNode : Node
             }
         } else {
             double processLevel = Math.Abs(perfectSample - interactionTime);
-            processLevel.Log();    
             switch(processLevel){
                 case var k when processLevel < judgePerfect:
                     judgeLevel = 4;
