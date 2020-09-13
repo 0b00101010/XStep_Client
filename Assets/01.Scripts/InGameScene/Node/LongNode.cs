@@ -12,8 +12,7 @@ public class LongNode : Node
 
     private Tween headTween;
     private Tween tailTween;
-    private IEnumerator tailCoroutine;
-    
+
     private LineRenderer lineRenderer;
 
     private Vector2 headVector;
@@ -59,8 +58,6 @@ public class LongNode : Node
 
         headVector = startPosition;
         tailVector = startPosition;
-
-        tailCoroutine = null;
         
         HeadStart();
     }
@@ -70,7 +67,7 @@ public class LongNode : Node
 
         headTween?.Kill();
         
-        headTween = DOTween.To(() => headVector, x => headVector = x, targetPosition, arriveTime);
+        headTween = DOTween.To(() => headVector, x => headVector = x, targetPosition, arriveTime).SetEase(Ease.Linear);
 
         headTween.OnUpdate(() => {
             lineRenderer.SetPosition(0, headVector);
@@ -88,7 +85,7 @@ public class LongNode : Node
     }
 
     private IEnumerator JudgeCoroutine() {
-        yield return new WaitWhile( () => perfectSample + judgeGreat > GetCurrentTimeSample());
+        yield return new WaitWhile( () => perfectSample + judgeBad > GetCurrentTimeSample());
         FailedInteraction();
     }
 
@@ -99,7 +96,7 @@ public class LongNode : Node
 
         tailTween?.Kill();
 
-        tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime);
+        tailTween = DOTween.To(() => tailVector, x => tailVector = x, targetPosition, arriveTime).SetEase(Ease.Linear);
 
         tailTween.OnUpdate(() => {
             lineRenderer.SetPosition(1, tailVector);
@@ -120,7 +117,7 @@ public class LongNode : Node
         if(isFailedInteraction) {
             return;
         }
-        
+
         if(isInteraction) {
             interactionFrame++;
 
@@ -133,7 +130,7 @@ public class LongNode : Node
             }
         } else {
             double processLevel = Math.Abs(perfectSample - interactionTime);
-            
+            processLevel.Log();    
             switch(processLevel){
                 case var k when processLevel < judgePerfect:
                     judgeLevel = 4;

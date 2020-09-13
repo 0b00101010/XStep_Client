@@ -80,7 +80,7 @@ public class SlideNode : Node
     }
     
     private IEnumerator JudgeCoroutine() {
-        yield return new WaitWhile( () => perfectSample + judgeGreat > GetCurrentTimeSample());
+        yield return new WaitWhile( () => perfectSample + judgeBad > GetCurrentTimeSample());
         FailedInteraction();
     }
 

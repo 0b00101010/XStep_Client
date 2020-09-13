@@ -72,8 +72,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     public void TouchDownNotify() {
         var touchIndex = GetHitBoxIndex();
-        NormalNodeInteraction(touchIndex, getCurrentSample());
-        touchHoldCoroutine = TouchHold(touchIndex).Start(this);
+        NodeInteraction(touchIndex, getCurrentSample());
+        // NormalNodeInteraction(touchIndex, getCurrentSample());
         SlideNodeInteractionStart(GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
     }
 
@@ -107,9 +107,25 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         activeSlideNode[index].Remove(newNode);
     }
 
+    public void NodeInteraction(int position, double interactionTime){
+        if (activeNode[position].Count <= 0) {
+            return;
+        }
+        
+        if (activeNode[position][0] is NormalNode ) {
+            NormalNodeInteraction(position, interactionTime);
+        }
+        else if (activeNode[position][0] is LongNode) {
+            LongNodeInteractionStart(position, interactionTime);
+            touchHoldCoroutine = TouchHold(position).Start(this);
+        }
+    }
+    
     public void NormalNodeInteraction(int position, double interactionTime){
         if (activeNode[position].Count > 0) {
-            activeNode[position][0].Interaction(interactionTime);
+            if (activeNode[position][0] is NormalNode) {
+                activeNode[position][0].Interaction(interactionTime);
+            }
         }
     }
 
@@ -147,26 +163,36 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     
     public void AddActiveLongNode(Node node, int index){
         var newNode = node as LongNode;
-        activeLongNode[index].Add(newNode);
+        activeNode[index].Add(newNode);
     }
 
     public void RemoveActionLongNode(Node node, int index){
         var removeNode = node as LongNode;
-        activeLongNode[index].Remove(removeNode);
+        activeNode[index].Remove(removeNode);
     }
 
-    public void LongNodeInteractionStart(int position, double interactionTime){
-        if (activeLongNode[position].Count > 0) {
-            activeLongNode[position][0].Interaction(interactionTime);
+    public void LongNodeInteractionStart(int position, double interactionTime) {
+        var longNode = activeNode[position];
+        
+        if (longNode.Count > 0) {
+            if (longNode[0] is LongNode) {
+                longNode[0].Interaction(interactionTime);
+            }
         }
     }
     
     public void LongNodeStop(int position){
-        int index = -1;
-
-        do{
-            index++;
-        }while(activeLongNode[position][index].TailStart());
+        int index = 0;
+        LongNode longNode;
+       
+        for (int i = 0; i < activeNode[position].Count; i++) {
+            if (activeNode[position][i] is LongNode) {
+                longNode = activeNode[position][i] as LongNode;
+                if (longNode.TailStart() == false) {
+                    break;
+                }
+            }
+        }
     }
 
     private int GetHitBoxIndex(){

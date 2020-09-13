@@ -53,11 +53,11 @@ public class NormalNode : Node
         executeTween = spriteRenderer.DOFade(1.0f, 0.2f);
         yield return executeTween.WaitForCompletion();
 
-        moveTween = gameObject.transform.DOMove(Vector2.Lerp(startPosition,targetPosition, 0.8f), arriveTime);
-        scaleTween = gameObject.transform.DOScale(Vector3.one, arriveTime);
+        moveTween = gameObject.transform.DOMove(Vector2.Lerp(startPosition,targetPosition, 0.75f), arriveTime - 0.2f).SetEase(Ease.Linear);
+        scaleTween = gameObject.transform.DOScale(Vector3.one, arriveTime - 0.2f).SetEase(Ease.Linear);
 
         yield return moveTween.WaitForCompletion();
-        yield return new WaitWhile( () => perfectSample + judgeGreat > GetCurrentTimeSample());
+        yield return new WaitWhile( () => perfectSample + judgeBad > GetCurrentTimeSample());
         
         FailedInteraction();
     }

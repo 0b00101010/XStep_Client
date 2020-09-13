@@ -25,11 +25,15 @@ public class Node : MonoBehaviour {
     
     [SerializeField]  
     private double _judgeGood;
+
+    [SerializeField]
+    private double _judgeBad;
     
     protected double judgePerfect;
     protected double judgeGreat;
     protected double judgeGood;
-
+    protected double judgeBad;
+    
     private SpriteRenderer _spriteRenderer;
     public SpriteRenderer spriteRenderer => _spriteRenderer;
 
@@ -68,6 +72,7 @@ public class Node : MonoBehaviour {
         judgePerfect = (_judgePerfect / 1000) * frequency;
         judgeGreat = (_judgeGreat / 1000) * frequency;
         judgeGood = (_judgeGood / 1000) * frequency;
+        judgeBad = (_judgeBad / 1000) * frequency;
     }
 
     public virtual void ObjectReset() {
