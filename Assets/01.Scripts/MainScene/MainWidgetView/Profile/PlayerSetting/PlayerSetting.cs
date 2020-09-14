@@ -80,5 +80,5 @@ public class PlayerSetting : ScriptableObject {
 
     [SerializeField]
     private int _freeStyleClear;
-    public int freeStyleClera {get => _freeStyleClear; set => _freeStyleClear = value;}
+    public int freeStyleClear {get => _freeStyleClear; set => _freeStyleClear = value;}
 }
