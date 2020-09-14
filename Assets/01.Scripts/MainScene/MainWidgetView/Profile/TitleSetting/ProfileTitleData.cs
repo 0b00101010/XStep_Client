@@ -19,7 +19,7 @@ public class ProfileTitleData : ScriptableObject {
     }
     
     [Button("Reset")]
-    public void Reset() {
+    public void DataReset() {
         foreach (var title in titleResources) {
             title.isUnLock = false;
         }

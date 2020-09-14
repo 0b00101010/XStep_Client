@@ -32,7 +32,7 @@ public class AchieveData : ScriptableObject {
     }
 
     [Button("Reset")]
-    public void Reset() {
+    public void DataReset() {
         foreach (var achieve in achieves) {
             achieve.IsUnlock = false;
         }
