@@ -7,7 +7,9 @@ using DG.Tweening;
 public class ScoreManager : MonoBehaviour
 {
     private int comboCount;
-
+    private int totalScore;
+    public int TotalScore => totalScore;
+    
     private int[] judgeCountArray = new int[5]{0,0,0,0,0};
 
     [Header("Objects")]
@@ -62,6 +64,21 @@ public class ScoreManager : MonoBehaviour
         
         numberConversionEvent.Invoke(this.comboCount);
         judgeImage.sprite = judgeSprites[judgeSprites.Length - 1 - judgeLevel];
+
+        switch (judgeLevel) {
+            case 1:
+                totalScore += 400 + (comboCount / 100);
+                break;
+            case 2:
+                totalScore += 600 + (comboCount / 100);
+                break;
+            case 3:
+                totalScore += 800 + (comboCount / 100);
+                break;
+            case 4:
+                totalScore += 1000 + (comboCount / 100); 
+                break;
+        }
         
         if(judgeImageSizeUpCoroutine != null){
             StopCoroutine(judgeImageSizeUpCoroutine);

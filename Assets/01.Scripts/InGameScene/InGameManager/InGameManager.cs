@@ -53,6 +53,10 @@ public class InGameManager : MonoBehaviour
 
     public void GameEnd() {
         instance = null;
+
+        GameManager.instance.gameResult.Score = scoreManager.TotalScore;
+        GameManager.instance.PlayerSetting.totalScore += (ulong)scoreManager.TotalScore;
+        
         SceneManager.LoadScene("00.MainScene");
     }
 

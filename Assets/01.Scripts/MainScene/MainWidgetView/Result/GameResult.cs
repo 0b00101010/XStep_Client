@@ -13,4 +13,16 @@ public class GameResult{
         get => nodeTotalCount;
         set => nodeTotalCount = value;
     }
+
+    private float accuracy;
+    public float Accuracy {
+        get => accuracy;
+        set => accuracy = value;
+    }
+
+    private int score;
+    public int Score {
+        get => score;
+        set => score = value;
+    }
 }
