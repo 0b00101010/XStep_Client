@@ -14,17 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleData: {fileID: 11400000, guid: 80b388511482642ecb7ff1de785106bd, type: 2}
   achieveData: {fileID: 11400000, guid: c4f8a6e9912a649168fc545ecc6f9485, type: 2}
+  achieveRequireData: {fileID: 11400000, guid: 213058d3507644c7e898e77d59aa9d31, type: 2}
   _title:
     _title: XStep Developer
     _description: "XStep \uAC1C\uBC1C\uC790\uC785\uB2C8\uB2E4."
     _isUnLock: 0
   _userName: Komorio
   _profileSprite: {fileID: 21300000, guid: 104f4c8083f074545a8236433937fd5f, type: 3}
-  _currentLevel: 716
-  _currentExp: 716
-  _levelUpExp: 2002
-  _totalScore: 20020716
+  _currentLevel: 1
+  _currentExp: 0
+  _levelUpExp: 300
+  _totalScore: 0
   _highClearLevel: 0
-  _perfectPlay: 923
-  _challengeClear: 9
-  _freeStyleClear: 23
+  _perfectPlay: 0
+  _challengeClear: 0
+  _freeStyleClear: 0
