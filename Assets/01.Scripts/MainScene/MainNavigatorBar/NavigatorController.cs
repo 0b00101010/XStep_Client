@@ -28,8 +28,10 @@ public class NavigatorController : MonoBehaviour, INavigatorButtonObserver
         ButtonColorSetting();
     }
 
-    public void SelectNotify(NavigatorButton navigatorButton){
+    public void SelectNotify(NavigatorButton navigatorButton) {
+        selectNavigatorButton?.Exit();
         selectNavigatorButton = navigatorButton;
+        selectNavigatorButton.Enter();
         MainSceneManager.instance.uiController.SetInformationBoxText(selectNavigatorButton.TapName);
         ButtonColorSetting();
     }    

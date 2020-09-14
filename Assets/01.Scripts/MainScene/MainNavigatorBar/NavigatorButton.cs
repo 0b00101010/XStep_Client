@@ -7,11 +7,14 @@ public class NavigatorButton : MainUIObject
     [SerializeField]
     private string tapName;
 
+    [SerializeField]
+    private GameObject tapObject;
+    
     private INavigatorButtonObserver observer;
 
     public string TapName => tapName;
 
-    public override void Execute(){
+    public override void Execute() {
         SelectNotify();
     }
 
@@ -25,5 +28,13 @@ public class NavigatorButton : MainUIObject
 
     public void RemoveObserver(){
         this.observer = null;
+    }
+
+    public void Enter() {
+        tapObject.gameObject.SetActive(true);
+    }
+    
+    public void Exit() {
+        tapObject.gameObject.SetActive(false);
     }
 }
