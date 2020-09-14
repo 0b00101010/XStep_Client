@@ -13,7 +13,7 @@ public class AchieveData : ScriptableObject {
         var findAchieves = new List<Achieve>();
         
         foreach (var achieve in achieves) {
-            if (achieve.AchieveName.Equals(achieveName)) {
+            if (achieve.Require.Equals(achieveName)) {
                 findAchieves.Add(achieve);
             }
         }
