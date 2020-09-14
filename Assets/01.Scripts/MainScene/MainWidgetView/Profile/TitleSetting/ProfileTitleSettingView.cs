@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class ProfileTitleSettingView : ProfileSettingView
 {
-    [SerializeField]
     private TitleItem[] titleItems;
     private List<TitleItem> activeItems = new List<TitleItem>();
     private ProfileTitleData titleData;
@@ -13,13 +14,13 @@ public class ProfileTitleSettingView : ProfileSettingView
     private TextMeshProUGUI titleText;
 
     [SerializeField]
-    private TextMeshProUGUI descriptionText;
+    private Text descriptionText;
 
     [SerializeField]
     private Transform topPosition;
 
     private void Awake(){
-        titleData = Resources.Load<ProfileTitleData>("Player Setting/ProfileTitleData");
+        titleData = GameManager.instance.PlayerSetting.TitleData;
         titleItems = gameObject.GetComponentsInChildren<TitleItem>(true);
 
         for(int i = 0; i < titleData.TitleResources.Length; i++){
@@ -33,10 +34,8 @@ public class ProfileTitleSettingView : ProfileSettingView
     private void Update(){
         if(GameManager.instance.touchManager.IsSwipe){
             if(GameManager.instance.touchManager.SwipeDirection.y > 0.8f){
-                "a".Log();
                 if(activeItems[activeItems.Count - 1].gameObject.transform.position.y < topPosition.position.y){
                     MoveObject(Vector2.up);
-                    "b".Log();
                 }
             }else if(GameManager.instance.touchManager.SwipeDirection.y < -0.8f){
                 if(activeItems[0].gameObject.transform.position.y > topPosition.position.y){
