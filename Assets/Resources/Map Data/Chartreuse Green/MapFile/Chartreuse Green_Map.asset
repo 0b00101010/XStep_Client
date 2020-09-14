@@ -24,5 +24,5 @@ MonoBehaviour:
   - _map: {fileID: 4900000, guid: 2a62e4d32a2794da88a33012445d729a, type: 3}
     _difficulty: 42
   _backgroundFile: {fileID: 4900000, guid: fed674d1b8d774a6f9d59a50f6d3a68c, type: 3}
-  _clip: {fileID: 8300000, guid: df20eac0355bd4fe086f40f53794904a, type: 3}
+  _clip: {fileID: 8300000, guid: 1d33a0371cb6648bf9a7ac919855f118, type: 3}
   _currentSelectDifficulty: 2
