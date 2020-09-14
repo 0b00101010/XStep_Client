@@ -56,7 +56,7 @@ public class InGameManager : MonoBehaviour
 
         GameManager.instance.gameResult.Score = scoreManager.TotalScore;
         GameManager.instance.PlayerSetting.totalScore += (ulong)scoreManager.TotalScore;
-        
+        // TODO : 정확도 계산하는 기능 추가
         SceneManager.LoadScene("00.MainScene");
     }
 
