@@ -13,15 +13,86 @@ MonoBehaviour:
   m_Name: ProfileTitleData
   m_EditorClassIdentifier: 
   titleResources:
-  - _title: Komorio
-    _description: "\uBB34\uB824 \uC804\uC138\uD6C8!"
+  - _title: Newbie
+    _description: "Xstep\uC758 \uC138\uACC4\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4."
     _isUnLock: 1
-  - _title: XStep Developer
-    _description: "XStep \uAC1C\uBC1C\uC790\uC785\uB2C8\uB2E4."
-    _isUnLock: 1
-  - _title: "\uBD80\uACC4\uC591\uD559\uC7A5\uC778"
-    _description: "\uC8FD\uC5C8\uC73C\uBA74 \uC88B\uACA0\uB2E4"
+  - _title: Light User
+    _description: "Light \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
     _isUnLock: 0
-  - _title: "\uB274\uBE44"
-    _description: "\uB285\uB285\uC774"
+  - _title: Light Master
+    _description: "\uB354 \uB9CE\uC740 Light \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Normal User
+    _description: "Normal \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Normal Master
+    _description: "\uB354 \uB9CE\uC740 Normal \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Hard User
+    _description: "\uB354 \uB9CE\uC740 Hard \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    _isUnLock: 0
+  - _title: Hard Master
+    _description: "\uB354 \uB9CE\uC740 Hard \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    _isUnLock: 0
+  - _title: Hardcore User
+    _description: "Hardcore \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Hardcore Master
+    _description: "\uB354 \uB9CE\uC740 Hardcore \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Extream User
+    _description: "Extream \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Extream Master
+    _description: "\uB354 \uB9CE\uC740 Extream \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4\uB85C
+      \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Twist King
+    _description: "Twisted \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Runner
+    _description: "Run \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Spotlight
+    _description: "Highlight \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Speedracer
+    _description: "Accel \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Trill Master
+    _description: "Trill \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Hold On
+    _description: "Hold-Job \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Slide Master
+    _description: "Slide \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Multiplayer
+    _description: "Multiple \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Manlevel
+    _description: "\uB9CC\uB819 \uB2EC\uC131\uC73C\uB85C \uD68D\uB4DD"
+    _isUnLock: 0
+  - _title: Scorer
+    _description: "\uB204\uC801 \uC2A4\uCF54\uC5B4 2,000,000 \uB2EC\uC131"
+    _isUnLock: 0
+  - _title: Unstoppable
+    _description: "50\uB808\uBCA8 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    _isUnLock: 0
+  - _title: Vegetable
+    _description: "\uD37C\uD399\uD2B8 9000\uD68C \uB2EC\uC131"
+    _isUnLock: 0
+  - _title: Tweet Maniac
+    _description: "BPM = RT Extream \uD2B8\uB799 \uD074\uB9AC\uC5B4"
+    _isUnLock: 0
+  - _title: Perfectionist
+    _description: "\uD37C\uD399\uD2B8 \uD50C\uB808\uC774 30\uD68C \uB2EC\uC131"
     _isUnLock: 0
