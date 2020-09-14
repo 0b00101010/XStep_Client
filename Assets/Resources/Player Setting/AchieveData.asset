@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04de6078ae8f477c8769597c4e9907c, type: 3}
+  m_Name: AchieveData
+  m_EditorClassIdentifier: 
+  achieves:
+  - achieveName: Light User
+    achieveDescription: "Light \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    require: ClearDiff1
+    amount: 0
+    rewardMusicPoint: 300
+    rewardXp: 100
+    openTitleName: Light User
+    isUnlock: 0
+  - achieveName: Light Master
+    achieveDescription: "\uB354 \uB9CE\uC740 Light \uB09C\uC774\uB3C4 \uC2A4\uD15D
+      \uD074\uB9AC\uC5B4"
+    require: ClearDiff1
+    amount: 0
+    rewardMusicPoint: 800
+    rewardXp: 500
+    openTitleName: Light Master
+    isUnlock: 0
+  - achieveName: Normal User
+    achieveDescription: "Normal \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    require: ClearDiff2
+    amount: 0
+    rewardMusicPoint: 300
+    rewardXp: 100
+    openTitleName: Normal User
+    isUnlock: 0
+  - achieveName: Normal Master
+    achieveDescription: "\uB354 \uB9CE\uC740 Normal \uB09C\uC774\uB3C4 \uC2A4\uD15D
+      \uD074\uB9AC\uC5B4"
+    require: ClearDiff2
+    amount: 0
+    rewardMusicPoint: 800
+    rewardXp: 500
+    openTitleName: Normal Master
+    isUnlock: 0
+  - achieveName: Hard User
+    achieveDescription: "Hard \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    require: ClearDiff3
+    amount: 0
+    rewardMusicPoint: 300
+    rewardXp: 100
+    openTitleName: Hard User
+    isUnlock: 0
+  - achieveName: Hard Master
+    achieveDescription: "\uB354 \uB9CE\uC740 Hard \uB09C\uC774\uB3C4 \uC2A4\uD15D
+      \uD074\uB9AC\uC5B4"
+    require: ClearDiff3
+    amount: 0
+    rewardMusicPoint: 800
+    rewardXp: 500
+    openTitleName: Hard Master
+    isUnlock: 0
+  - achieveName: Hardcore User
+    achieveDescription: "Hardcore \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    require: ClearDiff4
+    amount: 0
+    rewardMusicPoint: 300
+    rewardXp: 100
+    openTitleName: Hardcore User
+    isUnlock: 0
+  - achieveName: Hardcore Master
+    achieveDescription: "\uB354 \uB9CE\uC740 Hardcore \uB09C\uC774\uB3C4 \uC2A4\uD15D
+      \uD074\uB9AC\uC5B4"
+    require: ClearDiff4
+    amount: 0
+    rewardMusicPoint: 800
+    rewardXp: 500
+    openTitleName: Hardcore Master
+    isUnlock: 0
+  - achieveName: Extream User
+    achieveDescription: "Extream \uB09C\uC774\uB3C4 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    require: ClearDiff5
+    amount: 0
+    rewardMusicPoint: 300
+    rewardXp: 100
+    openTitleName: Extream User
+    isUnlock: 0
+  - achieveName: Extream Master
+    achieveDescription: "\uB354 \uB9CE\uC740 Extream \uB09C\uC774\uB3C4 \uC2A4\uD15D
+      \uD074\uB9AC\uC5B4"
+    require: ClearDiff5
+    amount: 0
+    rewardMusicPoint: 800
+    rewardXp: 500
+    openTitleName: Extream Master
+    isUnlock: 0
+  - achieveName: Twist King
+    achieveDescription: "Twisted \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Twist King
+    isUnlock: 0
+  - achieveName: Runner
+    achieveDescription: "Run \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Runner
+    isUnlock: 0
+  - achieveName: Spotlight
+    achieveDescription: "Highlight \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Spotlight
+    isUnlock: 0
+  - achieveName: Speedracer
+    achieveDescription: "Accel \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Speedracer
+    isUnlock: 0
+  - achieveName: Trill Master
+    achieveDescription: "Trill \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Trill Master
+    isUnlock: 0
+  - achieveName: Hold On
+    achieveDescription: "Hold-Job \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Hold On
+    isUnlock: 0
+  - achieveName: Slide Master
+    achieveDescription: "Slide \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Slide Master
+    isUnlock: 0
+  - achieveName: Multiplayer
+    achieveDescription: "Multiple \uCC4C\uB9B0\uC9C0 \uD074\uB9AC\uC5B4"
+    require: ChallengeID
+    amount: 0
+    rewardMusicPoint: 0
+    rewardXp: 0
+    openTitleName: Multiplayer
+    isUnlock: 0
+  - achieveName: Manlev
+    achieveDescription: "\uB9CC\uB819 \uB2EC\uC131"
+    require: "\uB9CC\uB819 \uB2EC\uC131"
+    amount: 0
+    rewardMusicPoint: 10000
+    rewardXp: 0
+    openTitleName: Manlev
+    isUnlock: 0
+  - achieveName: Scorer
+    achieveDescription: "\uB204\uC801 \uC2A4\uCF54\uC5B4 2,000,000 \uB2EC\uC131"
+    require: Score
+    amount: 0
+    rewardMusicPoint: 10000
+    rewardXp: 2000
+    openTitleName: Scorer
+    isUnlock: 0
+  - achieveName: No one can stop me
+    achieveDescription: "50\uB808\uBCA8 \uC2A4\uD15D \uD074\uB9AC\uC5B4"
+    require: Highclearlevel
+    amount: 0
+    rewardMusicPoint: 10000
+    rewardXp: 2000
+    openTitleName: Unstoppable
+    isUnlock: 0
+  - achieveName: Over 9000
+    achieveDescription: "\uD37C\uD399\uD2B8 9000\uD68C \uB2EC\uC131"
+    require: Perfect
+    amount: 0
+    rewardMusicPoint: 10000
+    rewardXp: 2000
+    openTitleName: Vegetable
+    isUnlock: 0
+  - achieveName: 1,962 Retweet
+    achieveDescription: "BPM = RT Extream \uD2B8\uB799 \uD074\uB9AC\uC5B4"
+    require: ClearedTrackID
+    amount: 0
+    rewardMusicPoint: 10000
+    rewardXp: 2000
+    openTitleName: Tweet Maniac
+    isUnlock: 0
+  - achieveName: Obsessive Compulsive Disorder
+    achieveDescription: "\uD37C\uD399\uD2B8 \uD50C\uB808\uC774 30\uD68C \uB2EC\uC131"
+    require: Perfectclear
+    amount: 0
+    rewardMusicPoint: 10000
+    rewardXp: 2000
+    openTitleName: Perfectionist
+    isUnlock: 0

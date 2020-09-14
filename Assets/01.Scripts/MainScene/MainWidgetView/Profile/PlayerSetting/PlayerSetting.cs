@@ -8,7 +8,12 @@ using NaughtyAttributes;
 public class PlayerSetting : ScriptableObject {
     [SerializeField]
     private ProfileTitleData titleData;
-
+    public ProfileTitleData TitleData => titleData;
+    
+    [SerializeField]
+    private AchieveData achieveData;
+    public AchieveData AchieveData => achieveData;
+    
     [SerializeField]
     [Dropdown("titles")]
     private Title _title;
@@ -22,7 +27,9 @@ public class PlayerSetting : ScriptableObject {
         var titleDropdownList = new DropdownList<Title>();
         
         foreach(var item in titleData.TitleResources){
-            titleDropdownList.Add(item.title, item);
+            if (item.isUnLock) {
+                titleDropdownList.Add(item.title, item);
+            }
         }
 
         return titleDropdownList;

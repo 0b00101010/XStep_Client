@@ -13,15 +13,26 @@ public class GameManager : DontDestroySingleton<GameManager>
     [Header("Setting")]
     [SerializeField]
     private InGameResources _inGameResources;
-
+    public InGameResources inGameResources {
+        get => _inGameResources;
+        set => _inGameResources = value;
+    }
+    
     [SerializeField]
     private MapFile _songData;
-
+    public MapFile songData {
+        get => _songData;
+        set => _songData = value;
+    }
+    
     [SerializeField]
     private SongItemInformation _selectSongItem;
-
+    public SongItemInformation selectSongItem {
+        get => _selectSongItem;
+        set => _selectSongItem = value;
+    }
+    
     private GameResult _gameResult;
-
     public GameResult gameResult {
         get => _gameResult;
         set => _gameResult = value;
@@ -33,22 +44,6 @@ public class GameManager : DontDestroySingleton<GameManager>
     private bool someUIInteraction;
     public bool SomeUIInteraction {get => someUIInteraction; set => someUIInteraction = value;}
     
-    public InGameResources inGameResources {
-        get => _inGameResources;
-        set => _inGameResources = value;
-    }
-
-    public MapFile songData {
-        get => _songData;
-        set => _songData = value;
-    }
-    
-    public SongItemInformation selectSongItem {
-        get => _selectSongItem;
-        set => _selectSongItem = value;
-    }
-    
-
     private void Awake(){
         if (instance != this && instance != null) {
             Destroy(gameObject);

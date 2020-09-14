@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 [CreateAssetMenu(fileName = "ProfileTitleData", menuName = "Scriptable Object/ProfileTitleData", order = 0)]
 public class ProfileTitleData : ScriptableObject {
@@ -14,6 +15,13 @@ public class ProfileTitleData : ScriptableObject {
                 title.isUnLock = true;
                 break;
             }
+        }
+    }
+    
+    [Button("Reset")]
+    public void Reset() {
+        foreach (var title in titleResources) {
+            title.isUnLock = false;
         }
     }
 }

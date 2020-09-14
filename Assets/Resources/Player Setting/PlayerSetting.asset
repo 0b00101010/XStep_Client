@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSetting
   m_EditorClassIdentifier: 
   titleData: {fileID: 11400000, guid: 80b388511482642ecb7ff1de785106bd, type: 2}
+  achieveData: {fileID: 11400000, guid: c4f8a6e9912a649168fc545ecc6f9485, type: 2}
   _title:
     _title: XStep Developer
     _description: "XStep \uAC1C\uBC1C\uC790\uC785\uB2C8\uB2E4."
