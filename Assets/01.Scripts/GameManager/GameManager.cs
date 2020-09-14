@@ -53,5 +53,6 @@ public class GameManager : DontDestroySingleton<GameManager>
         widgetViewer = gameObject.GetComponent<WidgetViewer>();   
 
         playerSetting = Resources.Load<PlayerSetting>("Player Setting/PlayerSetting");
+        playerSetting.AchieveRequireData.Initialize();
     }
 }

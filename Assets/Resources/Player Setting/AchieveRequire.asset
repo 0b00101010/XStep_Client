@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d6568ec8ca34c82914d976e82aa82a, type: 3}
+  m_Name: AchieveRequire
+  m_EditorClassIdentifier: 
+  achieveRequires:
+  - requireName: LV
+    amount: 0
+  - requireName: Score
+    amount: 0
+  - requireName: Highclearlevel
+    amount: 0
+  - requireName: Clearstep
+    amount: 0
+  - requireName: ClearDiff1
+    amount: 0
+  - requireName: ClearDiff2
+    amount: 0
+  - requireName: ClearDiff3
+    amount: 0
+  - requireName: ClearDiff4
+    amount: 0
+  - requireName: ClearDiff5
+    amount: 0
+  - requireName: Perfect
+    amount: 0
+  - requireName: Great
+    amount: 0
+  - requireName: Good
+    amount: 0
+  - requireName: Bad
+    amount: 0
+  - requireName: Miss
+    amount: 0
+  - requireName: ClearedTrackID
+    amount: 0
+  - requireName: ChallengeID
+    amount: 0
+  - requireName: Perfectclear
+    amount: 0

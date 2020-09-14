@@ -13,6 +13,10 @@ public class PlayerSetting : ScriptableObject {
     [SerializeField]
     private AchieveData achieveData;
     public AchieveData AchieveData => achieveData;
+
+    [SerializeField]
+    private AchieveRequireData achieveRequireData; // 외부에서는 얘에만 접근해서 값 변경해주면 되는 구조
+    public AchieveRequireData AchieveRequireData => achieveRequireData;
     
     [SerializeField]
     [Dropdown("titles")]

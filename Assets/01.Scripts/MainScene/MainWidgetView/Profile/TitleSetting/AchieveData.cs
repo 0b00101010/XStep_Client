@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AchieveData", menuName = "Scriptable Object/AchieveData", order = 0)]
+[CreateAssetMenu(fileName = "AchieveData", menuName = "Scriptable Object/Achieve Data", order = 0)]
 public class AchieveData : ScriptableObject {
     [SerializeField]
     private Achieve[] achieves;
     public Achieve[] Achieves => achieves;
 
     public void Unlock(string achieveName, int amount) {
-        Achieve findAchieve = null;
+        var findAchieves = new List<Achieve>();
         
         foreach (var achieve in achieves) {
-            if (findAchieve != null) {
-                break;
+            if (achieve.AchieveName.Equals(achieveName)) {
+                findAchieves.Add(achieve);
             }
-            findAchieve = achieve.AchieveName.Equals(achieveName) ? achieve : null;
         }
-        
-        if (findAchieve.IsUnlock == false) {
-            if (amount < findAchieve.Amount) {
-                return;
+
+        foreach (var findAchieve in findAchieves) {
+            if (findAchieve.IsUnlock == false) {
+                if (amount < findAchieve.Amount) {
+                    return;
+                }
+                
+                findAchieve.IsUnlock = true;
+                GameManager.instance.PlayerSetting.currentExp += findAchieve.RewardXp;
+                GameManager.instance.PlayerSetting.TitleData.UnLockTitle(findAchieve.OpenTitleName);
             }
-            
-            findAchieve.IsUnlock = true;
-            GameManager.instance.PlayerSetting.currentExp += findAchieve.RewardXp;
-            GameManager.instance.PlayerSetting.TitleData.UnLockTitle(findAchieve.OpenTitleName);
         }
     }
 
