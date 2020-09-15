@@ -17,9 +17,9 @@ MonoBehaviour:
     amount: 0
   - requireName: Score
     amount: 0
-  - requireName: Highclearlevel
+  - requireName: HighClearLevel
     amount: 0
-  - requireName: Clearstep
+  - requireName: ClearStep
     amount: 0
   - requireName: ClearDiff1
     amount: 0
@@ -45,5 +45,5 @@ MonoBehaviour:
     amount: 0
   - requireName: ChallengeID
     amount: 0
-  - requireName: Perfectclear
+  - requireName: PerfectClear
     amount: 0

@@ -34,7 +34,9 @@ public class SongItemInformation : ScriptableObject
     public int[] Difficultys => difficultys;
 
     public MapFile MapFile => mapFile;
-    
-    public float HighScore => highScore;
+    public float HighScore {
+        get => highScore;
+        set => highScore = value;
+    }
 
 }

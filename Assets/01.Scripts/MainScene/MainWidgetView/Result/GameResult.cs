@@ -25,4 +25,10 @@ public class GameResult{
         get => score;
         set => score = value;
     }
+
+    private string rank;
+    public string Rank {
+        get => rank;
+        set => rank = value;
+    }
 }

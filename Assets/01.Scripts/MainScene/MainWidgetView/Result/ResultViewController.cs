@@ -79,9 +79,9 @@ public class ResultViewController : MonoBehaviour {
             judgeCountTexts[i].text = result.JudgeCounts[i].ToString("D4");
         }
         
-        rankText.text = "SSS";
-        accuracyText.text = $"{100.ToString("F2")}%";
-        scoreText.text = 2341234200.ToString("D11");
+        rankText.text = GameManager.instance.gameResult.Rank;
+        accuracyText.text = $"{GameManager.instance.gameResult.Accuracy.ToString("F2")}%";
+        scoreText.text = GameManager.instance.gameResult.Score.ToString("D11");
     }
 
     public void Open() {    

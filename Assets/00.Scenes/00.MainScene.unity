@@ -16596,7 +16596,7 @@ GameObject:
   - component: {fileID: 1014295389}
   - component: {fileID: 1014295388}
   m_Layer: 5
-  m_Name: High High Clear Level
+  m_Name: High Clear Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23464,7 +23464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1420619197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33145,7 +33145,7 @@ MonoBehaviour:
   expBar: {fileID: 1922353593}
   expText: {fileID: 1257761711}
   totalScore: {fileID: 107805066}
-  highClearScore: {fileID: 160988147}
+  highClearLevel: {fileID: 160988147}
   perfectPlay: {fileID: 819185460}
   challengeClear: {fileID: 1541796417}
   freeStyleClear: {fileID: 424529607}
