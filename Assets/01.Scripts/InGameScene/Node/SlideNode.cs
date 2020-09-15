@@ -21,9 +21,10 @@ public class SlideNode : Node
 
     [SerializeField]
     private Event<Node, int> destroyEvent;
-
-    public Vector2 SlideDirection => slideDirection;
     
+    public Vector2 SlideDirection => slideDirection;
+    private IEnumerator judgeCoroutine;
+        
     public override void Execute(Vector2 startPosition, Vector2 targetPosition, double generateTime, int index){
         gameObject.SetActive(true);
 
@@ -52,10 +53,13 @@ public class SlideNode : Node
         slideTween = gameObject.transform.DOMove(targetPosition, arriveTime);
         yield return slideTween.WaitForCompletion();
 
-        JudgeCoroutine().Start(this);
+        judgeCoroutine?.Stop(this);
+        judgeCoroutine = JudgeCoroutine().Start(this);
     }
 
-    public override void Interaction(double interactionTime){
+    public override void Interaction(double interactionTime) {
+        judgeCoroutine?.Stop(this);
+        
         int judgeLevel = 0;
         double processLevel = Math.Abs(perfectSample - interactionTime);
         
@@ -76,9 +80,18 @@ public class SlideNode : Node
                 judgeLevel = 1;
                 break; 
         }
+        
         destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
-        ObjectReset();
+
+        if (slideTween.IsPlaying()) {
+            slideTween.OnComplete(() => {
+                ResetCoroutine().Start(this);
+            });
+        }
+        else {
+            ResetCoroutine().Start(this);
+        }
     }
     
     private IEnumerator JudgeCoroutine() {
@@ -87,25 +100,19 @@ public class SlideNode : Node
     }
 
     public override void FailedInteraction(){
-        resetTween = spriteRenderer.DOFade(0, 0.25f);
+        destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(0);
-        FailedInteractionCoroutine().Start(this);
+        ResetCoroutine().Start(this);
 
         // InGameManager.instance.scoreManager.AddScore(4);
         // InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
         // ObjectReset();
     }
 
-    public IEnumerator FailedInteractionCoroutine(){
-        destroyEvent.Invoke(this, positionValue);
+    public IEnumerator ResetCoroutine(){
+        resetTween = spriteRenderer.DOFade(0, 0.25f);
         yield return resetTween.WaitForCompletion();
-        ObjectReset();
-    }
-
-    public override void ObjectReset(){
-        resetTween.Kill();
-        slideTween.Kill();
-        
+    
         gameObject.transform.position = Vector2.zero;
         base.ObjectReset();
     }
