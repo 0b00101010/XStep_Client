@@ -66,9 +66,11 @@ public class SlideNode : Node
                 break; 
             case var k when processLevel > judgePerfect:
                 judgeLevel = 3;
+                InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
                 break; 
             case var k when processLevel > judgeGreat:
                 judgeLevel = 2;
+                InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
                 break; 
             case var k when processLevel < judgeGood:
                 judgeLevel = 1;
