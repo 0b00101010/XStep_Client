@@ -3887,7 +3887,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.23921569}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.3}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3949,8 +3949,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.4
+      scalar: 0.6
+      minScalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4265,7 +4265,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 71
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4530,7 +4530,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 13
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -22502,6 +22502,7 @@ GameObject:
   - component: {fileID: 1740762591}
   - component: {fileID: 1740762592}
   - component: {fileID: 1740762593}
+  - component: {fileID: 1740762594}
   - component: {fileID: 1740762586}
   m_Layer: 0
   m_Name: InGameManager
@@ -22868,6 +22869,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c6ac05efbe9413bbce4eab4bc9f199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1740762594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740762583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b28cd2dee984b6ba76bb43da83ad8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editMode: 1
+  particleSystem: {fileID: 321155684}
+  frequency: 13
+  startSize: {x: 0.3, y: 0.6}
+  alpha: 0.3
+  moveSpeed: 1
 --- !u!1 &1745756677
 GameObject:
   m_ObjectHideFlags: 0

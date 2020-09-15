@@ -72,7 +72,14 @@ public class PlayerSetting : ScriptableObject {
     [Space(10)]
     [SerializeField]
     private int _perfectPlay;
-    public int perfectPlay {get => _perfectPlay; set => _perfectPlay = value;}
+
+    public int perfectPlay {
+        get => _perfectPlay;
+        set {
+            _perfectPlay = value; 
+            GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("PerfectPlay", 1);
+        }
+    }
     
     [SerializeField]
     private int _challengeClear;
