@@ -63,7 +63,7 @@ public class ProfileInformationView : ProfileSettingView
 
         perfectPlay.text = setting.perfectPlay.ToString("D2");
         challengeClear.text = setting.challengeClear.ToString("D2");
-        freeStyleClear.text = setting.freeStyleClera.ToString("D2");
+        freeStyleClear.text = setting.freeStyleClear.ToString("D2");
     }
 
     public override void Exit(){
