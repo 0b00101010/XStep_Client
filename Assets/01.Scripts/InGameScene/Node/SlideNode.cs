@@ -54,6 +54,7 @@ public class SlideNode : Node
 
         slideTween = gameObject.transform.DOMove(targetPosition, arriveTime);
         yield return slideTween.WaitForCompletion();
+        slideTween = null;
 
         judgeCoroutine?.Stop(this);
         judgeCoroutine = JudgeCoroutine().Start(this);
