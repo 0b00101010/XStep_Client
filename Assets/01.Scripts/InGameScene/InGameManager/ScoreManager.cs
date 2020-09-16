@@ -102,13 +102,13 @@ public class ScoreManager : MonoBehaviour
     }
     
     private void JudgeSplash(Color color) {
-        color.a = 0.1f;
+        color.a = 0.15f;
         
         splashTween?.Kill();
         judgeSplash.SetAlpha(0.0f);
         
         judgeSplash.color = color;
-        splashTween = judgeSplash.DOFade(0.0f, 0.1f);
+        splashTween = judgeSplash.DOFade(0.0f, 0.6f);
     }
     
     private IEnumerator JudgeImageSizeUpCoroutine(){
