@@ -21,6 +21,8 @@ public class SlideNode : Node
 
     [SerializeField]
     private Event<Node, int> destroyEvent;
+
+    private bool isInteraction;
     
     public Vector2 SlideDirection => slideDirection;
     private IEnumerator judgeCoroutine;
@@ -59,7 +61,7 @@ public class SlideNode : Node
 
     public override void Interaction(double interactionTime) {
         judgeCoroutine?.Stop(this);
-        
+        isInteraction = true;
         int judgeLevel = 0;
         double processLevel = Math.Abs(perfectSample - interactionTime);
         
@@ -96,7 +98,10 @@ public class SlideNode : Node
     
     private IEnumerator JudgeCoroutine() {
         yield return new WaitWhile( () => perfectSample + judgeBad > GetCurrentTimeSample());
-        FailedInteraction();
+
+        if (isInteraction == false) {
+            FailedInteraction();
+        }
     }
 
     public override void FailedInteraction(){

@@ -86,7 +86,10 @@ public class LongNode : Node
 
     private IEnumerator JudgeCoroutine() {
         yield return new WaitWhile( () => perfectSample + judgeBad > GetCurrentTimeSample());
-        FailedInteraction();
+
+        if (isInteraction == false) {
+            FailedInteraction();
+        }
     }
 
     public bool TailStart(){
