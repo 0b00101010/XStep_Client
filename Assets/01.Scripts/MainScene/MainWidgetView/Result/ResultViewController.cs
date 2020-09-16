@@ -88,6 +88,7 @@ public class ResultViewController : MonoBehaviour {
         gameObject.SetActive(true);
         Setting();
         GameManager.instance.widgetViewer.WidgetsOpen(background, canvasGroup);
+        GameManager.instance.SomeUIInteraction = true;
     }
 
     public void Close() {
@@ -95,6 +96,7 @@ public class ResultViewController : MonoBehaviour {
             GameManager.instance.gameResult = null;
             gameObject.SetActive(false);
             freeStyleView.gameObject.SetActive(true);
+            GameManager.instance.SomeUIInteraction = false;
         }, canvasGroup);
     }
 }

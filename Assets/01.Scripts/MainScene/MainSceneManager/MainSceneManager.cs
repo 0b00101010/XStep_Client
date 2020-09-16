@@ -50,6 +50,10 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     }
     
     public void GameStart() {
+        if ((GameManager.instance.selectSongItem.MapFile.currentSelectDifficulty != -1) == false) {
+            return;
+        }
+        
         blackBackground.gameObject.SetActive(true);
         var fadeTween = blackBackground.DOFade(1.0f, 0.5f);
         fadeTween.OnComplete(() => {

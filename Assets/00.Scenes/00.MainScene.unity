@@ -11041,7 +11041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &730072060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16851,7 +16851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf807548884274c028c37bf1802087e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapName: Challenge Mode
+  tapName: Challenge
   tapObject: {fileID: 2105217480}
 --- !u!1 &1021827569
 GameObject:
@@ -23272,7 +23272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1410173580
 RectTransform:
   m_ObjectHideFlags: 0
