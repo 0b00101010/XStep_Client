@@ -18,7 +18,7 @@ public class NormalNode : Node
     private Event<Node, int> destroyEvent;
 
     private int positionValue;
-    private bool isExecuting;
+    private bool isInteraction;
     
     private Tween executeTween;
     private Tween resetTween;
@@ -45,7 +45,6 @@ public class NormalNode : Node
         SetSpriteDirection();
         ExecuteCoroutine().Start(this);
         
-        isExecuting = true;
         generateEvent.Invoke(this, positionValue);
     }
 
@@ -58,8 +57,10 @@ public class NormalNode : Node
 
         yield return moveTween.WaitForCompletion();
         yield return new WaitWhile( () => perfectSample + judgeBad > GetCurrentTimeSample());
-        
-        FailedInteraction();
+
+        if (isInteraction == false) {
+            FailedInteraction();
+        }
     }
 
     public override void Interaction(double interactionTime){
@@ -86,19 +87,23 @@ public class NormalNode : Node
                 break; 
         }
 
+        isInteraction = true;
+
         destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
-        ObjectReset();
+        ResetCoroutine().Start(this);
     }
 
     public override void FailedInteraction(){
         destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(0);
-        StartCoroutine(FailedInteractionCoroutine());
+        StartCoroutine(ResetCoroutine());
     }
 
-    private IEnumerator FailedInteractionCoroutine(){
-        resetTween = spriteRenderer.DOFade(0.0f, 0.5f);
+    private IEnumerator ResetCoroutine(){
+        moveTween?.Kill();
+        moveTween = gameObject.transform.DOMove(targetPosition, 0.2f).SetRelative().SetSpeedBased();
+        resetTween = spriteRenderer.DOFade(0.0f, 0.2f);
         yield return resetTween.WaitForCompletion();
         
         ObjectReset();
@@ -118,7 +123,7 @@ public class NormalNode : Node
         scaleTween = null;
         executeTween = null;
 
-        isExecuting = false;
+        isInteraction = false;
 
         base.ObjectReset();
     }
