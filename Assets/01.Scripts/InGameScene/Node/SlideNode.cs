@@ -86,7 +86,7 @@ public class SlideNode : Node
         destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
 
-        if (slideTween.IsPlaying()) {
+        if (slideTween != null && slideTween.IsPlaying()) {
             slideTween.OnComplete(() => {
                 ResetCoroutine().Start(this);
             });
