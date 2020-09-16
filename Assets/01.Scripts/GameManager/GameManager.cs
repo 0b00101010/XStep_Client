@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class GameManager : DontDestroySingleton<GameManager>
@@ -43,16 +45,26 @@ public class GameManager : DontDestroySingleton<GameManager>
     
     private bool someUIInteraction;
     public bool SomeUIInteraction {get => someUIInteraction; set => someUIInteraction = value;}
-    
+
+    private ServerConnector serverConnector;
+    public ServerConnector ServerConnector => serverConnector;
+
     private void Awake(){
         if (instance != this && instance != null) {
             Destroy(gameObject);
         }
         
         touchManager = gameObject.GetComponent<TouchManager>();
-        widgetViewer = gameObject.GetComponent<WidgetViewer>();   
-
+        widgetViewer = gameObject.GetComponent<WidgetViewer>();
+        serverConnector = gameObject.GetComponent<ServerConnector>();
+        
         playerSetting = Resources.Load<PlayerSetting>("Player Setting/PlayerSetting");
         playerSetting.AchieveRequireData.Initialize();
+    }
+    
+    [Button("Login")]
+    public void Login() {
+        var userData = serverConnector.Login("komorio", "0000");
+        userData?.Log();
     }
 }
