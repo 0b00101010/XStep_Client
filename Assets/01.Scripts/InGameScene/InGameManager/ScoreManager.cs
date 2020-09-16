@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField]
     private SlideNodeHitEffect[] slideNodeHitEffects;
+
+    [SerializeField]
+    private Image judgeSplash;
 
     [Header("Resources")]
     [SerializeField]
@@ -50,6 +54,7 @@ public class ScoreManager : MonoBehaviour
     private Coroutine judgeImageSizeUpCoroutine;
 
     private Tween sizeUpTween;
+    private Tween splashTween;
 
     private void Awake(){
         sizeUpVector = Vector3.one * sizeUpValue;
@@ -77,6 +82,10 @@ public class ScoreManager : MonoBehaviour
                 break;
             case 4:
                 totalScore += 1000 + (comboCount / 100); 
+                JudgeSplash(Color.white); 
+                break;
+            default:
+                JudgeSplash(Color.red);
                 break;
         }
         
@@ -90,6 +99,16 @@ public class ScoreManager : MonoBehaviour
         sizeUpTween?.Kill();
         judgeImageSizeUpCoroutine = StartCoroutine(JudgeImageSizeUpCoroutine());
 
+    }
+    
+    private void JudgeSplash(Color color) {
+        color.a = 0.1f;
+        
+        splashTween?.Kill();
+        judgeSplash.SetAlpha(0.0f);
+        
+        judgeSplash.color = color;
+        splashTween = judgeSplash.DOFade(0.0f, 0.1f);
     }
     
     private IEnumerator JudgeImageSizeUpCoroutine(){
