@@ -23,6 +23,12 @@ public class PlayerSetting : ScriptableObject {
     private Title _title;
     public Title title {get => _title; set => _title = value;}
 
+    private int guestNumber = 0;
+    public int GuestNumber {
+        get => guestNumber;
+        set => guestNumber = value;
+    }
+
     private DropdownList<Title> titles(){
         if(titleData is null){
             return null;

@@ -13,9 +13,18 @@ public class ServerConnectorController : MonoBehaviour {
     public string ServerUrl => serverUrl;
 
     private LoginConnector loginConnector;
-
+    private SignUpConnector signUpConnector;
     private void Awake() {
         loginConnector = gameObject.GetComponent<LoginConnector>();
+        signUpConnector = gameObject.GetComponent<SignUpConnector>();
+    }
+
+    public void SignUp(string id, string passwd, string name, params Action[] callbacks) {
+        for (int i = 0; i < callbacks.Length; i++) {
+            signUpConnector.Callbacks.Add(callbacks[i]);
+        }
+        
+        signUpConnector.OnRequest(id, passwd, name);
     }
 
     public void Login(string id, string passwd, UserData userData, params Action[] callbacks) {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Resources;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : DontDestroySingleton<GameManager>
 {
@@ -66,5 +67,31 @@ public class GameManager : DontDestroySingleton<GameManager>
         
         playerSetting = Resources.Load<PlayerSetting>("Player Setting/PlayerSetting");
         playerSetting.AchieveRequireData.Initialize();
+
+    }
+
+    private void Start() {
+        LoginSetting().Start(this);
+    }
+    
+    private IEnumerator LoginSetting() {
+        if (bool.Parse(PlayerPrefs.GetString("SIGNUP","false")) == false) {
+            bool signUpSuccess = false;
+            
+            var randomValue = Random.Range(0, 10000);
+            serverConnector.SignUp($"guest_{randomValue}", randomValue.ToString(), $"{randomValue}번 띠용이", () => signUpSuccess = true);
+            
+            yield return new WaitUntil( () => signUpSuccess );
+            "Sign Up Success".Log();
+            playerSetting.GuestNumber = randomValue;
+            playerSetting.userName = $"{randomValue}번 띠용이";
+        }
+
+        bool loginSuccess = false;
+        var guestNumber = playerSetting.GuestNumber;
+        
+        serverConnector.Login($"guest_{guestNumber}", guestNumber.ToString(), new UserData(), () => loginSuccess = true);
+        yield return new WaitUntil(() => loginSuccess);        
+        "Login Success".Log();
     }
 }
