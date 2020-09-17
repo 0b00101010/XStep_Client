@@ -10,15 +10,14 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     private List<List<SlideNode>> activeSlideNode = new List<List<SlideNode>>();
     private List<List<LongNode>> activeLongNode = new List<List<LongNode>>();
 
-    private Vector2 slideStartPosition;
-    private Vector2 slideEndPosition;
+    private Vector2[] slideStartPosition = new Vector2[2];
+    private Vector2[] slideEndPosition = new Vector2[2];
 
     private Dictionary<string, HitBox> hitBoxes = new Dictionary<string, HitBox>();
     
     private Ray ray;
 
     private Dictionary<LongNode, IEnumerator> touchHoldCoroutines = new Dictionary<LongNode, IEnumerator>();
-
     private Func<double> getCurrentSample;
     
     private void Awake(){
@@ -70,19 +69,19 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     #endif
 
 
-    public void TouchDownNotify() {
-        var touchIndex = GetHitBoxIndex();
-        NodeInteraction(touchIndex, getCurrentSample());
-        // NormalNodeInteraction(touchIndex, getCurrentSample());
-        SlideNodeInteractionStart(GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
+    public void TouchDownNotify(int touchIndex) {
+        var boxIndex = GetHitBoxIndex();
+        NodeInteraction(boxIndex, getCurrentSample());
+        SlideNodeInteractionStart(touchIndex, GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
     }
 
-    public void TouchUpNotify() {
-        var touchUpIndex = GetHitBoxIndex();
-        if (activeNode[touchUpIndex].Count > 0 && activeNode[touchUpIndex][0] is LongNode) {
-            StopLongCoroutine(activeNode[touchUpIndex][0] as LongNode);
+    public void TouchUpNotify(int touchIndex) {
+        var boxIndex = GetHitBoxIndex();
+        if (activeNode[boxIndex].Count > 0 && activeNode[boxIndex][0] is LongNode) {
+            StopLongCoroutine(activeNode[boxIndex][0] as LongNode);
         }
-        SlideNodeInteractionEnd(GetHitBoxPosition(GameManager.instance.touchManager.TouchUpPosition));
+        
+        SlideNodeInteractionEnd(touchIndex, GetHitBoxPosition(GameManager.instance.touchManager.TouchUpPosition[touchIndex]));
     }
     
     private IEnumerator TouchHold(int position) {
@@ -145,26 +144,26 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         }
     }
 
-    public void SlideNodeInteractionStart(Vector2 position){
-        slideStartPosition = position;
+    public void SlideNodeInteractionStart(int index, Vector2 position){
+        slideStartPosition[index] = position;
     }
 
-    public void SlideNodeInteractionEnd(Vector2 position){
-        slideEndPosition = position;
-        SlideNodeInteraction(getCurrentSample());
+    public void SlideNodeInteractionEnd(int index, Vector2 position){
+        slideEndPosition[index] = position;
+        SlideNodeInteraction(getCurrentSample(), index);
     }
 
-    private void SlideNodeInteraction(double interactionTime){
-        Vector2 direction = slideStartPosition.Direction(slideEndPosition);
+    private void SlideNodeInteraction(double interactionTime, int slideIndex){
+        Vector2 direction = slideStartPosition[slideIndex].Direction(slideEndPosition[slideIndex]);
         int index = -1;
         
-        if(slideStartPosition.y > 0 && slideEndPosition.y > 0){
+        if(slideStartPosition[slideIndex].y > 0 && slideEndPosition[slideIndex].y > 0){
             index = 0;
-        } else if(slideStartPosition.y < 0 && slideEndPosition.y < 0){
+        } else if(slideStartPosition[slideIndex].y < 0 && slideEndPosition[slideIndex].y < 0){
             index = 1;
-        } else if(slideStartPosition.x < 0 && slideEndPosition.x < 0){
+        } else if(slideStartPosition[slideIndex].x < 0 && slideEndPosition[slideIndex].x < 0){
             index = 2;    
-        } else if(slideStartPosition.x > 0 && slideEndPosition.x > 0){
+        } else if(slideStartPosition[slideIndex].x > 0 && slideEndPosition[slideIndex].x > 0){
             index = 3;
         } 
 

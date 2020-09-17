@@ -1,4 +1,4 @@
 ﻿public interface ITouchObserver{
-    void TouchUpNotify();
-    void TouchDownNotify();
+    void TouchUpNotify(int touchIndex);
+    void TouchDownNotify(int touchIndex);
 }
