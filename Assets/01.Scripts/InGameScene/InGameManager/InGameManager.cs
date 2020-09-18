@@ -47,6 +47,7 @@ public class InGameManager : MonoBehaviour
     private void Start(){
         GameManager.instance.touchManager.touchType = TouchType.InGame;
         GameManager.instance.gameResult = new GameResult();
+        GameManager.instance.CurrentSceneType = SceneType.INGAME;
     }
 
     public void ChangeBackgroundColor(Color topColor, Color bottomColor, float duration) {

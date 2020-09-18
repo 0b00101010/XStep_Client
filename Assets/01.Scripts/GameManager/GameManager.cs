@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Resources;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class GameManager : DontDestroySingleton<GameManager>
 {
@@ -53,7 +53,13 @@ public class GameManager : DontDestroySingleton<GameManager>
     private string serverUrl;
 
     public string ServerUrl => $"http://{serverUrl}";
-
+    
+    private SceneType currentSceneType;
+    public SceneType CurrentSceneType {
+        get => currentSceneType;
+        set => currentSceneType = value;
+    }
+    
     private void Awake(){
         if (instance != this && instance != null) {
             Destroy(gameObject);
@@ -93,5 +99,15 @@ public class GameManager : DontDestroySingleton<GameManager>
         serverConnector.Login($"guest_{guestNumber}", guestNumber.ToString(), new UserData(), () => loginSuccess = true);
         yield return new WaitUntil(() => loginSuccess);        
         "Login Success".Log();
+
+        if (currentSceneType.Equals(SceneType.MAIN)) {
+            MainSceneManager.instance.uiController.TitleSetting(playerSetting.title.title);
+            MainSceneManager.instance.uiController.UserNameSetting(playerSetting.userName);
+        }
+    }
+
+    [Button("Reset Button")]
+    public void PlayerPrefsReset() {
+        PlayerPrefs.DeleteAll();
     }
 }
