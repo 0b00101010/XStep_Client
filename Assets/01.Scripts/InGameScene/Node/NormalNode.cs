@@ -89,18 +89,18 @@ public class NormalNode : Node
 
         isInteraction = true;
 
-        destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(judgeLevel);
         ResetCoroutine().Start(this);
     }
 
     public override void FailedInteraction(){
-        destroyEvent.Invoke(this, positionValue);
         InGameManager.instance.scoreManager.AddScore(0);
-        StartCoroutine(ResetCoroutine());
+        ResetCoroutine().Start(this);
     }
 
     private IEnumerator ResetCoroutine(){
+        destroyEvent.Invoke(this, positionValue);
+
         moveTween?.Kill();
         moveTween = gameObject.transform.DOMove(targetPosition, 0.2f).SetRelative().SetSpeedBased();
         resetTween = spriteRenderer.DOFade(0.0f, 0.2f);
