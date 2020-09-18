@@ -66,6 +66,14 @@ public class GameManager : DontDestroySingleton<GameManager>
         set => currentSceneType = value;
     }
     
+    private bool allPerfectMode;
+    public bool AllPerfectMode {
+        get => allPerfectMode;
+        set => allPerfectMode = value;
+    }
+    
+    public bool ReverseBoolean => !AllPerfectMode;
+
     private void Awake(){
         if (instance != this && instance != null) {
             Destroy(gameObject);
@@ -145,5 +153,20 @@ public class GameManager : DontDestroySingleton<GameManager>
         PlayerSetting.ResetSetting();
         PlayerSetting.AchieveData.DataReset();
         playerSetting.AchieveRequireData.DataReset();
+        AllPerfectMode = false;
     }
+
+    [ShowIf("AllPerfectMode")]
+    [Button("Change Normal Mode")]
+    private void ChangeNormalMode() {
+        AllPerfectMode = false;
+    }
+
+    [ShowIf("ReverseBoolean")]
+    [Button("Change All Perfect Mode")]
+    private void ChangeAllPerfectMode() {
+        AllPerfectMode = true;
+    }
+
+    
 }

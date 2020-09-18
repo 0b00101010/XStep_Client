@@ -74,6 +74,24 @@ public class LongNode : Node
         });
 
         headTween.OnComplete(() => {
+            #if UNITY_EDITOR
+            IEnumerator perfectUpdateCoroutine() {
+                while (true) {
+                    Interaction(perfectSample);
+                    yield return YieldInstructionCache.WaitFrame;
+                }
+            }
+            
+            if (GameManager.instance.AllPerfectMode) {
+                InGameManager.instance.scoreManager.AddScore(4);
+                InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+                
+                Interaction(perfectSample);
+                perfectUpdateCoroutine().Start(this);
+                return;
+            }
+            #endif
+            
             if (isInteraction == false) {
                 JudgeCoroutine().Start(this);
             }

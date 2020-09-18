@@ -56,6 +56,13 @@ public class SlideNode : Node
         yield return slideTween.WaitForCompletion();
         slideTween = null;
 
+        #if UNITY_EDITOR
+        if (GameManager.instance.AllPerfectMode) {
+            Interaction(perfectSample);
+            yield break;
+        }
+        #endif
+        
         judgeCoroutine?.Stop(this);
         judgeCoroutine = JudgeCoroutine().Start(this);
     }

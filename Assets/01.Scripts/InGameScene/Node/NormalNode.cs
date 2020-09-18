@@ -56,6 +56,15 @@ public class NormalNode : Node
         scaleTween = gameObject.transform.DOScale(Vector3.one, arriveTime - 0.2f).SetEase(Ease.Linear);
 
         yield return moveTween.WaitForCompletion();
+
+        #if UNITY_EDITOR
+        if (GameManager.instance.AllPerfectMode) {
+            InGameManager.instance.scoreManager.AddScore(4);
+            InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+            ResetCoroutine().Start(this);
+        }
+        #endif
+        
         yield return new WaitWhile( () => perfectSample + judgeBad > GetCurrentTimeSample());
 
         if (isInteraction == false) {
