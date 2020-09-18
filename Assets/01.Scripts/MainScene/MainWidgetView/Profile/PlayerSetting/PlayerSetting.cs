@@ -119,4 +119,28 @@ public class PlayerSetting : ScriptableObject {
     [SerializeField]
     private int _freeStyleClear;
     public int freeStyleClear {get => _freeStyleClear; set => _freeStyleClear = value;}
+
+
+    [Button("Reset")]
+    public void ResetSetting() {
+        userName = "User Name";
+        title = titleData.TitleResources[0];
+
+        currentExp = 0;
+        levelUpExp = 50;
+
+        currentLevel = 1;
+
+        perfectPlay = 0;
+        challengeClear = 0;
+        freeStyleClear = 0;
+
+        highClearLevel = 0;
+        totalScore = 0;
+
+        profileSprite = iconData.GetIcon(0).icon;
+        
+        MainSceneManager.instance.uiController.UserNameSetting(userName);
+        MainSceneManager.instance.uiController.TitleSetting(title.title);
+    }
 }
