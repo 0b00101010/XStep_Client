@@ -20,14 +20,14 @@ public class TouchManager : MonoBehaviour
     private Vector2 touchDownNotScreenPosition;
     private Vector2 touchDownPosition;
     private Vector2 touchHoldingPosition;
-    private Vector2 touchUpPosition;
+    private Vector2[] touchUpPosition = new Vector2[2];
 
     private Vector2 swipeDirection;
 
     private List<ITouchObserver> touchObservers = new List<ITouchObserver>();
 
     public Vector2 TouchDownPosition => touchDownPosition;
-    public Vector2 TouchUpPosition => touchUpPosition;
+    public Vector2[] TouchUpPosition => touchUpPosition;
     public Vector2 TouchHoldingPosition => touchHoldingPosition;
     public Vector2 SwipeDirection => swipeDirection;
 
@@ -71,7 +71,7 @@ public class TouchManager : MonoBehaviour
             isTouch = true;
             touchDownNotScreenPosition = Input.mousePosition;
             touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
-            TouchDownNotify();
+            TouchDownNotify(0);
 
         }
         else if(Input.GetMouseButtonUp(0)){
@@ -79,8 +79,8 @@ public class TouchManager : MonoBehaviour
             isSwipe = false;
             isTouch = false;
             keepTouchTimer = 0.0f;
-            touchUpPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            TouchUpNotify();
+            touchUpPosition[0] = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            TouchUpNotify(0);
         }
     }
 
@@ -88,12 +88,12 @@ public class TouchManager : MonoBehaviour
         if(Input.touchCount > 0){
             var tempTouch = Input.touches;
 
-            for (int i = 0; i < tempTouch.Length; i++) {
+            for (int i = 0; i < 2; i++) {
                 if (tempTouch[i].phase.Equals(TouchPhase.Began)) {
                     isTouch = true;
                     touchDownNotScreenPosition = tempTouch[i].position;
                     touchDownPosition = mainCamera.ScreenToWorldPoint(touchDownNotScreenPosition);
-                    TouchDownNotify();
+                    TouchDownNotify(i);
                 }
                 else if (tempTouch[i].phase.Equals(TouchPhase.Moved)) {
                     Vector2 currentPosition = tempTouch[i].position;
@@ -107,8 +107,8 @@ public class TouchManager : MonoBehaviour
                     isSwipe = false;
                     isHolding = false;
                     keepTouchTimer = 0.0f;
-                    touchUpPosition = mainCamera.ScreenToWorldPoint(tempTouch[i].position);
-                    TouchUpNotify();
+                    touchUpPosition[i] = mainCamera.ScreenToWorldPoint(tempTouch[i].position);
+                    TouchUpNotify(i);
                 }
             }
         }
@@ -126,15 +126,15 @@ public class TouchManager : MonoBehaviour
         }
     }
 
-    private void TouchDownNotify(){
+    private void TouchDownNotify(int touchIndex){
         touchObservers.ForEach((observer) => {
-            observer.TouchDownNotify();
+            observer.TouchDownNotify(touchIndex);
         });
     }
 
-    private void TouchUpNotify(){
+    private void TouchUpNotify(int touchIndex){
         touchObservers.ForEach((observer) => {
-            observer.TouchUpNotify();
+            observer.TouchUpNotify(touchIndex);
         });
     }
 

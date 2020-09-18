@@ -30,11 +30,11 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
         }
     }
 
-    public void TouchDownNotify(){
+    public void TouchDownNotify(int touchIndex){
         GetMainUIObject()?.Execute();
     }
 
-    public void TouchUpNotify(){
+    public void TouchUpNotify(int touchIndex){
 
     }
 
