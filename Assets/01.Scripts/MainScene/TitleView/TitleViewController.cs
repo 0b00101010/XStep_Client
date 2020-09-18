@@ -31,6 +31,13 @@ public class TitleViewController : MainUIObject {
         textDefaultColor = touchToStartText.color;
         backgroundColor = backgroundImage.color;
     }
+
+    private void Start() {
+        if (GameManager.instance.IsSawTitle) {
+            gameObject.SetActive(false);
+            MainSceneManager.instance.uiController.TitleViewClose();
+        }
+    }
     
     private void OnEnable() {
         backgroundImage.color = backgroundColor;
