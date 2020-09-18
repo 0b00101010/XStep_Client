@@ -74,6 +74,9 @@ public class GameManager : DontDestroySingleton<GameManager>
     
     public bool ReverseBoolean => !AllPerfectMode;
 
+    private List<Achieve> unlockAchieves = new List<Achieve>();
+    public List<Achieve> UnlockAchieves => unlockAchieves;
+
     private void Awake(){
         if (instance != this && instance != null) {
             Destroy(gameObject);
