@@ -11,13 +11,9 @@ public class ProfileImageSettingView : ProfileSettingView
 
     [SerializeField]
     private Image informationViewImage;
-
     private List<ProfileIconButton> iconImages = new List<ProfileIconButton>();
-    private ProfileIconHandler iconHandler;
-
+    
     private void Awake(){
-        iconHandler = gameObject.GetComponent<ProfileIconHandler>();
-
         var iconArray = gameObject.GetComponentsInChildren<ProfileIconButton>();
 
         foreach(var icon in iconArray){
@@ -28,7 +24,7 @@ public class ProfileImageSettingView : ProfileSettingView
     private void Start(){
         ChangeProfileImage(GameManager.instance.PlayerSetting.profileSprite ?? profileImage.sprite);
 
-        var iconData = iconHandler.iconData;
+        var iconData = GameManager.instance.PlayerSetting.iconData;
 
         // FIXME : GetIcon이 bool 이미 확인 하는데 이거 어떻게 못 고치나
         for(int i = 0; i < iconData.iconCount; i++){

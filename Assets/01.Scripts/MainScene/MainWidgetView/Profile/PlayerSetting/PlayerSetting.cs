@@ -7,6 +7,10 @@ using NaughtyAttributes;
 [CreateAssetMenu(fileName = "PlayerSetting", menuName = "Scriptable Object/PlayerSetting", order = 0)]
 public class PlayerSetting : ScriptableObject {
     [SerializeField]
+    private ProfileIconData _iconData;
+    public ProfileIconData iconData => _iconData;
+    
+    [SerializeField]
     private ProfileTitleData titleData;
     public ProfileTitleData TitleData => titleData;
     
