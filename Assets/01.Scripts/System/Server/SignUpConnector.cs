@@ -26,7 +26,7 @@ public class SignUpConnector : ServerConnector, IServerConnector {
         using (var www = UnityWebRequest.Post($"{GameManager.instance.ServerUrl}/signup", parameters)) {
             yield return www.SendWebRequest();
 
-            if (www.responseCode != 409 || www.isHttpError || www.isNetworkError) {
+            if (www.responseCode != 409 && (www.isHttpError || www.isNetworkError)) {
                 www.error.Log();
                 throw new NetworkInformationException();
             }
