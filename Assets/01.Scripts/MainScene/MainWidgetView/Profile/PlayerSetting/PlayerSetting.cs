@@ -56,11 +56,32 @@ public class PlayerSetting : ScriptableObject {
     [Space(10)]
     [SerializeField]
     private int _currentLevel;
-    public int currentLevel {get => _currentLevel; set => _currentLevel = value;} 
+
+    public int currentLevel {
+        get => _currentLevel;
+        set {
+            if ((value < 50) == false) {
+                return;
+            }
+
+            _currentLevel = value;
+            GameManager.instance.PlayerSetting.AchieveRequireData.SetValueToRequire("LV", value);
+        }
+    }
 
     [SerializeField]
     private int _currentExp;
-    public int currentExp {get => _currentExp; set => _currentExp = value;}
+    public int currentExp {
+        get => _currentExp;
+        set {
+            _currentExp = value;
+            if (_currentExp > _levelUpExp) {
+                currentLevel++;
+                _currentExp = 0;
+                _levelUpExp = 50 + (currentLevel * currentLevel / 2 * 100);
+            }
+        }
+    }
 
     [SerializeField]
     private int _levelUpExp;

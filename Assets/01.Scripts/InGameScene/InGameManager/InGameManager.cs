@@ -58,6 +58,7 @@ public class InGameManager : MonoBehaviour
         instance = null;
 
         GameManager.instance.gameResult.Score = scoreManager.TotalScore;
+        GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Score", scoreManager.TotalScore);
         GameManager.instance.PlayerSetting.totalScore += (ulong) scoreManager.TotalScore;
 
         var judgeCounts = GameManager.instance.gameResult.JudgeCounts;
@@ -77,6 +78,7 @@ public class InGameManager : MonoBehaviour
             case var v when accuracy == 100.0f:
                 rank = "SSS";
                 GameManager.instance.PlayerSetting.perfectPlay++;
+                GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("PerfectClear", 1);
                 break;
             case var v when accuracy > 95.0f:
                 rank = "SS";
@@ -115,6 +117,9 @@ public class InGameManager : MonoBehaviour
             = GameManager.instance.PlayerSetting.highClearLevel < GameManager.instance.songData.currentSelectDifficulty
                 ? GameManager.instance.songData.currentSelectDifficulty
                 : GameManager.instance.PlayerSetting.highClearLevel;
+
+        GameManager.instance.PlayerSetting.AchieveRequireData.SetValueToRequire("HighClearLevel", GameManager.instance.PlayerSetting.highClearLevel);
+        GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire($"ClearDiff{GameManager.instance.songData.currentSelectDifficulty + 1}", GameManager.instance.PlayerSetting.highClearLevel);
 
         SceneManager.LoadScene("00.MainScene");
     }

@@ -25,6 +25,14 @@ public class AchieveRequireData : ScriptableObject {
         achieveDictionary[require].Amount += value;
     }
 
+    public void SetValueToRequire(string require, int value) {
+        if (achieveDictionary.ContainsKey(require) == false) {
+            throw new KeyNotFoundException();
+        }
+        
+        achieveDictionary[require].Amount = value;
+    }
+
     [Button("Reset")]
     public void DataReset() {
         foreach (var require in achieveRequires) {

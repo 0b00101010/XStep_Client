@@ -35,6 +35,13 @@ public class Achieve {
     private bool isUnlock;
     public bool IsUnlock {
         get => isUnlock;
-        set => isUnlock = value;
+        set {
+            isUnlock = value;
+            
+            if (isUnlock) {
+                (AchieveName + "Unlock").Log();
+            }
+
+        }
     }
 }
