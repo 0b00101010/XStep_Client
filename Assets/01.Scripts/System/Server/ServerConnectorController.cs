@@ -23,19 +23,21 @@ public class ServerConnectorController : MonoBehaviour {
         signUpConnector = gameObject.GetComponent<SignUpConnector>();
     }
 
-    public void SignUp(string id, string passwd, string name, params Action[] callbacks) {
+    public void SignUp(string id, string passwd, string name, Action failedCallback, params Action[] callbacks) {
         for (int i = 0; i < callbacks.Length; i++) {
             signUpConnector.Callbacks.Add(callbacks[i]);
         }
         
+        signUpConnector.FailedCallback = failedCallback;
         signUpConnector.OnRequest(id, passwd, name);
     }
 
-    public void Login(string id, string passwd, params Action[] callbacks) {
+    public void Login(string id, string passwd, Action failedCallback, params Action[] callbacks) {
         for (int i = 0; i < callbacks.Length; i++) {
             loginConnector.Callbacks.Add(callbacks[i]);
         }
-        
+
+        loginConnector.FailedCallback = failedCallback;
         loginConnector.OnRequest(id, passwd);
     }
 }

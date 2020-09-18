@@ -29,6 +29,7 @@ public class LoginConnector : ServerConnector, IServerConnector {
             if (www.responseCode == 404) {
                 RequestSuccess = false;
                 "User를 찾을 수 없거나 ID 혹은 Password가 잘못되었습니다.".Log();
+                FailedCallback?.Invoke();
             }
             else {
                 var request = www.downloadHandler.text;

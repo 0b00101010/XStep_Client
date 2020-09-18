@@ -83,28 +83,47 @@ public class GameManager : DontDestroySingleton<GameManager>
     
     private IEnumerator LoginSetting() {
         if (bool.Parse(PlayerPrefs.GetString("SIGNUP","false")) == false) {
-            bool signUpSuccess = false;
+            bool signUpRequestSuccess = false;
+            bool signUpFailed = false;
             
             var randomValue = Random.Range(0, 10000);
-            serverConnector.SignUp($"guest_{randomValue}", randomValue.ToString(), $"{randomValue}번 띠용이", () => signUpSuccess = true);
+            serverConnector.SignUp($"guest_{randomValue}", randomValue.ToString(), $"{randomValue}번 띠용이", 
+                () => signUpFailed = true,
+                () => signUpRequestSuccess = true);
             
-            yield return new WaitUntil( () => signUpSuccess );
-            "Sign Up Success".Log();
+            yield return new WaitUntil( () => signUpRequestSuccess );
+            "Sign Up Request Success".Log();
+
+            if (signUpFailed) {
+                "Sign Up Failed.".Log();
+                yield break;
+            }
+            
+            "Sign Up Success!".Log();
             playerSetting.GuestNumber = randomValue;
             playerSetting.userName = $"{randomValue}번 띠용이";
         }
 
-        bool loginSuccess = false;
+        bool loginRequestSuccess = false;
+        bool loginFailed = false;
+        
         var guestNumber = playerSetting.GuestNumber;
         
         var serverUserData = new UserData();
 
         serverConnector.Login($"guest_{guestNumber}", guestNumber.ToString(), 
-            () => loginSuccess = true, () => serverUserData = serverConnector.LoginConnector.GetUserData());
+            () => loginFailed = true,
+            () => loginRequestSuccess = true, () => serverUserData = serverConnector.LoginConnector.GetUserData());
 
-        yield return new WaitUntil(() => loginSuccess);        
-        "Login Success".Log();
+        yield return new WaitUntil(() => loginRequestSuccess);        
+        "Login Request Success".Log();
+
+        if (loginFailed) {
+            "Login Failed.".Log();
+            yield break;
+        }
         
+        "Login Success!".Log();
         playerSetting.userName = serverUserData.name;
         
         if (currentSceneType.Equals(SceneType.MAIN)) {

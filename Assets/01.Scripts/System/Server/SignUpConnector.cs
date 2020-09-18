@@ -26,7 +26,7 @@ public class SignUpConnector : ServerConnector, IServerConnector {
         using (var www = UnityWebRequest.Post($"{GameManager.instance.ServerUrl}/signup", parameters)) {
             yield return www.SendWebRequest();
 
-            if (www.isHttpError || www.isNetworkError) {
+            if (www.responseCode != 409 || www.isHttpError || www.isNetworkError) {
                 www.error.Log();
                 throw new NetworkInformationException();
             }
@@ -34,6 +34,7 @@ public class SignUpConnector : ServerConnector, IServerConnector {
             if (www.responseCode == 409) {
                 RequestSuccess = false;
                 "중복 되는 유저명 입니다.".Log();
+                FailedCallback?.Invoke();;
             }
 
             foreach (var CallBack in Callbacks) {
