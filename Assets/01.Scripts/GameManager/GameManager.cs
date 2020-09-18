@@ -97,10 +97,16 @@ public class GameManager : DontDestroySingleton<GameManager>
         bool loginSuccess = false;
         var guestNumber = playerSetting.GuestNumber;
         
-        serverConnector.Login($"guest_{guestNumber}", guestNumber.ToString(), new UserData(), () => loginSuccess = true);
+        var serverUserData = new UserData();
+
+        serverConnector.Login($"guest_{guestNumber}", guestNumber.ToString(), 
+            () => loginSuccess = true, () => serverUserData = serverConnector.LoginConnector.GetUserData());
+
         yield return new WaitUntil(() => loginSuccess);        
         "Login Success".Log();
-
+        
+        playerSetting.userName = serverUserData.name;
+        
         if (currentSceneType.Equals(SceneType.MAIN)) {
             MainSceneManager.instance.uiController.TitleSetting(playerSetting.title.title);
             MainSceneManager.instance.uiController.UserNameSetting(playerSetting.userName);

@@ -13,7 +13,11 @@ public class ServerConnectorController : MonoBehaviour {
     public string ServerUrl => serverUrl;
 
     private LoginConnector loginConnector;
+    public LoginConnector LoginConnector => loginConnector;
+    
     private SignUpConnector signUpConnector;
+    public SignUpConnector SignUpConnector => signUpConnector;
+    
     private void Awake() {
         loginConnector = gameObject.GetComponent<LoginConnector>();
         signUpConnector = gameObject.GetComponent<SignUpConnector>();
@@ -27,14 +31,10 @@ public class ServerConnectorController : MonoBehaviour {
         signUpConnector.OnRequest(id, passwd, name);
     }
 
-    public void Login(string id, string passwd, UserData userData, params Action[] callbacks) {
+    public void Login(string id, string passwd, params Action[] callbacks) {
         for (int i = 0; i < callbacks.Length; i++) {
             loginConnector.Callbacks.Add(callbacks[i]);
         }
-        
-        loginConnector.Callbacks.Add(() => {
-            userData = loginConnector.GetUserData();
-        });
         
         loginConnector.OnRequest(id, passwd);
     }
