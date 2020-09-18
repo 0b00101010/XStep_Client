@@ -108,7 +108,7 @@ public class PlayerSetting : ScriptableObject {
         get => _perfectPlay;
         set {
             _perfectPlay = value; 
-            GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("PerfectPlay", 1);
+            GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("PerfectClear", 1);
         }
     }
     

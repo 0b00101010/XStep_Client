@@ -78,7 +78,6 @@ public class InGameManager : MonoBehaviour
             case var v when accuracy == 100.0f:
                 rank = "SSS";
                 GameManager.instance.PlayerSetting.perfectPlay++;
-                GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("PerfectClear", 1);
                 break;
             case var v when accuracy > 95.0f:
                 rank = "SS";
@@ -120,7 +119,10 @@ public class InGameManager : MonoBehaviour
 
         GameManager.instance.PlayerSetting.AchieveRequireData.SetValueToRequire("HighClearLevel", GameManager.instance.PlayerSetting.highClearLevel);
         GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire($"ClearDiff{GameManager.instance.songData.currentSelectDifficulty + 1}", GameManager.instance.PlayerSetting.highClearLevel);
-
+        
+        var totalExp = (GameManager.instance.songData.currentSelectDifficulty * 50) * (int)(accuracy);
+        GameManager.instance.PlayerSetting.currentExp += totalExp;
+        
         SceneManager.LoadScene("00.MainScene");
     }
 

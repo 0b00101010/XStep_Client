@@ -19,6 +19,7 @@ public class AchieveRequireData : ScriptableObject {
 
     public void AddValueToRequire(string require, int value) {
         if (achieveDictionary.ContainsKey(require) == false) {
+            require.Log();
             throw new KeyNotFoundException();
         }
 
@@ -27,6 +28,7 @@ public class AchieveRequireData : ScriptableObject {
 
     public void SetValueToRequire(string require, int value) {
         if (achieveDictionary.ContainsKey(require) == false) {
+            require.Log();
             throw new KeyNotFoundException();
         }
         
