@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,11 +15,14 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
 
     [SerializeField]
     private Image blackBackground;
+
+    private SongItemInformation[] songItems; 
     
     private Ray touchRay = new Ray();
 
     private void Awake(){
         uiController = gameObject.GetComponent<UIController>();
+        songItems = Resources.LoadAll<SongItemInformation>("Map Data");
     }
 
     private void Start(){
@@ -61,5 +65,14 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
             SceneManager.LoadScene("01.InGameScene");
             GameManager.instance.SomeUIInteraction = false;
         });
+    }
+    
+    [Button("Song Items Reset")]
+    public void SongItemsReset() {
+        for (int i = 0; i < songItems.Length; i++) {
+            for (int j = 0; i < songItems[i].HighScore.Length; j++) {
+                songItems[i].HighScore[j] = 0.0f;
+            }
+        }
     }
 }
