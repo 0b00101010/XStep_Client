@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achieveRequires:
   - requireName: LV
-    amount: 0
+    amount: 1
   - requireName: Score
     amount: 0
   - requireName: HighClearLevel

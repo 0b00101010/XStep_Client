@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee03120623a64300b07d52ed9a122cc, type: 3}
   m_Name: PlayerSetting
   m_EditorClassIdentifier: 
+  _iconData: {fileID: 11400000, guid: 7243abd3855e04aa78313558efd475d7, type: 2}
   titleData: {fileID: 11400000, guid: 80b388511482642ecb7ff1de785106bd, type: 2}
   achieveData: {fileID: 11400000, guid: c4f8a6e9912a649168fc545ecc6f9485, type: 2}
   achieveRequireData: {fileID: 11400000, guid: 213058d3507644c7e898e77d59aa9d31, type: 2}
   _title:
-    _title: XStep Developer
-    _description: "XStep \uAC1C\uBC1C\uC790\uC785\uB2C8\uB2E4."
-    _isUnLock: 0
-  _userName: Komorio
-  _profileSprite: {fileID: 21300000, guid: 104f4c8083f074545a8236433937fd5f, type: 3}
+    _title: Newbie
+    _description: "Xstep\uC758 \uC138\uACC4\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4."
+    _isUnLock: 1
+  _userName: User Name
+  _profileSprite: {fileID: 21300000, guid: 9b077509723c14d57ad91ae20475f9c8, type: 3}
   _currentLevel: 1
   _currentExp: 0
-  _levelUpExp: 300
+  _levelUpExp: 50
   _totalScore: 0
   _highClearLevel: 0
   _perfectPlay: 0

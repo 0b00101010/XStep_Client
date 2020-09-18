@@ -13,15 +13,7 @@ MonoBehaviour:
   m_Name: IconData
   m_EditorClassIdentifier: 
   iconDatas:
-  - _icon: {fileID: 21300000, guid: c17b0954dce294f11a394c6fc8c59492, type: 3}
-    _isUnlock: 1
-  - _icon: {fileID: 21300000, guid: 2901ca393bc2b4010848b0de1a1a9fa8, type: 3}
-    _isUnlock: 0
-  - _icon: {fileID: 21300000, guid: 8ea8bf2b2621449f5ba31ef421b53c8f, type: 3}
-    _isUnlock: 1
-  - _icon: {fileID: 21300000, guid: 0bb01c30f07474b2f9de05c21be1bc04, type: 3}
-    _isUnlock: 0
-  - _icon: {fileID: 21300000, guid: 87e85abd462df470799fa30d0aea1088, type: 3}
+  - _icon: {fileID: 21300000, guid: 9b077509723c14d57ad91ae20475f9c8, type: 3}
     _isUnlock: 1
   lockedIcon:
     _icon: {fileID: 21300000, guid: 4f69afa452af64cb698ba73fdc021e6b, type: 3}
