@@ -70,7 +70,7 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     [Button("Song Items Reset")]
     public void SongItemsReset() {
         for (int i = 0; i < songItems.Length; i++) {
-            for (int j = 0; i < songItems[i].HighScore.Length; j++) {
+            for (int j = 0; j < songItems[i].HighScore.Length; j++) {
                 songItems[i].HighScore[j] = 0.0f;
             }
         }
