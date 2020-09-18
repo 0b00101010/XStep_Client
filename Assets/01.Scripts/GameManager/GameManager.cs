@@ -139,7 +139,11 @@ public class GameManager : DontDestroySingleton<GameManager>
     }
 
     [Button("Reset Button")]
-    public void PlayerPrefsReset() {
+    public void GameReset() {
         PlayerPrefs.DeleteAll();
+        MainSceneManager.instance?.SongItemsReset();
+        PlayerSetting.ResetSetting();
+        PlayerSetting.AchieveData.DataReset();
+        playerSetting.AchieveRequireData.DataReset();
     }
 }
