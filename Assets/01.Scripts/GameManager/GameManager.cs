@@ -53,7 +53,13 @@ public class GameManager : DontDestroySingleton<GameManager>
     private string serverUrl;
 
     public string ServerUrl => $"http://{serverUrl}";
-    
+
+    private bool isSawTitle = false;
+    public bool IsSawTitle {
+        get => isSawTitle;
+        set => isSawTitle = value;
+    }
+
     private SceneType currentSceneType;
     public SceneType CurrentSceneType {
         get => currentSceneType;

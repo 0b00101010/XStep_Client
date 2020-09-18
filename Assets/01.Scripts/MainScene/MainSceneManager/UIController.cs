@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIController : MonoBehaviour
-{
+public class UIController : MonoBehaviour {
+    [SerializeField]
+    private GameObject[] staticUiObjects;
+    
     [SerializeField]
     private Text informationBoxText;
     
@@ -24,6 +26,12 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image userProfileImage;
 
+    public void TitleViewClose() {
+        for (int i = 0; i < staticUiObjects.Length; i++) {
+            staticUiObjects[i].SetActive(true);
+        }
+    }
+    
     public void FreeStyleViewOpen() {
         freeStyleViewController.gameObject.SetActive(true);
     }
