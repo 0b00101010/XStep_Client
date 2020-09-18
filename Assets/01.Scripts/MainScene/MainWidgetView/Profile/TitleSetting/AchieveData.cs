@@ -20,7 +20,7 @@ public class AchieveData : ScriptableObject {
 
         foreach (var findAchieve in findAchieves) {
             if (findAchieve.IsUnlock == false) {
-                if (amount < findAchieve.Amount) {
+                if (amount != -1 ||  amount < findAchieve.Amount) {
                     return;
                 }
                 
