@@ -49,9 +49,6 @@ public class ResultViewController : MonoBehaviour {
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
-
-    [SerializeField]
-    private GameObject freeStyleView;
     
     [Header("Resources")]
     [SerializeField]
@@ -95,7 +92,7 @@ public class ResultViewController : MonoBehaviour {
         GameManager.instance.widgetViewer.WidgetsClose(background, () => {
             GameManager.instance.gameResult = null;
             gameObject.SetActive(false);
-            freeStyleView.gameObject.SetActive(true);
+            MainSceneManager.instance.uiController.FreeStyleViewOpen();
             GameManager.instance.SomeUIInteraction = false;
         }, canvasGroup);
     }

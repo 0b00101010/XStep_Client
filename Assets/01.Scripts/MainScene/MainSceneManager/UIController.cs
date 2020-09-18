@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     
     [SerializeField]
     private FreeStyleViewController freeStyleViewController;
-
+    
     [SerializeField]
     private ResultViewController resultViewController;
     
@@ -24,8 +24,16 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image userProfileImage;
 
-    public void ResultOpen() {
+    public void FreeStyleViewOpen() {
+        freeStyleViewController.gameObject.SetActive(true);
+    }
+
+    public void FreeStyleViewClose() {
         freeStyleViewController.gameObject.SetActive(false);
+    }
+    
+    public void ResultOpen() {
+        FreeStyleViewClose();
         resultViewController.Open();
     }
     
