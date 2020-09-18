@@ -70,7 +70,7 @@ public class ViewSongInformation : MonoBehaviour
             this.difficultyTexts[i].transform.parent.gameObject.SetActive( information.MapFile.maps[i].map == null ? false : true );
         }
 
-        highScoreText.text = ((int)information.HighScore).ToString("D11");
+        highScoreText.text = 0.ToString("D11");
     }
     
     public void OpenSongInformation(){

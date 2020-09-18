@@ -105,22 +105,24 @@ public class InGameManager : MonoBehaviour
                 break;
         }
 
+        var difficulty = GameManager.instance.songData.currentSelectDifficulty;
+        
         GameManager.instance.gameResult.Rank = rank;
         
-        GameManager.instance.selectSongItem.HighScore
-            = GameManager.instance.selectSongItem.HighScore < scoreManager.TotalScore
+        GameManager.instance.selectSongItem.HighScore[difficulty]
+            = GameManager.instance.selectSongItem.HighScore[difficulty] < scoreManager.TotalScore
                 ? scoreManager.TotalScore
-                : GameManager.instance.selectSongItem.HighScore;
+                : GameManager.instance.selectSongItem.HighScore[difficulty];
 
         GameManager.instance.PlayerSetting.highClearLevel
-            = GameManager.instance.PlayerSetting.highClearLevel < GameManager.instance.songData.currentSelectDifficulty
-                ? GameManager.instance.songData.currentSelectDifficulty
+            = GameManager.instance.PlayerSetting.highClearLevel < difficulty
+                ? difficulty
                 : GameManager.instance.PlayerSetting.highClearLevel;
 
         GameManager.instance.PlayerSetting.AchieveRequireData.SetValueToRequire("HighClearLevel", GameManager.instance.PlayerSetting.highClearLevel);
-        GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire($"ClearDiff{GameManager.instance.songData.currentSelectDifficulty + 1}", GameManager.instance.PlayerSetting.highClearLevel);
+        GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire($"ClearDiff{difficulty + 1}", GameManager.instance.PlayerSetting.highClearLevel);
         
-        var totalExp = (GameManager.instance.songData.currentSelectDifficulty * 50) * (int)(accuracy);
+        var totalExp = (difficulty * 50) * (int)(accuracy);
         GameManager.instance.PlayerSetting.currentExp += totalExp;
         
         SceneManager.LoadScene("00.MainScene");
