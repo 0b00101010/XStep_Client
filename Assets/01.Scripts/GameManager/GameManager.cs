@@ -63,6 +63,7 @@ public class GameManager : DontDestroySingleton<GameManager>
     private void Awake(){
         if (instance != this && instance != null) {
             Destroy(gameObject);
+            return;
         }
         
         touchManager = gameObject.GetComponent<TouchManager>();

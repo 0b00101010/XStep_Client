@@ -25,12 +25,7 @@ public class LoginConnector : ServerConnector, IServerConnector {
 
         using (var www = UnityWebRequest.Post($"{GameManager.instance.ServerUrl}/signin", parameters)) {
             yield return www.SendWebRequest();
-
-            if (www.isHttpError || www.isNetworkError) {
-                www.error.Log();
-                throw new NetworkInformationException();
-            }
-
+            
             if (www.responseCode == 404) {
                 RequestSuccess = false;
                 "User를 찾을 수 없거나 ID 혹은 Password가 잘못되었습니다.".Log();
