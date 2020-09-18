@@ -55,7 +55,7 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     }
     
     public void GameStart() {
-        if ((GameManager.instance.selectSongItem.MapFile.currentSelectDifficulty != -1) == false) {
+        if (GameManager.instance.selectSongItem.MapFile.currentSelectDifficulty == -1) {
             return;
         }
         

@@ -53,7 +53,9 @@ public class ViewSongInformation : MonoBehaviour
         this.pannerActiveCheckFunction = pannerActiveCheckFunction;
     }
 
-    public void SettingInformations(SongItemInformation information){
+    public void SettingInformations(SongItemInformation information) {
+        GameManager.instance.songData.currentSelectDifficulty = -1;
+        
         this.eyeCatchImage.sprite = information.EyeCatch;
         this.songName.text = information.SongName;
         this.composerName.text = information.ComposerName;

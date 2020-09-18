@@ -27,7 +27,7 @@ public class DifficultSelectButton : MainUIObject {
     
     public override void Execute() {
         GameManager.instance.songData.currentSelectDifficulty = difficulty;
-        highScoreText.text = GameManager.instance.selectSongItem.HighScore[difficulty].ToString("D11");
+        highScoreText.text = ((int)GameManager.instance.selectSongItem.HighScore[difficulty]).ToString("D11");
         
         DifficultSelectButton.SelectDifficultyButton?.BackgroundImage.gameObject.SetActive(false);
         DifficultSelectButton.SelectDifficultyButton = this;
