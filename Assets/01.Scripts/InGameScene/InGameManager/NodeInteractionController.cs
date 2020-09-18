@@ -71,12 +71,22 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
 
     public void TouchDownNotify(int touchIndex) {
         var boxIndex = GetHitBoxIndex();
+
+        if (boxIndex == -1) {
+            return;
+        }
+        
         NodeInteraction(boxIndex, getCurrentSample());
         SlideNodeInteractionStart(touchIndex, GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
     }
 
     public void TouchUpNotify(int touchIndex) {
         var boxIndex = GetHitBoxIndex();
+
+        if (boxIndex == -1) {
+            return;
+        }
+        
         if (activeNode[boxIndex].Count > 0 && activeNode[boxIndex][0] is LongNode) {
             StopLongCoroutine(activeNode[boxIndex][0] as LongNode);
         }
