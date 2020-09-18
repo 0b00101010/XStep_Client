@@ -59,8 +59,7 @@ public class NormalNode : Node
 
         #if UNITY_EDITOR
         if (GameManager.instance.AllPerfectMode) {
-            InGameManager.instance.scoreManager.AddScore(4);
-            InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+            Interaction(perfectSample);
             ResetCoroutine().Start(this);
         }
         #endif
