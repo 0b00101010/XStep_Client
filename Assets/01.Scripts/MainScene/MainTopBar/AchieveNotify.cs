@@ -19,6 +19,8 @@ public class AchieveNotify : MonoBehaviour {
     private void OnEnable() {
         canvasGroup.alpha = 1.0f;
         gameObject.transform.position = defaultPosition;
+
+        EnableCoroutine().Start(this);
     }
 
     private IEnumerator EnableCoroutine() {

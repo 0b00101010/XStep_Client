@@ -41,6 +41,10 @@ public class UIController : MonoBehaviour {
     
     public void FreeStyleViewOpen() {
         freeStyleViewController.gameObject.SetActive(true);
+        
+        if (GameManager.instance.UnlockAchieves.Count > 0) {
+            AchieveNotifyOpen();
+        }
     }
 
     public void FreeStyleViewClose() {
