@@ -3188,6 +3188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 3
+  highScoreText: {fileID: 664476610}
 --- !u!61 &213672305
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8104,6 +8105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 1
+  highScoreText: {fileID: 664476610}
 --- !u!61 &488197419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18581,6 +18583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 4
+  highScoreText: {fileID: 664476610}
 --- !u!61 &1021827574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20522,6 +20525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 2
+  highScoreText: {fileID: 664476610}
 --- !u!61 &1156975194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25802,6 +25806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 0
+  highScoreText: {fileID: 664476610}
 --- !u!61 &1427260301
 BoxCollider2D:
   m_ObjectHideFlags: 0
