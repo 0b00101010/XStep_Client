@@ -30,6 +30,10 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
         GameManager.instance.touchManager.touchType = TouchType.MainScene;
         GameManager.instance.CurrentSceneType = SceneType.MAIN;
 
+        if (GameManager.instance.UnlockAchieves.Count > 0) {
+            uiController.AchieveNotifyOpen();
+        }
+
         if (GameManager.instance.gameResult != null) {
             uiController.ResultOpen();
         }

@@ -7,6 +7,9 @@ using TMPro;
 public class UIController : MonoBehaviour {
     [SerializeField]
     private GameObject[] staticUiObjects;
+
+    [SerializeField]
+    private GameObject achieveNotify;
     
     [SerializeField]
     private Text informationBoxText;
@@ -30,6 +33,10 @@ public class UIController : MonoBehaviour {
         for (int i = 0; i < staticUiObjects.Length; i++) {
             staticUiObjects[i].SetActive(true);
         }
+    }
+
+    public void AchieveNotifyOpen() {
+        achieveNotify.gameObject.SetActive(true);
     }
     
     public void FreeStyleViewOpen() {
