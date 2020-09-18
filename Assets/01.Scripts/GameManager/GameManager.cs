@@ -154,8 +154,9 @@ public class GameManager : DontDestroySingleton<GameManager>
         PlayerPrefs.DeleteAll();
         MainSceneManager.instance?.SongItemsReset();
         PlayerSetting.ResetSetting();
-        PlayerSetting.AchieveData.DataReset();
         playerSetting.AchieveRequireData.DataReset();
+        PlayerSetting.AchieveData.DataReset();
+        PlayerSetting.TitleData.DataReset();
         AllPerfectMode = false;
     }
 

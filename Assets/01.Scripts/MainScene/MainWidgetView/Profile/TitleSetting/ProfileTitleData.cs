@@ -20,8 +20,8 @@ public class ProfileTitleData : ScriptableObject {
     
     [Button("Reset")]
     public void DataReset() {
-        foreach (var title in titleResources) {
-            title.isUnLock = false;
+        for (int i = 1; i < titleResources.Length; i++) {
+            titleResources[i].isUnLock = false;
         }
     }
 }
