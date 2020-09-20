@@ -100,7 +100,7 @@ public class InGameManager : MonoBehaviour
             case var v when accuracy > 40.0f:
                 rank = "E";
                 break;
-            case var v when accuracy > 30.0f:
+            default:
                 rank = "F";
                 break;
         }
