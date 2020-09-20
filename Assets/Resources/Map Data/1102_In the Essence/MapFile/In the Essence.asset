@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2f2ecd0fbed49a9973dfa8b19a0f19, type: 3}
+  m_Name: In the Essence
+  m_EditorClassIdentifier: 
+  _maps:
+  - _map: {fileID: 4900000, guid: 85eddf4e02ac44e1aa5376d34b9e193e, type: 3}
+    _difficulty: 7
+  - _map: {fileID: 4900000, guid: 7d7cc178fb4944afe9f3d7d495f842fb, type: 3}
+    _difficulty: 17
+  - _map: {fileID: 4900000, guid: 60f74a1500928400a9f2de51567ad8d9, type: 3}
+    _difficulty: 27
+  - _map: {fileID: 4900000, guid: b5ad8f3a7d8ee47f7afcc40b1d0dad40, type: 3}
+    _difficulty: 32
+  - _map: {fileID: 4900000, guid: 96247f1f09e8149a4bb13d083854d463, type: 3}
+    _difficulty: 44
+  _backgroundFile: {fileID: 4900000, guid: f3721f4ffe4154850a36f20645894be9, type: 3}
+  _clip: {fileID: 8300000, guid: 91cca5b2701354b079b217af24d69aaa, type: 3}
+  _currentSelectDifficulty: 0

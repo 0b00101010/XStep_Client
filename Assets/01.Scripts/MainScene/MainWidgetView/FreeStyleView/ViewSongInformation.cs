@@ -54,7 +54,6 @@ public class ViewSongInformation : MonoBehaviour
     }
 
     public void SettingInformations(SongItemInformation information) {
-        GameManager.instance.songData.currentSelectDifficulty = -1;
         
         this.eyeCatchImage.sprite = information.EyeCatch;
         this.songName.text = information.SongName;
@@ -72,6 +71,7 @@ public class ViewSongInformation : MonoBehaviour
             this.difficultyTexts[i].transform.parent.gameObject.SetActive( information.MapFile.maps[i].map == null ? false : true );
         }
 
+        GameManager.instance.songData.currentSelectDifficulty = -1;
         highScoreText.text = 0.ToString("D11");
     }
     

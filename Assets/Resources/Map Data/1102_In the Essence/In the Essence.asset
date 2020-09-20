@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b697d8354954a1badd06b222a86ae9, type: 3}
+  m_Name: In the Essence
+  m_EditorClassIdentifier: 
+  eyeCatch: {fileID: 21300000, guid: 058c54b19975a480e85796322f42d0f7, type: 3}
+  songName: In the Essence
+  composerName: LiquidCat
+  stepTags: 0000000001000000
+  difficultys: 07000000110000001b000000200000002c000000
+  mapFile: {fileID: 0}
+  highScore:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0

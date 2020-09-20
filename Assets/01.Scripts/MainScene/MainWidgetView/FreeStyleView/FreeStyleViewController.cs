@@ -24,6 +24,10 @@ public class FreeStyleViewController : MonoBehaviour {
         });
 
         songItems = songItemsParent.GetComponentsInChildren<SongItem>(true);
+
+        for (int i = 0; i < songItems.Length; i++) {
+            songItems[i].gameObject.transform.position = sortPivotObject.transform.position - (Vector3.up * (i * 1.5f));
+        }
     }
 
     private void Update(){

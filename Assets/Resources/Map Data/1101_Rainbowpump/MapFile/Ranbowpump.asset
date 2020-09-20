@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2f2ecd0fbed49a9973dfa8b19a0f19, type: 3}
+  m_Name: Ranbowpump
+  m_EditorClassIdentifier: 
+  _maps:
+  - _map: {fileID: 4900000, guid: 01d67b9d416064745b46ecf7fa2a1aff, type: 3}
+    _difficulty: 0
+  - _map: {fileID: 4900000, guid: 59f113774b5854fb69895fc3fc3aed97, type: 3}
+    _difficulty: 0
+  - _map: {fileID: 4900000, guid: 9b386edc8ccc347f8aae1b2c241ec8ad, type: 3}
+    _difficulty: 0
+  - _map: {fileID: 4900000, guid: 2edacfabdf6c541898eb17f9a0f05808, type: 3}
+    _difficulty: 0
+  - _map: {fileID: 4900000, guid: 10a24427786a64285bf7daf3553733e0, type: 3}
+    _difficulty: 0
+  _backgroundFile: {fileID: 4900000, guid: e419f7e585d304767960ce716f5af335, type: 3}
+  _clip: {fileID: 8300000, guid: dd9481874671743fbbe58b35a996b343, type: 3}
+  _currentSelectDifficulty: 0
