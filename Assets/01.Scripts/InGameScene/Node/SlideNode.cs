@@ -127,6 +127,7 @@ public class SlideNode : Node
         yield return resetTween.WaitForCompletion();
     
         gameObject.transform.position = Vector2.zero;
+        isInteraction = false;
         base.ObjectReset();
     }
     
