@@ -71,7 +71,6 @@ public class ViewSongInformation : MonoBehaviour
             this.difficultyTexts[i].transform.parent.gameObject.SetActive( information.MapFile.maps[i].map == null ? false : true );
         }
 
-        GameManager.instance.songData.currentSelectDifficulty = -1;
         highScoreText.text = 0.ToString("D11");
     }
     

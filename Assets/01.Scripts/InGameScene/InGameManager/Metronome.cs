@@ -256,6 +256,13 @@ public class Metronome : MonoBehaviour {
     private Action MakeSystemAction(string key, double value) {
         return () => {
             settingDictionary[key] = value;
+            bpm = settingDictionary["BPM"];
+            split = (int) settingDictionary["Split"];
+            offset = settingDictionary["Delay"] / 1000;
+            effectSplit = (split * 2) - 1;
+            
+            oneBeatTime = 60.0 / bpm / split;
+            oneBeatTime *= audioSource.clip.frequency;
         };
     }
 
@@ -281,5 +288,13 @@ public class Metronome : MonoBehaviour {
         return () => {
             InGameManager.instance.nodeCreator.SlideNodeGenerate(position, audioSource.timeSamples);
         }; 
+    }
+
+    private void OnGUI() {
+        #if UNITY_EDITOR
+        GUI.Label(new Rect(10,50,100,50), bpm.ToString());
+        GUI.Label(new Rect(10,100,100,50), split.ToString());
+        GUI.Label(new Rect(10,150,100,50), oneBeatTime.ToString());
+        #endif
     }
 }
