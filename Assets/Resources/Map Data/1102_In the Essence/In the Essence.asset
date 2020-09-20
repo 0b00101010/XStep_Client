@@ -17,10 +17,10 @@ MonoBehaviour:
   composerName: LiquidCat
   stepTags: 0000000001000000
   difficultys: 07000000110000001b000000200000002c000000
-  mapFile: {fileID: 0}
+  mapFile: {fileID: 11400000, guid: b0f18617e3ac6490a9ae7b6205f64182, type: 2}
   highScore:
   - 0
   - 0
-  - 0
+  - 635710
   - 0
   - 0

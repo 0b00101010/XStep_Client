@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da2f2ecd0fbed49a9973dfa8b19a0f19, type: 3}
-  m_Name: Ranbowpump
+  m_Name: Rainbowpump
   m_EditorClassIdentifier: 
   _maps:
   - _map: {fileID: 4900000, guid: 01d67b9d416064745b46ecf7fa2a1aff, type: 3}
@@ -25,4 +25,4 @@ MonoBehaviour:
     _difficulty: 0
   _backgroundFile: {fileID: 4900000, guid: e419f7e585d304767960ce716f5af335, type: 3}
   _clip: {fileID: 8300000, guid: dd9481874671743fbbe58b35a996b343, type: 3}
-  _currentSelectDifficulty: 0
+  _currentSelectDifficulty: 1

@@ -17,7 +17,7 @@ MonoBehaviour:
   composerName: Instant Caravan
   stepTags: 0000000001000000
   difficultys: 060000000c00000017000000260000002a000000
-  mapFile: {fileID: 0}
+  mapFile: {fileID: 11400000, guid: c1e58bf4fcb8a41c78785c917648afef, type: 2}
   highScore:
   - 0
   - 0
