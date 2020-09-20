@@ -15,6 +15,8 @@ public class FreeStyleViewController : MonoBehaviour {
 
     private bool isPannerOpen = false;
 
+    private Vector2 moveVector;
+
 
     private void Awake(){
         songInformationViewer = gameObject.GetComponent<ViewSongInformation>();
@@ -24,7 +26,7 @@ public class FreeStyleViewController : MonoBehaviour {
         });
 
         songItems = songItemsParent.GetComponentsInChildren<SongItem>(true);
-
+        moveVector = Vector2.up / 3;
         for (int i = 0; i < songItems.Length; i++) {
             songItems[i].gameObject.transform.position = sortPivotObject.transform.position - (Vector3.up * (i * 1.5f));
         }
@@ -34,12 +36,12 @@ public class FreeStyleViewController : MonoBehaviour {
         if(GameManager.instance.touchManager.IsSwipe && !isPannerOpen && !GameManager.instance.SomeUIInteraction){
             if(GameManager.instance.touchManager.SwipeDirection.y > 0.8f){
                 if(songItems[songItems.Length - 1].gameObject.transform.position.y < sortPivotObject.position.y){
-                    MoveObjects(Vector2.up);
+                    MoveObjects(moveVector);
                 }
             }
             else if(GameManager.instance.touchManager.SwipeDirection.y < -0.8f){
                 if(songItems[0].gameObject.transform.position.y > sortPivotObject.position.y){
-                    MoveObjects(Vector2.down);
+                    MoveObjects(-moveVector);
                 }
             }
         }
