@@ -60,6 +60,14 @@ public class Metronome : MonoBehaviour {
         }
     }
 
+    public void Pause() {
+        audioSource.Pause();
+    }
+
+    public void Resume() {
+        audioSource.Play();
+    }
+    
     public double GetFrequency() {
         return audioSource.clip.frequency;
     }

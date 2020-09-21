@@ -26,6 +26,8 @@ public class InGameManager : MonoBehaviour
     [HideInInspector]
     public Metronome metronome;
     
+    [SerializeField]
+    private GameObject pauseView;
     
     [Header("Events")]
     [SerializeField]
@@ -57,6 +59,8 @@ public class InGameManager : MonoBehaviour
     public void GameEnd() {
         instance = null;
 
+        Time.timeScale = 1.0f;
+        
         GameManager.instance.gameResult.Score = scoreManager.TotalScore;
         GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Score", scoreManager.TotalScore);
         GameManager.instance.PlayerSetting.totalScore += (ulong) scoreManager.TotalScore;
@@ -129,4 +133,16 @@ public class InGameManager : MonoBehaviour
     }
 
 
+    public void GamePause() {
+        Time.timeScale = 0.0f;
+        metronome.Pause();
+        pauseView.gameObject.SetActive(true);
+    }
+
+    public void GameResume() {
+        Time.timeScale = 1.0f;
+        metronome.Resume();
+        pauseView.gameObject.SetActive(false);
+    }
+    
 }
