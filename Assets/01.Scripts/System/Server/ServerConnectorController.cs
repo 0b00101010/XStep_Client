@@ -21,6 +21,11 @@ public class ServerConnectorController : MonoBehaviour {
     private void Awake() {
         loginConnector = gameObject.GetComponent<LoginConnector>();
         signUpConnector = gameObject.GetComponent<SignUpConnector>();
+
+        var serverIP = Resources.Load<ServerIP>("ServerIP");
+        if (serverIP != null) {
+            serverUrl = serverIP.serverIP;
+        }
     }
 
     public void SignUp(string id, string passwd, string name, Action failedCallback, params Action[] callbacks) {

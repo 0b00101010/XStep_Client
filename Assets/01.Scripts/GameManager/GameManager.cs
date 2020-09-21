@@ -86,15 +86,13 @@ public class GameManager : DontDestroySingleton<GameManager>
         touchManager = gameObject.GetComponent<TouchManager>();
         widgetViewer = gameObject.GetComponent<WidgetViewer>();
         serverConnector = gameObject.GetComponent<ServerConnectorController>();
-
-        serverUrl = serverConnector.ServerUrl;
         
         playerSetting = Resources.Load<PlayerSetting>("Player Setting/PlayerSetting");
         playerSetting.AchieveRequireData.Initialize();
-
     }
 
     private void Start() {
+        serverUrl = serverConnector.ServerUrl;
         LoginSetting().Start(this);
     }
     

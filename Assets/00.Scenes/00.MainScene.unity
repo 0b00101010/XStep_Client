@@ -7017,7 +7017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d20193ef3e64ac99a0cdb5c1c51e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverUrl: localhost:8080
+  serverUrl: 
 --- !u!114 &433352676
 MonoBehaviour:
   m_ObjectHideFlags: 0
