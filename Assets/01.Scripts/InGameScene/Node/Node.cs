@@ -12,7 +12,16 @@ public class Node : MonoBehaviour {
     protected float arriveTime => _arriveTime;
 
     private double _arriveTimeToSample;
-    protected double arriveTimeToSample => _arriveTimeToSample;
+
+    protected double arriveTimeToSample {
+        get {
+            if (_arriveTimeToSample <= 0) {
+                Start();
+            }
+
+            return _arriveTimeToSample;
+        }
+    }
     
     private Color defaultColor;
 
