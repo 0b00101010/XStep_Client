@@ -10,6 +10,7 @@ public class TouchManager : MonoBehaviour
     private bool isTouch;
     private bool isSwipe;
     private bool isHolding;
+    private bool isSwiped;
     
     private float keepTouchTimer = 0.0f;
 
@@ -34,6 +35,7 @@ public class TouchManager : MonoBehaviour
     public bool IsTouch => isTouch;
     public bool IsSwipe => isSwipe;
     public bool IsHolding => isHolding;
+    public bool IsSwiped => isSwiped;
 
     public TouchType touchType {get; set;}
 
@@ -65,6 +67,7 @@ public class TouchManager : MonoBehaviour
         swipeDirection.y = Input.GetAxis("Mouse ScrollWheel") * 10.0f;
         if(swipeDirection.y > 0){
             isSwipe = true;
+            isSwiped = true;
         }
 
         if (Input.GetMouseButtonDown(0)) {
@@ -81,6 +84,7 @@ public class TouchManager : MonoBehaviour
             keepTouchTimer = 0.0f;
             touchUpPosition[0] = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             TouchUpNotify(0);
+            isSwiped = false;
         }
     }
 
@@ -100,6 +104,7 @@ public class TouchManager : MonoBehaviour
                     if ((currentPosition - touchDownNotScreenPosition).magnitude > minSwipeDistance) {
                         swipeDirection = (currentPosition - touchDownNotScreenPosition).normalized;
                         isSwipe = true;
+                        isSwiped = true;
                     }
                 }
                 else if (tempTouch[i].phase.Equals(TouchPhase.Ended)) {
@@ -109,6 +114,7 @@ public class TouchManager : MonoBehaviour
                     keepTouchTimer = 0.0f;
                     touchUpPosition[i] = mainCamera.ScreenToWorldPoint(tempTouch[i].position);
                     TouchUpNotify(i);
+                    isSwiped = false;
                 }
             }
         }

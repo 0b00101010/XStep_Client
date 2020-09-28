@@ -35,11 +35,12 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     }
 
     public void TouchDownNotify(int touchIndex){
-        GetMainUIObject()?.Execute();
     }
 
     public void TouchUpNotify(int touchIndex){
-
+        if (GameManager.instance.touchManager.IsSwiped == false) {
+            GetMainUIObject()?.Execute();
+        }
     }
 
     private MainUIObject GetMainUIObject(){
