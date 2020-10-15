@@ -23589,8 +23589,7 @@ MonoBehaviour:
   - {fileID: 2042427667}
   - {fileID: 82098508}
   - {fileID: 396509019}
-  changeScaleValue: 0.2
-  repeatFrame: 30
+  duration: 0.2
 --- !u!114 &1740762591
 MonoBehaviour:
   m_ObjectHideFlags: 0

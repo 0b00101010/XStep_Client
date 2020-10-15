@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 public class CenterEffectorController : MonoBehaviour
@@ -9,61 +10,29 @@ public class CenterEffectorController : MonoBehaviour
     private Image[] effectorImages;
 
     [SerializeField]
-    private float changeScaleValue;
+    private float duration;
 
-    [SerializeField]
-    private int repeatFrame;
+    private IEnumerator effectorCoroutine;
     
-    private int realRepeatFrame;
-    private Vector3 changeScale;
-
-    private bool isEffect;
-
-    private void Awake(){
-        changeScale.x = changeScaleValue;
-        changeScale.y = changeScaleValue;
-        changeScale.z = changeScaleValue;
-
-        realRepeatFrame = repeatFrame / 2;
-
-        changeScale /= realRepeatFrame;
-
+    public void EffectOneShot() {
+        effectorCoroutine?.Stop(this);
+        effectorCoroutine = EffectCoroutine().Start(this);
     }
 
-    public void EffectOneShot(){
-        if(isEffect){
-            return;
+    private IEnumerator EffectCoroutine() {
+        yield return effectorImages[1].gameObject.transform.DOScale(1.2f, duration).WaitForCompletion();
+        yield return effectorImages[1].gameObject.transform.DOScale(1.0f, duration).WaitForCompletion();
+        
+        for(int i = 0; i < effectorImages.Length - 1; i++){
+            effectorImages[i].gameObject.transform.DOScale(1.2f, duration);
         }
-        StartCoroutine(EffectCoroutine());
-        isEffect = true;
-    }
-
-    private IEnumerator EffectCoroutine(){
-        for(int i = 0; i < realRepeatFrame; i++){
-            effectorImages[1].gameObject.transform.localScale += changeScale;
-            yield return YieldInstructionCache.WaitFrame;
+        
+        yield return effectorImages[effectorImages.Length - 1].gameObject.transform.DOScale(1.2f, duration);
+        
+        for(int i = 0; i < effectorImages.Length - 1; i++){
+            effectorImages[i].gameObject.transform.DOScale(1.0f, duration);
         }
-
-        for(int i = 0; i < realRepeatFrame; i++){
-            effectorImages[1].gameObject.transform.localScale -= changeScale;
-            yield return YieldInstructionCache.WaitFrame;
-        }
-
-
-        for(int i = 0; i < realRepeatFrame; i++){
-            for(int j = 0; j < effectorImages.Length; j++){
-                effectorImages[j].gameObject.transform.localScale += changeScale;
-            }
-            yield return YieldInstructionCache.WaitFrame;
-        }
-
-        for(int i = 0; i < realRepeatFrame; i++){
-            for(int j = 0; j < effectorImages.Length; j++){
-                effectorImages[j].gameObject.transform.localScale -= changeScale;
-            }
-            yield return YieldInstructionCache.WaitFrame;
-        }
-
-        isEffect = false;
+        
+        yield return effectorImages[effectorImages.Length - 1].gameObject.transform.DOScale(1.0f, duration);
     }
 }
