@@ -24,7 +24,7 @@ public class NavigatorController : MonoBehaviour, INavigatorButtonObserver
         }
         
         selectNavigatorButton = navigatorButtons[0];
-        MainSceneManager.instance.uiController.SetInformationBoxText(selectNavigatorButton.TapName);
+        MainSceneManager.Instance.uiController.SetInformationBoxText(selectNavigatorButton.TapName);
         ButtonColorSetting();
     }
 
@@ -32,7 +32,7 @@ public class NavigatorController : MonoBehaviour, INavigatorButtonObserver
         selectNavigatorButton?.Exit();
         selectNavigatorButton = navigatorButton;
         selectNavigatorButton.Enter();
-        MainSceneManager.instance.uiController.SetInformationBoxText(selectNavigatorButton.TapName);
+        MainSceneManager.Instance.uiController.SetInformationBoxText(selectNavigatorButton.TapName);
         ButtonColorSetting();
     }    
 

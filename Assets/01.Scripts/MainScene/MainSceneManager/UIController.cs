@@ -42,7 +42,7 @@ public class UIController : MonoBehaviour {
     public void FreeStyleViewOpen() {
         freeStyleViewController.gameObject.SetActive(true);
         
-        if (GameManager.instance.UnlockAchieves.Count > 0) {
+        if (GameManager.Instance.UnlockAchieves.Count > 0) {
             AchieveNotifyOpen();
         }
     }
@@ -64,7 +64,7 @@ public class UIController : MonoBehaviour {
         freeStyleViewController.OpenPanner(information);
     }
     // FIXME : 진짜 존나 비효율적
-    public void CloseSongInformationPaner(){
+    public void CloseSongInformationPanner(){
         freeStyleViewController.ClosePanner();
     }
 

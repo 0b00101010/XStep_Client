@@ -45,22 +45,22 @@ public class ProfileViewController : MonoBehaviour
     }
 
     public void OpenWidget(){
-        if(!isOpen && !GameManager.instance.SomeUIInteraction){
+        if(!isOpen && !GameManager.Instance.SomeUIInteraction){
             viewerObject.gameObject.SetActive(true);
             settingViews[0].gameObject.SetActive(true);
 
             currentOpenView = settingViews[0];
 
-            GameManager.instance.widgetViewer.WidgetsOpen(background, canvasGroup);
-            GameManager.instance.SomeUIInteraction = true;
+            GameManager.Instance.widgetViewer.WidgetsOpen(background, canvasGroup);
+            GameManager.Instance.SomeUIInteraction = true;
             isOpen = true;
         }
     }
 
     public void CloseWidget(){
         if(!isClosing){
-            GameManager.instance.widgetViewer.WidgetsClose(background, () => {
-                GameManager.instance.SomeUIInteraction = false;
+            GameManager.Instance.widgetViewer.WidgetsClose(background, () => {
+                GameManager.Instance.SomeUIInteraction = false;
                 isClosing = false;
                 isOpen = false;
 

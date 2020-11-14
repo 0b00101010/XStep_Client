@@ -20,7 +20,7 @@ public class ProfileTitleSettingView : ProfileSettingView
     private Transform topPosition;
 
     private void Awake(){
-        titleData = GameManager.instance.PlayerSetting.TitleData;
+        titleData = GameManager.Instance.PlayerSetting.TitleData;
         titleItems = gameObject.GetComponentsInChildren<TitleItem>(true);
 
         for(int i = 0; i < titleData.TitleResources.Length; i++){
@@ -32,12 +32,12 @@ public class ProfileTitleSettingView : ProfileSettingView
     }
 
     private void Update(){
-        if(GameManager.instance.touchManager.IsSwipe){
-            if(GameManager.instance.touchManager.SwipeDirection.y > 0.8f){
+        if(GameManager.Instance.touchManager.IsSwipe){
+            if(GameManager.Instance.touchManager.SwipeDirection.y > 0.8f){
                 if(activeItems[activeItems.Count - 1].gameObject.transform.position.y < topPosition.position.y){
                     MoveObject(Vector2.up);
                 }
-            }else if(GameManager.instance.touchManager.SwipeDirection.y < -0.8f){
+            }else if(GameManager.Instance.touchManager.SwipeDirection.y < -0.8f){
                 if(activeItems[0].gameObject.transform.position.y > topPosition.position.y){
                     MoveObject(Vector2.down);
                 }
@@ -52,17 +52,17 @@ public class ProfileTitleSettingView : ProfileSettingView
     }
 
     public void TitleChange(Title title){
-        GameManager.instance.PlayerSetting.title = title;
+        GameManager.Instance.PlayerSetting.title = title;
         
-        titleText.text = GameManager.instance.PlayerSetting.title.title;
-        descriptionText.text = GameManager.instance.PlayerSetting.title.description;
-        MainSceneManager.instance.uiController.TitleSetting(GameManager.instance.PlayerSetting.title.title);
+        titleText.text = GameManager.Instance.PlayerSetting.title.title;
+        descriptionText.text = GameManager.Instance.PlayerSetting.title.description;
+        MainSceneManager.Instance.uiController.TitleSetting(GameManager.Instance.PlayerSetting.title.title);
     }
 
     public override void Execute(){
         gameObject.SetActive(true);
-        titleText.text = GameManager.instance.PlayerSetting.title.title;
-        descriptionText.text = GameManager.instance.PlayerSetting.title.description;
+        titleText.text = GameManager.Instance.PlayerSetting.title.title;
+        descriptionText.text = GameManager.Instance.PlayerSetting.title.description;
     }
 
     public override void Exit(){

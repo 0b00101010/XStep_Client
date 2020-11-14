@@ -22,9 +22,9 @@ public class ProfileImageSettingView : ProfileSettingView
     }
 
     private void Start(){
-        ChangeProfileImage(GameManager.instance.PlayerSetting.profileSprite ?? profileImage.sprite);
+        ChangeProfileImage(GameManager.Instance.PlayerSetting.profileSprite ?? profileImage.sprite);
 
-        var iconData = GameManager.instance.PlayerSetting.iconData;
+        var iconData = GameManager.Instance.PlayerSetting.iconData;
 
         // FIXME : GetIcon이 bool 이미 확인 하는데 이거 어떻게 못 고치나
         for(int i = 0; i < iconData.iconCount; i++){
@@ -35,12 +35,12 @@ public class ProfileImageSettingView : ProfileSettingView
     // FIXME : 이거 내가 봤을 때 바꿀 필요 있음, 배열로라던지
     public void ChangeProfileImage(Sprite sprite){
         profileImage.sprite = sprite;
-        MainSceneManager.instance.uiController.ProfileSetting(sprite);
+        MainSceneManager.Instance.uiController.ProfileSetting(sprite);
         informationViewImage.sprite = sprite;
     }
 
     public override void Execute(){
-        ChangeProfileImage(GameManager.instance.PlayerSetting.profileSprite);
+        ChangeProfileImage(GameManager.Instance.PlayerSetting.profileSprite);
         gameObject.SetActive(true);
     }    
 

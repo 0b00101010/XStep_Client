@@ -56,9 +56,9 @@ public class ResultViewController : MonoBehaviour {
     
     [Button("Setting")]
     public void Setting() {
-        var songInformation = GameManager.instance.selectSongItem;
+        var songInformation = GameManager.Instance.selectSongItem;
         var songData = songInformation.MapFile;
-        var result = GameManager.instance.gameResult;
+        var result = GameManager.Instance.gameResult;
         
         eyecatchImage.sprite = songInformation.EyeCatch;
         
@@ -76,24 +76,24 @@ public class ResultViewController : MonoBehaviour {
             judgeCountTexts[i].text = result.JudgeCounts[i].ToString("D4");
         }
         
-        rankText.text = GameManager.instance.gameResult.Rank;
-        accuracyText.text = $"{GameManager.instance.gameResult.Accuracy.ToString("F2")}%";
-        scoreText.text = GameManager.instance.gameResult.Score.ToString("D11");
+        rankText.text = GameManager.Instance.gameResult.Rank;
+        accuracyText.text = $"{GameManager.Instance.gameResult.Accuracy.ToString("F2")}%";
+        scoreText.text = GameManager.Instance.gameResult.Score.ToString("D11");
     }
 
     public void Open() {    
         gameObject.SetActive(true);
         Setting();
-        GameManager.instance.widgetViewer.WidgetsOpen(background, canvasGroup);
-        GameManager.instance.SomeUIInteraction = true;
+        GameManager.Instance.widgetViewer.WidgetsOpen(background, canvasGroup);
+        GameManager.Instance.SomeUIInteraction = true;
     }
 
     public void Close() {
-        GameManager.instance.widgetViewer.WidgetsClose(background, () => {
-            GameManager.instance.gameResult = null;
+        GameManager.Instance.widgetViewer.WidgetsClose(background, () => {
+            GameManager.Instance.gameResult = null;
             gameObject.SetActive(false);
-            MainSceneManager.instance.uiController.FreeStyleViewOpen();
-            GameManager.instance.SomeUIInteraction = false;
+            MainSceneManager.Instance.uiController.FreeStyleViewOpen();
+            GameManager.Instance.SomeUIInteraction = false;
         }, canvasGroup);
     }
 }

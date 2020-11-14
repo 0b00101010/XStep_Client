@@ -58,7 +58,7 @@ public class NormalNode : Node
         yield return moveTween.WaitForCompletion();
 
         #if UNITY_EDITOR
-        if (GameManager.instance.AllPerfectMode) {
+        if (GameManager.Instance.AllPerfectMode) {
             Interaction(perfectSample);
             ResetCoroutine().Start(this);
         }
@@ -82,7 +82,7 @@ public class NormalNode : Node
         switch(processLevel){
             case var k when processLevel < judgePerfect:
                 judgeLevel = 4;
-                InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+                InGameManager.Instance.scoreManager.NormalNodeExecuteEffect(positionValue);
                 break; 
             case var k when processLevel < judgeGreat:
                 judgeLevel = 3;
@@ -97,12 +97,12 @@ public class NormalNode : Node
 
         isInteraction = true;
 
-        InGameManager.instance.scoreManager.AddScore(judgeLevel);
+        InGameManager.Instance.scoreManager.AddScore(judgeLevel);
         ResetCoroutine().Start(this);
     }
 
     public override void FailedInteraction(){
-        InGameManager.instance.scoreManager.AddScore(0);
+        InGameManager.Instance.scoreManager.AddScore(0);
         ResetCoroutine().Start(this);
     }
 

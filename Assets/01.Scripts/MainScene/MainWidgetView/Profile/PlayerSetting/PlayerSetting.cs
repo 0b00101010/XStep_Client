@@ -69,7 +69,7 @@ public class PlayerSetting : ScriptableObject {
             }
 
             _currentLevel = value;
-            GameManager.instance.PlayerSetting.AchieveRequireData.SetValueToRequire("LV", value);
+            GameManager.Instance.PlayerSetting.AchieveRequireData.SetValueToRequire("LV", value);
         }
     }
 
@@ -108,7 +108,7 @@ public class PlayerSetting : ScriptableObject {
         get => _perfectPlay;
         set {
             _perfectPlay = value; 
-            GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("PerfectClear", 1);
+            GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire("PerfectClear", 1);
         }
     }
     
@@ -140,7 +140,7 @@ public class PlayerSetting : ScriptableObject {
 
         profileSprite = iconData.GetIcon(0).icon;
         
-        MainSceneManager.instance.uiController.UserNameSetting(userName);
-        MainSceneManager.instance.uiController.TitleSetting(title.title);
+        MainSceneManager.Instance.uiController.UserNameSetting(userName);
+        MainSceneManager.Instance.uiController.TitleSetting(title.title);
     }
 }

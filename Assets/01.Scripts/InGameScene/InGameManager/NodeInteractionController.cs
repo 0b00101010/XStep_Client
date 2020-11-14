@@ -29,8 +29,8 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     }
     
     private void Start() {
-        getCurrentSample = InGameManager.instance.metronome.GetCurrentSample;
-        GameManager.instance.touchManager.AddTouchObserver(this);
+        getCurrentSample = InGameManager.Instance.metronome.GetCurrentSample;
+        GameManager.Instance.touchManager.AddTouchObserver(this);
     }
 
     #if UNITY_EDITOR
@@ -77,7 +77,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
         }
         
         NodeInteraction(boxIndex, getCurrentSample());
-        SlideNodeInteractionStart(touchIndex, GetHitBoxPosition(GameManager.instance.touchManager.TouchDownPosition));
+        SlideNodeInteractionStart(touchIndex, GetHitBoxPosition(GameManager.Instance.touchManager.TouchDownPosition));
     }
 
     public void TouchUpNotify(int touchIndex) {
@@ -91,7 +91,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
             StopLongCoroutine(activeNode[boxIndex][0] as LongNode);
         }
         
-        SlideNodeInteractionEnd(touchIndex, GetHitBoxPosition(GameManager.instance.touchManager.TouchUpPosition[touchIndex]));
+        SlideNodeInteractionEnd(touchIndex, GetHitBoxPosition(GameManager.Instance.touchManager.TouchUpPosition[touchIndex]));
     }
     
     private IEnumerator TouchHold(int position) {
@@ -222,7 +222,7 @@ public class NodeInteractionController : MonoBehaviour, ITouchObserver
     }
 
     private int GetHitBoxIndex(){
-        ray.origin = GameManager.instance.touchManager.TouchDownPosition;
+        ray.origin = GameManager.Instance.touchManager.TouchDownPosition;
 
         RaycastHit2D hit;
         hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("HitBox"));

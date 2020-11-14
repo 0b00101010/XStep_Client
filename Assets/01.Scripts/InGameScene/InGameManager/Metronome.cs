@@ -26,7 +26,7 @@ public class Metronome : MonoBehaviour {
     
     private void Start() {
         audioSource = gameObject.GetComponent<AudioSource>();
-        songData = GameManager.instance.songData;
+        songData = GameManager.Instance.songData;
 
         audioSource.clip = songData.clip;
 
@@ -49,14 +49,14 @@ public class Metronome : MonoBehaviour {
     }
 
     private void Update() {
-        InGameManager.instance.scoreManager.SongProgressChange(nextStep / audioSource.clip.samples);
+        InGameManager.Instance.scoreManager.SongProgressChange(nextStep / audioSource.clip.samples);
 
         if (audioSource.timeSamples >= nextStep) {
             NodeGenerate();
         }
 
         if (audioSource.time.Equals(audioSource.clip.length)) {
-            InGameManager.instance.GameEnd();
+            InGameManager.Instance.GameEnd();
         }
     }
 
@@ -104,7 +104,7 @@ public class Metronome : MonoBehaviour {
             beatCount++;
             
             if ((beatCount & effectSplit) == 0) {
-                InGameManager.instance.centerEffectorController.EffectOneShot();
+                InGameManager.Instance.centerEffectorController.EffectOneShot();
             }
         }
         else {
@@ -257,7 +257,7 @@ public class Metronome : MonoBehaviour {
             ColorUtility.TryParseHtmlString(topColor, out hexToColorTop);
             ColorUtility.TryParseHtmlString(bottomColor, out hexToColorBottom);
 
-            InGameManager.instance.ChangeBackgroundColor(hexToColorTop, hexToColorBottom, duration);
+            InGameManager.Instance.ChangeBackgroundColor(hexToColorTop, hexToColorBottom, duration);
         };
     }
 
@@ -276,33 +276,33 @@ public class Metronome : MonoBehaviour {
 
     private Action NormalNodeGenerateAction(int position) {
         return () => {
-            InGameManager.instance.nodeCreator.NormalNodeGenerate(position, audioSource.timeSamples);
+            InGameManager.Instance.nodeCreator.NormalNodeGenerate(position, audioSource.timeSamples);
         };
     }
 
     private Action LongNodeGenerateAction(int position) {
         return () => {
-            InGameManager.instance.nodeCreator.LongNodeGenerate(position, audioSource.timeSamples);
+            InGameManager.Instance.nodeCreator.LongNodeGenerate(position, audioSource.timeSamples);
         };
     }
 
     private Action LongNodeEndAction(int position) {
         return () => {
-            InGameManager.instance.nodeCreator.LongNodeStop(position);
+            InGameManager.Instance.nodeCreator.LongNodeStop(position);
         };
     }
 
     private Action SlideNodeGenerateAction(int position) {
         return () => {
-            InGameManager.instance.nodeCreator.SlideNodeGenerate(position, audioSource.timeSamples);
+            InGameManager.Instance.nodeCreator.SlideNodeGenerate(position, audioSource.timeSamples);
         }; 
     }
 
-    private void OnGUI() {
-        #if UNITY_EDITOR
-        GUI.Label(new Rect(10,50,100,50), bpm.ToString());
-        GUI.Label(new Rect(10,100,100,50), split.ToString());
-        GUI.Label(new Rect(10,150,100,50), oneBeatTime.ToString());
-        #endif
-    }
+    // private void OnGUI() {
+    //     #if UNITY_EDITOR
+    //     GUI.Label(new Rect(10,50,100,50), bpm.ToString());
+    //     GUI.Label(new Rect(10,100,100,50), split.ToString());
+    //     GUI.Label(new Rect(10,150,100,50), oneBeatTime.ToString());
+    //     #endif
+    // }
 }

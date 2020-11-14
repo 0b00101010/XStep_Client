@@ -43,12 +43,12 @@ public class ProfileInformationView : ProfileSettingView
     private TextMeshProUGUI freeStyleClear;
 
     public override void Execute(){
-        var setting = GameManager.instance.PlayerSetting;
+        var setting = GameManager.Instance.PlayerSetting;
         var title = setting.title.title;
 
-        MainSceneManager.instance.uiController.ProfileSetting(setting.profileSprite);
-        MainSceneManager.instance.uiController.UserNameSetting(setting.userName);
-        MainSceneManager.instance.uiController.TitleSetting(title);
+        MainSceneManager.Instance.uiController.ProfileSetting(setting.profileSprite);
+        MainSceneManager.Instance.uiController.UserNameSetting(setting.userName);
+        MainSceneManager.Instance.uiController.TitleSetting(title);
 
         userProfileImage.sprite = setting.profileSprite ?? userProfileImage.sprite;
         userName.text = setting.userName;

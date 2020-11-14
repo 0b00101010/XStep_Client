@@ -17,14 +17,14 @@ public class HelpButton : MainUIObject {
     
     public override void Execute() {
         pannerObject.gameObject.SetActive(true);
-        GameManager.instance.widgetViewer.WidgetsOpen(background, canvasGroup);
-        GameManager.instance.SomeUIInteraction = true;
+        GameManager.Instance.widgetViewer.WidgetsOpen(background, canvasGroup);
+        GameManager.Instance.SomeUIInteraction = true;
     }
 
     public void CloseHelpPanner() {
-        GameManager.instance.widgetViewer.WidgetsClose(background, () => {
+        GameManager.Instance.widgetViewer.WidgetsClose(background, () => {
             pannerObject.gameObject.SetActive(false);
-            GameManager.instance.SomeUIInteraction = false;
+            GameManager.Instance.SomeUIInteraction = false;
         },canvasGroup);
     }
 

@@ -23,7 +23,7 @@ public class SignUpConnector : ServerConnector, IServerConnector {
         parameters.AddField("passwd", passwd);
         parameters.AddField("name", name);
 
-        using (var www = UnityWebRequest.Post($"{GameManager.instance.ServerUrl}/signup", parameters)) {
+        using (var www = UnityWebRequest.Post($"{GameManager.Instance.ServerUrl}/signup", parameters)) {
             yield return www.SendWebRequest();
 
             if (www.responseCode != 409 && (www.isHttpError || www.isNetworkError)) {

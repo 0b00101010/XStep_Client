@@ -49,13 +49,13 @@ public class SongItem : MainUIObject
     }
 
     public override void Execute() {
-        if (GameManager.instance.SomeUIInteraction) {
+        if (GameManager.Instance.SomeUIInteraction) {
             return;
         }
 
-        GameManager.instance.selectSongItem = songItemInformation;
-        GameManager.instance.songData = songItemInformation.MapFile;
+        GameManager.Instance.selectSongItem = songItemInformation;
+        GameManager.Instance.songData = songItemInformation.MapFile;
         
-        MainSceneManager.instance.uiController.OpenSongInformationPanner(songItemInformation);
+        MainSceneManager.Instance.uiController.OpenSongInformationPanner(songItemInformation);
     }
 }

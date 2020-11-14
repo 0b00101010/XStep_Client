@@ -23,7 +23,7 @@ public class LoginConnector : ServerConnector, IServerConnector {
         parameters.AddField("id", id);
         parameters.AddField("passwd", passwd);
 
-        using (var www = UnityWebRequest.Post($"{GameManager.instance.ServerUrl}/signin", parameters)) {
+        using (var www = UnityWebRequest.Post($"{GameManager.Instance.ServerUrl}/signin", parameters)) {
             yield return www.SendWebRequest();
             
             if (www.responseCode == 404) {
