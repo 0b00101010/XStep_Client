@@ -22,7 +22,7 @@ public class FreeStyleViewController : MonoBehaviour {
         songInformationViewer = gameObject.GetComponent<ViewSongInformation>();
         songInformationViewer.SettingPannerActiveCheckFunction((value) => {
             isPannerOpen = value;
-            GameManager.instance.SomeUIInteraction = value;
+            GameManager.Instance.SomeUIInteraction = value;
         });
 
         songItems = songItemsParent.GetComponentsInChildren<SongItem>(true);
@@ -33,13 +33,13 @@ public class FreeStyleViewController : MonoBehaviour {
     }
 
     private void Update(){
-        if(GameManager.instance.touchManager.IsSwipe && !isPannerOpen && !GameManager.instance.SomeUIInteraction){
-            if(GameManager.instance.touchManager.SwipeDirection.y > 0.8f){
+        if(GameManager.Instance.touchManager.IsSwipe && !isPannerOpen && !GameManager.Instance.SomeUIInteraction){
+            if(GameManager.Instance.touchManager.SwipeDirection.y > 0.8f){
                 if(songItems[songItems.Length - 1].gameObject.transform.position.y < sortPivotObject.position.y){
                     MoveObjects(moveVector);
                 }
             }
-            else if(GameManager.instance.touchManager.SwipeDirection.y < -0.8f){
+            else if(GameManager.Instance.touchManager.SwipeDirection.y < -0.8f){
                 if(songItems[0].gameObject.transform.position.y > sortPivotObject.position.y){
                     MoveObjects(-moveVector);
                 }
@@ -56,8 +56,8 @@ public class FreeStyleViewController : MonoBehaviour {
 
     // FIXME : 진짜 존나 비효율적
     public void OpenPanner(SongItemInformation information){
-        if(!isPannerOpen && !GameManager.instance.SomeUIInteraction){
-            songInformationViewer.SettingInformations(information);
+        if(!isPannerOpen && !GameManager.Instance.SomeUIInteraction){
+            songInformationViewer.SettingInformation(information);
             songInformationViewer.OpenSongInformation();
         }
     }

@@ -33,9 +33,9 @@ public class TitleViewController : MainUIObject {
     }
 
     private void Start() {
-        if (GameManager.instance.IsSawTitle) {
+        if (GameManager.Instance.IsSawTitle) {
             gameObject.SetActive(false);
-            MainSceneManager.instance.uiController.TitleViewClose();
+            MainSceneManager.Instance.uiController.TitleViewClose();
         }
     }
     
@@ -97,8 +97,8 @@ public class TitleViewController : MainUIObject {
         logoScaleTween?.Kill();
         backgroundScaleTween?.Kill();
         
-        MainSceneManager.instance.uiController.TitleViewClose();
-        GameManager.instance.IsSawTitle = true;
+        MainSceneManager.Instance.uiController.TitleViewClose();
+        GameManager.Instance.IsSawTitle = true;
         
         gameObject.SetActive(false);
     }

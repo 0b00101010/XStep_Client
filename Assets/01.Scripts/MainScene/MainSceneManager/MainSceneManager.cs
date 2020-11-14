@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
+public class MainSceneManager : SingletonObject<MainSceneManager>, ITouchObserver
 {
     
     [HideInInspector]
@@ -26,10 +26,10 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     }
 
     private void Start(){
-        GameManager.instance.touchManager.AddTouchObserver(this);
-        GameManager.instance.touchManager.touchType = TouchType.MainScene;
-        GameManager.instance.CurrentSceneType = SceneType.MAIN;
-        if (GameManager.instance.gameResult != null) {
+        GameManager.Instance.touchManager.AddTouchObserver(this);
+        GameManager.Instance.touchManager.touchType = TouchType.MainScene;
+        GameManager.Instance.CurrentSceneType = SceneType.MAIN;
+        if (GameManager.Instance.gameResult != null) {
             uiController.ResultOpen();
         }
     }
@@ -38,7 +38,7 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     }
 
     public void TouchUpNotify(int touchIndex){
-        if (GameManager.instance.touchManager.IsSwiped == false) {
+        if (GameManager.Instance.touchManager.IsSwiped == false) {
             GetMainUIObject()?.Execute();
         }
     }
@@ -46,7 +46,7 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     private MainUIObject GetMainUIObject(){
         RaycastHit2D hit2D;
         
-        touchRay.origin = GameManager.instance.touchManager.TouchDownPosition;
+        touchRay.origin = GameManager.Instance.touchManager.TouchDownPosition;
         touchRay.direction = Vector2.zero;
         
         hit2D = Physics2D.Raycast(touchRay.origin, touchRay.direction, Mathf.Infinity, LayerMask.GetMask("MainUIObject"));
@@ -55,17 +55,17 @@ public class MainSceneManager : Singleton<MainSceneManager>, ITouchObserver
     }
     
     public void GameStart() {
-        if (GameManager.instance.selectSongItem.MapFile.currentSelectDifficulty == -1) {
+        if (GameManager.Instance.selectSongItem.MapFile.currentSelectDifficulty == -1) {
             return;
         }
         
-        GameManager.instance.UnlockAchieves.Clear();
+        GameManager.Instance.UnlockAchieves.Clear();
         
         blackBackground.gameObject.SetActive(true);
         var fadeTween = blackBackground.DOFade(1.0f, 0.5f);
         fadeTween.OnComplete(() => {
             SceneManager.LoadScene("01.InGameScene");
-            GameManager.instance.SomeUIInteraction = false;
+            GameManager.Instance.SomeUIInteraction = false;
         });
     }
     

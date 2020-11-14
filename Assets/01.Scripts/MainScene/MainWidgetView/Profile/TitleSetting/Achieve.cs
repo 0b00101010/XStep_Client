@@ -39,7 +39,7 @@ public class Achieve {
             isUnlock = value;
             
             if (isUnlock) {
-                GameManager.instance.UnlockAchieves.Add(this);
+                GameManager.Instance.UnlockAchieves.Add(this);
                 (AchieveName + "Unlock").Log();
             }
 

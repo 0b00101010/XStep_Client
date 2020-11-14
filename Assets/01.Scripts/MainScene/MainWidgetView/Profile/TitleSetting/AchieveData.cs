@@ -25,8 +25,8 @@ public class AchieveData : ScriptableObject {
                 }
                 
                 findAchieve.IsUnlock = true;
-                GameManager.instance.PlayerSetting.currentExp += findAchieve.RewardXp;
-                GameManager.instance.PlayerSetting.TitleData.UnLockTitle(findAchieve.OpenTitleName);
+                GameManager.Instance.PlayerSetting.currentExp += findAchieve.RewardXp;
+                GameManager.Instance.PlayerSetting.TitleData.UnLockTitle(findAchieve.OpenTitleName);
             }
         }
     }

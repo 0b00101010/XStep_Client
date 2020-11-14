@@ -57,7 +57,7 @@ public class SlideNode : Node
         slideTween = null;
 
         #if UNITY_EDITOR
-        if (GameManager.instance.AllPerfectMode) {
+        if (GameManager.Instance.AllPerfectMode) {
             Interaction(perfectSample);
             yield break;
         }
@@ -76,15 +76,15 @@ public class SlideNode : Node
         switch(processLevel){
             case var k when processLevel < judgePerfect:
                 judgeLevel = 4;
-                InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+                InGameManager.Instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
                 break; 
             case var k when processLevel > judgePerfect:
                 judgeLevel = 3;
-                InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+                InGameManager.Instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
                 break; 
             case var k when processLevel > judgeGreat:
                 judgeLevel = 2;
-                InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+                InGameManager.Instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
                 break; 
             case var k when processLevel < judgeGood:
                 judgeLevel = 1;
@@ -92,7 +92,7 @@ public class SlideNode : Node
         }
         
         destroyEvent.Invoke(this, positionValue);
-        InGameManager.instance.scoreManager.AddScore(judgeLevel);
+        InGameManager.Instance.scoreManager.AddScore(judgeLevel);
 
         if (slideTween != null && slideTween.IsPlaying()) {
             slideTween.OnComplete(() => {
@@ -114,11 +114,11 @@ public class SlideNode : Node
 
     public override void FailedInteraction(){
         destroyEvent.Invoke(this, positionValue);
-        InGameManager.instance.scoreManager.AddScore(0);
+        InGameManager.Instance.scoreManager.AddScore(0);
         ResetCoroutine().Start(this);
 
-        // InGameManager.instance.scoreManager.AddScore(4);
-        // InGameManager.instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
+        // InGameManager.Instance.scoreManager.AddScore(4);
+        // InGameManager.Instance.scoreManager.SlideNodeExecuteEffect(positionValue, directionValue);
         // ObjectReset();
     }
 

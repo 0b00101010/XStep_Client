@@ -5,7 +5,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : DontDestroySingleton<GameManager>
+public class GameManager : DontDestroySingletonObject<GameManager>
 {
     [HideInInspector]
     public TouchManager touchManager;
@@ -77,16 +77,11 @@ public class GameManager : DontDestroySingleton<GameManager>
     private List<Achieve> unlockAchieves = new List<Achieve>();
     public List<Achieve> UnlockAchieves => unlockAchieves;
 
-    private void Awake(){
-        if (instance != this && instance != null) {
-            Destroy(gameObject);
-            return;
-        }
-        
+    private void Awake() {
         touchManager = gameObject.GetComponent<TouchManager>();
         widgetViewer = gameObject.GetComponent<WidgetViewer>();
         serverConnector = gameObject.GetComponent<ServerConnectorController>();
-        
+
         playerSetting = Resources.Load<PlayerSetting>("Player Setting/PlayerSetting");
         playerSetting.AchieveRequireData.Initialize();
     }
@@ -142,15 +137,15 @@ public class GameManager : DontDestroySingleton<GameManager>
         playerSetting.userName = serverUserData.name;
         
         if (currentSceneType.Equals(SceneType.MAIN)) {
-            MainSceneManager.instance.uiController.TitleSetting(playerSetting.title.title);
-            MainSceneManager.instance.uiController.UserNameSetting(playerSetting.userName);
+            MainSceneManager.Instance.uiController.TitleSetting(playerSetting.title.title);
+            MainSceneManager.Instance.uiController.UserNameSetting(playerSetting.userName);
         }
     }
 
     [Button("Reset Button")]
     public void GameReset() {
         PlayerPrefs.DeleteAll();
-        MainSceneManager.instance?.SongItemsReset();
+        MainSceneManager.Instance?.SongItemsReset();
         PlayerSetting.ResetSetting();
         playerSetting.AchieveRequireData.DataReset();
         PlayerSetting.AchieveData.DataReset();

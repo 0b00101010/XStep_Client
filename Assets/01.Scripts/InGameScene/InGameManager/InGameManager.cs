@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class InGameManager : MonoBehaviour
 {
     
-    public static InGameManager instance;
+    public static InGameManager Instance;
     
     [HideInInspector]
     public ScoreManager scoreManager;
@@ -35,8 +35,8 @@ public class InGameManager : MonoBehaviour
     
     
     private void Awake(){
-        if(instance is null){
-            instance = this;
+        if(Instance is null){
+            Instance = this;
         }
 
         scoreManager = gameObject.GetComponent<ScoreManager>();
@@ -47,9 +47,9 @@ public class InGameManager : MonoBehaviour
     }
 
     private void Start(){
-        GameManager.instance.touchManager.touchType = TouchType.InGame;
-        GameManager.instance.gameResult = new GameResult();
-        GameManager.instance.CurrentSceneType = SceneType.INGAME;
+        GameManager.Instance.touchManager.touchType = TouchType.InGame;
+        GameManager.Instance.gameResult = new GameResult();
+        GameManager.Instance.CurrentSceneType = SceneType.INGAME;
     }
 
     public void ChangeBackgroundColor(Color topColor, Color bottomColor, float duration) {
@@ -57,31 +57,31 @@ public class InGameManager : MonoBehaviour
     }    
 
     public void GameEnd() {
-        instance = null;
+        Instance = null;
 
         Time.timeScale = 1.0f;
         
-        GameManager.instance.gameResult.Score = scoreManager.TotalScore;
-        GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Score", scoreManager.TotalScore);
-        GameManager.instance.PlayerSetting.totalScore += (ulong) scoreManager.TotalScore;
+        GameManager.Instance.gameResult.Score = scoreManager.TotalScore;
+        GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Score", scoreManager.TotalScore);
+        GameManager.Instance.PlayerSetting.totalScore += (ulong) scoreManager.TotalScore;
 
-        var judgeCounts = GameManager.instance.gameResult.JudgeCounts;
+        var judgeCounts = GameManager.Instance.gameResult.JudgeCounts;
         var accuracy = (judgeCounts[4] * 1.0f)
                        + (judgeCounts[3] * 0.8f)
                        + (judgeCounts[2] * 0.4f)
                        + (judgeCounts[0] * 0.0f);
 
-        accuracy /= GameManager.instance.gameResult.NodeTotalCount;
+        accuracy /= GameManager.Instance.gameResult.NodeTotalCount;
         accuracy *= 100.0f;
 
-        GameManager.instance.gameResult.Accuracy = accuracy;
+        GameManager.Instance.gameResult.Accuracy = accuracy;
 
         var rank = "";
         
         switch (accuracy) {
             case var v when accuracy == 100.0f:
                 rank = "SSS";
-                GameManager.instance.PlayerSetting.perfectPlay++;
+                GameManager.Instance.PlayerSetting.perfectPlay++;
                 break;
             case var v when accuracy > 95.0f:
                 rank = "SS";
@@ -109,25 +109,25 @@ public class InGameManager : MonoBehaviour
                 break;
         }
 
-        var difficulty = GameManager.instance.songData.currentSelectDifficulty;
+        var difficulty = GameManager.Instance.songData.currentSelectDifficulty;
         
-        GameManager.instance.gameResult.Rank = rank;
+        GameManager.Instance.gameResult.Rank = rank;
         
-        GameManager.instance.selectSongItem.HighScore[difficulty]
-            = GameManager.instance.selectSongItem.HighScore[difficulty] < scoreManager.TotalScore
+        GameManager.Instance.selectSongItem.HighScore[difficulty]
+            = GameManager.Instance.selectSongItem.HighScore[difficulty] < scoreManager.TotalScore
                 ? scoreManager.TotalScore
-                : GameManager.instance.selectSongItem.HighScore[difficulty];
+                : GameManager.Instance.selectSongItem.HighScore[difficulty];
 
-        GameManager.instance.PlayerSetting.highClearLevel
-            = GameManager.instance.PlayerSetting.highClearLevel < difficulty
+        GameManager.Instance.PlayerSetting.highClearLevel
+            = GameManager.Instance.PlayerSetting.highClearLevel < difficulty
                 ? difficulty
-                : GameManager.instance.PlayerSetting.highClearLevel;
+                : GameManager.Instance.PlayerSetting.highClearLevel;
 
-        GameManager.instance.PlayerSetting.AchieveRequireData.SetValueToRequire("HighClearLevel", GameManager.instance.PlayerSetting.highClearLevel);
-        GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire($"ClearDiff{difficulty + 1}", GameManager.instance.PlayerSetting.highClearLevel);
+        GameManager.Instance.PlayerSetting.AchieveRequireData.SetValueToRequire("HighClearLevel", GameManager.Instance.PlayerSetting.highClearLevel);
+        GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire($"ClearDiff{difficulty + 1}", GameManager.Instance.PlayerSetting.highClearLevel);
         
         var totalExp = (difficulty * 50) * (int)(accuracy);
-        GameManager.instance.PlayerSetting.currentExp += totalExp;
+        GameManager.Instance.PlayerSetting.currentExp += totalExp;
         
         SceneManager.LoadScene("00.MainScene");
     }

@@ -14,7 +14,7 @@ public class NumberConverter : MonoBehaviour
     private Sprite[] spriteImages;
 
     private void Awake(){
-        GameManager.instance.inGameResources?.Deconstruct(out spriteImages);
+        GameManager.Instance.inGameResources?.Deconstruct(out spriteImages);
     }
 
     public void Conversion(int value){

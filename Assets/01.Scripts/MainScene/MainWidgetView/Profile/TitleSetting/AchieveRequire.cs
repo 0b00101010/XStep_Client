@@ -15,7 +15,7 @@ public class AchieveRequire {
         get => amount;
         set {
             amount = value;
-            GameManager.instance.PlayerSetting.AchieveData.Unlock(requireName, amount);
+            GameManager.Instance.PlayerSetting.AchieveData.Unlock(requireName, amount);
         }
     }
 }

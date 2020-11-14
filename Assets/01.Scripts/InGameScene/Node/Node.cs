@@ -73,8 +73,8 @@ public class Node : MonoBehaviour {
     }
 
     private void Start() {
-        getCurrentTimeSample = InGameManager.instance.metronome.GetCurrentSample;
-        var frequency = InGameManager.instance.metronome.GetFrequency();
+        getCurrentTimeSample = InGameManager.Instance.metronome.GetCurrentSample;
+        var frequency = InGameManager.Instance.metronome.GetFrequency();
 
         _arriveTimeToSample = frequency * _arriveTime;
 

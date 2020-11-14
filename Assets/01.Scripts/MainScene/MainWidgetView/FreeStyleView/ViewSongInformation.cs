@@ -53,7 +53,7 @@ public class ViewSongInformation : MonoBehaviour
         this.pannerActiveCheckFunction = pannerActiveCheckFunction;
     }
 
-    public void SettingInformations(SongItemInformation information) {
+    public void SettingInformation(SongItemInformation information) {
         
         this.eyeCatchImage.sprite = information.EyeCatch;
         this.songName.text = information.SongName;
@@ -76,14 +76,14 @@ public class ViewSongInformation : MonoBehaviour
     
     public void OpenSongInformation(){
         songInformationView.SetActive(true);
-        GameManager.instance.widgetViewer.WidgetsOpen(backgroundImage, songInformationCanvas);
+        GameManager.Instance.widgetViewer.WidgetsOpen(backgroundImage, songInformationCanvas);
         pannerActiveCheckFunction(true);
     }
 
     public void CloseSongInformation(){
         if(!isClosing){
             isClosing = true;
-            GameManager.instance.widgetViewer.WidgetsClose(backgroundImage, ResetPanner, songInformationCanvas);
+            GameManager.Instance.widgetViewer.WidgetsClose(backgroundImage, ResetPanner, songInformationCanvas);
         }
     }
 

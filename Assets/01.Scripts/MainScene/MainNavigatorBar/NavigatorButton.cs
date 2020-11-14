@@ -15,7 +15,7 @@ public class NavigatorButton : MainUIObject
     public string TapName => tapName;
 
     public override void Execute() {
-        if (GameManager.instance.SomeUIInteraction == false) {
+        if (GameManager.Instance.SomeUIInteraction == false) {
             SelectNotify();
         }
     }

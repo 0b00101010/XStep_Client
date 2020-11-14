@@ -82,9 +82,9 @@ public class LongNode : Node
                 }
             }
             
-            if (GameManager.instance.AllPerfectMode) {
-                InGameManager.instance.scoreManager.AddScore(4);
-                InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+            if (GameManager.Instance.AllPerfectMode) {
+                InGameManager.Instance.scoreManager.AddScore(4);
+                InGameManager.Instance.scoreManager.NormalNodeExecuteEffect(positionValue);
                 
                 Interaction(perfectSample);
                 perfectUpdateCoroutine().Start(this);
@@ -144,9 +144,9 @@ public class LongNode : Node
 
             if ((interactionFrame & 9) == 0) {
                 if (judgeLevel == 4) {
-                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+                    InGameManager.Instance.scoreManager.NormalNodeExecuteEffect(positionValue);
                 }
-                InGameManager.instance.scoreManager.AddScore(judgeLevel);
+                InGameManager.Instance.scoreManager.AddScore(judgeLevel);
 
             }
         } else {
@@ -154,7 +154,7 @@ public class LongNode : Node
             switch(processLevel){
                 case var k when processLevel < judgePerfect:
                     judgeLevel = 4;
-                    InGameManager.instance.scoreManager.NormalNodeExecuteEffect(positionValue);
+                    InGameManager.Instance.scoreManager.NormalNodeExecuteEffect(positionValue);
                     break; 
                 case var k when processLevel < judgeGreat:
                     judgeLevel = 3;
@@ -168,12 +168,12 @@ public class LongNode : Node
             }
 
             isInteraction = true;
-            InGameManager.instance.scoreManager.AddScore(judgeLevel);
+            InGameManager.Instance.scoreManager.AddScore(judgeLevel);
         }
     }
 
     public override void FailedInteraction(){
-        InGameManager.instance.scoreManager.AddScore(0);
+        InGameManager.Instance.scoreManager.AddScore(0);
         isFailedInteraction = true;
     }
 

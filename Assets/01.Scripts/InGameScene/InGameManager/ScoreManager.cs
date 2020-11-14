@@ -73,23 +73,23 @@ public class ScoreManager : MonoBehaviour
         switch (judgeLevel) {
             case 1:
                 totalScore += 400 + (comboCount / 100);
-                GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Bad", 1);
+                GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Bad", 1);
                 break;
             case 2:
                 totalScore += 600 + (comboCount / 100);
-                GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Good", 1);
+                GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Good", 1);
                 break;
             case 3:
                 totalScore += 800 + (comboCount / 100);
-                GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Great", 1);
+                GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Great", 1);
                 break;
             case 4:
                 totalScore += 1000 + (comboCount / 100); 
-                GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Perfect", 1);
+                GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Perfect", 1);
                 JudgeSplash(Color.white); 
                 break;
             default:
-                GameManager.instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Miss", 1);
+                GameManager.Instance.PlayerSetting.AchieveRequireData.AddValueToRequire("Miss", 1);
                 JudgeSplash(Color.red);
                 break;
         }
@@ -98,8 +98,8 @@ public class ScoreManager : MonoBehaviour
             StopCoroutine(judgeImageSizeUpCoroutine);
         }
 
-        GameManager.instance.gameResult.JudgeCounts[judgeLevel]++;
-        GameManager.instance.gameResult.NodeTotalCount++;
+        GameManager.Instance.gameResult.JudgeCounts[judgeLevel]++;
+        GameManager.Instance.gameResult.NodeTotalCount++;
         
         sizeUpTween?.Kill();
         judgeImageSizeUpCoroutine = StartCoroutine(JudgeImageSizeUpCoroutine());

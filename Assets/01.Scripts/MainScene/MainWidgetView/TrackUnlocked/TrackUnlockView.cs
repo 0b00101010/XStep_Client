@@ -37,13 +37,13 @@ public class TrackUnlockView :MonoBehaviour {
         songNameText.text = item.SongName;
         composerNameText.text = item.ComposerName;
         
-        GameManager.instance.widgetViewer.WidgetsOpen(backgroundImage, canvasGroup);
-        GameManager.instance.SomeUIInteraction = true;
+        GameManager.Instance.widgetViewer.WidgetsOpen(backgroundImage, canvasGroup);
+        GameManager.Instance.SomeUIInteraction = true;
     }
 
     public void Exit() {
-        GameManager.instance.widgetViewer.WidgetsClose(backgroundImage, () => {
-            GameManager.instance.SomeUIInteraction = false;
+        GameManager.Instance.widgetViewer.WidgetsClose(backgroundImage, () => {
+            GameManager.Instance.SomeUIInteraction = false;
             gameObject.SetActive(false);
         }, canvasGroup);
     }

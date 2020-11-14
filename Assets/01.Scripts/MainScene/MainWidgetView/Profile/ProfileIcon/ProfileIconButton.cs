@@ -28,7 +28,7 @@ public class ProfileIconButton : MainUIObject
     public override void Execute(){
         if(isUnlock){
             spriteChangeEvent.Invoke(sprite);
-            GameManager.instance.PlayerSetting.profileSprite = sprite;
+            GameManager.Instance.PlayerSetting.profileSprite = sprite;
         }
     }
 }

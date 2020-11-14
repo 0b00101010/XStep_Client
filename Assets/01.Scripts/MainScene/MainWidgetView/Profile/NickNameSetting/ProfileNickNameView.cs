@@ -57,8 +57,8 @@ public class ProfileNickNameView : ProfileSettingView
         PlayerPrefs.SetString("UserNameChange", "false");
         SettingOption(false);
 
-        GameManager.instance.PlayerSetting.userName = userNameField.text;
-        MainSceneManager.instance.uiController.UserNameSetting(userNameField.text);
+        GameManager.Instance.PlayerSetting.userName = userNameField.text;
+        MainSceneManager.Instance.uiController.UserNameSetting(userNameField.text);
     }
 
     public void ChangeValue(){
